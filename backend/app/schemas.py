@@ -161,3 +161,67 @@ class VerificationResult(BaseModel):
     pages: list[PageVerificationInfo] = []
     fields: dict[str, FieldVerification] = {}
     duration_ms: int = 0
+
+
+# ---------------------------------------------------------------- Stages 4-8 (rules engine)
+
+Severity = Literal["REJECT", "HOLD", "INFO"]
+Outcome = Literal["APPROVE", "HOLD", "REJECT"]
+
+
+class CheckEvidence(BaseModel):
+    """Where a check's numbers came from: the invoice (and whether it was verified) vs the reference data."""
+
+    invoice_field: str | None = None
+    invoice_value: object = None
+    verification_status: str | None = None
+    reference_source: str | None = None  # e.g. "vendor master V012", "PO-2026-1050 line 2", "invoice history H0158"
+    reference_value: object = None
+
+
+class CheckResult(BaseModel):
+    """One business-rule check. code is None when the check passed cleanly."""
+
+    stage: str
+    check: str
+    passed: bool
+    code: str | None = None
+    severity: Severity | None = None
+    message: str
+    evidence: CheckEvidence = CheckEvidence()
+    details: dict[str, str] = {}  # the values the message was built from (also fill the vendor-note fix text)
+
+
+class RoutedQuestion(BaseModel):
+    role: str
+    question: str
+    codes: list[str]
+
+
+class LedgerLine(BaseModel):
+    po_number: str
+    po_line_no: int
+    description: str
+    quantity: float
+    unit_price: float
+    amount: float
+
+
+class LedgerUpdate(BaseModel):
+    """What Approve changes: PO line quantities billed, and a new invoice-history row."""
+
+    po_number: str
+    lines: list[LedgerLine]
+    taxable_value: float
+    total_amount: float
+    history_row: dict
+
+
+class Decision(BaseModel):
+    outcome: Outcome
+    approve_with_note: bool = False
+    summary: str
+    reasons: list[CheckResult] = []  # every check that raised a code (REJECT, HOLD and INFO)
+    routed_questions: list[RoutedQuestion] = []  # HOLD
+    vendor_note: str | None = None  # REJECT
+    ledger_update: LedgerUpdate | None = None  # APPROVE

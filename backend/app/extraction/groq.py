@@ -20,8 +20,15 @@ MAX_SIDE = 1400  # long side in pixels: still readable for an A4 page
 MAX_OUTPUT_TOKENS = 1000
 
 
+TOO_LARGE = ("This invoice is too large for Groq's free tier (it allows about 1,000 output and 7,000 input "
+             "tokens per minute; long or multi-page invoices exceed that on every attempt). Retry with Gemini.")
+
+
 def map_groq_error(exc: Exception) -> ProviderError | InvalidOutput:
     """Translate SDK exceptions into our error types (JSON-mode failures go to the repair retry)."""
+    if isinstance(exc, groq.APIStatusError) and "request too large" in str(exc).lower():
+        # a per-request size cap, not a passing rate limit: waiting will not help
+        return ProviderError("rate_limited", str(exc), message=TOO_LARGE)
     if isinstance(exc, groq.APITimeoutError):
         return ProviderError("timeout", str(exc))
     if isinstance(exc, groq.RateLimitError):

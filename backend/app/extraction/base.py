@@ -28,10 +28,11 @@ ENV_NAMES = {"gemini": "GEMINI_API_KEY", "groq": "GROQ_API_KEY"}
 class ProviderError(Exception):
     """A provider call failed in a known way."""
 
-    def __init__(self, error_type: ErrorType, detail: str = "") -> None:
+    def __init__(self, error_type: ErrorType, detail: str = "", message: str | None = None) -> None:
         super().__init__(detail)
         self.error_type = error_type
         self.detail = detail
+        self.message = message  # overrides the standard friendly message when the situation is more specific
 
 
 class InvalidOutput(Exception):
@@ -43,8 +44,8 @@ class InvalidOutput(Exception):
         self.detail = detail
 
 
-def make_error(provider: str, error_type: ErrorType, detail: str = "") -> ExtractionError:
-    message = FRIENDLY[error_type].format(provider=provider.capitalize(), env=ENV_NAMES.get(provider, "the API key"))
+def make_error(provider: str, error_type: ErrorType, detail: str = "", message: str | None = None) -> ExtractionError:
+    message = message or FRIENDLY[error_type].format(provider=provider.capitalize(), env=ENV_NAMES.get(provider, "the API key"))
     return ExtractionError(type=error_type, message=message, detail=detail[:500] or None)
 
 
@@ -100,7 +101,7 @@ class Extractor(ABC):
         except InvalidOutput as bad:
             raw, invoice, problem = bad.text, None, bad.detail
         except ProviderError as exc:
-            return result(error=make_error(self.provider, exc.error_type, exc.detail))
+            return result(error=make_error(self.provider, exc.error_type, exc.detail, exc.message))
         if invoice is not None:
             return result(invoice=invoice, raw_response=raw)
 
@@ -111,7 +112,7 @@ class Extractor(ABC):
         except InvalidOutput as bad:
             repaired_raw, invoice, problem = bad.text, None, bad.detail
         except ProviderError as exc:
-            return result(error=make_error(self.provider, exc.error_type, exc.detail), raw_response=raw)
+            return result(error=make_error(self.provider, exc.error_type, exc.detail, exc.message), raw_response=raw)
         if invoice is None:
             return result(error=make_error(self.provider, "invalid_response", problem or ""), raw_response=repaired_raw,
                           repaired=True)

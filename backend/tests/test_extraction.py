@@ -230,3 +230,13 @@ def test_cache_round_trip_marks_result_cached(tmp_path):
     put_cached(engine, file_hash(b"%PDF-other"), failed)  # errors are never cached
     assert get_cached(engine, file_hash(b"%PDF-other"), "gemini", "test-model") is None
     engine.dispose()
+
+
+def test_groq_request_too_large_says_switch_to_gemini_not_wait():
+    exc = _groq_status(groq.RateLimitError, 429)
+    exc = groq.RateLimitError("Request too large for model on output tokens per minute (OTPM): Limit 1000",
+                              response=exc.response, body=None)
+    mapped = map_groq_error(exc)
+    assert mapped.error_type == "rate_limited" and "Retry with Gemini" in mapped.message
+    result = ScriptedExtractor([mapped]).extract(PDF, "application/pdf")
+    assert "too large for Groq" in result.error.message

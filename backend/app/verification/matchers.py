@@ -7,11 +7,12 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from datetime import date, datetime
-from decimal import Decimal, InvalidOperation
+from datetime import date
+from decimal import Decimal
 
 from rapidfuzz import fuzz
 
+from app.pipeline.normalise import normalise_code, normalise_identifier, parse_amount, parse_date
 from app.verification.page_text import PageWords
 
 MAX_RUN = 6
@@ -57,21 +58,6 @@ def candidates(pages: list[PageWords], max_run: int = MAX_RUN) -> list[Candidate
 
 # ---------------------------------------------------------------- amounts
 
-_CURRENCY = re.compile(r"(₹|rs\.?|inr|/-|\s)", re.IGNORECASE)
-_AMOUNT = re.compile(r"-?\d{1,3}(,\d{2})*,\d{3}(\.\d+)?|-?\d+(\.\d+)?")
-
-
-def parse_amount(text: str) -> Decimal | None:
-    """'₹1,18,000.00', 'Rs.118000/-', 'INR 118000.00', '1,18,000' -> Decimal; anything else -> None."""
-    cleaned = _CURRENCY.sub("", text).strip(":")
-    if not cleaned or not _AMOUNT.fullmatch(cleaned):
-        return None
-    try:
-        return Decimal(cleaned.replace(",", ""))
-    except InvalidOperation:
-        return None
-
-
 RUPEE_MISREADS = "2%?Z€¥"  # how OCR commonly renders a printed ₹
 
 
@@ -95,15 +81,7 @@ def match_amount(value: float, text: str, ocr: bool = False) -> int | None:
 
 # ---------------------------------------------------------------- identifiers (invoice number, PO ref)
 
-_ID_SEPARATORS = re.compile(r"[\s\-/_.]")
 OCR_CONFUSIONS = str.maketrans({"O": "0", "I": "1", "L": "1", "S": "5", "B": "8", "Z": "2"})
-
-
-def normalise_identifier(text: str) -> str:
-    """Uppercase, drop spaces / - / _ . and strip leading zeros of a trailing number (KOS-0457 == KOS/457)."""
-    compact = _ID_SEPARATORS.sub("", text.upper())
-    match = re.fullmatch(r"([A-Z]*)0*(\d+)", compact)
-    return f"{match.group(1)}{match.group(2)}" if match else compact
 
 
 def _confusion_forms(text: str) -> set[str]:
@@ -135,10 +113,6 @@ def match_identifier(value: str, text: str, fuzzy_min: int) -> int | None:
 # ---------------------------------------------------------------- codes (GSTIN, bank account)
 
 
-def normalise_code(text: str) -> str:
-    return re.sub(r"[\s\-.:]", "", text.upper())
-
-
 def match_code(value: str, text: str, allow_one_difference: bool) -> int | None:
     """Exact (ignoring spaces); or at most one differing character when the text came from OCR."""
     a, b = normalise_code(value), normalise_code(text)
@@ -152,24 +126,6 @@ def match_code(value: str, text: str, allow_one_difference: bool) -> int | None:
 
 
 # ---------------------------------------------------------------- dates
-
-DATE_FORMATS = (
-    "%d/%m/%Y", "%d-%m-%Y", "%d.%m.%Y", "%d/%m/%y", "%d-%m-%y", "%d.%m.%y",
-    "%d %b %Y", "%d-%b-%Y", "%d-%b-%y", "%d %b %y", "%d %B %Y", "%d-%B-%Y",
-    "%B %d, %Y", "%b %d, %Y", "%B %d %Y", "%b %d %Y", "%Y-%m-%d", "%Y/%m/%d",
-)
-
-
-def parse_date(text: str) -> date | None:
-    """Day-first Indian dates in the common printed formats -> date."""
-    cleaned = re.sub(r"\s+", " ", text.strip().strip(":,;")).replace("Sept", "Sep")
-    for fmt in DATE_FORMATS:
-        try:
-            return datetime.strptime(cleaned, fmt).date()
-        except ValueError:
-            continue
-    return None
-
 
 def match_date(value: str, text: str) -> int | None:
     """Same calendar date, however it is printed (value is ISO YYYY-MM-DD)."""
