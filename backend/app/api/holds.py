@@ -134,7 +134,8 @@ def _approve(session: Session, run: Run) -> dict:
     invoice = ExtractedInvoice.model_validate(run.extracted_json)
     update = ledger_update(invoice, vendor, po, map_lines(invoice, po))
     if not run.is_test_run:
-        apply_ledger_update(session, update, run.id)
+        change = apply_ledger_update(session, update, run.id)
+        run.decision_json = {**(run.decision_json or {}), "ledger_change": change, "ledger_applied": True}
     run.decision, run.status = "APPROVE", "resolved_by_human"
     return {"decision": "APPROVE", "po_number": po.po_number, "ledger_lines": len(update.lines),
             "ledger_applied": not run.is_test_run}

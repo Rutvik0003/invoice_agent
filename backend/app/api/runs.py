@@ -137,13 +137,15 @@ def _event_dict(event: RunEvent) -> dict:
 
 
 def _events_after(engine, run_id: str, last_id: int) -> tuple[list[dict], bool]:
+    """(new events, finished?) - finished means the run is over and there is nothing more to send."""
     with Session(engine) as session:
         run = session.get(Run, run_id)
         if run is None:
             return [], True
         rows = session.scalars(select(RunEvent).where(RunEvent.run_id == run_id, RunEvent.id > last_id)
                                .order_by(RunEvent.id)).all()
-        return [_event_dict(e) for e in rows], False
+        finished = run.status not in ("queued", "running") and not rows
+        return [_event_dict(e) for e in rows], finished
 
 
 @router.get("/runs/{run_id}/events")
@@ -152,7 +154,8 @@ async def run_events(run_id: str, request: Request) -> EventSourceResponse:
     engine = engine_of(request)
     with Session(engine) as session:
         get_run_or_404(session, run_id)
-    last_id = int(request.headers.get("last-event-id") or 0)
+    # resume point: the browser's automatic Last-Event-ID header, or ?after= on a manual reconnect
+    last_id = int(request.headers.get("last-event-id") or request.query_params.get("after") or 0)
 
     async def stream():
         nonlocal last_id

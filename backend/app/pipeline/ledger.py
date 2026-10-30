@@ -20,19 +20,28 @@ def po_status(lines) -> str:
     return "partially_billed"
 
 
-def apply_ledger_update(session: Session, update: LedgerUpdate, run_id: str) -> None:
-    """Add billed quantities to the PO lines, refresh the PO header, and append the invoice to history."""
+def apply_ledger_update(session: Session, update: LedgerUpdate, run_id: str) -> dict:
+    """Add billed quantities to the PO lines, refresh the PO header, and append the invoice to history.
+    Returns a before -> after snapshot of what changed (shown on the Approve card)."""
     po = session.get(POHeader, update.po_number)
     if po is None:
         raise ValueError(f"PO {update.po_number} not found")
     by_line = {line.line_no: line for line in po.lines}
+    change = {"po_number": po.po_number, "po_value": float(po.taxable_value), "billed_before": float(po.billed_value),
+              "status_before": po.status, "lines": []}
     for item in update.lines:
         line = by_line[item.po_line_no]
-        line.qty_billed = Decimal(line.qty_billed) + Decimal(str(item.quantity))
+        before = Decimal(line.qty_billed)
+        line.qty_billed = before + Decimal(str(item.quantity))
         line.qty_remaining = Decimal(line.qty_ordered) - Decimal(line.qty_billed)
+        change["lines"].append({"line_no": line.line_no, "description": line.description, "unit": line.unit,
+                                "ordered": float(line.qty_ordered), "billed_before": float(before),
+                                "billed_after": float(line.qty_billed), "remaining_after": float(line.qty_remaining)})
     po.billed_value = Decimal(po.billed_value) + Decimal(str(update.taxable_value))
     po.remaining_value = Decimal(po.taxable_value) - Decimal(po.billed_value)
     po.status = po_status(po.lines)
+    change.update(billed_after=float(po.billed_value), remaining_after=float(po.remaining_value), status_after=po.status,
+                  history_id=f"R-{run_id[:8]}")
     row = update.history_row
     session.add(InvoiceHistory(
         history_id=f"R-{run_id[:8]}",
@@ -50,3 +59,4 @@ def apply_ledger_update(session: Session, update: LedgerUpdate, run_id: str) -> 
         payment_date=None,
         lines_json=row["lines_json"],
     ))
+    return change

@@ -167,19 +167,20 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
         decision = rules.decision
 
         # apply the ledger update for a real (non-test) approval
-        ledger_applied = False
+        ledger_applied, ledger_change = False, None
         if decision.outcome == "APPROVE" and decision.ledger_update and not is_test:
             with Session(engine) as session:
-                apply_ledger_update(session, decision.ledger_update, run_id)
+                ledger_change = apply_ledger_update(session, decision.ledger_update, run_id)
                 session.commit()
             ledger_applied = True
         duration = int((time.monotonic() - started) * 1000)
         _update_run(engine, run_id, status="completed", decision=decision.outcome,
                     total_amount=invoice.total_amount.value, vendor_id=rules.vendor_id, po_number=rules.po_number,
                     duration_ms=duration, reasons_json=[r.model_dump(mode="json") for r in decision.reasons],
-                    decision_json={**rules.model_dump(mode="json"), "ledger_applied": ledger_applied})
+                    decision_json={**rules.model_dump(mode="json"), "ledger_applied": ledger_applied,
+                                   "ledger_change": ledger_change})
         log.emit("run", "run_completed", status="completed", decision=decision.outcome, summary=decision.summary,
-                 duration_ms=duration, ledger_applied=ledger_applied)
+                 duration_ms=duration, ledger_applied=ledger_applied, ledger_change=ledger_change)
     except Exception as exc:  # noqa: BLE001 - a run must always end in a final state
         detail = f"{type(exc).__name__}: {exc}"
         log.fail(stage, error={"type": "internal_error", "message": "Processing stopped because of an internal error.",

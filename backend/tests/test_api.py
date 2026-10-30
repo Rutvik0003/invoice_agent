@@ -206,3 +206,15 @@ def test_lists_filters_stats_and_data(client):
     pos = client.get("/api/data/pos").json()
     assert all({"billed_value", "remaining_value", "lines", "invoices"} <= set(p) for p in pos)
     assert len(client.get("/api/samples").json()) == len(sample_labels())
+
+
+def test_config_and_ledger_snapshot(client):
+    config = client.get("/api/config").json()
+    assert {m["id"] for m in config["models"]} == {"gemini", "groq"} and config["confidence_threshold"] == 0.8
+    run = start(client, "01_happy_clean")
+    change = run["rules"]["ledger_change"]
+    assert change["po_number"] == run["po_number"] and change["billed_after"] > change["billed_before"]
+    assert all(line["billed_after"] > line["billed_before"] for line in change["lines"])
+    # reopening a finished run's stream after its last event sends nothing more and ends (no hanging connection)
+    with client.stream("GET", f"/api/runs/{run['id']}/events", headers={"Last-Event-ID": "999999"}) as stream:
+        assert "".join(stream.iter_text()).count("data:") == 0

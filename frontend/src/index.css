@@ -128,3 +128,10 @@
     @apply font-sans;
     }
 }
+/* Stage 3: the selected verification box pulses so the eye finds it */
+@keyframes box-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(16 185 129 / 0.55); }
+  70% { box-shadow: 0 0 0 10px rgb(16 185 129 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(16 185 129 / 0); }
+}
+.box-pulse { animation: box-pulse 0.9s ease-out 3; }

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import re
 
 import groq
 from PIL import Image
@@ -32,7 +33,13 @@ def map_groq_error(exc: Exception) -> ProviderError | InvalidOutput:
     if isinstance(exc, groq.APITimeoutError):
         return ProviderError("timeout", str(exc))
     if isinstance(exc, groq.RateLimitError):
-        return ProviderError("rate_limited", str(exc))
+        text = str(exc)
+        if "per day" in text:  # the daily allowance, not a short burst limit
+            wait = re.search(r"try again in ([\dhms.]+)", text)
+            return ProviderError("rate_limited", text, message="Groq's free daily token allowance is used up"
+                                 + (f" (it frees up in about {wait.group(1).split('.')[0]}s)" if wait else "")
+                                 + ". Retry with Gemini, or try Groq again later.")
+        return ProviderError("rate_limited", text)
     if isinstance(exc, (groq.AuthenticationError, groq.PermissionDeniedError)):
         return ProviderError("auth_error", str(exc))
     if isinstance(exc, groq.BadRequestError):

@@ -9,10 +9,37 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.common import engine_of
+from app.config import get_settings
 from app.models import InvoiceHistory, POHeader, Run, Vendor
+from app.verification.ocr import tesseract_status
 
 router = APIRouter(prefix="/api", tags=["data"])
 MANUAL_MINUTES_PER_INVOICE = 8
+
+
+@router.get("/config")
+def config() -> dict:
+    """Read-only settings for the UI: which models can be used, and the business-rule thresholds."""
+    s = get_settings()
+    return {
+        "default_model": s.default_model,
+        "models": [
+            {"id": "gemini", "label": "Google Gemini", "model_name": s.gemini_model, "configured": s.gemini_configured,
+             "description": "Reads the PDF directly. Most accurate; about 15-20 s per invoice on the free tier."},
+            {"id": "groq", "label": "Groq", "model_name": s.groq_model, "configured": s.groq_configured,
+             "description": "Reads page images. Very fast (about 4 s); the free tier fits single-page invoices only."},
+        ],
+        "confidence_threshold": s.confidence_threshold,
+        "tolerance_pct": s.tolerance_pct,
+        "tolerance_abs_inr": s.tolerance_abs_inr,
+        "po_infer_min_score": s.po_infer_min_score,
+        "po_infer_min_gap": s.po_infer_min_gap,
+        "po_infer_floor": s.po_infer_floor,
+        "possible_dup_days": s.possible_dup_days,
+        "verify_enabled": s.verify_enabled,
+        "ocr": tesseract_status(s).model_dump(),
+        "max_upload_mb": 10,
+    }
 
 
 @router.get("/data/vendors")
