@@ -26,6 +26,8 @@ RUN pip install -r backend/requirements.txt
 COPY --chown=app:app backend/ backend/
 COPY --chown=app:app data/ data/
 COPY --from=frontend --chown=app:app /app/frontend/dist frontend/dist
+# The app user must own backend/ so SQLite can create its database and journal files there
+RUN chown app:app /app/backend
 
 USER app
 WORKDIR /app/backend

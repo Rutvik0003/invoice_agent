@@ -7,8 +7,8 @@
 .pytest_cache
 **/node_modules
 frontend/dist
-*.db
-local.db
+**/*.db
+**/local.db
 data/eval_reports
 backend/tests
 Dockerfile
