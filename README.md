@@ -63,6 +63,18 @@ Georgia, Ink Free ...) for the ₹ glyph; the generated files are committed, so 
 
 The SQLite file lives at `backend/local.db` whichever folder you run from.
 
+### Reading and verifying one invoice
+
+```bash
+python backend/scripts/extract_one.py data/invoices/golden/01_happy_clean.pdf --model gemini   # what the AI read
+python backend/scripts/verify_one.py data/invoices/golden/01_happy_clean.pdf --model groq       # + checked on the page
+python backend/scripts/eval_verification.py --set all          # no AI: recall, box IoU, fault-injection catch rate
+python backend/scripts/eval_extraction.py --set golden --model both   # AI accuracy vs labels (paced for free tiers)
+```
+
+Results are cached by file hash + model in the local database, so re-running a script doesn't spend API quota
+(`--no-cache` forces a fresh call). Reports go to `data/eval_reports/`.
+
 ## Docker
 
 The `Dockerfile` is multi-stage: a Node image builds `frontend/dist`, then a `python:3.11-slim` image with

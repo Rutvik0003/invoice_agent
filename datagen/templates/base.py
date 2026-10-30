@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import BinaryIO, Callable
 
+import reportlab.rl_config
 from reportlab.lib.colors import Color, HexColor, black, white
 from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.utils import simpleSplit
@@ -38,6 +39,8 @@ FONT_FILES: dict[str, tuple[str, str]] = {
     "inkfree": ("Inkfree.ttf", "Inkfree.ttf"),
 }
 _registered: set[str] = set()
+# Byte-identical output on every run (fixed dates, IDs and font-subset names), so file hashes are stable
+reportlab.rl_config.invariant = 1
 
 GREY = HexColor("#555555")
 LIGHT = HexColor("#EEEEEE")

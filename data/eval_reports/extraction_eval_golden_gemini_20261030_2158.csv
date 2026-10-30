@@ -1,0 +1,13 @@
+model,invoice_id,template,level,scenario,correct,total,wrong_fields,cached,latency_ms
+gemini,01_happy_clean,classic,none,CLEAN_EXACT,13,13,,True,16297
+gemini,02_happy_tolerance,modern,none,CLEAN_WITHIN_TOLERANCE,13,13,,False,12609
+gemini,03_A_split_overrun,tally,none,PO_OVERRUN,13,13,,True,12203
+gemini,04_B_duplicate,compact,none,DUPLICATE_DISGUISED_NUMBER,13,13,,True,21563
+gemini,05_C_no_po,landscape,none,NO_PO_CLEAR_MATCH,13,13,,True,12015
+gemini,06_D_bank_change,small_vendor,none,BANK_CHANGE,13,13,,True,22109
+gemini,07_E_wrong_gst,classic,none,GST_WRONG_TYPE,13,13,,True,14202
+gemini,08_F_blurry_scan,modern,heavy,HEAVY_SCAN_LOW_CONFIDENCE,8,13,invoice_date vendor_gstin buyer_gstin total_amount subtotal,True,23657
+gemini,09_G_price_variance,services,none,PRICE_OVER_TOLERANCE,13,13,,True,14608
+gemini,10_H_bad_maths,multipage,none,ARITHMETIC_ERROR,13,13,,True,22702
+gemini,11_I_quotation,compact,none,NOT_AN_INVOICE,13,13,,False,20953
+gemini,12_J_unapproved_vendor,tally,none,VENDOR_NOT_APPROVED,13,13,,True,19421

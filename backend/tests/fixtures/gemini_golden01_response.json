@@ -1,0 +1,196 @@
+{
+  "document_type": {
+    "printed": "INVOICE",
+    "confidence": 1,
+    "evidence": "INVOICE",
+    "value": "tax_invoice"
+  },
+  "vendor_name": {
+    "printed": "Vertex Ent.",
+    "confidence": 1,
+    "evidence": "Vertex Ent.",
+    "value": "Vertex Ent."
+  },
+  "vendor_gstin": {
+    "printed": "27TSSPN3544X1ZU",
+    "confidence": 1,
+    "evidence": "GSTIN: 27TSSPN3544X1ZU",
+    "value": "27TSSPN3544X1ZU"
+  },
+  "vendor_address": {
+    "printed": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+    "confidence": 1,
+    "evidence": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+    "value": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra"
+  },
+  "vendor_state": {
+    "printed": "Maharashtra",
+    "confidence": 1,
+    "evidence": "State: Maharashtra, Code: 27",
+    "value": "Maharashtra"
+  },
+  "buyer_name": {
+    "printed": "Zenith Retail Pvt Ltd",
+    "confidence": 1,
+    "evidence": "Zenith Retail Pvt Ltd",
+    "value": "Zenith Retail Pvt Ltd"
+  },
+  "buyer_gstin": {
+    "printed": "27RHRCZ5469N1Z7",
+    "confidence": 1,
+    "evidence": "GSTIN: 27RHRCZ5469N1Z7",
+    "value": "27RHRCZ5469N1Z7"
+  },
+  "invoice_number": {
+    "printed": "VE0393",
+    "confidence": 1,
+    "evidence": "Inv. No. VE0393",
+    "value": "VE0393"
+  },
+  "invoice_date": {
+    "printed": "2026-10-15",
+    "confidence": 1,
+    "evidence": "Inv Date 2026-10-15",
+    "value": "2026-10-15"
+  },
+  "po_reference": {
+    "printed": "PO-2026-1050",
+    "confidence": 1,
+    "evidence": "P.O. Ref PO-2026-1050",
+    "value": "PO-2026-1050"
+  },
+  "line_items": [
+    {
+      "description": "Industrial Adhesive",
+      "hsn_sac": "3506",
+      "quantity": 20,
+      "unit": "Kg",
+      "unit_price": 360,
+      "amount": 7200,
+      "tax_rate": 9,
+      "confidence": 1
+    },
+    {
+      "description": "Aluminium Sheet 2mm",
+      "hsn_sac": "7606",
+      "quantity": 5,
+      "unit": "Kg",
+      "unit_price": 305,
+      "amount": 1525,
+      "tax_rate": 9,
+      "confidence": 1
+    },
+    {
+      "description": "Synthetic Enamel Paint",
+      "hsn_sac": "3208",
+      "quantity": 23,
+      "unit": "Ltr",
+      "unit_price": 400,
+      "amount": 9200,
+      "tax_rate": 9,
+      "confidence": 1
+    },
+    {
+      "description": "Acrylic Sheet 3mm Clear",
+      "hsn_sac": "3920",
+      "quantity": 122,
+      "unit": "Sq Ft",
+      "unit_price": 115,
+      "amount": 14030,
+      "tax_rate": 9,
+      "confidence": 1
+    },
+    {
+      "description": "Buttons - Polyester (Gross)",
+      "hsn_sac": "9606",
+      "quantity": 15,
+      "unit": "Gross",
+      "unit_price": 235,
+      "amount": 3525,
+      "tax_rate": 2.5,
+      "confidence": 1
+    },
+    {
+      "description": "Cotton Fabric - Plain Weave 60 in",
+      "hsn_sac": "5208",
+      "quantity": 802,
+      "unit": "Mtr",
+      "unit_price": 150,
+      "amount": 120300,
+      "tax_rate": 2.5,
+      "confidence": 1
+    }
+  ],
+  "subtotal": {
+    "printed": "INR 155780.00",
+    "confidence": 1,
+    "evidence": "Sub Total INR 155780.00",
+    "value": 155780
+  },
+  "discount": {
+    "printed": null,
+    "confidence": 0,
+    "evidence": null,
+    "value": null
+  },
+  "other_charges": {
+    "printed": null,
+    "confidence": 0,
+    "evidence": null,
+    "value": null
+  },
+  "cgst": {
+    "printed": "INR 5971.58",
+    "confidence": 1,
+    "evidence": "CGST INR 5971.58",
+    "value": 5971.58
+  },
+  "sgst": {
+    "printed": "INR 5971.58",
+    "confidence": 1,
+    "evidence": "SGST INR 5971.58",
+    "value": 5971.58
+  },
+  "igst": {
+    "printed": null,
+    "confidence": 0,
+    "evidence": null,
+    "value": null
+  },
+  "round_off": {
+    "printed": "-0.16",
+    "confidence": 1,
+    "evidence": "Round Off -0.16",
+    "value": -0.16
+  },
+  "total_amount": {
+    "printed": "INR 167723.00",
+    "confidence": 1,
+    "evidence": "Total INR 167723.00",
+    "value": 167723
+  },
+  "amount_in_words": {
+    "printed": "Rupees One Lakh Sixty Seven Thousand Seven Hundred Twenty Three Only",
+    "confidence": 1,
+    "evidence": "Rupees One Lakh Sixty Seven Thousand Seven Hundred Twenty Three Only",
+    "value": "Rupees One Lakh Sixty Seven Thousand Seven Hundred Twenty Three Only"
+  },
+  "bank_account": {
+    "printed": "319144834307",
+    "confidence": 1,
+    "evidence": "A/c No: 319144834307",
+    "value": "319144834307"
+  },
+  "bank_ifsc": {
+    "printed": "KKBK0977855",
+    "confidence": 1,
+    "evidence": "IFSC: KKBK0977855",
+    "value": "KKBK0977855"
+  },
+  "page_count": {
+    "printed": null,
+    "confidence": 0,
+    "evidence": null,
+    "value": 1
+  }
+}

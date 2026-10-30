@@ -20,3 +20,6 @@ dist/
 Thumbs.db
 .vscode/
 .idea/
+
+# Verify images from scripts/verify_one.py
+data/eval_reports/verify/

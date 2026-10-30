@@ -16,6 +16,8 @@ from datagen.scenarios import TEMPLATES, Planner
 from datagen.self_verify import check_file, iou
 from datagen.templates.layouts import RENDERERS
 
+REPO_ROOT = __import__("pathlib").Path(__file__).resolve().parents[2]
+
 
 @pytest.fixture(scope="module")
 def planner():
@@ -113,3 +115,21 @@ def test_save_scan_formats(planner, tmp_path):
     two_pages = degrade(pdf2, result2.field_boxes, "mild", [], random.Random(4))
     with pytest.raises(ValueError):
         save_scan(two_pages, tmp_path / "b.png", "png")
+
+
+def test_rendering_is_byte_identical_across_processes(tmp_path):
+    """File hashes must be stable (duplicate-file detection and caches key on them)."""
+    import subprocess
+    import sys
+
+    script = (
+        "import sys; from pathlib import Path\n"
+        "from datagen.master_data import build_master, DEFAULT_SEED\n"
+        "from datagen.scenarios import Planner\n"
+        "from datagen.templates.layouts import RENDERERS\n"
+        "p = Planner(build_master(), DEFAULT_SEED).clean('T_bytes', 'stress', template='classic')\n"
+        "RENDERERS['classic'](p.spec, Path(sys.argv[1]))\n"
+    )
+    for name in ("a.pdf", "b.pdf"):
+        subprocess.run([sys.executable, "-c", script, str(tmp_path / name)], check=True, cwd=str(REPO_ROOT))
+    assert (tmp_path / "a.pdf").read_bytes() == (tmp_path / "b.pdf").read_bytes()

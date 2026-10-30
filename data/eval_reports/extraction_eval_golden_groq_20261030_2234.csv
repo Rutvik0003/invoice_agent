@@ -1,0 +1,11 @@
+model,invoice_id,template,level,scenario,correct,total,wrong_fields,cached,latency_ms
+groq,02_happy_tolerance,modern,none,CLEAN_WITHIN_TOLERANCE,12,13,vendor_gstin,False,3467
+groq,03_A_split_overrun,tally,none,PO_OVERRUN,13,13,,False,3219
+groq,04_B_duplicate,compact,none,DUPLICATE_DISGUISED_NUMBER,13,13,,False,3390
+groq,05_C_no_po,landscape,none,NO_PO_CLEAR_MATCH,13,13,,False,2782
+groq,06_D_bank_change,small_vendor,none,BANK_CHANGE,9,13,vendor_gstin buyer_gstin line_count line_amounts,False,3000
+groq,07_E_wrong_gst,classic,none,GST_WRONG_TYPE,9,13,vendor_gstin buyer_gstin line_count line_amounts,False,3782
+groq,08_F_blurry_scan,modern,heavy,HEAVY_SCAN_LOW_CONFIDENCE,7,13,vendor_gstin buyer_gstin po_reference total_amount subtotal line_amounts,False,4422
+groq,09_G_price_variance,services,none,PRICE_OVER_TOLERANCE,13,13,,False,3203
+groq,11_I_quotation,compact,none,NOT_AN_INVOICE,12,13,buyer_gstin,False,2828
+groq,12_J_unapproved_vendor,tally,none,VENDOR_NOT_APPROVED,10,13,vendor_gstin line_count line_amounts,False,3375

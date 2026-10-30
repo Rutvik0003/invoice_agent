@@ -11,12 +11,12 @@
     "mild_scan",
     "dpi_178",
     "obscured_invoice_number_ink_blot",
-    "rubber_stamp",
     "punch_holes",
-    "rotation_-1.1deg",
-    "blur_0.5",
-    "noise_6",
-    "jpeg_q67"
+    "coffee_stain",
+    "rotation_-1.2deg",
+    "blur_0.4",
+    "noise_5",
+    "jpeg_q70"
   ],
   "ground_truth": {
     "document_type": {
@@ -141,110 +141,120 @@
     "vendor_name": {
       "page": 1,
       "bbox": [
-        0.13994,
-        0.04026,
-        0.43935,
-        0.05943
+        0.14105,
+        0.03982,
+        0.44048,
+        0.05935
       ],
       "approximate": true
     },
     "vendor_gstin": {
       "page": 1,
       "bbox": [
-        0.19356,
-        0.08719,
-        0.33937,
-        0.09846
+        0.19456,
+        0.08681,
+        0.34039,
+        0.09826
       ],
       "approximate": true
     },
     "invoice_number": {
       "page": 1,
       "bbox": [
-        0.69319,
-        0.10425,
-        0.77194,
-        0.11516
+        0.69415,
+        0.10449,
+        0.77291,
+        0.1155
       ],
       "approximate": true
     },
     "invoice_date": {
       "page": 1,
       "bbox": [
-        0.68304,
-        0.11955,
-        0.80748,
-        0.1311
+        0.68396,
+        0.11978,
+        0.80842,
+        0.13148
       ],
       "approximate": true
     },
     "buyer_gstin": {
       "page": 1,
       "bbox": [
-        0.12266,
-        0.22034,
-        0.27034,
-        0.23163
+        0.12333,
+        0.21987,
+        0.27103,
+        0.23134
+      ],
+      "approximate": true
+    },
+    "invoice_number#2": {
+      "page": 2,
+      "bbox": [
+        0.8865,
+        0.06746,
+        0.95267,
+        0.07769
       ],
       "approximate": true
     },
     "subtotal": {
       "page": 2,
       "bbox": [
-        0.84617,
-        0.13874,
-        0.94959,
-        0.15115
+        0.84704,
+        0.13917,
+        0.95049,
+        0.1517
       ],
       "approximate": true
     },
     "igst": {
       "page": 2,
       "bbox": [
-        0.85857,
-        0.1564,
-        0.94911,
-        0.16863
+        0.8594,
+        0.15685,
+        0.94996,
+        0.16919
       ],
       "approximate": true
     },
     "total_amount": {
       "page": 2,
       "bbox": [
-        0.81718,
-        0.19429,
-        0.94804,
-        0.20823
+        0.81791,
+        0.19468,
+        0.94879,
+        0.20879
       ],
       "approximate": true
     },
     "bank_account": {
       "page": 2,
       "bbox": [
-        0.12267,
-        0.2585,
-        0.22226,
-        0.26913
+        0.12325,
+        0.25804,
+        0.22286,
+        0.26878
       ],
       "approximate": true
     },
     "bank_ifsc": {
       "page": 2,
       "bbox": [
-        0.10956,
-        0.27115,
-        0.19845,
-        0.28163
+        0.1101,
+        0.27067,
+        0.19901,
+        0.28126
       ],
       "approximate": true
     },
     "po_reference": {
       "page": 2,
       "bbox": [
-        0.28517,
-        0.3136,
-        0.36814,
-        0.32341
+        0.28561,
+        0.31333,
+        0.3686,
+        0.32325
       ],
       "approximate": true
     }

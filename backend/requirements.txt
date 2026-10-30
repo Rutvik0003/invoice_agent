@@ -4,3 +4,7 @@ pydantic>=2.7
 pydantic-settings>=2.3
 sqlalchemy>=2.0
 pytesseract>=0.3.10
+pymupdf>=1.24
+google-genai>=1.0
+groq>=0.11
+rapidfuzz>=3.0

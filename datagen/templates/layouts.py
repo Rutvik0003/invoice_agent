@@ -42,10 +42,22 @@ def _continued(doc: Doc, spec: InvoiceSpec, size: float = 8) -> Callable[[], flo
         doc.text(doc.w - M, doc.h - 30, "Continued on next page...", size, color=GREY, align="right")
         doc.new_page()
         doc.text(M, 40, spec.vendor_name_printed, size + 1, bold=True)
-        ref = f"{spec.invoice_no_label} {spec.invoice_number}" if spec.invoice_number else spec.title
-        doc.text(doc.w - M, 40, f"{ref}  (continued)", size, color=GREY, align="right")
+        _running_ref(doc, spec, doc.w - M, 40, size, "(continued)")
         return 56
     return handler
+
+
+def _running_ref(doc: Doc, spec: InvoiceSpec, x_right: float, y: float, size: float, suffix: str = "") -> None:
+    """Right-aligned 'Invoice No. X' in a page header. The number is drawn on its own so its box is recorded
+    (as invoice_number#2...), which lets the degrader obscure every printed copy of it."""
+    if not spec.invoice_number:
+        doc.text(x_right, y, f"{spec.title} {suffix}".strip(), size, color=GREY, align="right")
+        return
+    gap = size * 0.7
+    parts = [(spec.invoice_no_label, None), (spec.invoice_number, "invoice_number")] + ([(suffix, None)] if suffix else [])
+    x = x_right - sum(doc.width(text, size) for text, _ in parts) - gap * (len(parts) - 1)
+    for text, field in parts:
+        x += doc.text(x, y, text, size, color=GREY, field=field) + gap
 
 
 def _per_line_tax_columns(spec: InvoiceSpec, w: float) -> list[Column]:
@@ -307,8 +319,7 @@ def render_multipage(spec: InvoiceSpec, path: Path) -> RenderResult:
         doc.text(doc.w - M, 44, f"Page {doc.page} of {total_pages}", 8, color=GREY, align="right")
         if not first:
             doc.text(M + 40, 50, spec.vendor_name_printed, 11, bold=True)
-            ref = f"{spec.invoice_no_label} {spec.invoice_number}" if spec.invoice_number else spec.title
-            doc.text(doc.w - M, 58, ref, 8, color=GREY, align="right")
+            _running_ref(doc, spec, doc.w - M, 58, 8)
             return 84
         return 0
 

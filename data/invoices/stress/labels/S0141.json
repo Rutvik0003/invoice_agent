@@ -206,6 +206,26 @@
       ],
       "approximate": false
     },
+    "invoice_number#2": {
+      "page": 2,
+      "bbox": [
+        0.85837,
+        0.06171,
+        0.93952,
+        0.07095
+      ],
+      "approximate": false
+    },
+    "invoice_number#3": {
+      "page": 3,
+      "bbox": [
+        0.85837,
+        0.06171,
+        0.93952,
+        0.07095
+      ],
+      "approximate": false
+    },
     "subtotal": {
       "page": 3,
       "bbox": [

@@ -1,0 +1,196 @@
+{
+ "document_type": {
+  "value": "tax_invoice",
+  "printed": "INVOICE",
+  "confidence": 1.0,
+  "evidence": "INVOICE"
+ },
+ "vendor_name": {
+  "value": "Vertex Ent.",
+  "printed": "Vertex Ent.",
+  "confidence": 1.0,
+  "evidence": "Vertex Ent."
+ },
+ "vendor_gstin": {
+  "value": "27TSSPN3544XIZU",
+  "printed": "27TSSPN3544XIZU",
+  "confidence": 1.0,
+  "evidence": "GSTIN: 27TSSPN3544XIZU"
+ },
+ "vendor_address": {
+  "value": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+  "printed": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+  "confidence": 1.0,
+  "evidence": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra"
+ },
+ "vendor_state": {
+  "value": "Maharashtra",
+  "printed": "Maharashtra",
+  "confidence": 1.0,
+  "evidence": "State: Maharashtra, Code: 27"
+ },
+ "buyer_name": {
+  "value": "Zenith Retail Pvt Ltd",
+  "printed": "Zenith Retail Pvt Ltd",
+  "confidence": 1.0,
+  "evidence": "Details of Receiver (Billed to) Zenith Retail Pvt Ltd"
+ },
+ "buyer_gstin": {
+  "value": "27HRRCZ5469N1Z7",
+  "printed": "27HRRCZ5469N1Z7",
+  "confidence": 1.0,
+  "evidence": "GSTIN: 27HRRCZ5469N1Z7"
+ },
+ "invoice_number": {
+  "value": "VE0393",
+  "printed": "VE0393",
+  "confidence": 1.0,
+  "evidence": "Inv. No. VE0393"
+ },
+ "invoice_date": {
+  "value": "2026-10-15",
+  "printed": "2026-10-15",
+  "confidence": 1.0,
+  "evidence": "Inv Date 2026-10-15"
+ },
+ "po_reference": {
+  "value": "PO-2026-1050",
+  "printed": "PO-2026-1050",
+  "confidence": 1.0,
+  "evidence": "P.O. Ref. PO-2026-1050"
+ },
+ "subtotal": {
+  "value": 155780.0,
+  "printed": "INR 155780.00",
+  "confidence": 1.0,
+  "evidence": "Sub Total INR 155780.00"
+ },
+ "discount": {
+  "value": null,
+  "printed": null,
+  "confidence": 1.0,
+  "evidence": null
+ },
+ "other_charges": {
+  "value": null,
+  "printed": null,
+  "confidence": 1.0,
+  "evidence": null
+ },
+ "cgst": {
+  "value": 5971.58,
+  "printed": "INR 5971.58",
+  "confidence": 1.0,
+  "evidence": "CGST INR 5971.58"
+ },
+ "sgst": {
+  "value": 5971.58,
+  "printed": "INR 5971.58",
+  "confidence": 1.0,
+  "evidence": "SGST INR 5971.58"
+ },
+ "igst": {
+  "value": null,
+  "printed": null,
+  "confidence": 1.0,
+  "evidence": null
+ },
+ "round_off": {
+  "value": -0.16,
+  "printed": "-0.16",
+  "confidence": 1.0,
+  "evidence": "Round Off -0.16"
+ },
+ "total_amount": {
+  "value": 167723.0,
+  "printed": "INR 167723.00",
+  "confidence": 1.0,
+  "evidence": "Total INR 167723.00"
+ },
+ "amount_in_words": {
+  "value": "Rupees One Lakh Sixty Seven Thousand Seven Hundred Twenty Three Only",
+  "printed": "Rupees One Lakh Sixty Seven Thousand Seven Hundred Twenty Three Only",
+  "confidence": 1.0,
+  "evidence": "Amount in words: Rupees One Lakh Sixty Seven Thousand Seven Hundred Twenty Three Only"
+ },
+ "bank_account": {
+  "value": "319144834307",
+  "printed": "319144834307",
+  "confidence": 1.0,
+  "evidence": "A/c No: 319144834307"
+ },
+ "bank_ifsc": {
+  "value": "KKBK0977855",
+  "printed": "KKBK0977855",
+  "confidence": 1.0,
+  "evidence": "IFSC: KKBK0977855"
+ },
+ "page_count": {
+  "value": 1,
+  "printed": null,
+  "confidence": 1.0,
+  "evidence": null
+ },
+ "line_items": [
+  {
+   "description": "Industrial Adhesive",
+   "hsn_sac": "3506",
+   "quantity": 20,
+   "unit": "Kg",
+   "unit_price": 360.0,
+   "amount": 7200.0,
+   "tax_rate": 9,
+   "confidence": 1.0
+  },
+  {
+   "description": "Aluminium Sheet 2mm",
+   "hsn_sac": "7606",
+   "quantity": 5,
+   "unit": "Kg",
+   "unit_price": 305.0,
+   "amount": 1525.0,
+   "tax_rate": 9,
+   "confidence": 1.0
+  },
+  {
+   "description": "Synthetic Enamel Paint",
+   "hsn_sac": "3208",
+   "quantity": 25,
+   "unit": "Ltr",
+   "unit_price": 400.0,
+   "amount": 10000.0,
+   "tax_rate": 9,
+   "confidence": 1.0
+  },
+  {
+   "description": "Acrylic Sheet 3mm Clear",
+   "hsn_sac": "3920",
+   "quantity": 122,
+   "unit": "Sq Ft",
+   "unit_price": 115.0,
+   "amount": 14030.0,
+   "tax_rate": 9,
+   "confidence": 1.0
+  },
+  {
+   "description": "Buttons - Polyester (Gross)",
+   "hsn_sac": "9606",
+   "quantity": 15,
+   "unit": "Gross",
+   "unit_price": 235.0,
+   "amount": 3525.0,
+   "tax_rate": 2.5,
+   "confidence": 1.0
+  },
+  {
+   "description": "Cotton Fabric - Plain Weave 60 in",
+   "hsn_sac": "5208",
+   "quantity": 802,
+   "unit": "Mtr",
+   "unit_price": 150.0,
+   "amount": 120300.0,
+   "tax_rate": 2.5,
+   "confidence": 1.0
+  }
+ ]
+}
