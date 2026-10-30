@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import time
+from typing import Callable
+
 from pydantic import BaseModel
 
 from app.config import Settings
@@ -22,12 +25,14 @@ STAGES = (
     ("amount_match", "Match amounts"),
     ("decision", "Decision"),
 )
+TITLES = dict(STAGES)
 
 
 class StageResult(BaseModel):
     stage: str
     title: str
     checks: list[CheckResult]
+    duration_ms: int = 0
 
 
 class RulesResult(BaseModel):
@@ -44,24 +49,38 @@ class RulesResult(BaseModel):
 
 
 def run_rules(inv: ExtractedInvoice, ver: VerificationResult, repo: MasterRepository, settings: Settings,
-              file_hash: str | None = None) -> RulesResult:
-    """Run stages 4-8 in order. Every stage always runs where it can, so every reason is listed."""
-    titles = dict(STAGES)
+              file_hash: str | None = None, on_stage: Callable[[StageResult], None] | None = None) -> RulesResult:
+    """Run stages 4-8 in order. Every stage always runs where it can, so every reason is listed.
+
+    on_stage (optional) is called as each stage finishes, so a live view can show progress.
+    """
+    stages: list[StageResult] = []
+    clock = time.monotonic()
+
+    def finish(key: str, checks: list[CheckResult]) -> None:
+        nonlocal clock
+        now = time.monotonic()
+        stage = StageResult(stage=key, title=TITLES[key], checks=checks, duration_ms=int((now - clock) * 1000))
+        clock = now
+        stages.append(stage)
+        if on_stage:
+            on_stage(stage)
+
     self_checks = run_self_check(inv, ver, repo.buyer, settings)
+    finish("self_check", self_checks)
     vendor, vendor_checks = run_vendor_check(inv, repo)
     vendor_checks += run_duplicate_check(inv, vendor, repo, ver, settings, file_hash)
+    finish("vendor_duplicate", vendor_checks)
     po, inferred, po_checks, ranked = run_po_match(inv, vendor, repo, settings)
+    finish("po_match", po_checks)
     matches: list[LineMatch] = []
     if po is not None:
         matches, amount_checks = run_amount_match(inv, po, settings)
     else:
         amount_checks = [passed("amount_match", "skipped", "Amounts not matched: there is no PO to match against.")]
-    all_checks = self_checks + vendor_checks + po_checks + amount_checks
-    decision = decide(all_checks, inv, repo.buyer, vendor, po, matches)
-    stages = [StageResult(stage=key, title=titles[key], checks=checks) for key, checks in (
-        ("self_check", self_checks), ("vendor_duplicate", vendor_checks), ("po_match", po_checks),
-        ("amount_match", amount_checks))]
-    stages.append(StageResult(stage="decision", title=titles["decision"], checks=[]))
+    finish("amount_match", amount_checks)
+    decision = decide(self_checks + vendor_checks + po_checks + amount_checks, inv, repo.buyer, vendor, po, matches)
+    finish("decision", [])
     return RulesResult(
         stages=stages, decision=decision, vendor_id=vendor.vendor_id if vendor else None,
         po_number=po.po_number if po else None, po_inferred=inferred,

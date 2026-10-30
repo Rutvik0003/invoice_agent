@@ -169,3 +169,16 @@ def test_real_tesseract_reads_a_rendered_invoice_line():
     assert result.fields["invoice_number"].status == "verified"
     assert result.fields["total_amount"].status == "verified"
     assert result.fields["total_amount"].source == "ocr"
+
+
+def test_line_amounts_are_looked_up_on_the_page():
+    words = page()
+    words.words += line(0.30, "Laptop", "60,000.00", line_id=20) + line(0.32, "Monitor", "40,000.00", line_id=21)
+    inv = invoice().model_copy(update={"line_items": [
+        ExtractedInvoice.model_validate({"line_items": [{"description": "Laptop", "amount": 60000.0},
+                                                        {"description": "Monitor", "amount": 41000.0},
+                                                        {"description": "Note"}]}).line_items][0]})
+    result = verify(inv, [words], SETTINGS)
+    assert [l.status for l in result.line_items] == ["verified", "not_found", "not_applicable"]
+    assert result.line_items[0].matched_text == "60,000.00"
+    assert [l.status for l in unavailable_result(inv, 1).line_items] == ["unavailable", "unavailable", "not_applicable"]

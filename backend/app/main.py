@@ -1,5 +1,6 @@
 """FastAPI entry point: serves the API under /api and the built frontend at /."""
 
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -7,8 +8,16 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
+from sqlalchemy import Engine, func, select
+from sqlalchemy.orm import Session
+
 from app import __version__
+from app.api import admin, data, eval as eval_api, holds, runs
 from app.config import REPO_ROOT, get_settings
+from app.db import get_engine, init_db
+from app.extraction import extract_document
+from app.models import Vendor
+from app.seed import seed_master
 from app.verification.ocr import OcrStatus, tesseract_status
 
 FRONTEND_DIST = REPO_ROOT / "frontend" / "dist"
@@ -26,9 +35,28 @@ class HealthResponse(BaseModel):
     ocr: OcrStatus
 
 
-def create_app(frontend_dist: Path = FRONTEND_DIST) -> FastAPI:
-    """Build the app; the frontend is served only if it has been built."""
-    app = FastAPI(title="Invoice Agent", version=__version__)
+def prepare_database(engine: Engine) -> None:
+    """Create tables, and load the seeded master data into an empty database (e.g. a fresh deploy)."""
+    init_db(engine)
+    with Session(engine) as session:
+        empty = session.scalar(select(func.count()).select_from(Vendor)) == 0
+    if empty:
+        seed_master(engine)
+
+
+def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None, extract_fn=None) -> FastAPI:
+    """Build the app. Tests pass their own database engine and a fake extractor (no network)."""
+
+    @asynccontextmanager
+    async def lifespan(app: FastAPI):
+        prepare_database(app.state.engine)
+        yield
+
+    app = FastAPI(title="Invoice Agent", version=__version__, lifespan=lifespan)
+    app.state.engine = engine or get_engine()
+    app.state.extract_fn = extract_fn or extract_document
+    for module in (runs, holds, data, admin, eval_api):
+        app.include_router(module.router)
 
     @app.get("/api/health", response_model=HealthResponse)
     def health() -> HealthResponse:

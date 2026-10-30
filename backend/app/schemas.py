@@ -160,6 +160,7 @@ class VerificationResult(BaseModel):
     engine_used: Literal["text_layer", "ocr", "mixed", "unavailable"]
     pages: list[PageVerificationInfo] = []
     fields: dict[str, FieldVerification] = {}
+    line_items: list[FieldVerification] = []  # each extracted line amount looked up on the page (same order)
     duration_ms: int = 0
 
 

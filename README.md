@@ -75,6 +75,18 @@ python backend/scripts/eval_extraction.py --set golden --model both   # AI accur
 Results are cached by file hash + model in the local database, so re-running a script doesn't spend API quota
 (`--no-cache` forces a fresh call). Reports go to `data/eval_reports/`.
 
+### Running the full pipeline
+
+```bash
+python backend/scripts/run_pipeline.py 01_happy_clean --model gemini    # all 8 stages, live, in colour
+python backend/scripts/eval_rules.py --set all                          # stages 4-8 on every labelled invoice
+```
+
+The API (`python tasks.py dev`, then http://localhost:8000/docs) exposes runs with a live event stream
+(`GET /api/runs/{id}/events`, Server-Sent Events), the hold queue, master data, stats, the sandboxed golden
+Test Suite and `POST /api/admin/reset-demo`. Approving an invoice really updates the PO ledger, so running the
+same invoice twice is (correctly) rejected as a duplicate; reset the demo to start over.
+
 ## Docker
 
 The `Dockerfile` is multi-stage: a Node image builds `frontend/dist`, then a `python:3.11-slim` image with

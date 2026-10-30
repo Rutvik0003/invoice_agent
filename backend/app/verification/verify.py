@@ -157,6 +157,16 @@ def verify(invoice: ExtractedInvoice, pages: list[PageWords], settings: Settings
             )
         else:
             fields[name] = FieldVerification(status="unavailable" if some_unavailable else "not_found")
+    line_items = []
+    for line in invoice.line_items:
+        if line.amount is None:
+            line_items.append(FieldVerification(status="not_applicable"))
+            continue
+        match = best_match("subtotal", line.amount, cands, settings)  # an amount, matched like any other
+        line_items.append(FieldVerification(
+            status="verified", source=match.source, page=match.page, bbox=[round(c, 5) for c in match.bbox],
+            matched_text=match.text, ocr_word_conf=match.conf,
+        ) if match else FieldVerification(status="unavailable" if some_unavailable else "not_found"))
     sources = {p.source for p in usable}
     if not usable:
         engine_used = "unavailable"
@@ -169,6 +179,7 @@ def verify(invoice: ExtractedInvoice, pages: list[PageWords], settings: Settings
         pages=[PageVerificationInfo(page=p.page, source=p.source, word_count=len(p.words), mean_ocr_conf=p.mean_conf)
                for p in pages],
         fields=fields,
+        line_items=line_items,
         duration_ms=int((time.monotonic() - started) * 1000),
     )
 
@@ -180,7 +191,9 @@ def unavailable_result(invoice: ExtractedInvoice, page_count: int) -> Verificati
     return VerificationResult(engine_used="unavailable",
                               pages=[PageVerificationInfo(page=i + 1, source="unavailable", word_count=0)
                                      for i in range(page_count)],
-                              fields=fields)
+                              fields=fields,
+                              line_items=[FieldVerification(status="not_applicable" if l.amount is None else "unavailable")
+                                          for l in invoice.line_items])
 
 
 # ---------------------------------------------------------------- trust rule (used by Stage 4+)

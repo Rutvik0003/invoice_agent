@@ -39,3 +39,20 @@ def get_engine() -> Engine:
 
 def get_session() -> Session:
     return sessionmaker(bind=get_engine(), expire_on_commit=False)()
+
+
+def init_db(engine: Engine) -> None:
+    """Create missing tables; rebuild the run tables if their columns changed (runs are derived, safe to drop)."""
+    from sqlalchemy import inspect
+
+    from app.models import RUN_TABLES
+
+    inspector = inspect(engine)
+    stale = [
+        table for table in RUN_TABLES
+        if inspector.has_table(table.name)
+        and {c["name"] for c in inspector.get_columns(table.name)} != {c.name for c in table.columns}
+    ]
+    if stale:
+        Base.metadata.drop_all(engine, tables=list(reversed(RUN_TABLES)))
+    Base.metadata.create_all(engine)

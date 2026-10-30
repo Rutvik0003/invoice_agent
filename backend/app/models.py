@@ -118,6 +118,15 @@ class Run(Base):
     verification_json: Mapped[dict | None] = mapped_column(JSON)
     reasons_json: Mapped[list | None] = mapped_column(JSON)
     is_test_run: Mapped[bool] = mapped_column(Boolean, default=False)
+    # Phase 5 additions (needed for retry links, cache badges, the decision detail and the sample picker)
+    mime_type: Mapped[str] = mapped_column(String(40), default="application/pdf")
+    page_count: Mapped[int | None] = mapped_column(Integer)
+    model_name: Mapped[str | None] = mapped_column(String(100))
+    used_cache: Mapped[bool] = mapped_column(Boolean, default=False)
+    retry_of: Mapped[str | None] = mapped_column(String(36))
+    sample_id: Mapped[str | None] = mapped_column(String(60))
+    error_json: Mapped[dict | None] = mapped_column(JSON)
+    decision_json: Mapped[dict | None] = mapped_column(JSON)  # full Decision + per-stage checks
 
 
 class RunEvent(Base):
@@ -139,6 +148,7 @@ class HoldAction(Base):
     actor_role: Mapped[str] = mapped_column(String(50))
     action: Mapped[str] = mapped_column(String(30))
     comment: Mapped[str] = mapped_column(Text)
+    payload: Mapped[dict | None] = mapped_column(JSON)  # e.g. {"po_number": ...} or {"field": ..., "value": ...}
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
@@ -161,3 +171,4 @@ class PageWordsCache(Base):
 
 
 SEEDED_TABLES = [Vendor.__table__, POHeader.__table__, POLine.__table__, InvoiceHistory.__table__]
+RUN_TABLES = [Run.__table__, RunEvent.__table__, HoldAction.__table__]

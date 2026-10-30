@@ -94,9 +94,20 @@ def _untrusted(inv: ExtractedInvoice, ver: VerificationResult, threshold: float,
                 bad.append(name)
         elif getattr(inv, name).confidence < threshold:
             bad.append(name)
-    if include_lines and any(line.confidence < threshold for line in inv.line_items):
+    if include_lines and not lines_trusted(inv, ver, threshold):
         bad.append("line items")
     return bad
+
+
+def lines_trusted(inv: ExtractedInvoice, ver: VerificationResult, threshold: float) -> bool:
+    """Every line amount was found on the page; where the page could not be checked, the model was confident."""
+    for index, line in enumerate(inv.line_items):
+        status = ver.line_items[index].status if index < len(ver.line_items) else None
+        if status == "verified":
+            continue
+        if status == "not_found" or line.confidence < threshold:
+            return False
+    return True
 
 
 def _arithmetic_result(check: str, ok: bool, detail: str, untrusted: list[str], evidence: CheckEvidence,
@@ -118,8 +129,11 @@ def check_lines_sum(inv: ExtractedInvoice, ver: VerificationResult, threshold: f
     evidence = CheckEvidence(invoice_field="subtotal", invoice_value=float(subtotal),
                              verification_status=_verification_status(ver, "subtotal"),
                              reference_source="sum of line amounts", reference_value=float(lines))
-    return _arithmetic_result("lines_sum", abs(lines - subtotal) <= ONE_RUPEE, detail,
-                              _untrusted(inv, ver, threshold, ["subtotal"], include_lines=True), evidence,
+    untrusted = _untrusted(inv, ver, threshold, ["subtotal"], include_lines=True)
+    if lines < subtotal - ONE_RUPEE and "line items" not in untrusted:
+        # a shortfall can mean the reader missed a line; finding the lines it did read cannot rule that out
+        untrusted.append("line items (a line may have been missed)")
+    return _arithmetic_result("lines_sum", abs(lines - subtotal) <= ONE_RUPEE, detail, untrusted, evidence,
                               f"Line amounts add up to the subtotal (₹{inr(subtotal)}).")
 
 
@@ -198,16 +212,21 @@ def check_gst_rates(inv: ExtractedInvoice, ver: VerificationResult, buyer: Buyer
     return out or [passed(STAGE, "gst_rate", "All GST rates are valid slabs for the invoice date.")]
 
 
-def check_buyer(inv: ExtractedInvoice, buyer: BuyerRecord) -> CheckResult:
-    """The invoice must be addressed to our company: buyer GSTIN equal to ours, or (if no GSTIN) our name."""
+def check_buyer(inv: ExtractedInvoice, buyer: BuyerRecord, ver: VerificationResult | None = None) -> CheckResult:
+    """The invoice must be addressed to our company: buyer GSTIN equal to ours, or (if no GSTIN) our name.
+    A different GSTIN that is not on the page is a reading problem to confirm, not proof of a wrong buyer."""
     gstin = inv.buyer_gstin.value
     evidence = CheckEvidence(invoice_field="buyer_gstin", invoice_value=gstin, reference_source="buyer master",
-                             reference_value=buyer.gstin)
+                             reference_value=buyer.gstin,
+                             verification_status=_verification_status(ver, "buyer_gstin") if ver else None)
     if gstin:
         if normalise_code(gstin) == normalise_code(buyer.gstin):
             return passed(STAGE, "buyer", f"Addressed to {buyer.legal_name} ({buyer.gstin}).", evidence)
-        return raised(STAGE, "buyer", ReasonCode.BUYER_MISMATCH, evidence,
-                      buyer=inv.buyer_name.value or "another company", gstin=gstin, expected=buyer.legal_name)
+        if ver is not None and _verification_status(ver, "buyer_gstin") == "not_found":
+            return raised(STAGE, "trust_buyer_gstin", ReasonCode.FIELD_NOT_VERIFIED, evidence, field="buyer_gstin",
+                          value=gstin, confidence=inv.buyer_gstin.confidence)
+        return raised(STAGE, "buyer", ReasonCode.BUYER_MISMATCH, evidence, buyer=inv.buyer_name.value or "another company",
+                      gstin=gstin, expected=f"{buyer.legal_name} ({buyer.gstin})")
     name = inv.buyer_name.value or ""
     best = max((fuzz.token_sort_ratio(normalise_name(name), normalise_name(v)) for v in buyer.name_variants), default=0)
     if name and best >= 90:
@@ -226,5 +245,5 @@ def run_self_check(inv: ExtractedInvoice, ver: VerificationResult, buyer: BuyerR
     checks += [check_lines_sum(inv, ver, threshold), check_total(inv, ver, threshold)]
     checks += check_gst_type(inv, ver, buyer, threshold)
     checks += check_gst_rates(inv, ver, buyer)
-    checks.append(check_buyer(inv, buyer))
+    checks.append(check_buyer(inv, buyer, ver))
     return checks

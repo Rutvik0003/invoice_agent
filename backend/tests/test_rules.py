@@ -184,6 +184,8 @@ def test_buyer_must_be_us():
     assert check_buyer(invoice(), BUYER).code is None
     assert check_buyer(invoice(buyer_gstin="27AABCH9999F1Z1", buyer_name="Horizon Lifestyle Pvt Ltd"), BUYER).code == "BUYER_MISMATCH"
     assert check_buyer(invoice(buyer_gstin=None, buyer_name="Zenith Retail Private Limited"), BUYER).code is None
+    misread = invoice(buyer_gstin="27HRRC2546QN1Z7")  # the AI misread our GSTIN and it is not on the page
+    assert check_buyer(misread, BUYER, verification(misread, buyer_gstin="not_found")).code == "FIELD_NOT_VERIFIED"
 
 
 # ---------------------------------------------------------------- stage 5: vendor & duplicates
@@ -366,7 +368,7 @@ def test_engine_is_pure_and_lists_every_stage():
     inv = invoice()
     first = run_rules(inv, verification(inv), repo(), SETTINGS)
     second = run_rules(inv, verification(inv), repo(), SETTINGS)
-    assert first == second
+    assert first.decision == second.decision  # same inputs, same decision (only timings differ)
     assert [s.stage for s in first.stages] == ["self_check", "vendor_duplicate", "po_match", "amount_match", "decision"]
 
 
@@ -374,3 +376,22 @@ def test_settings_change_the_rules():
     inv = invoice(lines=[{"description": "LED Monitor 24\" Full HD", "quantity": 4, "unit_price": 10020.0, "tax_rate": 18}])
     strict = Settings(_env_file=None, tolerance_abs_inr=50)
     assert run_rules(inv, verification(inv), repo(), strict).decision.outcome == "HOLD"
+
+
+def test_lines_short_of_the_subtotal_could_be_a_missed_line_so_only_hold():
+    """A live Groq run dropped a line: lines summed below a verified subtotal. That must Hold, not Reject."""
+    from app.schemas import FieldVerification
+
+    lines = [{"description": "Laptop - Intel Core i5, 16GB RAM, 512GB SSD", "quantity": 1, "unit_price": 60000.0,
+              "tax_rate": 18}]
+    short = invoice(lines=lines, subtotal=100000.0, total_amount=118000.0, cgst=9000.0, sgst=9000.0)
+    ver = verification(short)
+    ver.line_items = [FieldVerification(status="verified")]
+    assert codes([check_lines_sum(short, ver, 0.8)]) == {"ARITHMETIC_UNCERTAIN"}
+    over_lines = [{**lines[0], "amount": 70000.0}]
+    excess = invoice(lines=over_lines, subtotal=60000.0, total_amount=70800.0, cgst=5400.0, sgst=5400.0)
+    ver = verification(excess)
+    ver.line_items = [FieldVerification(status="verified")]
+    assert codes([check_lines_sum(excess, ver, 0.8)]) == {"ARITHMETIC_MISMATCH"}
+    ver.line_items = [FieldVerification(status="not_found")]  # the AI's line amount is not on the page
+    assert codes([check_lines_sum(excess, ver, 0.8)]) == {"ARITHMETIC_UNCERTAIN"}

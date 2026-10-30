@@ -8,3 +8,5 @@ pymupdf>=1.24
 google-genai>=1.0
 groq>=0.11
 rapidfuzz>=3.0
+sse-starlette>=2.0
+python-multipart>=0.0.9  # required by FastAPI for file uploads

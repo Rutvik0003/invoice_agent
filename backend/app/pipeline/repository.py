@@ -200,7 +200,9 @@ class DbRepository:
                 for h in self.session.scalars(query)]
 
     def run_with_file_hash(self, file_hash: str) -> str | None:
-        query = select(Run.id).where(Run.file_hash == file_hash, Run.is_test_run.is_(False))
+        # only runs that actually finished count as "processed" (a failed extraction can be retried)
+        query = select(Run.id).where(Run.file_hash == file_hash, Run.is_test_run.is_(False),
+                                     Run.status.in_(("completed", "resolved_by_human")))
         if self._exclude_run_id:
             query = query.where(Run.id != self._exclude_run_id)
         return self.session.scalars(query.order_by(Run.created_at)).first()

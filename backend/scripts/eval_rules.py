@@ -17,6 +17,7 @@ from eval_common import REPORT_DIR, ground_truth_invoice, load_labels
 
 from app.config import REPO_ROOT, get_settings
 from app.pipeline.engine import RulesResult, run_rules
+from app.pipeline.evaluation import judge as judge_outcome
 from app.pipeline.reason_codes import inr
 from app.pipeline.repository import InMemoryRepository
 from app.schemas import ExtractedInvoice, FieldVerification, VerificationResult
@@ -43,18 +44,7 @@ def verification_from_label(label: dict) -> VerificationResult:
 
 def judge(label: dict, result: RulesResult) -> tuple[bool, list[str]]:
     """Pass = decision acceptable AND every must-include code present AND each any-of group satisfied."""
-    problems = []
-    outcome = result.decision.outcome
-    codes = set(result.codes)
-    if outcome not in label["acceptable_decisions"]:
-        problems.append(f"decision {outcome}, expected {label['expected_decision']}")
-    missing = [c for c in label["expected_reason_codes"] if c not in codes]
-    if missing:
-        problems.append(f"missing codes {missing}")
-    for group in label.get("expected_reason_codes_any_of", []):
-        if not codes & set(group):
-            problems.append(f"none of {group}")
-    return not problems, problems
+    return judge_outcome(label, result.decision.outcome, result.codes)
 
 
 def main() -> None:
