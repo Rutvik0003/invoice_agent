@@ -34,8 +34,8 @@ def dev() -> None:
 
 
 def test() -> None:
-    """Run the backend test suite."""
-    sys.exit(subprocess.run([sys.executable, "-m", "pytest"], cwd=BACKEND).returncode)
+    """Run the full test suite (backend + datagen)."""
+    sys.exit(subprocess.run([sys.executable, "-m", "pytest"], cwd=ROOT).returncode)
 
 
 def build() -> None:

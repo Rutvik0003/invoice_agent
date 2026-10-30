@@ -1,0 +1,201 @@
+po_number,vendor_id,po_date,status,taxable_value,gst_amount,total_value,billed_value,remaining_value,delivery_location,requested_by,payment_terms_days
+PO-2026-1001,V026,2026-02-02,closed,308800.00,55584.00,364384.00,308800.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Udyati Bava,15
+PO-2026-1002,V014,2026-02-02,closed,266250.00,47925.00,314175.00,266250.00,0.00,"Zenith Store #19, Thane West",Suhani Talwar,30
+PO-2026-1003,V027,2026-02-03,closed,312650.00,56277.00,368927.00,312650.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Ekansh Gour,30
+PO-2026-1004,V007,2026-02-06,partially_billed,43134.00,2304.12,45438.12,19425.00,23709.00,"Zenith Store #12, Andheri West, Mumbai",Viraj Gandhi,60
+PO-2026-1005,V025,2026-02-08,partially_billed,135700.00,24426.00,160126.00,129200.00,6500.00,"Zenith Retail Central Warehouse, Bhiwandi",Girik Gola,30
+PO-2026-1006,V023,2026-02-10,closed,900800.00,162144.00,1062944.00,900800.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Indira Agate,15
+PO-2026-1007,V006,2026-02-10,partially_billed,166250.00,29925.00,196175.00,68490.00,97760.00,"Zenith Retail HQ, Lower Parel, Mumbai",Garima Shukla,15
+PO-2026-1008,V012,2026-02-12,closed,1121084.00,201795.12,1322879.12,1121084.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Yasti Mody,30
+PO-2026-1009,V025,2026-02-13,closed,790150.00,142227.00,932377.00,790150.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Anthony Char,30
+PO-2026-1010,V004,2026-02-16,closed,800200.00,89494.50,889694.50,800200.00,0.00,"Zenith Store #19, Thane West",Charles Khurana,15
+PO-2026-1011,V018,2026-02-16,closed,264425.00,47596.50,312021.50,264425.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Orinder Date,45
+PO-2026-1012,V003,2026-02-19,partially_billed,773490.00,113943.20,887433.20,281000.00,492490.00,"Zenith Retail Central Warehouse, Bhiwandi",Ekavir Chokshi,45
+PO-2026-1013,V025,2026-02-21,closed,304250.00,54765.00,359015.00,304250.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Gaurika Upadhyay,30
+PO-2026-1014,V023,2026-02-23,open,235450.00,42381.00,277831.00,0.00,235450.00,"Zenith Store #07, FC Road, Pune",Vedika Narayan,15
+PO-2026-1015,V032,2026-02-26,partially_billed,2061400.00,371052.00,2432452.00,1105450.00,955950.00,"Zenith Retail Central Warehouse, Bhiwandi",Vedhika Balay,30
+PO-2026-1016,V010,2026-03-01,closed,459248.00,58041.34,517289.34,459248.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Sathvik Wagle,45
+PO-2026-1017,V031,2026-03-01,partially_billed,855241.00,116266.78,971507.78,481170.70,374070.30,"Zenith Retail Central Warehouse, Bhiwandi",Arjun Banerjee,15
+PO-2026-1018,V006,2026-03-02,partially_billed,947100.00,170478.00,1117578.00,670900.00,276200.00,"Zenith Store #07, FC Road, Pune",Ekaraj Narang,15
+PO-2026-1019,V015,2026-03-02,closed,907100.00,163278.00,1070378.00,907100.00,0.00,"Zenith Store #07, FC Road, Pune",Neelima Dyal,45
+PO-2026-1020,V015,2026-03-03,partially_billed,681100.00,122598.00,803698.00,429300.00,251800.00,"Zenith Store #19, Thane West",Dakshesh Swaminathan,45
+PO-2026-1021,V003,2026-03-05,closed,229470.00,41304.60,270774.60,229470.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Ekaraj Vasa,45
+PO-2026-1022,V037,2026-03-09,closed,555305.00,99954.90,655259.90,555305.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Finn Hayer,30
+PO-2026-1023,V031,2026-03-13,partially_billed,383255.50,33620.79,416876.29,179237.50,204018.00,"Zenith Store #07, FC Road, Pune",Harsh Malhotra,15
+PO-2026-1024,V005,2026-03-14,partially_billed,1471700.00,264906.00,1736606.00,1200850.00,270850.00,"Zenith Store #07, FC Road, Pune",Sanya Dua,45
+PO-2026-1025,V035,2026-03-14,closed,264200.00,47556.00,311756.00,264200.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Krishna Gaba,30
+PO-2026-1026,V024,2026-03-14,closed,655750.00,103663.50,759413.50,655750.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Zarna Pai,30
+PO-2026-1027,V040,2026-03-17,closed,1166050.00,209889.00,1375939.00,1166050.00,0.00,"Zenith Store #07, FC Road, Pune",Jagdish Narasimhan,45
+PO-2026-1028,V031,2026-03-18,closed,59500.00,10710.00,70210.00,59500.00,0.00,"Zenith Store #07, FC Road, Pune",Irya Barad,15
+PO-2026-1029,V002,2026-03-18,closed,246050.00,14151.10,260201.10,246050.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Manya Mani,60
+PO-2026-1030,V029,2026-03-18,closed,841150.00,151407.00,992557.00,841150.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Krishna Bal,30
+PO-2026-1031,V009,2026-03-21,closed,275100.00,27275.85,302375.85,275100.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Logan Patil,45
+PO-2026-1032,V011,2026-03-23,closed,1111900.00,126991.00,1238891.00,1111900.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Pooja Natt,60
+PO-2026-1033,V039,2026-03-24,closed,658908.00,118603.44,777511.44,658908.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Keya Menon,15
+PO-2026-1034,V023,2026-03-25,closed,321450.00,57861.00,379311.00,321450.00,0.00,"Zenith Store #19, Thane West",Akshay Srivastava,15
+PO-2026-1035,V024,2026-03-25,closed,2172950.00,376116.00,2549066.00,2172950.00,0.00,"Zenith Store #07, FC Road, Pune",Kamala Krishna,30
+PO-2026-1036,V036,2026-03-25,closed,1595200.00,287136.00,1882336.00,1595200.00,0.00,"Zenith Store #19, Thane West",Guneet Hora,30
+PO-2026-1037,V027,2026-03-25,closed,680400.00,122472.00,802872.00,680400.00,0.00,"Zenith Store #19, Thane West",Vivaan Shanker,30
+PO-2026-1038,V030,2026-03-28,partially_billed,726400.00,130752.00,857152.00,145550.00,580850.00,"Zenith Store #07, FC Road, Pune",Aahana Sunder,15
+PO-2026-1039,V020,2026-03-31,closed,332570.00,59862.60,392432.60,332570.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Ishwar Dey,60
+PO-2026-1040,V010,2026-04-03,open,453010.00,50574.50,503584.50,0.00,453010.00,"Zenith Retail HQ, Lower Parel, Mumbai",Chakradhar Goda,45
+PO-2026-1041,V034,2026-04-06,closed,550660.00,53555.10,604215.10,550660.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Yashawini Raju,30
+PO-2026-1042,V030,2026-04-07,closed,542500.00,97650.00,640150.00,542500.00,0.00,"Zenith Store #19, Thane West",Aashi Devan,15
+PO-2026-1043,V002,2026-04-09,closed,227672.50,18348.05,246020.55,227672.50,0.00,"Zenith Store #12, Andheri West, Mumbai",Vinaya Agarwal,60
+PO-2026-1044,V034,2026-04-12,closed,310850.00,37421.50,348271.50,310850.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Henry Wable,30
+PO-2026-1045,V030,2026-04-13,closed,136650.00,24597.00,161247.00,136650.00,0.00,"Zenith Store #07, FC Road, Pune",Karan Mangal,15
+PO-2026-1046,V027,2026-04-14,open,958700.00,172566.00,1131266.00,0.00,958700.00,"Zenith Store #19, Thane West",Geetika Gandhi,30
+PO-2026-1047,V026,2026-04-16,partially_billed,360600.00,64908.00,425508.00,87150.00,273450.00,"Zenith Store #12, Andheri West, Mumbai",Janani Nazareth,15
+PO-2026-1048,V008,2026-04-16,closed,1118050.00,201249.00,1319299.00,1118050.00,0.00,"Zenith Store #19, Thane West",Harita Bath,15
+PO-2026-1049,V013,2026-04-16,closed,1688100.00,303858.00,1991958.00,1688100.00,0.00,"Zenith Store #19, Thane West",Dayamai Muni,45
+PO-2026-1050,V002,2026-04-18,partially_billed,758159.00,95336.62,853495.62,413169.00,344990.00,"Zenith Retail Central Warehouse, Bhiwandi",Gopal Dar,60
+PO-2026-1051,V036,2026-04-25,partially_billed,105350.00,18963.00,124313.00,35000.00,70350.00,"Zenith Retail Central Warehouse, Bhiwandi",Anamika Datta,30
+PO-2026-1052,V005,2026-04-26,closed,1510350.00,271863.00,1782213.00,1510350.00,0.00,"Zenith Store #07, FC Road, Pune",Alka Bandi,45
+PO-2026-1053,V010,2026-04-27,closed,508575.00,65459.00,574034.00,508575.00,0.00,"Zenith Store #07, FC Road, Pune",Sara Ramachandran,45
+PO-2026-1054,V027,2026-04-27,closed,565650.00,101817.00,667467.00,565650.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Yahvi Narayanan,30
+PO-2026-1055,V022,2026-04-27,partially_billed,1337455.00,240741.90,1578196.90,489998.50,847456.50,"Zenith Store #12, Andheri West, Mumbai",Benjamin Thaker,30
+PO-2026-1056,V025,2026-04-29,partially_billed,607410.00,109333.80,716743.80,346070.00,261340.00,"Zenith Retail Central Warehouse, Bhiwandi",Chanchal Bajwa,30
+PO-2026-1057,V027,2026-04-30,closed,468150.00,84267.00,552417.00,468150.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Onkar Mital,30
+PO-2026-1058,V040,2026-05-01,partially_billed,1397600.00,251568.00,1649168.00,484150.00,913450.00,"Zenith Store #12, Andheri West, Mumbai",Wridesh Dube,45
+PO-2026-1059,V011,2026-05-01,closed,521720.00,91278.40,612998.40,521720.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Matthew Dhar,60
+PO-2026-1060,V029,2026-05-02,closed,546450.00,98361.00,644811.00,546450.00,0.00,"Zenith Store #19, Thane West",Zehaan Bala,30
+PO-2026-1061,V027,2026-05-05,closed,1330600.00,239508.00,1570108.00,1330600.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Hemani Biswas,30
+PO-2026-1062,V035,2026-05-06,open,322270.00,45052.80,367322.80,0.00,322270.00,"Zenith Store #19, Thane West",Zinal Kalla,30
+PO-2026-1063,V009,2026-05-06,partially_billed,108250.00,19485.00,127735.00,25250.00,83000.00,"Zenith Retail Central Warehouse, Bhiwandi",Megha Gara,45
+PO-2026-1064,V010,2026-05-06,closed,659330.00,78502.90,737832.90,659330.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Ryan Dixit,45
+PO-2026-1065,V032,2026-05-08,closed,1621500.00,291870.00,1913370.00,1621500.00,0.00,"Zenith Store #19, Thane West",David Barman,30
+PO-2026-1066,V014,2026-05-08,closed,264300.00,47574.00,311874.00,264300.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Azaan Zachariah,30
+PO-2026-1067,V031,2026-05-09,closed,108050.00,14037.10,122087.10,108050.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Theodore Rout,15
+PO-2026-1068,V016,2026-05-09,closed,301957.50,30425.85,332383.35,301957.50,0.00,"Zenith Store #19, Thane West",Gaurika Koshy,30
+PO-2026-1069,V012,2026-05-11,closed,343031.00,61745.58,404776.58,343031.00,0.00,"Zenith Store #19, Thane West",Anika Viswanathan,30
+PO-2026-1070,V031,2026-05-11,closed,54816.00,7877.88,62693.88,54816.00,0.00,"Zenith Store #07, FC Road, Pune",Manan Dugar,15
+PO-2026-1071,V038,2026-05-11,closed,517183.60,63401.05,580584.65,517183.60,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Bhavani Keer,30
+PO-2026-1072,V012,2026-05-11,closed,1278990.00,230218.20,1509208.20,1278990.00,0.00,"Zenith Store #07, FC Road, Pune",Hritik Dani,30
+PO-2026-1073,V020,2026-05-12,closed,66300.00,11934.00,78234.00,66300.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Laksh Varma,60
+PO-2026-1074,V018,2026-05-12,closed,24800.00,4464.00,29264.00,24800.00,0.00,"Zenith Store #19, Thane West",Vaishnavi Borra,45
+PO-2026-1075,V026,2026-05-13,closed,1065300.00,191754.00,1257054.00,1065300.00,0.00,"Zenith Store #07, FC Road, Pune",Nikita Wadhwa,15
+PO-2026-1076,V034,2026-05-13,closed,264000.00,47520.00,311520.00,264000.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Anjali Sachdev,30
+PO-2026-1077,V014,2026-05-16,closed,499800.00,89964.00,589764.00,499800.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Advik Jani,30
+PO-2026-1078,V038,2026-05-18,closed,81456.00,14662.08,96118.08,81456.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Upadhriti Pathak,30
+PO-2026-1079,V038,2026-05-20,closed,183492.50,19226.55,202719.05,183492.50,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Ikshita Madan,30
+PO-2026-1080,V026,2026-05-20,closed,24500.00,4410.00,28910.00,24500.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Vrishti Bassi,15
+PO-2026-1081,V029,2026-06-02,partially_billed,32760.00,5896.80,38656.80,26880.00,5880.00,"Zenith Store #07, FC Road, Pune",Upasna Varma,30
+PO-2026-1082,V002,2026-06-03,closed,279616.00,47352.58,326968.58,279616.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Zayan Dutta,60
+PO-2026-1083,V040,2026-06-04,open,290300.00,52254.00,342554.00,0.00,290300.00,"Zenith Store #12, Andheri West, Mumbai",Kashvi Kar,45
+PO-2026-1084,V023,2026-06-04,closed,853700.00,153666.00,1007366.00,853700.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Vasudha Rau,15
+PO-2026-1085,V037,2026-06-06,partially_billed,183705.00,33066.90,216771.90,103810.00,79895.00,"Zenith Store #12, Andheri West, Mumbai",Rushil Grover,30
+PO-2026-1086,V024,2026-06-08,partially_billed,1343600.00,227470.00,1571070.00,329900.00,1013700.00,"Zenith Store #19, Thane West",Vihaan Varghese,30
+PO-2026-1087,V012,2026-06-08,closed,491385.00,88449.30,579834.30,491385.00,0.00,"Zenith Store #19, Thane West",Kai Sampath,30
+PO-2026-1088,V016,2026-06-10,closed,469974.00,44399.32,514373.32,469974.00,0.00,"Zenith Store #07, FC Road, Pune",Ladli Hora,30
+PO-2026-1089,V002,2026-06-13,closed,600110.00,61147.00,661257.00,600110.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Mason Majumdar,60
+PO-2026-1090,V034,2026-06-14,partially_billed,622175.00,81555.90,703730.90,371170.00,251005.00,"Zenith Store #12, Andheri West, Mumbai",Upkaar Bala,30
+PO-2026-1091,V033,2026-06-15,open,1047550.00,188559.00,1236109.00,0.00,1047550.00,"Zenith Store #12, Andheri West, Mumbai",Ekbal Ramaswamy,60
+PO-2026-1092,V021,2026-06-18,closed,798360.00,104958.30,903318.30,798360.00,0.00,"Zenith Store #19, Thane West",Ayaan Rai,60
+PO-2026-1093,V014,2026-06-18,closed,369150.00,66447.00,435597.00,369150.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Yuvraj Rai,30
+PO-2026-1094,V029,2026-06-19,closed,100800.00,18144.00,118944.00,100800.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Ronith Rastogi,30
+PO-2026-1095,V011,2026-06-19,closed,192500.00,19537.50,212037.50,192500.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Watika Prabhakar,60
+PO-2026-1096,V004,2026-06-20,closed,1393920.00,189207.60,1583127.60,1393920.00,0.00,"Zenith Store #19, Thane West",Lila Goda,15
+PO-2026-1097,V007,2026-06-22,partially_billed,180100.50,25758.19,205858.69,150350.00,29750.50,"Zenith Store #07, FC Road, Pune",Jyoti Agate,60
+PO-2026-1098,V022,2026-06-23,closed,425076.00,76513.68,501589.68,425076.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Oliver Deshpande,30
+PO-2026-1099,V014,2026-06-24,closed,358300.00,64494.00,422794.00,358300.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Mugdha Virk,30
+PO-2026-1100,V032,2026-06-26,closed,726300.00,130734.00,857034.00,726300.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Leela Ramanathan,30
+PO-2026-1101,V022,2026-06-27,closed,653950.00,117711.00,771661.00,653950.00,0.00,"Zenith Store #07, FC Road, Pune",Osha Oza,30
+PO-2026-1102,V025,2026-06-28,partially_billed,230000.00,41400.00,271400.00,39400.00,190600.00,"Zenith Store #07, FC Road, Pune",Maanav Ray,30
+PO-2026-1103,V031,2026-06-28,closed,88146.50,4886.57,93033.07,88146.50,0.00,"Zenith Store #19, Thane West",Bahadurjit Lall,15
+PO-2026-1104,V024,2026-06-29,closed,917250.00,165105.00,1082355.00,917250.00,0.00,"Zenith Store #19, Thane West",Anirudh Mittal,30
+PO-2026-1105,V022,2026-06-29,closed,329565.00,59321.70,388886.70,329565.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Tanmayi Kanda,30
+PO-2026-1106,V034,2026-07-01,closed,400200.00,23948.35,424148.35,400200.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Aarush Gulati,30
+PO-2026-1107,V007,2026-07-03,open,21600.00,1080.00,22680.00,0.00,21600.00,"Zenith Retail Central Warehouse, Bhiwandi",Saumya Bahri,60
+PO-2026-1108,V002,2026-07-05,closed,372100.00,23220.00,395320.00,372100.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Parth Parmar,60
+PO-2026-1109,V013,2026-07-06,open,1446550.00,255406.50,1701956.50,0.00,1446550.00,"Zenith Retail Central Warehouse, Bhiwandi",Gautami Dhawan,45
+PO-2026-1110,V037,2026-07-07,partially_billed,454100.00,81738.00,535838.00,123950.00,330150.00,"Zenith Store #19, Thane West",Mitesh Roy,30
+PO-2026-1111,V013,2026-07-08,partially_billed,1461150.00,263007.00,1724157.00,578050.00,883100.00,"Zenith Retail HQ, Lower Parel, Mumbai",Lopa Sankaran,45
+PO-2026-1112,V036,2026-07-09,closed,9600.00,1728.00,11328.00,9600.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Devansh Varty,30
+PO-2026-1113,V016,2026-07-09,closed,475120.00,56581.00,531701.00,475120.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Nitesh Pall,30
+PO-2026-1114,V040,2026-07-10,closed,1161390.00,209050.20,1370440.20,1161390.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Yahvi Lata,45
+PO-2026-1115,V015,2026-07-12,closed,1377100.00,230893.50,1607993.50,1377100.00,0.00,"Zenith Store #07, FC Road, Pune",Madhav Edwin,45
+PO-2026-1116,V010,2026-07-12,closed,82460.00,13220.40,95680.40,82460.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Adweta Malhotra,45
+PO-2026-1117,V035,2026-07-13,partially_billed,457155.00,82287.90,539442.90,324140.00,133015.00,"Zenith Store #07, FC Road, Pune",Raksha Barad,30
+PO-2026-1118,V007,2026-07-14,partially_billed,245127.00,25870.86,270997.86,216448.90,28678.10,"Zenith Store #07, FC Road, Pune",Gavin Pau,60
+PO-2026-1119,V012,2026-07-14,closed,1316750.00,237015.00,1553765.00,1316750.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Kashvi Sura,30
+PO-2026-1120,V008,2026-07-15,open,1375350.00,247563.00,1622913.00,0.00,1375350.00,"Zenith Retail Central Warehouse, Bhiwandi",Anamika Dugar,15
+PO-2026-1121,V024,2026-07-18,open,1693550.00,304839.00,1998389.00,0.00,1693550.00,"Zenith Store #07, FC Road, Pune",Pratyush Kunda,30
+PO-2026-1122,V025,2026-07-18,partially_billed,1131000.00,203580.00,1334580.00,517400.00,613600.00,"Zenith Store #12, Andheri West, Mumbai",Jai Rajagopal,30
+PO-2026-1123,V022,2026-07-20,closed,522369.50,94026.51,616396.01,522369.50,0.00,"Zenith Store #12, Andheri West, Mumbai",Prisha Mangal,30
+PO-2026-1124,V031,2026-07-21,closed,248400.00,38160.00,286560.00,248400.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Bhanumati Kapoor,15
+PO-2026-1125,V040,2026-07-21,partially_billed,1235350.00,222363.00,1457713.00,573950.00,661400.00,"Zenith Retail Central Warehouse, Bhiwandi",Indali Upadhyay,45
+PO-2026-1126,V019,2026-07-24,partially_billed,757800.00,136404.00,894204.00,435600.00,322200.00,"Zenith Retail HQ, Lower Parel, Mumbai",Aarna Issac,30
+PO-2026-1127,V035,2026-07-25,closed,26145.00,4706.10,30851.10,26145.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Nakul Sarraf,30
+PO-2026-1128,V016,2026-07-27,closed,261540.00,41989.00,303529.00,261540.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Yug Garde,30
+PO-2026-1129,V031,2026-07-27,closed,18840.00,3391.20,22231.20,18840.00,0.00,"Zenith Store #19, Thane West",Omisha Agate,15
+PO-2026-1130,V010,2026-07-27,partially_billed,645790.00,71799.10,717589.10,537538.00,108252.00,"Zenith Store #07, FC Road, Pune",Peter Kota,45
+PO-2026-1131,V021,2026-07-27,partially_billed,363200.00,65376.00,428576.00,326345.00,36855.00,"Zenith Store #19, Thane West",Nandini Ramakrishnan,60
+PO-2026-1132,V007,2026-07-28,closed,551135.00,68667.95,619802.95,551135.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Victor Sharma,60
+PO-2026-1133,V034,2026-07-29,closed,423962.00,48064.81,472026.81,423962.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Gautami Cherian,30
+PO-2026-1134,V011,2026-07-30,partially_billed,1086960.00,98891.20,1185851.20,409172.00,677788.00,"Zenith Retail HQ, Lower Parel, Mumbai",Eshana Chand,60
+PO-2026-1135,V019,2026-07-31,open,781000.00,140580.00,921580.00,0.00,781000.00,"Zenith Retail Central Warehouse, Bhiwandi",Chaitanya Goda,30
+PO-2026-1136,V011,2026-08-02,partially_billed,608700.00,103898.00,712598.00,317070.00,291630.00,"Zenith Store #19, Thane West",Frederick Bawa,60
+PO-2026-1137,V024,2026-08-03,closed,1547350.00,278523.00,1825873.00,1547350.00,0.00,"Zenith Store #07, FC Road, Pune",Upadhriti Dhingra,30
+PO-2026-1138,V037,2026-08-03,closed,267500.00,48150.00,315650.00,267500.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Jagrati Parikh,30
+PO-2026-1139,V032,2026-08-04,closed,2513400.00,441492.00,2954892.00,2513400.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Zehaan Gour,30
+PO-2026-1140,V008,2026-08-05,partially_billed,2664900.00,479682.00,3144582.00,1910500.00,754400.00,"Zenith Store #19, Thane West",Ishwar Dar,15
+PO-2026-1141,V031,2026-08-06,open,334165.00,54252.25,388417.25,0.00,334165.00,"Zenith Retail Central Warehouse, Bhiwandi",Veer Mukhopadhyay,15
+PO-2026-1142,V003,2026-08-06,closed,340180.00,54992.40,395172.40,340180.00,0.00,"Zenith Store #19, Thane West",Siddharth Varkey,45
+PO-2026-1143,V009,2026-08-08,closed,643470.00,96204.35,739674.35,643470.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Parth Dani,45
+PO-2026-1144,V030,2026-08-08,closed,118100.00,21258.00,139358.00,118100.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Varenya Sami,15
+PO-2026-1145,V009,2026-08-10,partially_billed,660585.00,64216.25,724801.25,525762.00,134823.00,"Zenith Retail Central Warehouse, Bhiwandi",Eiravati Shroff,45
+PO-2026-1146,V032,2026-08-10,closed,1232750.00,221895.00,1454645.00,1232750.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Frado Dada,30
+PO-2026-1147,V013,2026-08-12,partially_billed,1557400.00,270192.00,1827592.00,1263400.00,294000.00,"Zenith Store #12, Andheri West, Mumbai",Gautam Buch,45
+PO-2026-1148,V033,2026-08-13,partially_billed,731250.00,131625.00,862875.00,369650.00,361600.00,"Zenith Retail Central Warehouse, Bhiwandi",Anthony Dutt,60
+PO-2026-1149,V025,2026-08-14,partially_billed,689250.00,124065.00,813315.00,526750.00,162500.00,"Zenith Store #19, Thane West",Sai Dewan,30
+PO-2026-1150,V008,2026-08-16,closed,1626350.00,292743.00,1919093.00,1626350.00,0.00,"Zenith Store #07, FC Road, Pune",Jagrati Madan,15
+PO-2026-1151,V016,2026-08-17,closed,278490.00,49694.65,328184.65,278490.00,0.00,"Zenith Store #07, FC Road, Pune",Laksh Dara,30
+PO-2026-1152,V040,2026-08-18,partially_billed,499000.00,89820.00,588820.00,145800.00,353200.00,"Zenith Store #12, Andheri West, Mumbai",Hemal Madan,45
+PO-2026-1153,V030,2026-08-22,closed,850950.00,153171.00,1004121.00,850950.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Qarin Sarma,15
+PO-2026-1154,V033,2026-08-25,closed,740400.00,133272.00,873672.00,740400.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Lucky Patla,60
+PO-2026-1155,V009,2026-08-26,closed,210400.00,16526.00,226926.00,210400.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Dev Pau,45
+PO-2026-1156,V025,2026-08-26,partially_billed,484400.00,87192.00,571592.00,127700.00,356700.00,"Zenith Store #19, Thane West",Sanya Kurian,30
+PO-2026-1157,V039,2026-08-26,closed,1377988.00,248037.84,1626025.84,1377988.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Robert Murty,15
+PO-2026-1158,V035,2026-08-28,closed,18700.00,3366.00,22066.00,18700.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Jeremiah Barad,30
+PO-2026-1159,V016,2026-09-01,closed,192376.00,30337.68,222713.68,192376.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Frederick Sani,30
+PO-2026-1160,V032,2026-09-02,open,936000.00,168480.00,1104480.00,0.00,936000.00,"Zenith Store #07, FC Road, Pune",Siya Chaudhary,30
+PO-2026-1161,V008,2026-09-02,partially_billed,1321750.00,237915.00,1559665.00,434350.00,887400.00,"Zenith Store #19, Thane West",Gautami Deo,15
+PO-2026-1162,V029,2026-09-03,open,64450.00,11601.00,76051.00,0.00,64450.00,"Zenith Store #07, FC Road, Pune",Pallavi Bobal,30
+PO-2026-1163,V024,2026-09-04,closed,948800.00,170784.00,1119584.00,948800.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Sarthak Keer,30
+PO-2026-1164,V039,2026-09-05,closed,666505.00,119970.90,786475.90,666505.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Fariq Ratta,15
+PO-2026-1165,V014,2026-09-08,open,76000.00,13680.00,89680.00,0.00,76000.00,"Zenith Store #12, Andheri West, Mumbai",Suhani Ray,30
+PO-2026-1166,V040,2026-09-11,closed,917100.00,165078.00,1082178.00,917100.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Yagnesh Nadig,45
+PO-2026-1167,V019,2026-09-13,closed,1476300.00,265734.00,1742034.00,1476300.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Megha Pingle,30
+PO-2026-1168,V011,2026-09-13,open,628800.00,31440.00,660240.00,0.00,628800.00,"Zenith Retail HQ, Lower Parel, Mumbai",Raagini Tripathi,60
+PO-2026-1169,V013,2026-09-14,partially_billed,452550.00,81459.00,534009.00,332550.00,120000.00,"Zenith Store #07, FC Road, Pune",Faraj Kala,45
+PO-2026-1170,V029,2026-09-14,partially_billed,1261650.00,227097.00,1488747.00,648200.00,613450.00,"Zenith Retail HQ, Lower Parel, Mumbai",Garima Dasgupta,30
+PO-2026-1171,V003,2026-09-14,partially_billed,1651375.00,179233.50,1830608.50,172654.00,1478721.00,"Zenith Retail Central Warehouse, Bhiwandi",Adya Sani,45
+PO-2026-1172,V033,2026-09-15,partially_billed,1354700.00,243846.00,1598546.00,582250.00,772450.00,"Zenith Retail Central Warehouse, Bhiwandi",Caleb Uppal,60
+PO-2026-1173,V037,2026-09-16,partially_billed,362900.00,65322.00,428222.00,183200.00,179700.00,"Zenith Retail HQ, Lower Parel, Mumbai",Jason Gokhale,30
+PO-2026-1174,V009,2026-09-17,closed,385665.00,54230.50,439895.50,385665.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Aayush Subramanian,45
+PO-2026-1175,V005,2026-09-18,closed,2428700.00,437166.00,2865866.00,2428700.00,0.00,"Zenith Store #07, FC Road, Pune",Teerth Srinivasan,45
+PO-2026-1176,V021,2026-09-18,partially_billed,1108849.50,106000.78,1214850.28,692728.50,416121.00,"Zenith Retail HQ, Lower Parel, Mumbai",Champak Master,60
+PO-2026-1177,V027,2026-09-19,partially_billed,57500.00,10350.00,67850.00,23000.00,34500.00,"Zenith Retail Central Warehouse, Bhiwandi",Advika Bhagat,30
+PO-2026-1178,V023,2026-09-20,partially_billed,806350.00,145143.00,951493.00,736750.00,69600.00,"Zenith Retail HQ, Lower Parel, Mumbai",Zaitra Mohan,15
+PO-2026-1179,V025,2026-09-22,closed,882500.00,158850.00,1041350.00,882500.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Shivansh Roy,30
+PO-2026-1180,V003,2026-09-23,closed,577315.00,66639.20,643954.20,577315.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Aditya Saraf,45
+PO-2026-1181,V018,2026-09-25,partially_billed,233865.00,40837.30,274702.30,183228.00,50637.00,"Zenith Store #19, Thane West",Shivansh Dutta,45
+PO-2026-1182,V033,2026-09-27,closed,1338450.00,240921.00,1579371.00,1338450.00,0.00,"Zenith Retail HQ, Lower Parel, Mumbai",Wridesh Prabhu,60
+PO-2026-1183,V034,2026-09-27,closed,484690.00,80615.50,565305.50,484690.00,0.00,"Zenith Retail Central Warehouse, Bhiwandi",Ekapad Bail,30
+PO-2026-1184,V010,2026-09-28,closed,397749.00,48557.52,446306.52,397749.00,0.00,"Zenith Store #19, Thane West",Shivani Anne,45
+PO-2026-1185,V040,2026-09-28,closed,671400.00,120852.00,792252.00,671400.00,0.00,"Zenith Store #12, Andheri West, Mumbai",Umang Joshi,45
+PO-2026-1186,V039,2026-09-28,partially_billed,25314.00,4556.52,29870.52,6314.00,19000.00,"Zenith Retail HQ, Lower Parel, Mumbai",Samarth Gola,15
+PO-2026-1187,V026,2026-10-03,open,353550.00,63639.00,417189.00,0.00,353550.00,"Zenith Retail Central Warehouse, Bhiwandi",Faras Thaman,15
+PO-2026-1188,V008,2026-10-04,partially_billed,947250.00,170505.00,1117755.00,350550.00,596700.00,"Zenith Store #07, FC Road, Pune",Vidhi Cherian,15
+PO-2026-1189,V004,2026-10-06,open,25020.50,1251.03,26271.53,0.00,25020.50,"Zenith Store #12, Andheri West, Mumbai",Vrinda Lanka,15
+PO-2026-1190,V031,2026-10-09,open,334875.00,44957.00,379832.00,0.00,334875.00,"Zenith Store #19, Thane West",Harshil Bandi,15
+PO-2026-1191,V018,2026-10-09,open,634385.00,114189.30,748574.30,0.00,634385.00,"Zenith Store #19, Thane West",Abhimanyu Thaker,45
+PO-2026-1192,V007,2026-10-11,partially_billed,318501.00,56622.33,375123.33,162807.50,155693.50,"Zenith Store #12, Andheri West, Mumbai",Lakshmi Khare,60
+PO-2026-1193,V007,2026-10-12,partially_billed,203230.50,31960.64,235191.14,107195.05,96035.45,"Zenith Retail HQ, Lower Parel, Mumbai",Baghyawati Dhar,60
+PO-2026-1194,V015,2026-10-14,open,1111800.00,200124.00,1311924.00,0.00,1111800.00,"Zenith Store #07, FC Road, Pune",Pranav Saraf,45
+PO-2026-1195,V020,2026-10-18,open,64160.00,11548.80,75708.80,0.00,64160.00,"Zenith Store #12, Andheri West, Mumbai",Rushil Vig,60
+PO-2026-1196,V026,2026-10-18,open,14250.00,2565.00,16815.00,0.00,14250.00,"Zenith Retail HQ, Lower Parel, Mumbai",Leela Tara,15
+PO-2026-1197,V011,2026-10-19,partially_billed,649430.00,110844.60,760274.60,258256.50,391173.50,"Zenith Retail Central Warehouse, Bhiwandi",Hardik Chawla,60
+PO-2026-1198,V038,2026-10-20,open,4400.00,792.00,5192.00,0.00,4400.00,"Zenith Store #07, FC Road, Pune",Balhaar Deshmukh,30
+PO-2026-1199,V002,2026-10-21,open,134400.00,6720.00,141120.00,0.00,134400.00,"Zenith Store #12, Andheri West, Mumbai",Warda Ravi,60
+PO-2026-1200,V003,2026-10-21,open,79767.50,12615.18,92382.68,0.00,79767.50,"Zenith Retail Central Warehouse, Bhiwandi",Sanaya Kale,45

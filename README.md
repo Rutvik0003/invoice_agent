@@ -44,6 +44,18 @@ Open http://localhost:5173 — the page shows backend status, which models are c
 
 Windows has no `make` by default, so `tasks.py` is the cross-platform entry point; the `Makefile` just calls it.
 
+### Demo data
+
+All companies, people and numbers are fictional and fully reproducible (fixed seed, fixed reference date 30 Oct 2026).
+
+```bash
+python -m datagen.generate_all --master-only   # writes data/master/*.csv + buyer.json
+python -m datagen.validate_master              # 13 consistency checks (GSTIN checksums, PO ledger vs history, ...)
+python backend/scripts/seed_db.py              # loads data/master into the DB (safe to re-run)
+```
+
+The SQLite file lives at `backend/local.db` whichever folder you run from.
+
 ## Docker
 
 The `Dockerfile` is multi-stage: a Node image builds `frontend/dist`, then a `python:3.11-slim` image with
