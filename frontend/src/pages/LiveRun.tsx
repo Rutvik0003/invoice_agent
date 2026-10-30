@@ -2,13 +2,14 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Loader2, Plus, Wifi, WifiOff } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import { AuditTrail, RawData } from '@/components/run/AuditTrail'
 import { ExtractedFields, VerifiedFields } from '@/components/run/FieldTables'
 import { DecisionCard, FailureCard } from '@/components/run/DecisionCard'
 import { PageViewer } from '@/components/run/PageViewer'
 import { ChecksList, StageStepper } from '@/components/run/StageStepper'
 import { Button } from '@/components/ui/button'
 import { api, type ExtractedInvoice, type RunDetail } from '@/lib/api'
-import { duration, humanize } from '@/lib/format'
+import { duration, humanize, inr } from '@/lib/format'
 import { Link, navigate } from '@/lib/router'
 import { useRunEvents, type LiveState, type StageKey } from '@/lib/useRunEvents'
 import { cn } from '@/lib/utils'
@@ -28,6 +29,7 @@ export default function LiveRun({ runId }: { runId: string }) {
   const live = useRunEvents(runId, finishedAtOpen)
   const [selected, setSelected] = useState<string | null>(null)
   const [pulseKey, setPulseKey] = useState(0)
+  const [tab, setTab] = useState<'overview' | 'audit' | 'raw'>('overview')
   const select = (field: string) => {
     setSelected(field)
     setPulseKey((k) => k + 1)
@@ -82,6 +84,25 @@ export default function LiveRun({ runId }: { runId: string }) {
                       pulseKey={pulseKey} onSelect={select} />
         </div>
         <div className="min-h-0 space-y-4 overflow-y-auto bg-zinc-50 p-5">
+          {live.finished && (
+            <div className="flex gap-1 rounded-lg bg-zinc-200/60 p-1 text-sm">
+              {(['overview', 'audit', 'raw'] as const).map((t) => (
+                <button key={t} type="button" onClick={() => setTab(t)}
+                        className={cn('flex-1 rounded-md px-3 py-1.5 transition-colors', tab === t ? 'bg-white font-medium shadow-sm' : 'text-zinc-600 hover:text-zinc-900')}>
+                  {{ overview: 'Overview', audit: 'Audit trail', raw: 'Raw data' }[t]}
+                </button>
+              ))}
+            </div>
+          )}
+          {tab === 'audit' && live.finished && <AuditTrail run={detail} />}
+          {tab === 'raw' && live.finished && <RawData run={detail} />}
+          {(tab === 'overview' || !live.finished) && <>
+          {detail.retries.length > 0 && (
+            <div className="rounded-lg bg-white px-4 py-2.5 text-sm ring-1 ring-zinc-200">
+              Retried as {detail.retries.map((id) => <Link key={id} to={`/runs/${id}`} className="ml-1 font-mono text-xs underline underline-offset-2">{id.slice(0, 8)}</Link>)}
+            </div>
+          )}
+          {detail.status === 'resolved_by_human' && <HumanResolution run={detail} />}
           {extractionError && <FailureCard run={detail} error={extractionError} config={config.data} />}
           {decided && <DecisionCard decision={detail.rules!.decision} ledger={detail.rules!.ledger_change} sample={detail.sample} />}
           {live.finished?.decision && !detail.rules && (
@@ -97,8 +118,26 @@ export default function LiveRun({ runId }: { runId: string }) {
           <section className="rounded-xl bg-white px-4 py-2 ring-1 ring-zinc-200">
             <StageStepper state={live} renderDetail={renderDetail} />
           </section>
+          </>}
         </div>
       </div>
+    </div>
+  )
+}
+
+/** A person resolved this hold: show the final decision, who, when and why, above the engine's decision. */
+function HumanResolution({ run }: { run: RunDetail }) {
+  const final = [...(run.hold_actions ?? [])].reverse().find((a) => a.action === 'approve' || a.action === 'reject')
+  return (
+    <div className={cn('rounded-xl p-4 ring-1', run.decision === 'APPROVE' ? 'bg-emerald-50 ring-emerald-200' : 'bg-red-50 ring-red-200')}>
+      <div className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">Resolved by a person</div>
+      <div className="mt-0.5 text-lg font-semibold">{run.decision === 'APPROVE' ? 'Approved' : 'Rejected'}
+        {final && <span className="text-sm font-normal text-zinc-600"> by {final.actor_role} · {new Date(final.created_at).toLocaleString('en-IN')}</span>}</div>
+      {final && <p className="mt-1 text-sm text-zinc-700">“{final.comment}”</p>}
+      {run.rules?.ledger_applied && run.decision === 'APPROVE' && run.rules.ledger_change && (
+        <p className="mt-1 text-xs text-zinc-600">PO ledger updated: {run.rules.ledger_change.po_number} billed {inr(run.rules.ledger_change.billed_before)} → {inr(run.rules.ledger_change.billed_after)}</p>
+      )}
+      <p className="mt-2 text-xs text-zinc-500">The engine's original decision (Hold) and its reasons are below. Full history in the Audit trail tab.</p>
     </div>
   )
 }

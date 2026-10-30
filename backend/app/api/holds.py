@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.api.common import engine_of, get_run_or_404, run_summary
+from app.api.common import engine_of, get_run_or_404, iso_utc, run_summary
 from app.models import HoldAction, Run
 from app.pipeline.amount_match import map_lines
 from app.pipeline.decision import ledger_update
@@ -36,9 +36,11 @@ def _hold_item(run: Run, actions: list[HoldAction]) -> dict:
         "routed_questions": decision.get("routed_questions", []),
         "reasons": run.reasons_json or [],
         "po_candidates": (run.decision_json or {}).get("po_candidates", []),
+        "verification_fields": (run.verification_json or {}).get("fields", {}),
+        "extracted": run.extracted_json,
         "resolved": run.status == "resolved_by_human",
         "hold_actions": [{"actor_role": a.actor_role, "action": a.action, "comment": a.comment, "payload": a.payload,
-                          "created_at": a.created_at.isoformat()} for a in actions],
+                          "created_at": iso_utc(a.created_at)} for a in actions],
     }
 
 

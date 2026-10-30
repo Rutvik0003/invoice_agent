@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from datetime import timedelta
 
 from fastapi import APIRouter, Request
 from sqlalchemy import select
@@ -12,6 +13,7 @@ from app.api.common import engine_of
 from app.config import get_settings
 from app.models import InvoiceHistory, POHeader, Run, Vendor
 from app.verification.ocr import tesseract_status
+from app.verification.verify import CRITICAL_FIELDS
 
 router = APIRouter(prefix="/api", tags=["data"])
 MANUAL_MINUTES_PER_INVOICE = 8
@@ -37,6 +39,9 @@ def config() -> dict:
         "po_infer_floor": s.po_infer_floor,
         "possible_dup_days": s.possible_dup_days,
         "verify_enabled": s.verify_enabled,
+        "ocr_dpi": s.ocr_dpi,
+        "ocr_min_word_conf": s.ocr_min_word_conf,
+        "verify_fuzzy_min": s.verify_fuzzy_min,
         "ocr": tesseract_status(s).model_dump(),
         "max_upload_mb": 10,
     }
@@ -93,7 +98,7 @@ def history(request: Request, vendor: str | None = None, limit: int = 500) -> li
 
 
 @router.get("/stats")
-def stats(request: Request, include_test: bool = False) -> dict:
+def stats(request: Request, include_test: bool = False, tz_offset_minutes: int = 0) -> dict:
     """Dashboard numbers. AP time saved assumes MANUAL_MINUTES_PER_INVOICE for every invoice decided automatically."""
     with Session(engine_of(request)) as session:
         query = select(Run)
@@ -104,17 +109,21 @@ def stats(request: Request, include_test: bool = False) -> dict:
     statuses = Counter(r.status for r in runs)
     durations = [r.duration_ms for r in runs if r.duration_ms and r.status in ("completed", "resolved_by_human")]
     reasons = Counter(reason["code"] for r in runs for reason in (r.reasons_json or []) if reason.get("code"))
-    verified = printed = 0
+    verified = printed = critical_verified = critical_printed = 0
     for r in runs:
-        for field in ((r.verification_json or {}).get("fields") or {}).values():
-            if field.get("status") != "not_applicable":
-                printed += 1
-                verified += field.get("status") == "verified"
+        for name, field in ((r.verification_json or {}).get("fields") or {}).items():
+            if field.get("status") == "not_applicable":
+                continue
+            ok = field.get("status") == "verified"
+            printed, verified = printed + 1, verified + ok
+            if name in CRITICAL_FIELDS:
+                critical_printed, critical_verified = critical_printed + 1, critical_verified + ok
     auto = sum(1 for r in runs if r.status == "completed" and r.decision in ("APPROVE", "REJECT"))
     by_day = Counter()
+    shift = timedelta(minutes=-tz_offset_minutes)  # the browser's offset (JS getTimezoneOffset), so days match the viewer
     for r in runs:
         if r.decision and r.created_at:
-            by_day[(r.created_at.date().isoformat(), r.decision)] += 1
+            by_day[((r.created_at + shift).date().isoformat(), r.decision)] += 1
     return {
         "total_runs": len(runs),
         "by_decision": dict(decisions),
@@ -123,6 +132,7 @@ def stats(request: Request, include_test: bool = False) -> dict:
         "runs_by_model": dict(Counter(r.model for r in runs)),
         "top_reason_codes": reasons.most_common(8),
         "fields_verified_pct": round(100 * verified / printed, 1) if printed else None,
+        "critical_fields_verified_pct": round(100 * critical_verified / critical_printed, 1) if critical_printed else None,
         "decided_automatically": auto,
         "ap_minutes_saved": auto * MANUAL_MINUTES_PER_INVOICE,
         "ap_minutes_assumption": f"{MANUAL_MINUTES_PER_INVOICE} minutes of manual AP work per invoice that was approved "

@@ -16,6 +16,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.api.common import engine_of, sample_file, sample_labels
+from app.config import REPO_ROOT
 from app.config import get_settings
 from app.models import Run
 from app.pipeline.evaluation import judge
@@ -80,6 +81,28 @@ def start_suite(body: SuiteRequest, request: Request, background: BackgroundTask
     background.add_task(run_suite, _latest, engine_of(request), request.app.state.extract_fn, model, body.use_cache,
                         body.delay_s)
     return {"suite_id": _latest["id"], "total": _latest["total"]}
+
+
+REPORT_DIR = REPO_ROOT / "data" / "eval_reports"
+REPORT_KINDS = {
+    "rules": ["rules_eval_all_", "rules_eval_golden_", "rules_eval_stress_"],
+    "extraction_gemini": ["extraction_eval_golden_gemini_", "extraction_eval_golden_both_"],
+    "extraction_groq": ["extraction_eval_golden_groq_"],
+    "verification": ["verification_eval_all_minconf40_", "verification_eval_all_"],
+}
+
+
+@router.get("/eval/reports")
+def latest_reports() -> dict:
+    """The newest saved evaluation report of each kind (markdown), for the Test Suite screen."""
+    out = {}
+    for kind, prefixes in REPORT_KINDS.items():
+        for prefix in prefixes:
+            files = sorted(REPORT_DIR.glob(f"{prefix}*.md"), key=lambda p: p.name, reverse=True)
+            if files:
+                out[kind] = {"file": files[0].name, "markdown": files[0].read_text(encoding="utf-8")}
+                break
+    return out
 
 
 @router.get("/eval/latest")

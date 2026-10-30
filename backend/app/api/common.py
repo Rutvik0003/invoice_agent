@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from functools import lru_cache
 
 from fastapi import HTTPException, Request
@@ -46,6 +47,15 @@ def sample_file(sample_id: str) -> tuple[str, bytes]:
     return label["file_name"], path.read_bytes()
 
 
+def iso_utc(moment: datetime | None) -> str | None:
+    """ISO timestamp that always says UTC (SQLite hands datetimes back without a timezone)."""
+    if moment is None:
+        return None
+    if moment.tzinfo is None:
+        moment = moment.replace(tzinfo=timezone.utc)
+    return moment.isoformat()
+
+
 def _extracted_value(run: Run, field: str) -> object:
     data = run.extracted_json or {}
     return (data.get(field) or {}).get("value")
@@ -55,7 +65,7 @@ def run_summary(run: Run) -> dict:
     """The row shown in tables and lists."""
     return {
         "id": run.id,
-        "created_at": run.created_at.isoformat() if run.created_at else None,
+        "created_at": iso_utc(run.created_at),
         "file_name": run.file_name,
         "model": run.model,
         "model_name": run.model_name,

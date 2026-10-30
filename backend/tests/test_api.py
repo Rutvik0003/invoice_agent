@@ -218,3 +218,16 @@ def test_config_and_ledger_snapshot(client):
     # reopening a finished run's stream after its last event sends nothing more and ends (no hanging connection)
     with client.stream("GET", f"/api/runs/{run['id']}/events", headers={"Last-Event-ID": "999999"}) as stream:
         assert "".join(stream.iter_text()).count("data:") == 0
+
+
+def test_reports_and_critical_verification_share(client):
+    start(client, "01_happy_clean")
+    stats = client.get("/api/stats").json()
+    assert stats["critical_fields_verified_pct"] == 100.0
+    reports = client.get("/api/eval/reports").json()
+    assert "rules" in reports and reports["rules"]["markdown"].startswith("# Rules evaluation")
+    holds = client.get("/api/holds").json()
+    assert holds["items"] == []
+    held = start(client, "06_D_bank_change")
+    item = client.get("/api/holds").json()["items"][0]
+    assert item["id"] == held["id"] and item["verification_fields"]["bank_account"]["bbox"]

@@ -16,6 +16,13 @@ export type AppConfig = {
   tolerance_pct: number
   tolerance_abs_inr: number
   verify_enabled: boolean
+  ocr_dpi: number
+  ocr_min_word_conf: number
+  verify_fuzzy_min: number
+  po_infer_min_score: number
+  po_infer_min_gap: number
+  po_infer_floor: number
+  possible_dup_days: number
   ocr: { available: boolean; version: string | null }
   max_upload_mb: number
 }
@@ -98,6 +105,8 @@ export type RunError = { type: string; message: string; detail?: string | null }
 export type RunEvent = { id: number; stage: string; type: string; payload: Record<string, any>; created_at: string | null }
 
 export type RunDetail = {
+  hold_actions?: { actor_role: string; action: string; comment: string; payload: Record<string, any> | null; created_at: string }[]
+  error_detail?: Record<string, unknown> | null
   id: string
   created_at: string
   file_name: string

@@ -16,7 +16,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 from sse_starlette.sse import EventSourceResponse
 
-from app.api.common import engine_of, get_run_or_404, run_summary, sample_file, sample_labels
+from app.api.common import engine_of, get_run_or_404, iso_utc, run_summary, sample_file, sample_labels
 from app.config import get_settings
 from app.extraction.pdf_utils import PDF
 from app.models import HoldAction, Run, RunEvent
@@ -117,7 +117,7 @@ def get_run(run_id: str, request: Request) -> dict:
             "error_detail": run.error_json,
             "events": [_event_dict(e) for e in events],
             "hold_actions": [{"actor_role": a.actor_role, "action": a.action, "comment": a.comment, "payload": a.payload,
-                              "created_at": a.created_at.isoformat()} for a in actions],
+                              "created_at": iso_utc(a.created_at)} for a in actions],
             "retries": list(retries),
             "sample": _sample_hint(run.sample_id),
         }
@@ -133,7 +133,7 @@ def _sample_hint(sample_id: str | None) -> dict | None:
 
 def _event_dict(event: RunEvent) -> dict:
     return {"id": event.id, "stage": event.stage, "type": event.event_type, "payload": event.payload,
-            "created_at": event.created_at.isoformat() if event.created_at else None}
+            "created_at": iso_utc(event.created_at)}
 
 
 def _events_after(engine, run_id: str, last_id: int) -> tuple[list[dict], bool]:

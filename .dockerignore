@@ -9,7 +9,7 @@
 frontend/dist
 **/*.db
 **/local.db
-data/eval_reports
+data/eval_reports/verify
 backend/tests
 Dockerfile
 .dockerignore
