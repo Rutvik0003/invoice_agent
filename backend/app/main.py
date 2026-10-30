@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 from app import __version__
 from app.config import REPO_ROOT, get_settings
+from app.verification.ocr import OcrStatus, tesseract_status
 
 FRONTEND_DIST = REPO_ROOT / "frontend" / "dist"
 
@@ -22,6 +23,7 @@ class HealthResponse(BaseModel):
     status: str
     version: str
     models_configured: ModelsConfigured
+    ocr: OcrStatus
 
 
 def create_app(frontend_dist: Path = FRONTEND_DIST) -> FastAPI:
@@ -30,7 +32,7 @@ def create_app(frontend_dist: Path = FRONTEND_DIST) -> FastAPI:
 
     @app.get("/api/health", response_model=HealthResponse)
     def health() -> HealthResponse:
-        """Liveness check; reports whether each model's API key is set (never the key itself)."""
+        """Liveness check; reports configured models (never the keys) and whether OCR is available."""
         settings = get_settings()
         return HealthResponse(
             status="ok",
@@ -39,6 +41,7 @@ def create_app(frontend_dist: Path = FRONTEND_DIST) -> FastAPI:
                 gemini=settings.gemini_configured,
                 groq=settings.groq_configured,
             ),
+            ocr=tesseract_status(settings),
         )
 
     if (frontend_dist / "index.html").is_file():

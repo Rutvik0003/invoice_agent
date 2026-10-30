@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+.venv
+**/__pycache__
+**/*.pyc
+.pytest_cache
+**/node_modules
+frontend/dist
+*.db
+local.db
+data/eval_reports
+backend/tests
+Dockerfile
+.dockerignore

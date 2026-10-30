@@ -1,4 +1,4 @@
-"""Cross-platform task runner (Windows has no `make`). Usage: python tasks.py dev|test|build|install."""
+"""Cross-platform task runner (Windows has no `make`). Usage: python tasks.py <task>."""
 
 import subprocess
 import sys
@@ -43,7 +43,31 @@ def build() -> None:
     subprocess.run([NPM, "run", "build"], cwd=FRONTEND, check=True)
 
 
-TASKS = {"install": install, "dev": dev, "test": test, "build": build}
+IMAGE = "invoice-agent"
+
+
+def docker_build() -> None:
+    """Build the production Docker image (frontend + backend + Tesseract)."""
+    subprocess.run(["docker", "build", "-t", IMAGE, "."], cwd=ROOT, check=True)
+
+
+def docker_run() -> None:
+    """Run the image on http://localhost:8000 with settings from .env (TESSERACT_CMD cleared: the image has its own)."""
+    subprocess.run(
+        ["docker", "run", "--rm", "-p", "8000:8000", "--env-file", ".env", "-e", "TESSERACT_CMD=", IMAGE],
+        cwd=ROOT,
+        check=True,
+    )
+
+
+TASKS = {
+    "install": install,
+    "dev": dev,
+    "test": test,
+    "build": build,
+    "docker-build": docker_build,
+    "docker-run": docker_run,
+}
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or sys.argv[1] not in TASKS:

@@ -1,17 +1,13 @@
-# Render Blueprint: one web service serving the FastAPI API and the built React frontend.
+# Render Blueprint: one Docker web service serving the FastAPI API, the built React frontend and Tesseract OCR.
 services:
   - type: web
     name: invoice-agent
-    runtime: python
+    runtime: docker
     plan: free
-    buildCommand: pip install -r backend/requirements.txt && cd frontend && npm ci && npm run build
-    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /api/health
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.12.4
-      - key: NODE_VERSION
-        value: 22.16.0
       - key: APP_ENV
         value: production
       # Secrets and environment-specific values: set these in the Render dashboard
@@ -41,4 +37,13 @@ services:
       - key: PO_INFER_FLOOR
         sync: false
       - key: POSSIBLE_DUP_DAYS
+        sync: false
+      # Stage 3 verification (Tesseract is on PATH in the image, so TESSERACT_CMD is not needed)
+      - key: VERIFY_ENABLED
+        sync: false
+      - key: OCR_DPI
+        sync: false
+      - key: OCR_MIN_WORD_CONF
+        sync: false
+      - key: VERIFY_FUZZY_MIN
         sync: false

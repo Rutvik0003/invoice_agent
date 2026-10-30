@@ -4,6 +4,7 @@ export type Health = {
   status: string
   version: string
   models_configured: { gemini: boolean; groq: boolean }
+  ocr: { available: boolean; version: string | null }
 }
 
 export async function fetchHealth(): Promise<Health> {

@@ -36,6 +36,13 @@ class Settings(BaseSettings):
     po_infer_floor: float = 0.50
     possible_dup_days: int = 3
 
+    # Stage 3: verify on page (text layer / OCR)
+    verify_enabled: bool = True
+    ocr_dpi: int = 300
+    ocr_min_word_conf: int = 40
+    verify_fuzzy_min: int = 90
+    tesseract_cmd: str = ""
+
     @property
     def gemini_configured(self) -> bool:
         """True when a Gemini API key is set."""
