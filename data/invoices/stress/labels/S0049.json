@@ -1,0 +1,317 @@
+{
+  "invoice_id": "S0049",
+  "file_name": "S0049.pdf",
+  "set_name": "stress",
+  "scenario": "HEAVY_SCAN_LOW_CONFIDENCE",
+  "template": "landscape",
+  "is_scanned": true,
+  "scan_level": "heavy",
+  "file_format": "pdf",
+  "degradations": [
+    "heavy_scan",
+    "dpi_100",
+    "obscured_vendor_gstin_smudge",
+    "coffee_stain",
+    "rubber_stamp",
+    "rotation_-2.4deg",
+    "blur_1.0",
+    "noise_14",
+    "jpeg_q46"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Orbit Electric Works Pvt. Ltd.",
+      "printed": "Orbit Electric Works Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "33BUZCO2645S1Z8",
+      "printed": "33BUZCO2645S1Z8"
+    },
+    "vendor_address": {
+      "value": "04/560, Bajaj Nagar, Chennai - 600010, Tamil Nadu",
+      "printed": "04/560, Bajaj Nagar, Chennai - 600010, Tamil Nadu"
+    },
+    "vendor_state": {
+      "value": "Tamil Nadu",
+      "printed": "Tamil Nadu"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "OEW0429",
+      "printed": "OEW0429"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "13-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1288",
+      "printed": "PO-2026-1288"
+    },
+    "line_items": [
+      {
+        "description": "LED Tube Light 20W",
+        "hsn_sac": "9405",
+        "quantity": 16,
+        "unit": "Nos",
+        "unit_price": 225.0,
+        "amount": 3600.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 3600.0,
+      "printed": "Rs. 3,600/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 648.0,
+      "printed": "Rs. 648/-"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 4248.0,
+      "printed": "Rs. 4,248/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "738834837327",
+      "printed": "738834837327"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0860588",
+      "printed": "KKBK0860588"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.03382,
+        0.29793,
+        0.06676
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.14378,
+        0.10099,
+        0.2192,
+        0.11894
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.45475,
+        0.1179,
+        0.53069,
+        0.13588
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.92486,
+        0.1181,
+        0.96909,
+        0.13585
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.92438,
+        0.13993,
+        0.96843,
+        0.15767
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.9155,
+        0.32818,
+        0.96275,
+        0.34611
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.92291,
+        0.35057,
+        0.96209,
+        0.36801
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.90766,
+        0.37622,
+        0.96129,
+        0.39621
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.08268,
+        0.333,
+        0.14083,
+        0.34991
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.07186,
+        0.3505,
+        0.1259,
+        0.36717
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.60567,
+        0.32903,
+        0.65808,
+        0.34475
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "vendor_gstin"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1288",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": true,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Orbit Electric Works Pvt. Ltd.",
+    "template": "landscape"
+  },
+  "notes": "Underlying invoice is correct, but vendor_gstin is obscured on the heavy scan."
+}

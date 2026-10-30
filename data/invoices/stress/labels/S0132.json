@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0132",
+  "file_name": "S0132.pdf",
+  "set_name": "stress",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Mitter Engineering Services",
+      "printed": "Mitter Engineering Services"
+    },
+    "vendor_gstin": {
+      "value": "36OFEFM8914Z1ZF",
+      "printed": "36OFEFM8914Z1ZF"
+    },
+    "vendor_address": {
+      "value": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana",
+      "printed": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/215",
+      "printed": "2026-27/215"
+    },
+    "invoice_date": {
+      "value": "2026-10-17",
+      "printed": "17/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1307",
+      "printed": "PO-2026-1307"
+    },
+    "line_items": [
+      {
+        "description": "Split Air Conditioner 1.5 Ton Inverter",
+        "hsn_sac": "8415",
+        "quantity": 5,
+        "unit": "Nos",
+        "unit_price": 52395.0,
+        "amount": 261975.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "AC Servicing and Gas Refill",
+        "hsn_sac": "998719",
+        "quantity": 5,
+        "unit": "Nos",
+        "unit_price": 2200.0,
+        "amount": 11000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "LED Tube Light 20W",
+        "hsn_sac": "9405",
+        "quantity": 80,
+        "unit": "Nos",
+        "unit_price": 265.0,
+        "amount": 21200.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 294175.0,
+      "printed": "₹2,94,175.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 52951.5,
+      "printed": "₹52,951.50"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 347126.5,
+      "printed": "₹3,47,126.50"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "850705382000915262",
+      "printed": "850705382000915262"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0882070",
+      "printed": "ICIC0882070"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.29181,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.2376,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.14267,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28696,
+        0.21639,
+        0.35422,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50672,
+        0.21639,
+        0.59488,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85615,
+        0.32687,
+        0.93952,
+        0.33634
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86806,
+        0.34252,
+        0.93952,
+        0.35199
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84634,
+        0.36125,
+        0.93952,
+        0.37184
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.23673,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.17574,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1307",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mitter Engineering Services",
+    "template": "compact"
+  },
+  "notes": "'Split Air Conditioner 1.5 Ton Inverter' billed at ₹52395.00 vs PO ₹49900.00 (+5%)."
+}

@@ -1,0 +1,343 @@
+{
+  "invoice_id": "S0172",
+  "file_name": "S0172.pdf",
+  "set_name": "stress",
+  "scenario": "HEAVY_SCAN_LOW_CONFIDENCE",
+  "template": "landscape",
+  "is_scanned": true,
+  "scan_level": "heavy",
+  "file_format": "pdf",
+  "degradations": [
+    "heavy_scan",
+    "dpi_100",
+    "obscured_invoice_date_ink_blot",
+    "coffee_stain",
+    "rotation_+2.4deg",
+    "blur_1.4",
+    "noise_20",
+    "jpeg_q37"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Akshar Furniture Pvt. Ltd.",
+      "printed": "Akshar Furniture Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "36FWLCA1691Q1ZM",
+      "printed": "36FWLCA1691Q1ZM"
+    },
+    "vendor_address": {
+      "value": "500, Manne Marg, Secunderabad - 500021, Telangana",
+      "printed": "500, Manne Marg, Secunderabad - 500021, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/AF/1574",
+      "printed": "2026/AF/1574"
+    },
+    "invoice_date": {
+      "value": "2026-10-23",
+      "printed": "23-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1277",
+      "printed": "PO-2026-1277"
+    },
+    "line_items": [
+      {
+        "description": "Steel Filing Cabinet - 4 Drawer",
+        "hsn_sac": "9403",
+        "quantity": 6,
+        "unit": "Nos",
+        "unit_price": 16600.0,
+        "amount": 99600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Conference Table 8-Seater",
+        "hsn_sac": "9403",
+        "quantity": 1,
+        "unit": "Nos",
+        "unit_price": 49250.0,
+        "amount": 49250.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Workstation 4-Seater Cluster",
+        "hsn_sac": "9403",
+        "quantity": 7,
+        "unit": "Set",
+        "unit_price": 71150.0,
+        "amount": 498050.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Bamboo Display Stand",
+        "hsn_sac": "9403",
+        "quantity": 20,
+        "unit": "Nos",
+        "unit_price": 4100.0,
+        "amount": 82000.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 728900.0,
+      "printed": "₹7,28,900.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 120542.0,
+      "printed": "₹1,20,542.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 849442.0,
+      "printed": "₹8,49,442.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Eight Lakh Forty Nine Thousand Four Hundred Forty Two Only",
+      "printed": "Rupees Eight Lakh Forty Nine Thousand Four Hundred Forty Two Only"
+    },
+    "bank_account": {
+      "value": "3708415157748",
+      "printed": "3708415157748"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0202471",
+      "printed": "UTIB0202471"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.08718,
+        0.07175,
+        0.25161,
+        0.10317
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12177,
+        0.13991,
+        0.20295,
+        0.15807
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.43265,
+        0.12015,
+        0.50858,
+        0.138
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.88107,
+        0.06639,
+        0.94538,
+        0.08524
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.89573,
+        0.08821,
+        0.94602,
+        0.10624
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.88346,
+        0.11003,
+        0.94666,
+        0.12881
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.89704,
+        0.36868,
+        0.95423,
+        0.38711
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.89768,
+        0.39059,
+        0.95487,
+        0.40901
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89242,
+        0.43901,
+        0.95634,
+        0.45951
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07836,
+        0.50635,
+        0.14132,
+        0.52345
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06862,
+        0.5257,
+        0.12097,
+        0.54217
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "invoice_date"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1277",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Akshar Furniture Pvt. Ltd.",
+    "template": "landscape"
+  },
+  "notes": "Underlying invoice is correct, but invoice_date is obscured on the heavy scan."
+}

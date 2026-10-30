@@ -1,0 +1,323 @@
+{
+  "invoice_id": "S0234",
+  "file_name": "S0234.pdf",
+  "set_name": "stress",
+  "scenario": "MULTI_ISSUE",
+  "template": "modern",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Nirmaan Office Mart",
+      "printed": "Nirmaan Office Mart"
+    },
+    "vendor_gstin": {
+      "value": "09DJPCN6919I1Z5",
+      "printed": "09DJPCN6919I1Z5"
+    },
+    "vendor_address": {
+      "value": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh",
+      "printed": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/NOM/1518",
+      "printed": "2026/NOM/1518"
+    },
+    "invoice_date": {
+      "value": "2026-10-16",
+      "printed": "16-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1377",
+      "printed": "PO-2026-1377"
+    },
+    "line_items": [
+      {
+        "description": "Stapler - Heavy Duty",
+        "hsn_sac": "8472",
+        "quantity": 35,
+        "unit": "Nos",
+        "unit_price": 620.0,
+        "amount": 21700.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Stapler Pins No. 10 (Pack of 20)",
+        "hsn_sac": "8305",
+        "quantity": 5,
+        "unit": "Pack",
+        "unit_price": 76.5,
+        "amount": 382.5,
+        "tax_rate": 28.0
+      }
+    ],
+    "subtotal": {
+      "value": 22082.5,
+      "printed": "₹22,082.50"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 4013.1,
+      "printed": "₹4,013.10"
+    },
+    "round_off": {
+      "value": 0.4,
+      "printed": "0.40"
+    },
+    "total_amount": {
+      "value": 26096.0,
+      "printed": "₹26,096.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Twenty Six Thousand Ninety Six Only",
+      "printed": "Rupees Twenty Six Thousand Ninety Six Only"
+    },
+    "bank_account": {
+      "value": "911202032254021828",
+      "printed": "911202032254021828"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0854127",
+      "printed": "IDFB0854127"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.65596,
+        0.05139,
+        0.85217,
+        0.06477
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.73476,
+        0.09523,
+        0.85217,
+        0.10415
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.13864,
+        0.20148,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.2836,
+        0.13864,
+        0.36317,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.5,
+        0.13864,
+        0.61394,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11655,
+        0.22114,
+        0.24155,
+        0.23006
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.38969,
+        0.27457,
+        0.41644
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86777,
+        0.36703,
+        0.93952,
+        0.37706
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87592,
+        0.3836,
+        0.93952,
+        0.39363
+      ],
+      "approximate": false
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.85312,
+        0.42003,
+        0.93952,
+        0.43118
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12124,
+        0.84104,
+        0.26038,
+        0.84996
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10512,
+        0.85387,
+        0.18309,
+        0.86279
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "GST_RATE_UNUSUAL",
+    "ITEM_NOT_ON_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1377",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "unusual_rate": "'Stapler Pins No. 10 (Pack of 20)' charged GST 28% (PO 18%) on 2026-10-16.",
+    "vendor_name_printed": "Nirmaan Office Mart",
+    "template": "modern"
+  },
+  "notes": "Problems: gst_rate, item_not_on_po."
+}

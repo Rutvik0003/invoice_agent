@@ -1,0 +1,329 @@
+{
+  "invoice_id": "S0027",
+  "file_name": "S0027.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Borah Polymers Private Limited",
+      "printed": "Borah Polymers Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "07YNRCB1665I1ZX",
+      "printed": "07YNRCB1665I1ZX"
+    },
+    "vendor_address": {
+      "value": "479, Dayal Ganj, New Delhi - 110082, Delhi",
+      "printed": "479, Dayal Ganj, New Delhi - 110082, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "BP/348/26",
+      "printed": "BP/348/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-28",
+      "printed": "28-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1192",
+      "printed": "PO-2026-1192"
+    },
+    "line_items": [
+      {
+        "description": "Polyester Yarn 150 Denier",
+        "hsn_sac": "5402",
+        "quantity": 9,
+        "unit": "Kg",
+        "unit_price": 165.0,
+        "amount": 1485.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "PET Preforms 28mm",
+        "hsn_sac": "3923",
+        "quantity": 73,
+        "unit": "Nos",
+        "unit_price": 4.15,
+        "amount": 302.95,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Synthetic Enamel Paint",
+        "hsn_sac": "3208",
+        "quantity": 94,
+        "unit": "Ltr",
+        "unit_price": 276.1,
+        "amount": 25953.4,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Mild Steel Sheet 1.2mm",
+        "hsn_sac": "7209",
+        "quantity": 78,
+        "unit": "Kg",
+        "unit_price": 67.5,
+        "amount": 5265.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 33006.35,
+      "printed": "₹33,006.35"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 5748.09,
+      "printed": "₹5,748.09"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 38754.44,
+      "printed": "₹38,754.44"
+    },
+    "amount_in_words": {
+      "value": "Rupees Thirty Eight Thousand Seven Hundred Fifty Four and Forty Four Paise Only",
+      "printed": "Rupees Thirty Eight Thousand Seven Hundred Fifty Four and Forty Four Paise Only"
+    },
+    "bank_account": {
+      "value": "68531535016",
+      "printed": "68531535016"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0436098",
+      "printed": "IDFB0436098"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.32449,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.23482,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.1307,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28696,
+        0.21639,
+        0.34821,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50672,
+        0.21639,
+        0.59488,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86806,
+        0.34602,
+        0.93952,
+        0.3555
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.876,
+        0.36167,
+        0.93952,
+        0.37115
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85965,
+        0.3804,
+        0.93952,
+        0.39099
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.18768,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.17924,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1192",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Borah Polymers Private Limited",
+    "template": "compact"
+  },
+  "notes": "'Synthetic Enamel Paint' billed at ₹276.10 vs PO ₹275.00 (₹103.40 on the line), inside tolerance."
+}

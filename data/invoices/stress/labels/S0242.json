@@ -1,0 +1,312 @@
+{
+  "invoice_id": "S0242",
+  "file_name": "S0242.pdf",
+  "set_name": "stress",
+  "scenario": "PO_OVERRUN",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Varghese Property Servs. Pvt. Ltd.",
+      "printed": "Varghese Property Servs. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "06VYDCV0800N1ZH",
+      "printed": "06VYDCV0800N1ZH"
+    },
+    "vendor_address": {
+      "value": "H.No. 00, Gaba Nagar, Gurugram - 122071, Haryana",
+      "printed": "H.No. 00, Gaba Nagar, Gurugram - 122071, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VPS/26-27/1337",
+      "printed": "VPS/26-27/1337"
+    },
+    "invoice_date": {
+      "value": "2026-10-23",
+      "printed": "October 23, 2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1247",
+      "printed": "PO/2026/1247"
+    },
+    "line_items": [
+      {
+        "description": "Waste Disposal Services",
+        "hsn_sac": "999423",
+        "quantity": 6,
+        "unit": "Month",
+        "unit_price": 9200.0,
+        "amount": 55200.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Housekeeping Services - Monthly",
+        "hsn_sac": "998533",
+        "quantity": 7,
+        "unit": "Month",
+        "unit_price": 114350.0,
+        "amount": 800450.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 855650.0,
+      "printed": "₹8,55,650.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 154017.0,
+      "printed": "₹1,54,017.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 1009667.0,
+      "printed": "₹10,09,667.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Ten Lakh Nine Thousand Six Hundred Sixty Seven Only",
+      "printed": "Rupees Ten Lakh Nine Thousand Six Hundred Sixty Seven Only"
+    },
+    "bank_account": {
+      "value": "3261212429713675",
+      "printed": "3261212429713675"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0093132",
+      "printed": "SBIN0093132"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.47688,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.32859,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.8448,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.85152,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.8329,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86015,
+        0.35754,
+        0.93952,
+        0.36726
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86015,
+        0.37411,
+        0.93952,
+        0.38383
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84293,
+        0.41078,
+        0.93952,
+        0.42138
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.43691,
+        0.22032,
+        0.4454
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.44959,
+        0.17966,
+        0.45823
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_OVERRUN",
+    "QTY_EXCEEDS_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1247",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Inv Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Varghese Property Servs. Pvt. Ltd.",
+    "template": "classic"
+  },
+  "notes": "Earlier bills VPS/26-27/1335 and VPS/26-27/1336 took 88% of PO-2026-1247; this invoice bills ~25% more, so the PO is exceeded."
+}

@@ -1,0 +1,330 @@
+{
+  "invoice_id": "S0040",
+  "file_name": "S0040.pdf",
+  "set_name": "stress",
+  "scenario": "GST_RATE_UNUSUAL",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Rao Traders",
+      "printed": "Rao Traders"
+    },
+    "vendor_gstin": {
+      "value": "23TZHPR6790M1Z3",
+      "printed": "23TZHPR6790M1Z3"
+    },
+    "vendor_address": {
+      "value": "H.No. 333, Prasad Circle, Indore - 452089, Madhya Pradesh",
+      "printed": "H.No. 333, Prasad Circle, Indore - 452089, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "RT0293",
+      "printed": "RT0293"
+    },
+    "invoice_date": {
+      "value": "2026-10-20",
+      "printed": "20-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1368",
+      "printed": "PO-2026-1368"
+    },
+    "line_items": [
+      {
+        "description": "Printed Brochure A4 Tri-fold",
+        "hsn_sac": "4911",
+        "quantity": 1445,
+        "unit": "Nos",
+        "unit_price": 13.5,
+        "amount": 19507.5,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Outdoor Hoarding Display",
+        "hsn_sac": "998366",
+        "quantity": 3,
+        "unit": "Month",
+        "unit_price": 160950.0,
+        "amount": 482850.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Roll-up Standee with Print",
+        "hsn_sac": "4911",
+        "quantity": 16,
+        "unit": "Nos",
+        "unit_price": 2400.0,
+        "amount": 38400.0,
+        "tax_rate": 28.0
+      },
+      {
+        "description": "Window Vinyl Graphics",
+        "hsn_sac": "3919",
+        "quantity": 1228,
+        "unit": "Sq Ft",
+        "unit_price": 130.0,
+        "amount": 159640.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 700397.5,
+      "printed": "₹7,00,397.50"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 129911.55,
+      "printed": "₹1,29,911.55"
+    },
+    "round_off": {
+      "value": -0.05,
+      "printed": "-0.05"
+    },
+    "total_amount": {
+      "value": 830309.0,
+      "printed": "₹8,30,309.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Eight Lakh Thirty Thousand Three Hundred Nine Only",
+      "printed": "Rupees Eight Lakh Thirty Thousand Three Hundred Nine Only"
+    },
+    "bank_account": {
+      "value": "703581970218940",
+      "printed": "703581970218940"
+    },
+    "bank_ifsc": {
+      "value": "YESB0812544",
+      "printed": "YESB0812544"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.14198,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.20968,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.21033,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.54986,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.78894,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.58769,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87926,
+        0.36953,
+        0.94792,
+        0.37733
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87926,
+        0.38497,
+        0.94792,
+        0.39277
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.86945,
+        0.41618,
+        0.94792,
+        0.4251
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.56745,
+        0.65161,
+        0.57525
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.57867,
+        0.62216,
+        0.58648
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "GST_RATE_UNUSUAL"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1368",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "unusual_rate": "'Roll-up Standee with Print' charged GST 28% (PO 18%) on 2026-10-20.",
+    "vendor_name_printed": "Rao Traders",
+    "template": "tally"
+  },
+  "notes": "'Roll-up Standee with Print' charged GST 28% (PO 18%) on 2026-10-20."
+}

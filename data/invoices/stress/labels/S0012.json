@@ -1,0 +1,327 @@
+{
+  "invoice_id": "S0012",
+  "file_name": "S0012.pdf",
+  "set_name": "stress",
+  "scenario": "VENDOR_UNKNOWN",
+  "template": "classic",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_185",
+    "rotation_-0.5deg",
+    "blur_0.5",
+    "noise_7",
+    "jpeg_q65"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Suvidha Supplies",
+      "printed": "Suvidha Supplies"
+    },
+    "vendor_gstin": {
+      "value": "27YHHFS4988Y1ZJ",
+      "printed": "27YHHFS4988Y1ZJ"
+    },
+    "vendor_address": {
+      "value": "82, Industrial Estate, Nagpur - 440027, Maharashtra",
+      "printed": "82, Industrial Estate, Nagpur - 440027, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "SU/289",
+      "printed": "SU/289"
+    },
+    "invoice_date": {
+      "value": "2026-10-23",
+      "printed": "23 Oct 2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Electrical Maintenance Visit",
+        "hsn_sac": "998719",
+        "quantity": 7,
+        "unit": "Visit",
+        "unit_price": 2950.0,
+        "amount": 20650.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Modular Switch 16A",
+        "hsn_sac": "8536",
+        "quantity": 310,
+        "unit": "Nos",
+        "unit_price": 115.0,
+        "amount": 35650.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "LED Panel Light 2x2 ft 36W",
+        "hsn_sac": "9405",
+        "quantity": 90,
+        "unit": "Nos",
+        "unit_price": 1000.0,
+        "amount": 90000.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 146300.0,
+      "printed": "Rs. 1,46,300/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 13167.0,
+      "printed": "Rs. 13,167/-"
+    },
+    "sgst": {
+      "value": 13167.0,
+      "printed": "Rs. 13,167/-"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 172634.0,
+      "printed": "Rs. 1,72,634/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "1805163364054876",
+      "printed": "1805163364054876"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0339196",
+      "printed": "ICIC0339196"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15666,
+        0.0775,
+        0.3177,
+        0.09237
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.20883,
+        0.12356,
+        0.32766,
+        0.13285
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.75353,
+        0.08155,
+        0.79728,
+        0.09087
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.75328,
+        0.10056,
+        0.82556,
+        0.11006
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11674,
+        0.22604,
+        0.23781,
+        0.23535
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85551,
+        0.36708,
+        0.94132,
+        0.37738
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.86663,
+        0.38373,
+        0.9411,
+        0.39395
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.86641,
+        0.4003,
+        0.94087,
+        0.41052
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84412,
+        0.43681,
+        0.94038,
+        0.44806
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11346,
+        0.44147,
+        0.22108,
+        0.45068
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10249,
+        0.45407,
+        0.17652,
+        0.46321
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_UNKNOWN"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": null,
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Suvidha Supplies",
+    "template": "classic"
+  },
+  "notes": "'Suvidha Supplies' (GSTIN 27YHHFS4988Y1ZJ) is not in the vendor master; no PO quoted."
+}

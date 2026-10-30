@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0015",
+  "file_name": "S0015.jpg",
+  "set_name": "stress",
+  "scenario": "PO_OVERRUN",
+  "template": "tally",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "jpg",
+  "degradations": [
+    "mild_scan",
+    "dpi_172",
+    "coffee_stain",
+    "rotation_-0.3deg",
+    "blur_0.5",
+    "noise_4",
+    "jpeg_q63"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Mitter Engineering Services LLP",
+      "printed": "Mitter Engineering Services LLP"
+    },
+    "vendor_gstin": {
+      "value": "36OFEFM8914Z1ZF",
+      "printed": "36OFEFM8914Z1ZF"
+    },
+    "vendor_address": {
+      "value": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana",
+      "printed": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/214",
+      "printed": "2026-27/214"
+    },
+    "invoice_date": {
+      "value": "2026-10-28",
+      "printed": "28-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1245",
+      "printed": "PO-2026-1245"
+    },
+    "line_items": [
+      {
+        "description": "DG Set Maintenance AMC",
+        "hsn_sac": "998719",
+        "quantity": 6,
+        "unit": "Year",
+        "unit_price": 84250.0,
+        "amount": 505500.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 505500.0,
+      "printed": "INR 505500.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 90990.0,
+      "printed": "INR 90990.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 596490.0,
+      "printed": "INR 596490.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Five Lakh Ninety Six Thousand Four Hundred Ninety Only",
+      "printed": "Rupees Five Lakh Ninety Six Thousand Four Hundred Ninety Only"
+    },
+    "bank_account": {
+      "value": "850705382000915262",
+      "printed": "850705382000915262"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0882070",
+      "printed": "ICIC0882070"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05744,
+        0.05448,
+        0.2894,
+        0.06549
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10459,
+        0.08979,
+        0.21313,
+        0.09805
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.1036,
+        0.20696,
+        0.2128,
+        0.21523
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50861,
+        0.06956,
+        0.57944,
+        0.07822
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73509,
+        0.07052,
+        0.79961,
+        0.07915
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50747,
+        0.20497,
+        0.59019,
+        0.21368
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87031,
+        0.31747,
+        0.94947,
+        0.3256
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87672,
+        0.33293,
+        0.94934,
+        0.34105
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.8586,
+        0.36407,
+        0.94908,
+        0.37337
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55363,
+        0.47841,
+        0.67141,
+        0.48672
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.54502,
+        0.4896,
+        0.61439,
+        0.49769
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_OVERRUN",
+    "QTY_EXCEEDS_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1245",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mitter Engineering Services LLP",
+    "template": "tally"
+  },
+  "notes": "Earlier bills 2026-27/212 and 2026-27/213 took 88% of PO-2026-1245; this invoice bills ~25% more, so the PO is exceeded."
+}

@@ -1,0 +1,302 @@
+{
+  "invoice_id": "S0084",
+  "file_name": "S0084.pdf",
+  "set_name": "stress",
+  "scenario": "VENDOR_BLOCKED",
+  "template": "small_vendor",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Tejas Logistics Pvt. Ltd.",
+      "printed": "Tejas Logistics Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "07NKHCT2610S1ZZ",
+      "printed": "07NKHCT2610S1ZZ"
+    },
+    "vendor_address": {
+      "value": "694, Murthy Ganj, New Delhi - 110019, Delhi",
+      "printed": "694, Murthy Ganj, New Delhi - 110019, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "TL0113",
+      "printed": "TL0113"
+    },
+    "invoice_date": {
+      "value": "2026-10-20",
+      "printed": "20/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1356",
+      "printed": "PO-2026-1356"
+    },
+    "line_items": [
+      {
+        "description": "Cold Chain Transport",
+        "hsn_sac": "996511",
+        "quantity": 4,
+        "unit": "Trip",
+        "unit_price": 34500.0,
+        "amount": 138000.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 138000.0,
+      "printed": "₹1,38,000.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 24840.0,
+      "printed": "₹24,840.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 162840.0,
+      "printed": "₹1,62,840.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Sixty Two Thousand Eight Hundred Forty Only",
+      "printed": "Rupees One Lakh Sixty Two Thousand Eight Hundred Forty Only"
+    },
+    "bank_account": {
+      "value": "593119816285712683",
+      "printed": "593119816285712683"
+    },
+    "bank_ifsc": {
+      "value": "YESB0949650",
+      "printed": "YESB0949650"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.33655,
+        0.06132,
+        0.66345,
+        0.08027
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.46507,
+        0.10117,
+        0.58981,
+        0.11009
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.71033,
+        0.16592,
+        0.77351,
+        0.17721
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.71407,
+        0.18967,
+        0.81578,
+        0.20096
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.16352,
+        0.23283,
+        0.32451,
+        0.24361
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.81372,
+        0.31947,
+        0.92272,
+        0.33076
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.82096,
+        0.33848,
+        0.92272,
+        0.34977
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.79073,
+        0.37491,
+        0.92272,
+        0.38825
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12739,
+        0.84164,
+        0.27132,
+        0.84985
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11767,
+        0.85447,
+        0.2054,
+        0.86268
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.28151,
+        0.89631,
+        0.35866,
+        0.90411
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_BLOCKED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1356",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": true,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Tejas Logistics Pvt. Ltd.",
+    "template": "small_vendor"
+  },
+  "notes": "Vendor V011 has status 'blocked' in the vendor master."
+}

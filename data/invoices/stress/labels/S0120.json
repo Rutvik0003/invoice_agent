@@ -1,0 +1,366 @@
+{
+  "invoice_id": "S0120",
+  "file_name": "S0120.pdf",
+  "set_name": "stress",
+  "scenario": "DUPLICATE_DISGUISED_NUMBER",
+  "template": "multipage",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Nexa Industries Pvt Ltd",
+      "printed": "Nexa Industries Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "27CNUCN5911H2Z7",
+      "printed": "27CNUCN5911H2Z7"
+    },
+    "vendor_address": {
+      "value": "17, Mani Zila, Bhiwandi - 421022, Maharashtra",
+      "printed": "17, Mani Zila, Bhiwandi - 421022, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "NI / 886 / 26",
+      "printed": "NI / 886 / 26"
+    },
+    "invoice_date": {
+      "value": "2026-09-08",
+      "printed": "08-Sep-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1071",
+      "printed": "PO-2026-1071"
+    },
+    "line_items": [
+      {
+        "description": "Industrial Adhesive",
+        "hsn_sac": "3506",
+        "quantity": 56,
+        "unit": "Kg",
+        "unit_price": 355.0,
+        "amount": 19880.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Synthetic Enamel Paint",
+        "hsn_sac": "3208",
+        "quantity": 150,
+        "unit": "Ltr",
+        "unit_price": 410.0,
+        "amount": 61500.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "HDPE Granules",
+        "hsn_sac": "3901",
+        "quantity": 1350,
+        "unit": "Kg",
+        "unit_price": 115.0,
+        "amount": 155250.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Cotton Fabric - Plain Weave 60 in",
+        "hsn_sac": "5208",
+        "quantity": 1440,
+        "unit": "Mtr",
+        "unit_price": 150.0,
+        "amount": 216000.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Aluminium Sheet 2mm",
+        "hsn_sac": "7606",
+        "quantity": 200,
+        "unit": "Kg",
+        "unit_price": 260.0,
+        "amount": 52000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Denim Fabric 12 oz",
+        "hsn_sac": "5209",
+        "quantity": 40,
+        "unit": "Mtr",
+        "unit_price": 310.0,
+        "amount": 12400.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "PET Preforms 28mm",
+        "hsn_sac": "3923",
+        "quantity": 64,
+        "unit": "Nos",
+        "unit_price": 2.4,
+        "amount": 153.6,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 517183.6,
+      "printed": "INR 517183.60"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 31700.52,
+      "printed": "INR 31700.52"
+    },
+    "sgst": {
+      "value": 31700.52,
+      "printed": "INR 31700.52"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.36,
+      "printed": "0.36"
+    },
+    "total_amount": {
+      "value": 580585.0,
+      "printed": "INR 580585.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Five Lakh Eighty Thousand Five Hundred Eighty Five Only",
+      "printed": "Rupees Five Lakh Eighty Thousand Five Hundred Eighty Five Only"
+    },
+    "bank_account": {
+      "value": "691684955076",
+      "printed": "691684955076"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0219371",
+      "printed": "HDFC0219371"
+    },
+    "page_count": {
+      "value": 3,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.12767,
+        0.04534,
+        0.39218,
+        0.06036
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.18242,
+        0.09152,
+        0.31861,
+        0.10077
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.69379,
+        0.10164,
+        0.78687,
+        0.11147
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.67272,
+        0.11708,
+        0.74823,
+        0.12691
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.68684,
+        0.13252,
+        0.78845,
+        0.14235
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11523,
+        0.24106,
+        0.25245,
+        0.25031
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 3,
+      "bbox": [
+        0.8344,
+        0.134,
+        0.93952,
+        0.14498
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 3,
+      "bbox": [
+        0.8411,
+        0.15149,
+        0.93952,
+        0.16247
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 3,
+      "bbox": [
+        0.8411,
+        0.16898,
+        0.93952,
+        0.17996
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 3,
+      "bbox": [
+        0.79986,
+        0.20743,
+        0.93952,
+        0.21957
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 3,
+      "bbox": [
+        0.1163,
+        0.30598,
+        0.21721,
+        0.31522
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 3,
+      "bbox": [
+        0.10354,
+        0.31881,
+        0.19032,
+        0.32805
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "DUPLICATE_INVOICE_NUMBER"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1071",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nexa Industries Pvt Ltd",
+    "template": "multipage"
+  },
+  "notes": "Duplicate of history H0243 (NI/886/26, 2026-09-08, ₹580585.00, paid); printed as NI / 886 / 26."
+}

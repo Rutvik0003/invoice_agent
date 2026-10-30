@@ -1,0 +1,321 @@
+{
+  "invoice_id": "07_E_wrong_gst",
+  "file_name": "07_E_wrong_gst.pdf",
+  "set_name": "golden",
+  "scenario": "GST_WRONG_TYPE",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Borah Polymers Pvt. Ltd.",
+      "printed": "Borah Polymers Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "07YNRCB1665I1ZX",
+      "printed": "07 YNRCB 1665 I1ZX"
+    },
+    "vendor_address": {
+      "value": "479, Dayal Ganj, New Delhi - 110082, Delhi",
+      "printed": "479, Dayal Ganj, New Delhi - 110082, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "BP/343/26",
+      "printed": "BP/343/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "13-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1118",
+      "printed": "PO-2026-1118"
+    },
+    "line_items": [
+      {
+        "description": "Mild Steel Sheet 1.2mm",
+        "hsn_sac": "7209",
+        "quantity": 266,
+        "unit": "Kg",
+        "unit_price": 74.0,
+        "amount": 19684.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "PET Preforms 28mm",
+        "hsn_sac": "3923",
+        "quantity": 148,
+        "unit": "Nos",
+        "unit_price": 2.45,
+        "amount": 362.6,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 20046.6,
+      "printed": "20,046.60"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 1804.19,
+      "printed": "1,804.19"
+    },
+    "sgst": {
+      "value": 1804.19,
+      "printed": "1,804.19"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.02,
+      "printed": "0.02"
+    },
+    "total_amount": {
+      "value": 23655.0,
+      "printed": "23,655"
+    },
+    "amount_in_words": {
+      "value": "Rupees Twenty Three Thousand Six Hundred Fifty Five Only",
+      "printed": "Rupees Twenty Three Thousand Six Hundred Fifty Five Only"
+    },
+    "bank_account": {
+      "value": "68531535016",
+      "printed": "68531535016"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0436098",
+      "printed": "IDFB0436098"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.38957,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.3327,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.80989,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.80828,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.22863,
+        0.24423,
+        0.23712
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87905,
+        0.34554,
+        0.93952,
+        0.35526
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.88661,
+        0.36211,
+        0.93952,
+        0.37183
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.88661,
+        0.37868,
+        0.93952,
+        0.3884
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89333,
+        0.41535,
+        0.93952,
+        0.42596
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.42492,
+        0.18672,
+        0.4334
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.43759,
+        0.17966,
+        0.44623
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.26034,
+        0.85663,
+        0.33523,
+        0.86473
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "GST_TYPE_INVALID"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1118",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Date",
+    "po_label": "Against PO",
+    "po_in_notes": true,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Borah Polymers Pvt. Ltd.",
+    "template": "classic"
+  },
+  "notes": "CGST+SGST charged by an out-of-state vendor."
+}

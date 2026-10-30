@@ -1,0 +1,320 @@
+{
+  "invoice_id": "04_B_duplicate",
+  "file_name": "04_B_duplicate.pdf",
+  "set_name": "golden",
+  "scenario": "DUPLICATE_DISGUISED_NUMBER",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Kapadia Woodcraft Private Limited",
+      "printed": "Kapadia Woodcraft Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "24JIGCK1386D1Z1",
+      "printed": "24 JIGCK 1386 D1Z1"
+    },
+    "vendor_address": {
+      "value": "74, Kalita Ganj, Vadodara - 390060, Gujarat",
+      "printed": "74, Kalita Ganj, Vadodara - 390060, Gujarat"
+    },
+    "vendor_state": {
+      "value": "Gujarat",
+      "printed": "Gujarat"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV/1304",
+      "printed": "INV/1304"
+    },
+    "invoice_date": {
+      "value": "2026-08-01",
+      "printed": "2026-08-01"
+    },
+    "po_reference": {
+      "value": "PO-2026-1086",
+      "printed": "PO-2026-1086"
+    },
+    "line_items": [
+      {
+        "description": "Cafeteria Table with 4 Chairs",
+        "hsn_sac": "9403",
+        "quantity": 1,
+        "unit": "Set",
+        "unit_price": 25150.0,
+        "amount": 25150.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Bamboo Display Stand",
+        "hsn_sac": "9403",
+        "quantity": 11,
+        "unit": "Nos",
+        "unit_price": 3950.0,
+        "amount": 43450.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Storage Locker - 12 Door",
+        "hsn_sac": "9403",
+        "quantity": 3,
+        "unit": "Nos",
+        "unit_price": 20750.0,
+        "amount": 62250.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 130850.0,
+      "printed": "Rs. 1,30,850/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 17904.5,
+      "printed": "Rs. 17,904.50"
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 148755.0,
+      "printed": "Rs. 1,48,755/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "792984423366",
+      "printed": "792984423366"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0965494",
+      "printed": "ICIC0965494"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.34872,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.24323,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.68834,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.12323,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28696,
+        0.21639,
+        0.3557,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50672,
+        0.21639,
+        0.59488,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84983,
+        0.32687,
+        0.93952,
+        0.33634
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85061,
+        0.34252,
+        0.93952,
+        0.35199
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83839,
+        0.3769,
+        0.93952,
+        0.38749
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.19469,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.17574,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "DUPLICATE_INVOICE_NUMBER"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1086",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Kapadia Woodcraft Private Limited",
+    "template": "compact"
+  },
+  "notes": "Duplicate of history H0158 (INV-01304, 2026-08-01, ₹148755.00, paid); printed as INV/1304."
+}

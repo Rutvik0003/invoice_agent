@@ -1,0 +1,312 @@
+{
+  "invoice_id": "S0216",
+  "file_name": "S0216.pdf",
+  "set_name": "stress",
+  "scenario": "PO_CLOSED",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Nexa Industries Private Limited",
+      "printed": "Nexa Industries Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "27CNUCN5911H2Z7",
+      "printed": "27CNUCN5911H2Z7"
+    },
+    "vendor_address": {
+      "value": "17, Mani Zila, Bhiwandi - 421022, Maharashtra",
+      "printed": "17, Mani Zila, Bhiwandi - 421022, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "NI/899/26",
+      "printed": "NI/899/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-14",
+      "printed": "October 14, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1079",
+      "printed": "PO-2026-1079"
+    },
+    "line_items": [
+      {
+        "description": "Cotton Fabric - Plain Weave 60 in",
+        "hsn_sac": "5208",
+        "quantity": 280,
+        "unit": "Mtr",
+        "unit_price": 105.0,
+        "amount": 29400.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 29400.0,
+      "printed": "INR 29400.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 735.0,
+      "printed": "INR 735.00"
+    },
+    "sgst": {
+      "value": 735.0,
+      "printed": "INR 735.00"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 30870.0,
+      "printed": "INR 30870.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "691684955076",
+      "printed": "691684955076"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0219371",
+      "printed": "HDFC0219371"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.45144,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.3256,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.80752,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.85152,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.83447,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85301,
+        0.33839,
+        0.93952,
+        0.34811
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.86813,
+        0.35496,
+        0.93952,
+        0.36468
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.86813,
+        0.37153,
+        0.93952,
+        0.38125
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84153,
+        0.39162,
+        0.93952,
+        0.40223
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.41776,
+        0.19344,
+        0.42625
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.43043,
+        0.18489,
+        0.43907
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "PO_CLOSED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1079",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nexa Industries Private Limited",
+    "template": "classic"
+  },
+  "notes": "PO-2026-1079 is closed (fully billed)."
+}

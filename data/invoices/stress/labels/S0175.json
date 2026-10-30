@@ -1,0 +1,310 @@
+{
+  "invoice_id": "S0175",
+  "file_name": "S0175.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_EXACT",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Vertex Enterprises",
+      "printed": "Vertex Enterprises"
+    },
+    "vendor_gstin": {
+      "value": "27TSSPN3544X1ZU",
+      "printed": "27TSSPN3544X1ZU"
+    },
+    "vendor_address": {
+      "value": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+      "printed": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VE0394",
+      "printed": "VE0394"
+    },
+    "invoice_date": {
+      "value": "2026-10-26",
+      "printed": "October 26, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1199",
+      "printed": "PO-2026-1199"
+    },
+    "line_items": [
+      {
+        "description": "Cotton Fabric - Plain Weave 60 in",
+        "hsn_sac": "5208",
+        "quantity": 720,
+        "unit": "Mtr",
+        "unit_price": 105.0,
+        "amount": 75600.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 75600.0,
+      "printed": "Rs. 75,600/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 1890.0,
+      "printed": "Rs. 1,890/-"
+    },
+    "sgst": {
+      "value": 1890.0,
+      "printed": "Rs. 1,890/-"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 79380.0,
+      "printed": "Rs. 79,380/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Seventy Nine Thousand Three Hundred Eighty Only",
+      "printed": "Rupees Seventy Nine Thousand Three Hundred Eighty Only"
+    },
+    "bank_account": {
+      "value": "319144834307",
+      "printed": "319144834307"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0977855",
+      "printed": "KKBK0977855"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.21902,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.23763,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.11502,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.36021,
+        0.21639,
+        0.46778,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86174,
+        0.28856,
+        0.93952,
+        0.29804
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.86968,
+        0.30421,
+        0.93952,
+        0.31369
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.86968,
+        0.31986,
+        0.93952,
+        0.32934
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85169,
+        0.35424,
+        0.93952,
+        0.36483
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.19469,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.18416,
+        0.86023
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.55366,
+        0.82742,
+        0.6308,
+        0.83522
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1199",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": true,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vertex Enterprises",
+    "template": "compact"
+  },
+  "notes": "Clean invoice that exactly matches its PO."
+}

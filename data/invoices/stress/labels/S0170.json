@@ -1,0 +1,319 @@
+{
+  "invoice_id": "S0170",
+  "file_name": "S0170.pdf",
+  "set_name": "stress",
+  "scenario": "NOT_AN_INVOICE",
+  "template": "classic",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_155",
+    "punch_holes",
+    "coffee_stain",
+    "rotation_+0.2deg",
+    "blur_0.6",
+    "noise_3",
+    "jpeg_q65"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "purchase_order",
+      "printed": "Purchase Order"
+    },
+    "vendor_name": {
+      "value": "Patil Textiles Pvt Ltd",
+      "printed": "Patil Textiles Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "07ZHNCP5749Q1ZA",
+      "printed": "07ZHNCP5749Q1ZA"
+    },
+    "vendor_address": {
+      "value": "61/552, Radhakrishnan Ganj, New Delhi - 110085, Delhi",
+      "printed": "61/552, Radhakrishnan Ganj, New Delhi - 110085, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "PO-2026-1343",
+      "printed": "PO-2026-1343"
+    },
+    "invoice_date": {
+      "value": "2026-10-16",
+      "printed": "2026-10-16"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Zipper 7 inch Nylon",
+        "hsn_sac": "9607",
+        "quantity": 719,
+        "unit": "Nos",
+        "unit_price": 9.45,
+        "amount": 6794.55,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Mild Steel Sheet 1.2mm",
+        "hsn_sac": "7209",
+        "quantity": 709,
+        "unit": "Kg",
+        "unit_price": 72.0,
+        "amount": 51048.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Cotton Fabric - Plain Weave 60 in",
+        "hsn_sac": "5208",
+        "quantity": 1062,
+        "unit": "Mtr",
+        "unit_price": 97.0,
+        "amount": 103014.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 160856.55,
+      "printed": "1,60,856.55"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 15562.36,
+      "printed": "15,562.36"
+    },
+    "round_off": {
+      "value": 0.09,
+      "printed": "0.09"
+    },
+    "total_amount": {
+      "value": 176419.0,
+      "printed": "1,76,419"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Seventy Six Thousand Four Hundred Nineteen Only",
+      "printed": "Rupees One Lakh Seventy Six Thousand Four Hundred Nineteen Only"
+    },
+    "bank_account": {
+      "value": "83323960986",
+      "printed": "83323960986"
+    },
+    "bank_ifsc": {
+      "value": "CNRB0293366",
+      "printed": "CNRB0293366"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.1489,
+        0.08023,
+        0.34732,
+        0.09456
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.20186,
+        0.126,
+        0.32511,
+        0.13483
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74573,
+        0.07896,
+        0.83223,
+        0.08822
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74583,
+        0.09803,
+        0.8125,
+        0.10722
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11171,
+        0.22936,
+        0.23272,
+        0.23818
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86697,
+        0.3635,
+        0.93883,
+        0.37342
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.8784,
+        0.38007,
+        0.93892,
+        0.38996
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88028,
+        0.41673,
+        0.93913,
+        0.4275
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11251,
+        0.44492,
+        0.18646,
+        0.45361
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10178,
+        0.4576,
+        0.18545,
+        0.46646
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "NOT_A_TAX_INVOICE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1343",
+  "knobs": {
+    "title": "Purchase Order",
+    "invoice_no_label": "Order No.",
+    "date_label": "Inv Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Patil Textiles Pvt Ltd",
+    "template": "classic"
+  },
+  "notes": "Document is a Purchase Order, not a tax invoice; its document number is in invoice_number."
+}

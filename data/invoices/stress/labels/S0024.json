@@ -1,0 +1,302 @@
+{
+  "invoice_id": "S0024",
+  "file_name": "S0024.pdf",
+  "set_name": "stress",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Akshar Furniture Pvt. Ltd.",
+      "printed": "Akshar Furniture Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "36FWLCA1691Q1ZM",
+      "printed": "36FWLCA1691Q1ZM"
+    },
+    "vendor_address": {
+      "value": "500, Manne Marg, Secunderabad - 500021, Telangana",
+      "printed": "500, Manne Marg, Secunderabad - 500021, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/AF/1578",
+      "printed": "2026/AF/1578"
+    },
+    "invoice_date": {
+      "value": "2026-10-28",
+      "printed": "28-10-2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1304",
+      "printed": "PO/2026/1304"
+    },
+    "line_items": [
+      {
+        "description": "Cafeteria Table with 4 Chairs",
+        "hsn_sac": "9403",
+        "quantity": 4,
+        "unit": "Set",
+        "unit_price": 25956.0,
+        "amount": 103824.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 103824.0,
+      "printed": "Rs. 1,03,824/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 18688.32,
+      "printed": "Rs. 18,688.32"
+    },
+    "round_off": {
+      "value": -0.32,
+      "printed": "-0.32"
+    },
+    "total_amount": {
+      "value": 122512.0,
+      "printed": "Rs. 1,22,512/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Twenty Two Thousand Five Hundred Twelve Only",
+      "printed": "Rupees One Lakh Twenty Two Thousand Five Hundred Twelve Only"
+    },
+    "bank_account": {
+      "value": "3708415157748",
+      "printed": "3708415157748"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0202471",
+      "printed": "UTIB0202471"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.23941,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.21554,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.21033,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.58489,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.79597,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.5863,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87406,
+        0.3159,
+        0.94792,
+        0.3237
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.8747,
+        0.33134,
+        0.94792,
+        0.33915
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.86275,
+        0.36255,
+        0.94792,
+        0.37147
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.47818,
+        0.63853,
+        0.48599
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.48941,
+        0.61757,
+        0.49721
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1304",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Akshar Furniture Pvt. Ltd.",
+    "template": "tally"
+  },
+  "notes": "'Cafeteria Table with 4 Chairs' billed at ₹25956.00 vs PO ₹25200.00 (+3%)."
+}

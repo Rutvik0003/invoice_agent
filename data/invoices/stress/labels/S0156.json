@@ -1,0 +1,338 @@
+{
+  "invoice_id": "S0156",
+  "file_name": "S0156.png",
+  "set_name": "stress",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "modern",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "png",
+  "degradations": [
+    "mild_scan",
+    "dpi_164",
+    "coffee_stain",
+    "rotation_+0.5deg",
+    "blur_0.4",
+    "noise_6",
+    "jpeg_q61"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Varghese Property Services Pvt. Ltd.",
+      "printed": "Varghese Property Services Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "06VYDCV0800N1ZH",
+      "printed": "06 VYDCV 0800 N1ZH"
+    },
+    "vendor_address": {
+      "value": "H.No. 00, Gaba Nagar, Gurugram - 122071, Haryana",
+      "printed": "H.No. 00, Gaba Nagar, Gurugram - 122071, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "VPS/26-27/1330",
+      "printed": "VPS/26-27/1330"
+    },
+    "invoice_date": {
+      "value": "2026-10-29",
+      "printed": "October 29, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1102",
+      "printed": "PO-2026-1102"
+    },
+    "line_items": [
+      {
+        "description": "Garden Maintenance",
+        "hsn_sac": "998534",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 19700.0,
+        "amount": 19700.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Waste Disposal Services",
+        "hsn_sac": "999423",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 20200.0,
+        "amount": 20200.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Facility Manager Deployment",
+        "hsn_sac": "998519",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 65450.0,
+        "amount": 65450.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 105350.0,
+      "printed": "₹1,05,350.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 18963.0,
+      "printed": "₹18,963.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 124313.0,
+      "printed": "₹1,24,313.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "3261212429713675",
+      "printed": "3261212429713675"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0093132",
+      "printed": "SBIN0093132"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.50527,
+        0.04938,
+        0.84716,
+        0.06472
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.70883,
+        0.09322,
+        0.84761,
+        0.10294
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.06306,
+        0.14039,
+        0.19312,
+        0.15229
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.27946,
+        0.13912,
+        0.41518,
+        0.15104
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.49585,
+        0.138,
+        0.60991,
+        0.1498
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11336,
+        0.22257,
+        0.24958,
+        0.23227
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.0662,
+        0.4125,
+        0.30799,
+        0.44064
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85505,
+        0.38622,
+        0.93834,
+        0.39673
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86667,
+        0.40279,
+        0.93853,
+        0.41323
+      ],
+      "approximate": true
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.83822,
+        0.43922,
+        0.93896,
+        0.45095
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12517,
+        0.84249,
+        0.24895,
+        0.85212
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.1092,
+        0.85567,
+        0.18848,
+        0.86505
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1102",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Varghese Property Services Pvt. Ltd.",
+    "template": "modern"
+  },
+  "notes": "'Facility Manager Deployment' billed at ₹65450.00 vs PO ₹65250.00 (₹200.00 on the line), inside tolerance."
+}

@@ -1,0 +1,292 @@
+{
+  "invoice_id": "S0158",
+  "file_name": "S0158.pdf",
+  "set_name": "stress",
+  "scenario": "NO_PO_CLEAR_MATCH",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Kalpana Print Solns Pvt. Ltd.",
+      "printed": "Kalpana Print Solns Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "07WDRCK0545Z2ZJ",
+      "printed": "07WDRCK0545Z2ZJ"
+    },
+    "vendor_address": {
+      "value": "H.No. 31, Desai Ganj, New Delhi - 110049, Delhi",
+      "printed": "H.No. 31, Desai Ganj, New Delhi - 110049, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "KPS/1793/26",
+      "printed": "KPS/1793/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-09",
+      "printed": "09-10-2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Visiting Cards (Box of 100)",
+        "hsn_sac": "4911",
+        "quantity": 150,
+        "unit": "Box",
+        "unit_price": 330.0,
+        "amount": 49500.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 49500.0,
+      "printed": "₹49,500.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 8910.0,
+      "printed": "₹8,910.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 58410.0,
+      "printed": "₹58,410.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Fifty Eight Thousand Four Hundred Ten Only",
+      "printed": "Rupees Fifty Eight Thousand Four Hundred Ten Only"
+    },
+    "bank_account": {
+      "value": "52609381677",
+      "printed": "52609381677"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0191302",
+      "printed": "HDFC0191302"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.30017,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.24111,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.14714,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.36021,
+        0.21639,
+        0.42896,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86806,
+        0.28856,
+        0.93952,
+        0.29804
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.876,
+        0.30421,
+        0.93952,
+        0.31369
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85965,
+        0.33859,
+        0.93952,
+        0.34918
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.18768,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.18554,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_INFERRED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1213",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Inv Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Kalpana Print Solns Pvt. Ltd.",
+    "template": "compact"
+  },
+  "notes": "No PO printed. PO-2026-1213 matches every item, quantity and amount; none of the vendor's other open POs contain these items."
+}

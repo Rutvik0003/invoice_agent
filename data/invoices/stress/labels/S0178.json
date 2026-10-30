@@ -1,0 +1,330 @@
+{
+  "invoice_id": "S0178",
+  "file_name": "S0178.pdf",
+  "set_name": "stress",
+  "scenario": "MULTI_ISSUE",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_183",
+    "fax",
+    "rotation_-0.9deg",
+    "blur_0.6",
+    "noise_3",
+    "jpeg_q70"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vriddhi Computer World",
+      "printed": "Vriddhi Computer World"
+    },
+    "vendor_gstin": {
+      "value": "03RWRPS3905Y2ZU",
+      "printed": "03RWRPS3905Y2ZU"
+    },
+    "vendor_address": {
+      "value": "77/85, Korpal Path, Mohali - 160010, Punjab",
+      "printed": "77/85, Korpal Path, Mohali - 160010, Punjab"
+    },
+    "vendor_state": {
+      "value": "Punjab",
+      "printed": "Punjab"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VCW0930",
+      "printed": "VCW0930"
+    },
+    "invoice_date": {
+      "value": "2026-10-10",
+      "printed": "2026-10-10"
+    },
+    "po_reference": {
+      "value": "PO-2026-1385",
+      "printed": "PO-2026-1385"
+    },
+    "line_items": [
+      {
+        "description": "LED Monitor 24\" Full HD",
+        "hsn_sac": "8528",
+        "quantity": 11,
+        "unit": "Nos",
+        "unit_price": 12000.0,
+        "amount": 132000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Wi-Fi Access Point - Dual Band",
+        "hsn_sac": "8517",
+        "quantity": 8,
+        "unit": "Nos",
+        "unit_price": 7650.0,
+        "amount": 61200.0,
+        "tax_rate": 28.0
+      },
+      {
+        "description": "Desktop PC - Core i5, 8GB RAM, 512GB SSD",
+        "hsn_sac": "8471",
+        "quantity": 1,
+        "unit": "Nos",
+        "unit_price": 45300.0,
+        "amount": 45300.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 238500.0,
+      "printed": "INR 238500.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 49050.0,
+      "printed": "INR 49050.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 287550.0,
+      "printed": "INR 287550.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "70590412339",
+      "printed": "70590412339"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0932158",
+      "printed": "IDFB0932158"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07924,
+        0.07947,
+        0.27356,
+        0.09269
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12929,
+        0.1184,
+        0.2506,
+        0.12805
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5689,
+        0.11699,
+        0.686,
+        0.1266
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.07311,
+        0.21181,
+        0.13454,
+        0.22138
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.29284,
+        0.21415,
+        0.36177,
+        0.2238
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.51258,
+        0.21649,
+        0.60092,
+        0.22635
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84692,
+        0.33055,
+        0.94316,
+        0.34105
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85453,
+        0.34628,
+        0.94283,
+        0.35669
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83453,
+        0.38046,
+        0.9421,
+        0.39219
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.10323,
+        0.83565,
+        0.18047,
+        0.84483
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.09385,
+        0.84758,
+        0.17177,
+        0.85677
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "GST_RATE_UNUSUAL",
+    "ITEM_NOT_ON_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1385",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "unusual_rate": "'Wi-Fi Access Point - Dual Band' charged GST 28% (PO 18%) on 2026-10-10.",
+    "vendor_name_printed": "Vriddhi Computer World",
+    "template": "compact"
+  },
+  "notes": "Problems: gst_rate, item_not_on_po."
+}

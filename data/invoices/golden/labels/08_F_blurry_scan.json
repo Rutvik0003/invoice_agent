@@ -1,0 +1,337 @@
+{
+  "invoice_id": "08_F_blurry_scan",
+  "file_name": "08_F_blurry_scan.pdf",
+  "set_name": "golden",
+  "scenario": "HEAVY_SCAN_LOW_CONFIDENCE",
+  "template": "modern",
+  "is_scanned": true,
+  "scan_level": "heavy",
+  "file_format": "pdf",
+  "degradations": [
+    "heavy_scan",
+    "dpi_100",
+    "obscured_total_amount_ink_blot",
+    "signature",
+    "coffee_stain",
+    "rotation_+3.3deg",
+    "blur_1.3",
+    "noise_12",
+    "jpeg_q35"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Ramesh Packaging",
+      "printed": "Ramesh Packaging"
+    },
+    "vendor_gstin": {
+      "value": "27EJOFR5535F1ZA",
+      "printed": "27EJOFR5535F1ZA"
+    },
+    "vendor_address": {
+      "value": "90, Keer Street, Pune - 411074, Maharashtra",
+      "printed": "90, Keer Street, Pune - 411074, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/767",
+      "printed": "2026-27/767"
+    },
+    "invoice_date": {
+      "value": "2026-10-25",
+      "printed": "25/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1063",
+      "printed": "PO-2026-1063"
+    },
+    "line_items": [
+      {
+        "description": "Stretch Wrap Film 23 Micron",
+        "hsn_sac": "3920",
+        "quantity": 27,
+        "unit": "Roll",
+        "unit_price": 505.0,
+        "amount": 13635.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 13635.0,
+      "printed": "13,635"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 1227.15,
+      "printed": "1,227.15"
+    },
+    "sgst": {
+      "value": 1227.15,
+      "printed": "1,227.15"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": -0.3,
+      "printed": "-0.30"
+    },
+    "total_amount": {
+      "value": 16089.0,
+      "printed": "16,089"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "54611242954",
+      "printed": "54611242954"
+    },
+    "bank_ifsc": {
+      "value": "BARB0808676",
+      "printed": "BARB0808676"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.63713,
+        0.03768,
+        0.81579,
+        0.05834
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.70069,
+        0.08145,
+        0.81902,
+        0.09519
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.03822,
+        0.15287,
+        0.14016,
+        0.16816
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.32626,
+        0.14139,
+        0.41922,
+        0.15631
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.09427,
+        0.23223,
+        0.21979,
+        0.24627
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.05708,
+        0.38077,
+        0.18593,
+        0.4127
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88211,
+        0.32752,
+        0.92688,
+        0.33935
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.87206,
+        0.34407,
+        0.92825,
+        0.35636
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.87343,
+        0.36061,
+        0.92961,
+        0.3729
+      ],
+      "approximate": true
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.87901,
+        0.39698,
+        0.9327,
+        0.41028
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.14992,
+        0.85253,
+        0.23554,
+        0.86493
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.13489,
+        0.86609,
+        0.2183,
+        0.8784
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.69206,
+        0.81714,
+        0.77358,
+        0.82882
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "total_amount"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1063",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": true,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Ramesh Packaging",
+    "template": "modern"
+  },
+  "notes": "Underlying invoice is correct, but total_amount is obscured on the heavy scan."
+}

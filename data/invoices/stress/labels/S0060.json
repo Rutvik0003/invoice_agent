@@ -1,0 +1,309 @@
+{
+  "invoice_id": "S0060",
+  "file_name": "S0060.png",
+  "set_name": "stress",
+  "scenario": "BANK_CHANGE",
+  "template": "tally",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "png",
+  "degradations": [
+    "mild_scan",
+    "dpi_191",
+    "rotation_+1.1deg",
+    "blur_0.5",
+    "noise_5",
+    "jpeg_q75"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Prism Digital Systems Private Limited",
+      "printed": "Prism Digital Systems Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "19JXOCP0232P1ZD",
+      "printed": "19JXOCP0232P1ZD"
+    },
+    "vendor_address": {
+      "value": "11/73, Taneja Zila, Kolkata - 700020, West Bengal",
+      "printed": "11/73, Taneja Zila, Kolkata - 700020, West Bengal"
+    },
+    "vendor_state": {
+      "value": "West Bengal",
+      "printed": "West Bengal"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01477",
+      "printed": "INV-01477"
+    },
+    "invoice_date": {
+      "value": "2026-10-29",
+      "printed": "October 29, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1258",
+      "printed": "PO-2026-1258"
+    },
+    "line_items": [
+      {
+        "description": "Wi-Fi Access Point - Dual Band",
+        "hsn_sac": "8517",
+        "quantity": 10,
+        "unit": "Nos",
+        "unit_price": 13350.0,
+        "amount": 133500.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 133500.0,
+      "printed": "₹1,33,500.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 24030.0,
+      "printed": "₹24,030.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 157530.0,
+      "printed": "₹1,57,530.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Fifty Seven Thousand Five Hundred Thirty Only",
+      "printed": "Rupees One Lakh Fifty Seven Thousand Five Hundred Thirty Only"
+    },
+    "bank_account": {
+      "value": "171317442137619",
+      "printed": "171317442137619"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0112683",
+      "printed": "UTIB0112683"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.04213,
+        0.05875,
+        0.31375,
+        0.07236
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.09048,
+        0.09536,
+        0.19983,
+        0.1046
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.09357,
+        0.21251,
+        0.2029,
+        0.22176
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.49368,
+        0.06874,
+        0.55412,
+        0.0779
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.72012,
+        0.06522,
+        0.82117,
+        0.07491
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.49725,
+        0.20383,
+        0.58011,
+        0.21328
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87434,
+        0.31002,
+        0.94319,
+        0.31872
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.88455,
+        0.32546,
+        0.9436,
+        0.33404
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.86576,
+        0.35666,
+        0.94445,
+        0.36662
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55292,
+        0.47618,
+        0.65121,
+        0.48529
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.54471,
+        0.48786,
+        0.61748,
+        0.49662
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BANK_DETAILS_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1258",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Prism Digital Systems Private Limited",
+    "template": "tally"
+  },
+  "notes": "Bank details on the invoice differ from the vendor master."
+}

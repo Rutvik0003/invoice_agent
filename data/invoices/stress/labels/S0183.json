@@ -1,0 +1,327 @@
+{
+  "invoice_id": "S0183",
+  "file_name": "S0183.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "small_vendor",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_183",
+    "rotation_+0.5deg",
+    "blur_0.4",
+    "noise_5",
+    "jpeg_q66"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Chacko Packwell Industries",
+      "printed": "Chacko Packwell Industries"
+    },
+    "vendor_gstin": {
+      "value": "06QBHPC6146O1Z0",
+      "printed": "06QBHPC6146O1Z0"
+    },
+    "vendor_address": {
+      "value": "46/502, Palla Road, Faridabad - 121068, Haryana",
+      "printed": "46/502, Palla Road, Faridabad - 121068, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01668",
+      "printed": "INV-01668"
+    },
+    "invoice_date": {
+      "value": "2026-10-22",
+      "printed": "2026-10-22"
+    },
+    "po_reference": {
+      "value": "PO/2026/1141",
+      "printed": "PO/2026/1141"
+    },
+    "line_items": [
+      {
+        "description": "Shipping Label Roll 4x6 in",
+        "hsn_sac": "4821",
+        "quantity": 45,
+        "unit": "Roll",
+        "unit_price": 280.0,
+        "amount": 12600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Corrugated Box 3-Ply 12x10x8 in",
+        "hsn_sac": "4819",
+        "quantity": 724,
+        "unit": "Nos",
+        "unit_price": 19.0,
+        "amount": 13756.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "PP Strapping Roll 12mm",
+        "hsn_sac": "3920",
+        "quantity": 69,
+        "unit": "Roll",
+        "unit_price": 1002.9,
+        "amount": 69200.1,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 95556.1,
+      "printed": "Rs. 95,556.10"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 15411.82,
+      "printed": "Rs. 15,411.82"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 110967.92,
+      "printed": "Rs. 1,10,967.92"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Ten Thousand Nine Hundred Sixty Seven and Ninety Two Paise Only",
+      "printed": "Rupees One Lakh Ten Thousand Nine Hundred Sixty Seven and Ninety Two Paise Only"
+    },
+    "bank_account": {
+      "value": "5122763944232",
+      "printed": "5122763944232"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0408133",
+      "printed": "UTIB0408133"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.30646,
+        0.06017,
+        0.68285,
+        0.08146
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.45898,
+        0.10062,
+        0.58607,
+        0.11033
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.72708,
+        0.16391,
+        0.82154,
+        0.17578
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.68854,
+        0.18784,
+        0.79176,
+        0.19977
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.75156,
+        0.2111,
+        0.87254,
+        0.22314
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.16021,
+        0.23393,
+        0.32132,
+        0.24571
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.81266,
+        0.36026,
+        0.92114,
+        0.37222
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.81141,
+        0.37926,
+        0.92137,
+        0.39124
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.77397,
+        0.39669,
+        0.92162,
+        0.41095
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.13166,
+        0.84325,
+        0.24358,
+        0.85216
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.1221,
+        0.85625,
+        0.21701,
+        0.86505
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1141",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Chacko Packwell Industries",
+    "template": "small_vendor"
+  },
+  "notes": "'PP Strapping Roll 12mm' billed at ₹1002.90 vs PO ₹1000.00 (₹200.10 on the line), inside tolerance."
+}

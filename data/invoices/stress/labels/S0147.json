@@ -1,0 +1,300 @@
+{
+  "invoice_id": "S0147",
+  "file_name": "S0147.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_EXACT",
+  "template": "landscape",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vig Paper Products Pvt. Ltd.",
+      "printed": "Vig Paper Products Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "23EUACV4693J1ZU",
+      "printed": "23EUACV4693J1ZU"
+    },
+    "vendor_address": {
+      "value": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh",
+      "printed": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/338",
+      "printed": "2026-27/338"
+    },
+    "invoice_date": {
+      "value": "2026-10-19",
+      "printed": "19 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1117",
+      "printed": "PO/2026/1117"
+    },
+    "line_items": [
+      {
+        "description": "Box File - Lever Arch",
+        "hsn_sac": "4820",
+        "quantity": 293,
+        "unit": "Nos",
+        "unit_price": 150.0,
+        "amount": 43950.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 43950.0,
+      "printed": "Rs. 43,950/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 7911.0,
+      "printed": "Rs. 7,911/-"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 51861.0,
+      "printed": "Rs. 51,861/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "670314483232611348",
+      "printed": "670314483232611348"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0666435",
+      "printed": "HDFC0666435"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09978,
+        0.05754,
+        0.27722,
+        0.07937
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13249,
+        0.1228,
+        0.20734,
+        0.13624
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44369,
+        0.12095,
+        0.51929,
+        0.13439
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.90061,
+        0.09281,
+        0.95724,
+        0.10793
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.90449,
+        0.11465,
+        0.95724,
+        0.12977
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.89179,
+        0.13649,
+        0.95724,
+        0.15161
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.90498,
+        0.30326,
+        0.95724,
+        0.31838
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.9104,
+        0.32519,
+        0.95724,
+        0.3403
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89805,
+        0.37365,
+        0.95724,
+        0.39045
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07843,
+        0.35828,
+        0.16513,
+        0.37172
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06815,
+        0.37642,
+        0.12306,
+        0.38986
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1117",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vig Paper Products Pvt. Ltd.",
+    "template": "landscape"
+  },
+  "notes": "Clean invoice that exactly matches its PO."
+}

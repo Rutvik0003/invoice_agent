@@ -1,0 +1,316 @@
+{
+  "invoice_id": "S0085",
+  "file_name": "S0085.pdf",
+  "set_name": "stress",
+  "scenario": "OBSCURED_INVOICE_NUMBER",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_158",
+    "obscured_invoice_number_ink_blot",
+    "punch_holes",
+    "rotation_-0.3deg",
+    "blur_0.5",
+    "noise_5",
+    "jpeg_q69"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Zenon Infotech Systems LLP",
+      "printed": "Zenon Infotech Systems LLP"
+    },
+    "vendor_gstin": {
+      "value": "09EZBFZ5696F1Z3",
+      "printed": "09EZBFZ5696F1Z3"
+    },
+    "vendor_address": {
+      "value": "11/86, Dyal Ganj, Kanpur - 208081, Uttar Pradesh",
+      "printed": "11/86, Dyal Ganj, Kanpur - 208081, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "ZIS/26-27/1711",
+      "printed": "ZIS/26-27/1711"
+    },
+    "invoice_date": {
+      "value": "2026-10-21",
+      "printed": "21-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1292",
+      "printed": "PO-2026-1292"
+    },
+    "line_items": [
+      {
+        "description": "Laptop - Intel Core i7, 16GB RAM, 1TB SSD",
+        "hsn_sac": "8471",
+        "quantity": 12,
+        "unit": "Nos",
+        "unit_price": 83800.0,
+        "amount": 1005600.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 1005600.0,
+      "printed": "Rs. 10,05,600/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 181008.0,
+      "printed": "Rs. 1,81,008/-"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 1186608.0,
+      "printed": "Rs. 11,86,608/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "165486244",
+      "printed": "165486244"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0273775",
+      "printed": "SBIN0273775"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07309,
+        0.08266,
+        0.30371,
+        0.09453
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12368,
+        0.12121,
+        0.23577,
+        0.12992
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.56324,
+        0.11649,
+        0.68024,
+        0.12522
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.06892,
+        0.21504,
+        0.16161,
+        0.22425
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28868,
+        0.21573,
+        0.35747,
+        0.22486
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50844,
+        0.21641,
+        0.59665,
+        0.22561
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84315,
+        0.28963,
+        0.94084,
+        0.29942
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85099,
+        0.3053,
+        0.94074,
+        0.31507
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83045,
+        0.33962,
+        0.94052,
+        0.35055
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.10844,
+        0.83862,
+        0.17155,
+        0.84718
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.09924,
+        0.85062,
+        0.17776,
+        0.85923
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "invoice_number"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1292",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Zenon Infotech Systems LLP",
+    "template": "compact"
+  },
+  "notes": "Underlying invoice is correct, but invoice_number is obscured on the mild scan."
+}

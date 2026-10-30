@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0219",
+  "file_name": "S0219.pdf",
+  "set_name": "stress",
+  "scenario": "GST_RATE_UNUSUAL",
+  "template": "small_vendor",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_165",
+    "coffee_stain",
+    "rotation_-0.4deg",
+    "blur_0.6",
+    "noise_7",
+    "jpeg_q65"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vig Paper Products Pvt Ltd",
+      "printed": "Vig Paper Products Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "23EUACV4693J1ZU",
+      "printed": "23EUACV4693J1ZU"
+    },
+    "vendor_address": {
+      "value": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh",
+      "printed": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/348",
+      "printed": "2026-27/348"
+    },
+    "invoice_date": {
+      "value": "2026-10-16",
+      "printed": "16-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1367",
+      "printed": "PO-2026-1367"
+    },
+    "line_items": [
+      {
+        "description": "Whiteboard Marker - Assorted (Pack of 10)",
+        "hsn_sac": "9608",
+        "quantity": 50,
+        "unit": "Pack",
+        "unit_price": 225.0,
+        "amount": 11250.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Stapler Pins No. 10 (Pack of 20)",
+        "hsn_sac": "8305",
+        "quantity": 292,
+        "unit": "Pack",
+        "unit_price": 110.0,
+        "amount": 32120.0,
+        "tax_rate": 28.0
+      }
+    ],
+    "subtotal": {
+      "value": 43370.0,
+      "printed": "43,370"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 11018.6,
+      "printed": "11,018.60"
+    },
+    "round_off": {
+      "value": 0.4,
+      "printed": "0.40"
+    },
+    "total_amount": {
+      "value": 54389.0,
+      "printed": "54,389"
+    },
+    "amount_in_words": {
+      "value": "Rupees Fifty Four Thousand Three Hundred Eighty Nine Only",
+      "printed": "Rupees Fifty Four Thousand Three Hundred Eighty Nine Only"
+    },
+    "bank_account": {
+      "value": "670314483232611348",
+      "printed": "670314483232611348"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0666435",
+      "printed": "HDFC0666435"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.32008,
+        0.06042,
+        0.6884,
+        0.08119
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.46891,
+        0.10101,
+        0.59376,
+        0.11054
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.70977,
+        0.16695,
+        0.83156,
+        0.17884
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.71702,
+        0.19074,
+        0.80128,
+        0.20244
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.75785,
+        0.2147,
+        0.88321,
+        0.22661
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.16606,
+        0.23117,
+        0.32715,
+        0.24275
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.8604,
+        0.34296,
+        0.92428,
+        0.35456
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.84733,
+        0.36189,
+        0.92409,
+        0.37356
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84772,
+        0.39833,
+        0.92373,
+        0.41205
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12394,
+        0.83979,
+        0.27549,
+        0.84875
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.1141,
+        0.85257,
+        0.2047,
+        0.86123
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "GST_RATE_UNUSUAL"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1367",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Inv Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "unusual_rate": "'Stapler Pins No. 10 (Pack of 20)' charged GST 28% (PO 18%) on 2026-10-16.",
+    "vendor_name_printed": "Vig Paper Products Pvt Ltd",
+    "template": "small_vendor"
+  },
+  "notes": "'Stapler Pins No. 10 (Pack of 20)' charged GST 28% (PO 18%) on 2026-10-16."
+}

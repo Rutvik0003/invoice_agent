@@ -1,0 +1,329 @@
+{
+  "invoice_id": "S0055",
+  "file_name": "S0055.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Pinnacle Softech",
+      "printed": "Pinnacle Softech"
+    },
+    "vendor_gstin": {
+      "value": "29CSBFP0836M1ZW",
+      "printed": "29CSBFP0836M1ZW"
+    },
+    "vendor_address": {
+      "value": "41/491, Dalal Ganj, Bengaluru - 560012, Karnataka",
+      "printed": "41/491, Dalal Ganj, Bengaluru - 560012, Karnataka"
+    },
+    "vendor_state": {
+      "value": "Karnataka",
+      "printed": "Karnataka"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/PS/478",
+      "printed": "2026/PS/478"
+    },
+    "invoice_date": {
+      "value": "2026-10-08",
+      "printed": "08/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1148",
+      "printed": "PO-2026-1148"
+    },
+    "line_items": [
+      {
+        "description": "Cloud Hosting Charges - Monthly",
+        "hsn_sac": "998315",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 50450.0,
+        "amount": 50450.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Website Maintenance Retainer",
+        "hsn_sac": "998314",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 43500.0,
+        "amount": 43500.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Help Desk Support - Per Seat",
+        "hsn_sac": "998316",
+        "quantity": 62,
+        "unit": "Seat",
+        "unit_price": 928.23,
+        "amount": 57550.26,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "POS Software Customisation",
+        "hsn_sac": "998314",
+        "quantity": 19,
+        "unit": "Hrs",
+        "unit_price": 2950.0,
+        "amount": 56050.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 207550.26,
+      "printed": "₹2,07,550.26"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 37359.05,
+      "printed": "₹37,359.05"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 244909.31,
+      "printed": "₹2,44,909.31"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "595590741871",
+      "printed": "595590741871"
+    },
+    "bank_ifsc": {
+      "value": "YESB0871888",
+      "printed": "YESB0871888"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.20591,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.24321,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.14491,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28696,
+        0.21639,
+        0.35422,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50672,
+        0.21639,
+        0.59488,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85615,
+        0.34602,
+        0.93952,
+        0.3555
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86806,
+        0.36167,
+        0.93952,
+        0.37115
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84634,
+        0.3804,
+        0.93952,
+        0.39099
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.19469,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.18416,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1148",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Pinnacle Softech",
+    "template": "compact"
+  },
+  "notes": "'Help Desk Support - Per Seat' billed at ₹928.23 vs PO ₹925.00 (₹200.26 on the line), inside tolerance."
+}

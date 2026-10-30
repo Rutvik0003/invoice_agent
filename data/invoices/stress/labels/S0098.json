@@ -1,0 +1,327 @@
+{
+  "invoice_id": "S0098",
+  "file_name": "S0098.pdf",
+  "set_name": "stress",
+  "scenario": "OBSCURED_GSTIN",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_197",
+    "obscured_vendor_gstin_ink_blot",
+    "signature",
+    "fax",
+    "rotation_+1.4deg",
+    "blur_0.6",
+    "noise_3",
+    "jpeg_q66"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Vardhan Interiors Pvt. Ltd.",
+      "printed": "Vardhan Interiors Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27CMNCV0456S2ZN",
+      "printed": "27CMNCV0456S2ZN"
+    },
+    "vendor_address": {
+      "value": "880, Pandit Road, Bhiwandi - 421074, Maharashtra",
+      "printed": "880, Pandit Road, Bhiwandi - 421074, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/1727",
+      "printed": "2026-27/1727"
+    },
+    "invoice_date": {
+      "value": "2026-10-28",
+      "printed": "28 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1298",
+      "printed": "PO-2026-1298"
+    },
+    "line_items": [
+      {
+        "description": "Cafeteria Table with 4 Chairs",
+        "hsn_sac": "9403",
+        "quantity": 8,
+        "unit": "Set",
+        "unit_price": 15400.0,
+        "amount": 123200.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 123200.0,
+      "printed": "Rs. 1,23,200/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 11088.0,
+      "printed": "Rs. 11,088/-"
+    },
+    "sgst": {
+      "value": 11088.0,
+      "printed": "Rs. 11,088/-"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 145376.0,
+      "printed": "Rs. 1,45,376/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "63963754629450792",
+      "printed": "63963754629450792"
+    },
+    "bank_ifsc": {
+      "value": "CNRB0289990",
+      "printed": "CNRB0289990"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05647,
+        0.08787,
+        0.26681,
+        0.10261
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10857,
+        0.12691,
+        0.22927,
+        0.13733
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.54777,
+        0.11337,
+        0.66496,
+        0.12373
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.05763,
+        0.22245,
+        0.14086,
+        0.23279
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.27733,
+        0.21884,
+        0.35232,
+        0.22903
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.49702,
+        0.21485,
+        0.58546,
+        0.22528
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.8425,
+        0.28111,
+        0.93249,
+        0.29212
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.85494,
+        0.29676,
+        0.93302,
+        0.30756
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.85548,
+        0.3124,
+        0.93356,
+        0.32321
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83331,
+        0.34677,
+        0.93477,
+        0.35909
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12234,
+        0.84436,
+        0.24171,
+        0.85475
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11363,
+        0.85713,
+        0.19865,
+        0.86693
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "vendor_gstin"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1298",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vardhan Interiors Pvt. Ltd.",
+    "template": "compact"
+  },
+  "notes": "Underlying invoice is correct, but vendor_gstin is obscured on the mild scan."
+}

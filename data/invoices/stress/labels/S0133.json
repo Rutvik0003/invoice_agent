@@ -1,0 +1,347 @@
+{
+  "invoice_id": "S0133",
+  "file_name": "S0133.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "small_vendor",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_152",
+    "rubber_stamp",
+    "punch_holes",
+    "rotation_+1.2deg",
+    "blur_0.4",
+    "noise_5",
+    "jpeg_q74"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Chacko Packwell Inds.",
+      "printed": "Chacko Packwell Inds."
+    },
+    "vendor_gstin": {
+      "value": "06QBHPC6146O1Z0",
+      "printed": "06QBHPC6146O1Z0"
+    },
+    "vendor_address": {
+      "value": "46/502, Palla Road, Faridabad - 121068, Haryana",
+      "printed": "46/502, Palla Road, Faridabad - 121068, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01669",
+      "printed": "INV-01669"
+    },
+    "invoice_date": {
+      "value": "2026-10-23",
+      "printed": "23-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO/2026/1190",
+      "printed": "PO/2026/1190"
+    },
+    "line_items": [
+      {
+        "description": "BOPP Packing Tape 48mm x 65m",
+        "hsn_sac": "3919",
+        "quantity": 755,
+        "unit": "Roll",
+        "unit_price": 37.5,
+        "amount": 28312.5,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Poly Mailer Bag 12x16 in",
+        "hsn_sac": "3923",
+        "quantity": 700,
+        "unit": "Nos",
+        "unit_price": 7.4,
+        "amount": 5180.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Tissue Wrapping Paper (Ream)",
+        "hsn_sac": "4803",
+        "quantity": 44,
+        "unit": "Ream",
+        "unit_price": 687.74,
+        "amount": 30260.56,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Corrugated Box 3-Ply 12x10x8 in",
+        "hsn_sac": "4819",
+        "quantity": 843,
+        "unit": "Nos",
+        "unit_price": 25.0,
+        "amount": 21075.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "PP Strapping Roll 12mm",
+        "hsn_sac": "3920",
+        "quantity": 12,
+        "unit": "Roll",
+        "unit_price": 670.0,
+        "amount": 8040.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 92868.06,
+      "printed": "INR 92868.06"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 10042.63,
+      "printed": "INR 10042.63"
+    },
+    "round_off": {
+      "value": 0.31,
+      "printed": "0.31"
+    },
+    "total_amount": {
+      "value": 102911.0,
+      "printed": "INR 102911.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Two Thousand Nine Hundred Eleven Only",
+      "printed": "Rupees One Lakh Two Thousand Nine Hundred Eleven Only"
+    },
+    "bank_account": {
+      "value": "5122763944232",
+      "printed": "5122763944232"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0408133",
+      "printed": "UTIB0408133"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.33368,
+        0.05912,
+        0.64052,
+        0.08267
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.45196,
+        0.09989,
+        0.57919,
+        0.11072
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.70772,
+        0.16133,
+        0.80108,
+        0.17401
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.69051,
+        0.18537,
+        0.78162,
+        0.19802
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.70689,
+        0.20843,
+        0.82896,
+        0.22154
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.15557,
+        0.23553,
+        0.31684,
+        0.24872
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.79227,
+        0.39997,
+        0.92015,
+        0.41317
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.79646,
+        0.41898,
+        0.92072,
+        0.43212
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.77301,
+        0.4554,
+        0.92188,
+        0.47097
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.13774,
+        0.84548,
+        0.24979,
+        0.85537
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.12841,
+        0.85871,
+        0.22345,
+        0.86834
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1190",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Chacko Packwell Inds.",
+    "template": "small_vendor"
+  },
+  "notes": "'Tissue Wrapping Paper (Ream)' billed at ₹687.74 vs PO ₹685.00 (₹120.56 on the line), inside tolerance."
+}

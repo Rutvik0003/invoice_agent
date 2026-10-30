@@ -1,0 +1,300 @@
+{
+  "invoice_id": "S0181",
+  "file_name": "S0181.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_EXACT",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Mitter Engineering Services",
+      "printed": "Mitter Engineering Services"
+    },
+    "vendor_gstin": {
+      "value": "36OFEFM8914Z1ZF",
+      "printed": "36OFEFM8914Z1ZF"
+    },
+    "vendor_address": {
+      "value": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana",
+      "printed": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/210",
+      "printed": "2026-27/210"
+    },
+    "invoice_date": {
+      "value": "2026-10-12",
+      "printed": "October 12, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1007",
+      "printed": "PO-2026-1007"
+    },
+    "line_items": [
+      {
+        "description": "LED Tube Light 20W",
+        "hsn_sac": "9405",
+        "quantity": 4,
+        "unit": "Nos",
+        "unit_price": 210.0,
+        "amount": 840.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 840.0,
+      "printed": "INR 840.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 151.2,
+      "printed": "INR 151.20"
+    },
+    "round_off": {
+      "value": -0.2,
+      "printed": "-0.20"
+    },
+    "total_amount": {
+      "value": 991.0,
+      "printed": "INR 991.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Nine Hundred Ninety One Only",
+      "printed": "Rupees Nine Hundred Ninety One Only"
+    },
+    "bank_account": {
+      "value": "850705382000915262",
+      "printed": "850705382000915262"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0882070",
+      "printed": "ICIC0882070"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.25289,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.20967,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.21033,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.5758,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.83237,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.58769,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88844,
+        0.3159,
+        0.94792,
+        0.3237
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.88844,
+        0.33134,
+        0.94792,
+        0.33915
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.87994,
+        0.36255,
+        0.94792,
+        0.37147
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.47818,
+        0.67123,
+        0.48599
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.48941,
+        0.6143,
+        0.49721
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1007",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mitter Engineering Services",
+    "template": "tally"
+  },
+  "notes": "Clean invoice that exactly matches its PO."
+}

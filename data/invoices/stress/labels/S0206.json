@@ -1,0 +1,336 @@
+{
+  "invoice_id": "S0206",
+  "file_name": "S0206.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_EXACT",
+  "template": "classic",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_177",
+    "punch_holes",
+    "fax",
+    "rotation_-1.2deg",
+    "blur_0.4",
+    "noise_4",
+    "jpeg_q72"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Varghese Property Services Pvt. Ltd.",
+      "printed": "Varghese Property Services Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "06VYDCV0800N1ZH",
+      "printed": "06VYDCV0800N1ZH"
+    },
+    "vendor_address": {
+      "value": "H.No. 00, Gaba Nagar, Gurugram - 122071, Haryana",
+      "printed": "H.No. 00, Gaba Nagar, Gurugram - 122071, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VPS/26-27/1329",
+      "printed": "VPS/26-27/1329"
+    },
+    "invoice_date": {
+      "value": "2026-10-22",
+      "printed": "22 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1056",
+      "printed": "PO-2026-1056"
+    },
+    "line_items": [
+      {
+        "description": "HVAC Annual Maintenance Contract",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 132100.0,
+        "amount": 132100.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Fire Extinguisher Refilling",
+        "hsn_sac": "998719",
+        "quantity": 3,
+        "unit": "Nos",
+        "unit_price": 930.0,
+        "amount": 2790.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Pest Control Treatment",
+        "hsn_sac": "998531",
+        "quantity": 2,
+        "unit": "Visit",
+        "unit_price": 7900.0,
+        "amount": 15800.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Facility Manager Deployment",
+        "hsn_sac": "998519",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 76150.0,
+        "amount": 76150.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 226840.0,
+      "printed": "INR 226840.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 40831.2,
+      "printed": "INR 40831.20"
+    },
+    "round_off": {
+      "value": -0.2,
+      "printed": "-0.20"
+    },
+    "total_amount": {
+      "value": 267671.0,
+      "printed": "INR 267671.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Two Lakh Sixty Seven Thousand Six Hundred Seventy One Only",
+      "printed": "Rupees Two Lakh Sixty Seven Thousand Six Hundred Seventy One Only"
+    },
+    "bank_account": {
+      "value": "3261212429713675",
+      "printed": "3261212429713675"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0093132",
+      "printed": "SBIN0093132"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.16292,
+        0.0749,
+        0.50893,
+        0.09365
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.21446,
+        0.12136,
+        0.33937,
+        0.13164
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.75976,
+        0.08352,
+        0.85678,
+        0.09392
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.75922,
+        0.10252,
+        0.83163,
+        0.11257
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.75867,
+        0.12152,
+        0.84536,
+        0.13178
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12047,
+        0.23513,
+        0.24165,
+        0.24535
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84809,
+        0.40083,
+        0.94242,
+        0.4119
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85517,
+        0.4175,
+        0.94194,
+        0.42846
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83422,
+        0.45387,
+        0.94089,
+        0.46601
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11336,
+        0.46967,
+        0.22109,
+        0.4797
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10219,
+        0.48218,
+        0.18007,
+        0.49193
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1056",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Varghese Property Services Pvt. Ltd.",
+    "template": "classic"
+  },
+  "notes": "Clean invoice that exactly matches its PO."
+}

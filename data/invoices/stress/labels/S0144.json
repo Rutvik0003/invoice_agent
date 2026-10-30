@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0144",
+  "file_name": "S0144.jpg",
+  "set_name": "stress",
+  "scenario": "VENDOR_NOT_APPROVED",
+  "template": "modern",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "jpg",
+  "degradations": [
+    "mild_scan",
+    "dpi_166",
+    "fax",
+    "rotation_+1.4deg",
+    "blur_0.5",
+    "noise_5",
+    "jpeg_q75"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Kannan Power Sys. Pvt. Ltd.",
+      "printed": "Kannan Power Sys. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "32KBQCK5206V2ZF",
+      "printed": "32KBQCK5206V2ZF"
+    },
+    "vendor_address": {
+      "value": "56/08, Lala, Thiruvananthapuram - 695017, Kerala",
+      "printed": "56/08, Lala, Thiruvananthapuram - 695017, Kerala"
+    },
+    "vendor_state": {
+      "value": "Kerala",
+      "printed": "Kerala"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "KPS1772",
+      "printed": "KPS1772"
+    },
+    "invoice_date": {
+      "value": "2026-10-08",
+      "printed": "08-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1352",
+      "printed": "PO-2026-1352"
+    },
+    "line_items": [
+      {
+        "description": "Emergency Light LED",
+        "hsn_sac": "9405",
+        "quantity": 67,
+        "unit": "Nos",
+        "unit_price": 1500.0,
+        "amount": 100500.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 100500.0,
+      "printed": "₹1,00,500.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 18090.0,
+      "printed": "₹18,090.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 118590.0,
+      "printed": "₹1,18,590.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Eighteen Thousand Five Hundred Ninety Only",
+      "printed": "Rupees One Lakh Eighteen Thousand Five Hundred Ninety Only"
+    },
+    "bank_account": {
+      "value": "20600854313",
+      "printed": "20600854313"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0211122",
+      "printed": "SBIN0211122"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.57371,
+        0.04528,
+        0.83661,
+        0.06332
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.71487,
+        0.08911,
+        0.83801,
+        0.10021
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.05451,
+        0.1452,
+        0.12416,
+        0.15758
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.27084,
+        0.14098,
+        0.36209,
+        0.15374
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.48717,
+        0.13673,
+        0.60147,
+        0.1499
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10677,
+        0.22581,
+        0.23205,
+        0.23695
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.06265,
+        0.37142,
+        0.30501,
+        0.40245
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85074,
+        0.33757,
+        0.93425,
+        0.34907
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86275,
+        0.35413,
+        0.93483,
+        0.36543
+      ],
+      "approximate": true
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.83518,
+        0.39055,
+        0.93617,
+        0.40349
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.13347,
+        0.84614,
+        0.21879,
+        0.85657
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11781,
+        0.85936,
+        0.19728,
+        0.86968
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_NOT_APPROVED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1352",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Kannan Power Sys. Pvt. Ltd.",
+    "template": "modern"
+  },
+  "notes": "Vendor V001 has status 'pending' in the vendor master."
+}

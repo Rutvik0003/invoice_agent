@@ -1,0 +1,338 @@
+{
+  "invoice_id": "S0023",
+  "file_name": "S0023.pdf",
+  "set_name": "stress",
+  "scenario": "DUPLICATE_EXACT_NUMBER",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Jhaveri Packwell Industries Private Limited",
+      "printed": "Jhaveri Packwell Industries Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "29FAOCJ6684D2ZT",
+      "printed": "29 FAOCJ 6684 D2ZT"
+    },
+    "vendor_address": {
+      "value": "02/490, Sibal Nagar, Mysuru - 570070, Karnataka",
+      "printed": "02/490, Sibal Nagar, Mysuru - 570070, Karnataka"
+    },
+    "vendor_state": {
+      "value": "Karnataka",
+      "printed": "Karnataka"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "JPI/1557/26",
+      "printed": "JPI/1557/26"
+    },
+    "invoice_date": {
+      "value": "2026-09-19",
+      "printed": "19-Sep-26"
+    },
+    "po_reference": {
+      "value": "PO/2026/1044",
+      "printed": "PO/2026/1044"
+    },
+    "line_items": [
+      {
+        "description": "Paper Carry Bag - Medium, Printed",
+        "hsn_sac": "4819",
+        "quantity": 396,
+        "unit": "Nos",
+        "unit_price": 12.5,
+        "amount": 4950.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Bubble Wrap Roll 1m x 100m",
+        "hsn_sac": "3921",
+        "quantity": 8,
+        "unit": "Roll",
+        "unit_price": 1200.0,
+        "amount": 9600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Shipping Label Roll 4x6 in",
+        "hsn_sac": "4821",
+        "quantity": 54,
+        "unit": "Roll",
+        "unit_price": 325.0,
+        "amount": 17550.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Wooden Pallet 1200x1000 mm",
+        "hsn_sac": "4415",
+        "quantity": 58,
+        "unit": "Nos",
+        "unit_price": 1100.0,
+        "amount": 63800.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Void Fill Paper Roll",
+        "hsn_sac": "4808",
+        "quantity": 26,
+        "unit": "Roll",
+        "unit_price": 970.0,
+        "amount": 25220.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 121120.0,
+      "printed": "INR 121120.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 17879.5,
+      "printed": "INR 17879.50"
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 139000.0,
+      "printed": "INR 139000.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Thirty Nine Thousand Only",
+      "printed": "Rupees One Lakh Thirty Nine Thousand Only"
+    },
+    "bank_account": {
+      "value": "977141520",
+      "printed": "977141520"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0215216",
+      "printed": "UTIB0215216"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.36383,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.21948,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.22014,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.57299,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.79105,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.5863,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86882,
+        0.38741,
+        0.94792,
+        0.39521
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87536,
+        0.40285,
+        0.94792,
+        0.41065
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85752,
+        0.43405,
+        0.94792,
+        0.44297
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.5972,
+        0.61237,
+        0.60501
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.60843,
+        0.61757,
+        0.61623
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "DUPLICATE_INVOICE_NUMBER"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1044",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Jhaveri Packwell Industries Private Limited",
+    "template": "tally"
+  },
+  "notes": "Duplicate of history H0282 (JPI/1557/26, 2026-09-19, ₹139000.00, paid); printed as JPI/1557/26."
+}

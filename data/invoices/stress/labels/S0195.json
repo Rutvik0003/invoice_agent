@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0195",
+  "file_name": "S0195.pdf",
+  "set_name": "stress",
+  "scenario": "BUYER_MISMATCH",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Nirmaan Office Mart Private Limited",
+      "printed": "Nirmaan Office Mart Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "09DJPCN6919I1Z5",
+      "printed": "09DJPCN6919I1Z5"
+    },
+    "vendor_address": {
+      "value": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh",
+      "printed": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenitha Fashions LLP",
+      "printed": "Zenitha Fashions LLP"
+    },
+    "buyer_gstin": {
+      "value": "27BETFZ8479I1ZN",
+      "printed": "27BETFZ8479I1ZN"
+    },
+    "invoice_number": {
+      "value": "2026/NOM/1517",
+      "printed": "2026/NOM/1517"
+    },
+    "invoice_date": {
+      "value": "2026-10-15",
+      "printed": "15 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1360",
+      "printed": "PO-2026-1360"
+    },
+    "line_items": [
+      {
+        "description": "Box File - Lever Arch",
+        "hsn_sac": "4820",
+        "quantity": 1048,
+        "unit": "Nos",
+        "unit_price": 125.0,
+        "amount": 131000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Calculator - 12 Digit",
+        "hsn_sac": "8470",
+        "quantity": 39,
+        "unit": "Nos",
+        "unit_price": 375.0,
+        "amount": 14625.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 145625.0,
+      "printed": "INR 145625.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 26212.5,
+      "printed": "INR 26212.50"
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 171838.0,
+      "printed": "INR 171838.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Seventy One Thousand Eight Hundred Thirty Eight Only",
+      "printed": "Rupees One Lakh Seventy One Thousand Eight Hundred Thirty Eight Only"
+    },
+    "bank_account": {
+      "value": "911202032254021828",
+      "printed": "911202032254021828"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0854127",
+      "printed": "IDFB0854127"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.31001,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.20382,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.19825,
+        0.20379,
+        0.20605
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.59749,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.80157,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.58769,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86882,
+        0.33378,
+        0.94792,
+        0.34158
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87536,
+        0.34922,
+        0.94792,
+        0.35702
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85752,
+        0.38042,
+        0.94792,
+        0.38934
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.50794,
+        0.67123,
+        0.51574
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.51916,
+        0.61757,
+        0.52697
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1360",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nirmaan Office Mart Private Limited",
+    "template": "tally"
+  },
+  "notes": "Addressed to Zenitha Fashions LLP (27BETFZ8479I1ZN), not Zenith Retail."
+}

@@ -1,0 +1,319 @@
+{
+  "invoice_id": "S0204",
+  "file_name": "S0204.jpg",
+  "set_name": "stress",
+  "scenario": "GST_WRONG_TYPE",
+  "template": "services",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "jpg",
+  "degradations": [
+    "mild_scan",
+    "dpi_184",
+    "rotation_-0.7deg",
+    "blur_0.6",
+    "noise_5",
+    "jpeg_q80"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "M/s Pinnacle Softech & Co.",
+      "printed": "M/s Pinnacle Softech & Co."
+    },
+    "vendor_gstin": {
+      "value": "29CSBFP0836M1ZW",
+      "printed": "29CSBFP0836M1ZW"
+    },
+    "vendor_address": {
+      "value": "41/491, Dalal Ganj, Bengaluru - 560012, Karnataka",
+      "printed": "41/491, Dalal Ganj, Bengaluru - 560012, Karnataka"
+    },
+    "vendor_state": {
+      "value": "Karnataka",
+      "printed": "Karnataka"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/PS/480",
+      "printed": "2026/PS/480"
+    },
+    "invoice_date": {
+      "value": "2026-10-17",
+      "printed": "17-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1275",
+      "printed": "PO-2026-1275"
+    },
+    "line_items": [
+      {
+        "description": "Network Setup and Configuration",
+        "hsn_sac": "998316",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 43200.0,
+        "amount": 43200.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 43200.0,
+      "printed": "₹43,200.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 3888.0,
+      "printed": "₹3,888.00"
+    },
+    "sgst": {
+      "value": 3888.0,
+      "printed": "₹3,888.00"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 50976.0,
+      "printed": "₹50,976.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "595590741871",
+      "printed": "595590741871"
+    },
+    "bank_ifsc": {
+      "value": "YESB0871888",
+      "printed": "YESB0871888"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.06792,
+        0.02938,
+        0.47762,
+        0.05122
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12403,
+        0.0732,
+        0.26683,
+        0.08303
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12461,
+        0.18441,
+        0.27318,
+        0.19486
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.83397,
+        0.13993,
+        0.94548,
+        0.15065
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.85013,
+        0.15669,
+        0.94521,
+        0.16728
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.82726,
+        0.17313,
+        0.94493,
+        0.18391
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85939,
+        0.31737,
+        0.94255,
+        0.32786
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.86821,
+        0.33309,
+        0.9423,
+        0.34351
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.86795,
+        0.34874,
+        0.94204,
+        0.35916
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.839,
+        0.38284,
+        0.94147,
+        0.39465
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11526,
+        0.84942,
+        0.23007,
+        0.85959
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10178,
+        0.86214,
+        0.1969,
+        0.87215
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "GST_TYPE_INVALID"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1275",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "M/s Pinnacle Softech & Co.",
+    "template": "services"
+  },
+  "notes": "CGST+SGST charged by an out-of-state vendor."
+}

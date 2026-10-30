@@ -1,0 +1,363 @@
+{
+  "invoice_id": "S0194",
+  "file_name": "S0194.pdf",
+  "set_name": "stress",
+  "scenario": "HEAVY_SCAN_LOW_CONFIDENCE",
+  "template": "services",
+  "is_scanned": true,
+  "scan_level": "heavy",
+  "file_format": "pdf",
+  "degradations": [
+    "heavy_scan",
+    "dpi_100",
+    "obscured_invoice_date_ink_blot",
+    "coffee_stain",
+    "fax",
+    "rotation_-2.5deg",
+    "blur_1.0",
+    "noise_16",
+    "jpeg_q44"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Suvidha Facility Services Private Limited",
+      "printed": "Suvidha Facility Services Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "27LTJCS8824F1ZN",
+      "printed": "27LTJCS8824F1ZN"
+    },
+    "vendor_address": {
+      "value": "H.No. 01, Andra Street, Thane - 400066, Maharashtra",
+      "printed": "H.No. 01, Andra Street, Thane - 400066, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/417",
+      "printed": "2026-27/417"
+    },
+    "invoice_date": {
+      "value": "2026-10-27",
+      "printed": "27/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1284",
+      "printed": "PO-2026-1284"
+    },
+    "line_items": [
+      {
+        "description": "Security Guard Services (12 hr shift)",
+        "hsn_sac": "998525",
+        "quantity": 4,
+        "unit": "Guard-Month",
+        "unit_price": 27850.0,
+        "amount": 111400.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Water Tank Cleaning",
+        "hsn_sac": "998533",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 3650.0,
+        "amount": 3650.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Deep Cleaning - Store Premises",
+        "hsn_sac": "998533",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 35950.0,
+        "amount": 35950.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "HVAC Annual Maintenance Contract",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 133600.0,
+        "amount": 133600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Waste Disposal Services",
+        "hsn_sac": "999423",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 13350.0,
+        "amount": 13350.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 297950.0,
+      "printed": "Rs. 2,97,950/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 26815.5,
+      "printed": "Rs. 26,815.50"
+    },
+    "sgst": {
+      "value": 26815.5,
+      "printed": "Rs. 26,815.50"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 351581.0,
+      "printed": "Rs. 3,51,581/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Three Lakh Fifty One Thousand Five Hundred Eighty One Only",
+      "printed": "Rupees Three Lakh Fifty One Thousand Five Hundred Eighty One Only"
+    },
+    "bank_account": {
+      "value": "282404859",
+      "printed": "282404859"
+    },
+    "bank_ifsc": {
+      "value": "YESB0531342",
+      "printed": "YESB0531342"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.08833,
+        0.02135,
+        0.6446,
+        0.05504
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.14288,
+        0.06503,
+        0.27524,
+        0.07772
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13847,
+        0.1762,
+        0.28732,
+        0.18996
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.85273,
+        0.14765,
+        0.96129,
+        0.16075
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.85887,
+        0.16449,
+        0.96027,
+        0.17737
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.84124,
+        0.18059,
+        0.95925,
+        0.19398
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.83956,
+        0.40643,
+        0.94546,
+        0.41945
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.84249,
+        0.42219,
+        0.9445,
+        0.43509
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.84153,
+        0.43782,
+        0.94355,
+        0.45072
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.80946,
+        0.47121,
+        0.94145,
+        0.48618
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.09945,
+        0.84067,
+        0.18592,
+        0.85252
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.08541,
+        0.85308,
+        0.18085,
+        0.86521
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "invoice_date"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1284",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Suvidha Facility Services Private Limited",
+    "template": "services"
+  },
+  "notes": "Underlying invoice is correct, but invoice_date is obscured on the heavy scan."
+}

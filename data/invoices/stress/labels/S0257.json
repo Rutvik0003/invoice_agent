@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0257",
+  "file_name": "S0257.pdf",
+  "set_name": "stress",
+  "scenario": "POSSIBLE_DUPLICATE",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Zenon Infotech Systems",
+      "printed": "Zenon Infotech Systems"
+    },
+    "vendor_gstin": {
+      "value": "09EZBFZ5696F1Z3",
+      "printed": "09EZBFZ5696F1Z3"
+    },
+    "vendor_address": {
+      "value": "11/86, Dyal Ganj, Kanpur - 208081, Uttar Pradesh",
+      "printed": "11/86, Dyal Ganj, Kanpur - 208081, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "ZIS/26-27/1710",
+      "printed": "ZIS/26-27/1710"
+    },
+    "invoice_date": {
+      "value": "2026-10-16",
+      "printed": "16/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1250",
+      "printed": "PO-2026-1250"
+    },
+    "line_items": [
+      {
+        "description": "Toner Cartridge - Black",
+        "hsn_sac": "8443",
+        "quantity": 36,
+        "unit": "Nos",
+        "unit_price": 4050.0,
+        "amount": 145800.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Barcode Scanner - Handheld",
+        "hsn_sac": "8471",
+        "quantity": 37,
+        "unit": "Nos",
+        "unit_price": 5800.0,
+        "amount": 214600.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 360400.0,
+      "printed": "Rs. 3,60,400/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 64872.0,
+      "printed": "Rs. 64,872/-"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 425272.0,
+      "printed": "Rs. 4,25,272/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Four Lakh Twenty Five Thousand Two Hundred Seventy Two Only",
+      "printed": "Rupees Four Lakh Twenty Five Thousand Two Hundred Seventy Two Only"
+    },
+    "bank_account": {
+      "value": "165486244",
+      "printed": "165486244"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0273775",
+      "printed": "SBIN0273775"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.37444,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.3189,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.84084,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.81307,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.83447,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85384,
+        0.35754,
+        0.93952,
+        0.36726
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86518,
+        0.37411,
+        0.93952,
+        0.38383
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.8434,
+        0.41078,
+        0.93952,
+        0.42138
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.43691,
+        0.17328,
+        0.4454
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.44959,
+        0.17966,
+        0.45823
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "POSSIBLE_DUPLICATE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1250",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Zenon Infotech Systems",
+    "template": "classic"
+  },
+  "notes": "Same vendor and total (₹425272.00) as ZIS/26-27/1709 dated 2026-10-17; different invoice number."
+}

@@ -1,0 +1,337 @@
+{
+  "invoice_id": "S0131",
+  "file_name": "S0131.pdf",
+  "set_name": "stress",
+  "scenario": "HEAVY_SCAN_LOW_CONFIDENCE",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "heavy",
+  "file_format": "pdf",
+  "degradations": [
+    "heavy_scan",
+    "dpi_100",
+    "obscured_invoice_number_ink_blot",
+    "rubber_stamp",
+    "fax",
+    "coffee_stain",
+    "rotation_+3.6deg",
+    "blur_1.2",
+    "noise_15",
+    "jpeg_q35"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vertex Ent.",
+      "printed": "Vertex Ent."
+    },
+    "vendor_gstin": {
+      "value": "27TSSPN3544X1ZU",
+      "printed": "27TSSPN3544X1ZU"
+    },
+    "vendor_address": {
+      "value": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+      "printed": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VE0398",
+      "printed": "VE0398"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "2026-10-13"
+    },
+    "po_reference": {
+      "value": "PO-2026-1283",
+      "printed": "PO-2026-1283"
+    },
+    "line_items": [
+      {
+        "description": "Polyester Yarn 150 Denier",
+        "hsn_sac": "5402",
+        "quantity": 36,
+        "unit": "Kg",
+        "unit_price": 170.0,
+        "amount": 6120.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Denim Fabric 12 oz",
+        "hsn_sac": "5209",
+        "quantity": 96,
+        "unit": "Mtr",
+        "unit_price": 220.0,
+        "amount": 21120.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 27240.0,
+      "printed": "Rs. 27,240/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 681.0,
+      "printed": "Rs. 681/-"
+    },
+    "sgst": {
+      "value": 681.0,
+      "printed": "Rs. 681/-"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 28602.0,
+      "printed": "Rs. 28,602/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Twenty Eight Thousand Six Hundred Two Only",
+      "printed": "Rupees Twenty Eight Thousand Six Hundred Two Only"
+    },
+    "bank_account": {
+      "value": "319144834307",
+      "printed": "319144834307"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0977855",
+      "printed": "KKBK0977855"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.03438,
+        0.10002,
+        0.12296,
+        0.11505
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.08851,
+        0.13481,
+        0.20528,
+        0.14832
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.52663,
+        0.10915,
+        0.64408,
+        0.1227
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.04281,
+        0.23407,
+        0.09133,
+        0.2451
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.26214,
+        0.22337,
+        0.33154,
+        0.23533
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.48146,
+        0.21273,
+        0.57024,
+        0.22556
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84391,
+        0.28855,
+        0.92238,
+        0.30147
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.86511,
+        0.30416,
+        0.92377,
+        0.3162
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.8665,
+        0.31978,
+        0.92516,
+        0.33182
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83972,
+        0.3541,
+        0.92832,
+        0.36858
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.14163,
+        0.85274,
+        0.22629,
+        0.86483
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.1336,
+        0.86522,
+        0.21685,
+        0.87724
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "invoice_number"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1283",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vertex Ent.",
+    "template": "compact"
+  },
+  "notes": "Underlying invoice is correct, but invoice_number is obscured on the heavy scan."
+}

@@ -1,0 +1,312 @@
+{
+  "invoice_id": "S0239",
+  "file_name": "S0239.pdf",
+  "set_name": "stress",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "landscape",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Vardhan Interiors Private Limited",
+      "printed": "Vardhan Interiors Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "27CMNCV0456S2ZN",
+      "printed": "27CMNCV0456S2ZN"
+    },
+    "vendor_address": {
+      "value": "880, Pandit Road, Bhiwandi - 421074, Maharashtra",
+      "printed": "880, Pandit Road, Bhiwandi - 421074, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/1728",
+      "printed": "2026-27/1728"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "13/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1306",
+      "printed": "PO-2026-1306"
+    },
+    "line_items": [
+      {
+        "description": "Office Desk 1200x600 mm",
+        "hsn_sac": "9403",
+        "quantity": 8,
+        "unit": "Nos",
+        "unit_price": 15435.0,
+        "amount": 123480.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 123480.0,
+      "printed": "1,23,480"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 11113.2,
+      "printed": "11,113.20"
+    },
+    "sgst": {
+      "value": 11113.2,
+      "printed": "11,113.20"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 145706.4,
+      "printed": "1,45,706.40"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Forty Five Thousand Seven Hundred Six and Forty Paise Only",
+      "printed": "Rupees One Lakh Forty Five Thousand Seven Hundred Six and Forty Paise Only"
+    },
+    "bank_account": {
+      "value": "63963754629450792",
+      "printed": "63963754629450792"
+    },
+    "bank_ifsc": {
+      "value": "CNRB0289990",
+      "printed": "CNRB0289990"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09978,
+        0.05754,
+        0.31338,
+        0.07937
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13249,
+        0.1228,
+        0.21174,
+        0.13624
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44369,
+        0.12095,
+        0.51929,
+        0.13439
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.89519,
+        0.09281,
+        0.95724,
+        0.10793
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.90471,
+        0.11465,
+        0.95724,
+        0.12977
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.89443,
+        0.13649,
+        0.95724,
+        0.15161
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.9194,
+        0.30326,
+        0.95724,
+        0.31838
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.91395,
+        0.32519,
+        0.95724,
+        0.3403
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.91395,
+        0.34711,
+        0.95724,
+        0.36223
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89978,
+        0.37365,
+        0.95724,
+        0.39045
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07843,
+        0.39322,
+        0.16031,
+        0.40666
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06815,
+        0.41136,
+        0.12339,
+        0.4248
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1306",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vardhan Interiors Private Limited",
+    "template": "landscape"
+  },
+  "notes": "'Office Desk 1200x600 mm' billed at ₹15435.00 vs PO ₹14700.00 (+5%)."
+}

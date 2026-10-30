@@ -1,0 +1,337 @@
+{
+  "invoice_id": "S0237",
+  "file_name": "S0237.pdf",
+  "set_name": "stress",
+  "scenario": "ARITHMETIC_ERROR",
+  "template": "landscape",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_156",
+    "rotation_+0.1deg",
+    "blur_0.5",
+    "noise_7",
+    "jpeg_q79"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Vig Paper Products Pvt Ltd",
+      "printed": "Vig Paper Products Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "23EUACV4693J1ZU",
+      "printed": "23EUACV4693J1ZU"
+    },
+    "vendor_address": {
+      "value": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh",
+      "printed": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/345",
+      "printed": "2026-27/345"
+    },
+    "invoice_date": {
+      "value": "2026-10-10",
+      "printed": "October 10, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1326",
+      "printed": "PO-2026-1326"
+    },
+    "line_items": [
+      {
+        "description": "A4 Copier Paper 75 GSM (500 sheets)",
+        "hsn_sac": "4802",
+        "quantity": 41,
+        "unit": "Ream",
+        "unit_price": 295.0,
+        "amount": 12095.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Sticky Notes 3x3 (Pack of 12)",
+        "hsn_sac": "4820",
+        "quantity": 104,
+        "unit": "Pack",
+        "unit_price": 165.0,
+        "amount": 17160.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Correction Pen",
+        "hsn_sac": "3824",
+        "quantity": 783,
+        "unit": "Nos",
+        "unit_price": 55.0,
+        "amount": 43065.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Ball Pen - Blue (Box of 50)",
+        "hsn_sac": "9608",
+        "quantity": 62,
+        "unit": "Box",
+        "unit_price": 340.0,
+        "amount": 24816.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 93400.0,
+      "printed": "₹93,400.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 16812.0,
+      "printed": "₹16,812.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 110212.0,
+      "printed": "₹1,10,212.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Ten Thousand Two Hundred Twelve Only",
+      "printed": "Rupees One Lakh Ten Thousand Two Hundred Twelve Only"
+    },
+    "bank_account": {
+      "value": "670314483232611348",
+      "printed": "670314483232611348"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0666435",
+      "printed": "HDFC0666435"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09901,
+        0.05835,
+        0.26824,
+        0.08077
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13183,
+        0.12383,
+        0.2067,
+        0.13753
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44303,
+        0.12088,
+        0.51865,
+        0.13459
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.8999,
+        0.09121,
+        0.95655,
+        0.10653
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.88039,
+        0.11305,
+        0.95659,
+        0.12844
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.89379,
+        0.13489,
+        0.95663,
+        0.15023
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.90835,
+        0.39376,
+        0.95708,
+        0.40905
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.90838,
+        0.41569,
+        0.95712,
+        0.43097
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.8937,
+        0.46415,
+        0.95721,
+        0.48117
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07841,
+        0.48649,
+        0.16513,
+        0.50024
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06816,
+        0.50478,
+        0.12309,
+        0.51841
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1326",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "arithmetic_error": "Line 'Ball Pen - Blue (Box of 50)' printed as 24816.00 instead of 21080.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Vig Paper Products Pvt Ltd",
+    "template": "landscape"
+  },
+  "notes": "Line 'Ball Pen - Blue (Box of 50)' printed as 24816.00 instead of 21080.00; lines no longer sum to the subtotal."
+}

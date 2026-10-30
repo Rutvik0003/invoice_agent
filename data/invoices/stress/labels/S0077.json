@@ -1,0 +1,348 @@
+{
+  "invoice_id": "S0077",
+  "file_name": "S0077.pdf",
+  "set_name": "stress",
+  "scenario": "GST_WRONG_TYPE",
+  "template": "landscape",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vriddhi Ent.",
+      "printed": "Vriddhi Ent."
+    },
+    "vendor_gstin": {
+      "value": "33UKBPC2992J2ZP",
+      "printed": "33UKBPC2992J2ZP"
+    },
+    "vendor_address": {
+      "value": "91/448, Manne Ganj, Chennai - 600016, Tamil Nadu",
+      "printed": "91/448, Manne Ganj, Chennai - 600016, Tamil Nadu"
+    },
+    "vendor_state": {
+      "value": "Tamil Nadu",
+      "printed": "Tamil Nadu"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "1103",
+      "printed": "1103"
+    },
+    "invoice_date": {
+      "value": "2026-10-09",
+      "printed": "9 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1266",
+      "printed": "PO-2026-1266"
+    },
+    "line_items": [
+      {
+        "description": "Facility Manager Deployment",
+        "hsn_sac": "998519",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 68200.0,
+        "amount": 68200.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Housekeeping Services - Monthly",
+        "hsn_sac": "998533",
+        "quantity": 3,
+        "unit": "Month",
+        "unit_price": 77550.0,
+        "amount": 232650.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Lift Maintenance AMC",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 69000.0,
+        "amount": 69000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "HVAC Annual Maintenance Contract",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 145650.0,
+        "amount": 145650.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Waste Disposal Services",
+        "hsn_sac": "999423",
+        "quantity": 2,
+        "unit": "Month",
+        "unit_price": 9500.0,
+        "amount": 19000.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 534500.0,
+      "printed": "5,34,500"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 48105.0,
+      "printed": "48,105"
+    },
+    "sgst": {
+      "value": 48105.0,
+      "printed": "48,105"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 630710.0,
+      "printed": "6,30,710"
+    },
+    "amount_in_words": {
+      "value": "Rupees Six Lakh Thirty Thousand Seven Hundred Ten Only",
+      "printed": "Rupees Six Lakh Thirty Thousand Seven Hundred Ten Only"
+    },
+    "bank_account": {
+      "value": "460960831845696484",
+      "printed": "460960831845696484"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0154890",
+      "printed": "ICIC0154890"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09978,
+        0.05754,
+        0.17563,
+        0.07937
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13249,
+        0.1228,
+        0.20576,
+        0.13624
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44369,
+        0.12095,
+        0.51929,
+        0.13439
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.93557,
+        0.09281,
+        0.95724,
+        0.10793
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.90991,
+        0.11465,
+        0.95724,
+        0.12977
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.89443,
+        0.13649,
+        0.95724,
+        0.15161
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.9194,
+        0.42606,
+        0.95724,
+        0.44118
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.92748,
+        0.44799,
+        0.95724,
+        0.4631
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.92748,
+        0.46991,
+        0.95724,
+        0.48503
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.91499,
+        0.49645,
+        0.95724,
+        0.51325
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07843,
+        0.51602,
+        0.16513,
+        0.52946
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06815,
+        0.53416,
+        0.11678,
+        0.5476
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "GST_TYPE_INVALID"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1266",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vriddhi Ent.",
+    "template": "landscape"
+  },
+  "notes": "CGST+SGST charged by an out-of-state vendor."
+}

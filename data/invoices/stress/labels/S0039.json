@@ -1,0 +1,316 @@
+{
+  "invoice_id": "S0039",
+  "file_name": "S0039.pdf",
+  "set_name": "stress",
+  "scenario": "OBSCURED_GSTIN",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_158",
+    "obscured_vendor_gstin_stamp",
+    "punch_holes",
+    "rotation_-0.8deg",
+    "blur_0.6",
+    "noise_7",
+    "jpeg_q73"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Jhaveri Packwell Inds. Pvt. Ltd.",
+      "printed": "Jhaveri Packwell Inds. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "29FAOCJ6684D2ZT",
+      "printed": "29FAOCJ6684D2ZT"
+    },
+    "vendor_address": {
+      "value": "02/490, Sibal Nagar, Mysuru - 570070, Karnataka",
+      "printed": "02/490, Sibal Nagar, Mysuru - 570070, Karnataka"
+    },
+    "vendor_state": {
+      "value": "Karnataka",
+      "printed": "Karnataka"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "JPI/1565/26",
+      "printed": "JPI/1565/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-17",
+      "printed": "2026-10-17"
+    },
+    "po_reference": {
+      "value": "PO-2026-1297",
+      "printed": "PO-2026-1297"
+    },
+    "line_items": [
+      {
+        "description": "Bubble Wrap Roll 1m x 100m",
+        "hsn_sac": "3921",
+        "quantity": 54,
+        "unit": "Roll",
+        "unit_price": 1600.0,
+        "amount": 86400.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 86400.0,
+      "printed": "₹86,400.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 15552.0,
+      "printed": "₹15,552.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 101952.0,
+      "printed": "₹1,01,952.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh One Thousand Nine Hundred Fifty Two Only",
+      "printed": "Rupees One Lakh One Thousand Nine Hundred Fifty Two Only"
+    },
+    "bank_account": {
+      "value": "977141520",
+      "printed": "977141520"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0215216",
+      "printed": "UTIB0215216"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07874,
+        0.07973,
+        0.32821,
+        0.09338
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12883,
+        0.11862,
+        0.24523,
+        0.12815
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.56843,
+        0.11695,
+        0.68553,
+        0.12649
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.07276,
+        0.21207,
+        0.14541,
+        0.22172
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.2925,
+        0.21428,
+        0.36141,
+        0.22389
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.51224,
+        0.21649,
+        0.60057,
+        0.22629
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87208,
+        0.29228,
+        0.94372,
+        0.30248
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87177,
+        0.30793,
+        0.94341,
+        0.31813
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84934,
+        0.34209,
+        0.94272,
+        0.35361
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.10365,
+        0.83589,
+        0.16688,
+        0.84489
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.09429,
+        0.84783,
+        0.1722,
+        0.85697
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "vendor_gstin"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1297",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Jhaveri Packwell Inds. Pvt. Ltd.",
+    "template": "compact"
+  },
+  "notes": "Underlying invoice is correct, but vendor_gstin is obscured on the mild scan."
+}

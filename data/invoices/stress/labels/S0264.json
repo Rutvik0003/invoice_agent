@@ -1,0 +1,317 @@
+{
+  "invoice_id": "S0264",
+  "file_name": "S0264.pdf",
+  "set_name": "stress",
+  "scenario": "HEAVY_SCAN_LOW_CONFIDENCE",
+  "template": "small_vendor",
+  "is_scanned": true,
+  "scan_level": "heavy",
+  "file_format": "pdf",
+  "degradations": [
+    "heavy_scan",
+    "dpi_100",
+    "obscured_invoice_number_smudge",
+    "punch_holes",
+    "coffee_stain",
+    "rotation_+3.2deg",
+    "blur_1.3",
+    "noise_12",
+    "jpeg_q36"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Butala Freight Carriers",
+      "printed": "Butala Freight Carriers"
+    },
+    "vendor_gstin": {
+      "value": "06SKFPB6835W1ZY",
+      "printed": "06SKFPB6835W1ZY"
+    },
+    "vendor_address": {
+      "value": "H.No. 25, Zacharia Chowk, Faridabad - 121009, Haryana",
+      "printed": "H.No. 25, Zacharia Chowk, Faridabad - 121009, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/BFC/861",
+      "printed": "2026/BFC/861"
+    },
+    "invoice_date": {
+      "value": "2026-10-26",
+      "printed": "26-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1280",
+      "printed": "PO-2026-1280"
+    },
+    "line_items": [
+      {
+        "description": "Loading and Unloading Charges",
+        "hsn_sac": "996719",
+        "quantity": 1,
+        "unit": "Trip",
+        "unit_price": 3900.0,
+        "amount": 3900.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 3900.0,
+      "printed": "3,900"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 702.0,
+      "printed": "702"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 4602.0,
+      "printed": "4,602"
+    },
+    "amount_in_words": {
+      "value": "Rupees Four Thousand Six Hundred Two Only",
+      "printed": "Rupees Four Thousand Six Hundred Two Only"
+    },
+    "bank_account": {
+      "value": "140004184650",
+      "printed": "140004184650"
+    },
+    "bank_ifsc": {
+      "value": "BARB0245997",
+      "printed": "BARB0245997"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.31107,
+        0.05593,
+        0.62154,
+        0.08699
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.43232,
+        0.0982,
+        0.56055,
+        0.11212
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.68004,
+        0.15341,
+        0.80628,
+        0.1696
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.66775,
+        0.17863,
+        0.76965,
+        0.19387
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.68527,
+        0.20074,
+        0.81266,
+        0.21698
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.14306,
+        0.24013,
+        0.30465,
+        0.2572
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85884,
+        0.30317,
+        0.90878,
+        0.31637
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87548,
+        0.32215,
+        0.91027,
+        0.33475
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85242,
+        0.35852,
+        0.9133,
+        0.37419
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.15479,
+        0.85201,
+        0.25014,
+        0.86393
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.14609,
+        0.86525,
+        0.24018,
+        0.87712
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "invoice_number"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1280",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Butala Freight Carriers",
+    "template": "small_vendor"
+  },
+  "notes": "Underlying invoice is correct, but invoice_number is obscured on the heavy scan."
+}

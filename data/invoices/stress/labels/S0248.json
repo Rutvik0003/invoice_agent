@@ -1,0 +1,329 @@
+{
+  "invoice_id": "S0248",
+  "file_name": "S0248.pdf",
+  "set_name": "stress",
+  "scenario": "GST_WRONG_TYPE",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Nexa Softech Pvt Ltd",
+      "printed": "Nexa Softech Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "27IKYCN9490Z1ZL",
+      "printed": "27IKYCN9490Z1ZL"
+    },
+    "vendor_address": {
+      "value": "44/123, Barad Path, Pune - 411017, Maharashtra",
+      "printed": "44/123, Barad Path, Pune - 411017, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "NS/880/26",
+      "printed": "NS/880/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-17",
+      "printed": "17 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1265",
+      "printed": "PO-2026-1265"
+    },
+    "line_items": [
+      {
+        "description": "Data Backup and Recovery Service",
+        "hsn_sac": "998315",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 28450.0,
+        "amount": 28450.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "POS Software Customisation",
+        "hsn_sac": "998314",
+        "quantity": 57,
+        "unit": "Hrs",
+        "unit_price": 1650.0,
+        "amount": 94050.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Custom Software Development",
+        "hsn_sac": "998314",
+        "quantity": 65,
+        "unit": "Hrs",
+        "unit_price": 2400.0,
+        "amount": 156000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Annual Software Maintenance Support",
+        "hsn_sac": "998313",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 131800.0,
+        "amount": 131800.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 410300.0,
+      "printed": "Rs. 4,10,300/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 73854.0,
+      "printed": "Rs. 73,854/-"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 484154.0,
+      "printed": "Rs. 4,84,154/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Four Lakh Eighty Four Thousand One Hundred Fifty Four Only",
+      "printed": "Rupees Four Lakh Eighty Four Thousand One Hundred Fifty Four Only"
+    },
+    "bank_account": {
+      "value": "928712592876178",
+      "printed": "928712592876178"
+    },
+    "bank_ifsc": {
+      "value": "BARB0332196",
+      "printed": "BARB0332196"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.23858,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.23271,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.1307,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28696,
+        0.21639,
+        0.36167,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50672,
+        0.21639,
+        0.59488,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84983,
+        0.34602,
+        0.93952,
+        0.3555
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86174,
+        0.36167,
+        0.93952,
+        0.37115
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83839,
+        0.39605,
+        0.93952,
+        0.40664
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.21571,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.18485,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "GST_TYPE_INVALID"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1265",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nexa Softech Pvt Ltd",
+    "template": "compact"
+  },
+  "notes": "IGST charged by a Maharashtra vendor."
+}

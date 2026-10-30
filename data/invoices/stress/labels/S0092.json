@@ -1,0 +1,338 @@
+{
+  "invoice_id": "S0092",
+  "file_name": "S0092.pdf",
+  "set_name": "stress",
+  "scenario": "DUPLICATE_DISGUISED_NUMBER",
+  "template": "services",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Vardhan Traders",
+      "printed": "Vardhan Traders"
+    },
+    "vendor_gstin": {
+      "value": "32PGNPB5751A1ZJ",
+      "printed": "32PGNPB5751A1ZJ"
+    },
+    "vendor_address": {
+      "value": "00, Prabhu Circle, Thiruvananthapuram - 695090, Kerala",
+      "printed": "00, Prabhu Circle, Thiruvananthapuram - 695090, Kerala"
+    },
+    "vendor_state": {
+      "value": "Kerala",
+      "printed": "Kerala"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "vt/258/26",
+      "printed": "vt/258/26"
+    },
+    "invoice_date": {
+      "value": "2026-07-03",
+      "printed": "3 Jul 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1092",
+      "printed": "PO-2026-1092"
+    },
+    "line_items": [
+      {
+        "description": "Container Handling Charges",
+        "hsn_sac": "996711",
+        "quantity": 2,
+        "unit": "Container",
+        "unit_price": 14000.0,
+        "amount": 28000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Courier Charges - Express Documents",
+        "hsn_sac": "996812",
+        "quantity": 275,
+        "unit": "Shipment",
+        "unit_price": 130.0,
+        "amount": 35750.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Cold Chain Transport",
+        "hsn_sac": "996511",
+        "quantity": 1,
+        "unit": "Trip",
+        "unit_price": 41900.0,
+        "amount": 41900.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Last Mile Delivery",
+        "hsn_sac": "996812",
+        "quantity": 228,
+        "unit": "Shipment",
+        "unit_price": 55.5,
+        "amount": 12654.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Road Freight - Full Truck Load (Mumbai-Pune)",
+        "hsn_sac": "996511",
+        "quantity": 1,
+        "unit": "Trip",
+        "unit_price": 18850.0,
+        "amount": 18850.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 137154.0,
+      "printed": "INR 137154.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 22237.22,
+      "printed": "INR 22237.22"
+    },
+    "round_off": {
+      "value": -0.22,
+      "printed": "-0.22"
+    },
+    "total_amount": {
+      "value": 159391.0,
+      "printed": "INR 159391.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Fifty Nine Thousand Three Hundred Ninety One Only",
+      "printed": "Rupees One Lakh Fifty Nine Thousand Three Hundred Ninety One Only"
+    },
+    "bank_account": {
+      "value": "458510470633383251",
+      "printed": "458510470633383251"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0898882",
+      "printed": "UTIB0898882"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.06048,
+        0.03298,
+        0.31213,
+        0.05144
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11715,
+        0.07633,
+        0.2543,
+        0.08499
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11958,
+        0.18753,
+        0.268,
+        0.19676
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.85329,
+        0.13719,
+        0.93952,
+        0.147
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.85602,
+        0.15382,
+        0.93952,
+        0.16363
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.822,
+        0.17045,
+        0.93952,
+        0.18026
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.83007,
+        0.39613,
+        0.93952,
+        0.40594
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.83914,
+        0.41178,
+        0.93952,
+        0.42159
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.80283,
+        0.44612,
+        0.93952,
+        0.45708
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12121,
+        0.85257,
+        0.29319,
+        0.8618
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10794,
+        0.8654,
+        0.20073,
+        0.87463
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "DUPLICATE_INVOICE_NUMBER"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1092",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vardhan Traders",
+    "template": "services"
+  },
+  "notes": "Duplicate of history H0106 (VT/258/26, 2026-07-03, ₹159391.00, paid); printed as vt/258/26."
+}

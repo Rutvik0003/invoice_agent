@@ -1,0 +1,318 @@
+{
+  "invoice_id": "S0238",
+  "file_name": "S0238.pdf",
+  "set_name": "stress",
+  "scenario": "NO_PO_CLEAR_MATCH",
+  "template": "landscape",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_184",
+    "rotation_-1.1deg",
+    "blur_0.5",
+    "noise_4",
+    "jpeg_q74"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Samarth Woodcraft Private Limited",
+      "printed": "Samarth Woodcraft Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "27JEKCS2127I1ZS",
+      "printed": "27JEKCS2127I1ZS"
+    },
+    "vendor_address": {
+      "value": "97/72, Srinivasan Marg, Thane - 400063, Maharashtra",
+      "printed": "97/72, Srinivasan Marg, Thane - 400063, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/SW/1512",
+      "printed": "2026/SW/1512"
+    },
+    "invoice_date": {
+      "value": "2026-10-11",
+      "printed": "October 11, 2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Visitor Chair - Cantilever",
+        "hsn_sac": "9401",
+        "quantity": 40,
+        "unit": "Nos",
+        "unit_price": 4450.0,
+        "amount": 178000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Checkout Counter - Laminated",
+        "hsn_sac": "9403",
+        "quantity": 7,
+        "unit": "Nos",
+        "unit_price": 45900.0,
+        "amount": 321300.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 499300.0,
+      "printed": "INR 499300.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 44937.0,
+      "printed": "INR 44937.00"
+    },
+    "sgst": {
+      "value": 44937.0,
+      "printed": "INR 44937.00"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 589174.0,
+      "printed": "INR 589174.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "5455570727",
+      "printed": "5455570727"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0321769",
+      "printed": "SBIN0321769"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.10566,
+        0.04658,
+        0.33296,
+        0.07467
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13758,
+        0.11273,
+        0.20554,
+        0.12803
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44875,
+        0.11947,
+        0.52452,
+        0.13499
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.89531,
+        0.10365,
+        0.96278,
+        0.12063
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.88611,
+        0.12524,
+        0.96247,
+        0.14246
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.89539,
+        0.34485,
+        0.95945,
+        0.36173
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.90051,
+        0.36693,
+        0.95914,
+        0.38365
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.9002,
+        0.38884,
+        0.95884,
+        0.40557
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88625,
+        0.43693,
+        0.95817,
+        0.4557
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07986,
+        0.37736,
+        0.1282,
+        0.39213
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06933,
+        0.39522,
+        0.12128,
+        0.41008
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_INFERRED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1207",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Samarth Woodcraft Private Limited",
+    "template": "landscape"
+  },
+  "notes": "No PO printed. PO-2026-1207 matches every item, quantity and amount; none of the vendor's other open POs contain these items."
+}

@@ -1,0 +1,335 @@
+{
+  "invoice_id": "S0135",
+  "file_name": "S0135.pdf",
+  "set_name": "stress",
+  "scenario": "OBSCURED_INVOICE_NUMBER",
+  "template": "multipage",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_178",
+    "obscured_invoice_number_ink_blot",
+    "rubber_stamp",
+    "punch_holes",
+    "rotation_-1.1deg",
+    "blur_0.5",
+    "noise_6",
+    "jpeg_q67"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Prism Digital Sys. Pvt. Ltd.",
+      "printed": "Prism Digital Sys. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "19JXOCP0232P1ZD",
+      "printed": "19 JXOCP 0232 P1ZD"
+    },
+    "vendor_address": {
+      "value": "11/73, Taneja Zila, Kolkata - 700020, West Bengal",
+      "printed": "11/73, Taneja Zila, Kolkata - 700020, West Bengal"
+    },
+    "vendor_state": {
+      "value": "West Bengal",
+      "printed": "West Bengal"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01478",
+      "printed": "INV-01478"
+    },
+    "invoice_date": {
+      "value": "2026-10-16",
+      "printed": "October 16, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1290",
+      "printed": "PO-2026-1290"
+    },
+    "line_items": [
+      {
+        "description": "External SSD 1TB",
+        "hsn_sac": "8523",
+        "quantity": 19,
+        "unit": "Nos",
+        "unit_price": 9400.0,
+        "amount": 178600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Wireless Keyboard and Mouse Combo",
+        "hsn_sac": "8471",
+        "quantity": 4,
+        "unit": "Nos",
+        "unit_price": 1750.0,
+        "amount": 7000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Barcode Scanner - Handheld",
+        "hsn_sac": "8471",
+        "quantity": 12,
+        "unit": "Nos",
+        "unit_price": 4350.0,
+        "amount": 52200.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 237800.0,
+      "printed": "Rs. 2,37,800/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 42804.0,
+      "printed": "Rs. 42,804/-"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 280604.0,
+      "printed": "Rs. 2,80,604/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "864701210278",
+      "printed": "864701210278"
+    },
+    "bank_ifsc": {
+      "value": "BARB0634227",
+      "printed": "BARB0634227"
+    },
+    "page_count": {
+      "value": 2,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.13994,
+        0.04026,
+        0.43935,
+        0.05943
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.19356,
+        0.08719,
+        0.33937,
+        0.09846
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.69319,
+        0.10425,
+        0.77194,
+        0.11516
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.68304,
+        0.11955,
+        0.80748,
+        0.1311
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12266,
+        0.22034,
+        0.27034,
+        0.23163
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 2,
+      "bbox": [
+        0.84617,
+        0.13874,
+        0.94959,
+        0.15115
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 2,
+      "bbox": [
+        0.85857,
+        0.1564,
+        0.94911,
+        0.16863
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 2,
+      "bbox": [
+        0.81718,
+        0.19429,
+        0.94804,
+        0.20823
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 2,
+      "bbox": [
+        0.12267,
+        0.2585,
+        0.22226,
+        0.26913
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 2,
+      "bbox": [
+        0.10956,
+        0.27115,
+        0.19845,
+        0.28163
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 2,
+      "bbox": [
+        0.28517,
+        0.3136,
+        0.36814,
+        0.32341
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [
+    "invoice_number"
+  ],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.4,
+      "verification_status": "not_found"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [
+    [
+      "FIELD_NOT_VERIFIED",
+      "LOW_CONFIDENCE_FIELD"
+    ]
+  ],
+  "true_po_number": "PO-2026-1290",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": true,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Prism Digital Sys. Pvt. Ltd.",
+    "template": "multipage"
+  },
+  "notes": "Underlying invoice is correct, but invoice_number is obscured on the mild scan."
+}

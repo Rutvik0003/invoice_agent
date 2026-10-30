@@ -1,0 +1,302 @@
+{
+  "invoice_id": "S0100",
+  "file_name": "S0100.pdf",
+  "set_name": "stress",
+  "scenario": "BUYER_MISMATCH",
+  "template": "services",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Butala Freight Carriers",
+      "printed": "Butala Freight Carriers"
+    },
+    "vendor_gstin": {
+      "value": "06SKFPB6835W1ZY",
+      "printed": "06SKFPB6835W1ZY"
+    },
+    "vendor_address": {
+      "value": "H.No. 25, Zacharia Chowk, Faridabad - 121009, Haryana",
+      "printed": "H.No. 25, Zacharia Chowk, Faridabad - 121009, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenitha Fashions LLP",
+      "printed": "Zenitha Fashions LLP"
+    },
+    "buyer_gstin": {
+      "value": "27FBBFZ8246H1ZL",
+      "printed": "27FBBFZ8246H1ZL"
+    },
+    "invoice_number": {
+      "value": "2026/BFC/863",
+      "printed": "2026/BFC/863"
+    },
+    "invoice_date": {
+      "value": "2026-10-05",
+      "printed": "05/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1359",
+      "printed": "PO-2026-1359"
+    },
+    "line_items": [
+      {
+        "description": "Loading and Unloading Charges",
+        "hsn_sac": "996719",
+        "quantity": 7,
+        "unit": "Trip",
+        "unit_price": 2150.0,
+        "amount": 15050.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 15050.0,
+      "printed": "15,050"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 2709.0,
+      "printed": "2,709"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 17759.0,
+      "printed": "17,759"
+    },
+    "amount_in_words": {
+      "value": "Rupees Seventeen Thousand Seven Hundred Fifty Nine Only",
+      "printed": "Rupees Seventeen Thousand Seven Hundred Fifty Nine Only"
+    },
+    "bank_account": {
+      "value": "140004184650",
+      "printed": "140004184650"
+    },
+    "bank_ifsc": {
+      "value": "BARB0245997",
+      "printed": "BARB0245997"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.06048,
+        0.03298,
+        0.40434,
+        0.05144
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11715,
+        0.07633,
+        0.25776,
+        0.08499
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11958,
+        0.18753,
+        0.26284,
+        0.19676
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.81828,
+        0.13719,
+        0.93952,
+        0.147
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.83862,
+        0.15382,
+        0.93952,
+        0.16363
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.822,
+        0.17045,
+        0.93952,
+        0.18026
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88894,
+        0.31441,
+        0.93952,
+        0.32422
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.89802,
+        0.33006,
+        0.93952,
+        0.33987
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.87703,
+        0.3644,
+        0.93952,
+        0.37536
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12121,
+        0.85257,
+        0.23587,
+        0.8618
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10794,
+        0.8654,
+        0.2047,
+        0.87463
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1359",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Butala Freight Carriers",
+    "template": "services"
+  },
+  "notes": "Addressed to Zenitha Fashions LLP (27FBBFZ8246H1ZL), not Zenith Retail."
+}

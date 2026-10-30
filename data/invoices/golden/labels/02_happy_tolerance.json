@@ -1,0 +1,321 @@
+{
+  "invoice_id": "02_happy_tolerance",
+  "file_name": "02_happy_tolerance.pdf",
+  "set_name": "golden",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "modern",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Kapadia Woodcraft Private Limited",
+      "printed": "Kapadia Woodcraft Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "24JIGCK1386D1Z1",
+      "printed": "24JIGCK1386D1Z1"
+    },
+    "vendor_address": {
+      "value": "74, Kalita Ganj, Vadodara - 390060, Gujarat",
+      "printed": "74, Kalita Ganj, Vadodara - 390060, Gujarat"
+    },
+    "vendor_state": {
+      "value": "Gujarat",
+      "printed": "Gujarat"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01316",
+      "printed": "INV-01316"
+    },
+    "invoice_date": {
+      "value": "2026-10-14",
+      "printed": "October 14, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1203",
+      "printed": "PO-2026-1203"
+    },
+    "line_items": [
+      {
+        "description": "Office Desk 1200x600 mm",
+        "hsn_sac": "9403",
+        "quantity": 16,
+        "unit": "Nos",
+        "unit_price": 14350.0,
+        "amount": 229600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Workstation 4-Seater Cluster",
+        "hsn_sac": "9403",
+        "quantity": 5,
+        "unit": "Set",
+        "unit_price": 60540.0,
+        "amount": 302700.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 532300.0,
+      "printed": "₹5,32,300.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 95814.0,
+      "printed": "₹95,814.00"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 628114.0,
+      "printed": "₹6,28,114.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Six Lakh Twenty Eight Thousand One Hundred Fourteen Only",
+      "printed": "Rupees Six Lakh Twenty Eight Thousand One Hundred Fourteen Only"
+    },
+    "bank_account": {
+      "value": "792984423366",
+      "printed": "792984423366"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0965494",
+      "printed": "ICIC0965494"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.51953,
+        0.05139,
+        0.85217,
+        0.06477
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.73536,
+        0.09523,
+        0.85217,
+        0.10415
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.13864,
+        0.1521,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.2836,
+        0.13864,
+        0.4192,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.5,
+        0.13864,
+        0.61394,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11655,
+        0.22114,
+        0.24155,
+        0.23006
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.38969,
+        0.30869,
+        0.41644
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85634,
+        0.36703,
+        0.93952,
+        0.37706
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86777,
+        0.3836,
+        0.93952,
+        0.39363
+      ],
+      "approximate": false
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.8389,
+        0.40346,
+        0.93952,
+        0.41461
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12124,
+        0.84104,
+        0.214,
+        0.84996
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10512,
+        0.85387,
+        0.17962,
+        0.86279
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1203",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Kapadia Woodcraft Private Limited",
+    "template": "modern"
+  },
+  "notes": "'Workstation 4-Seater Cluster' billed at ₹60540.00 vs PO ₹60500.00 (₹200.00 on the line), inside tolerance."
+}

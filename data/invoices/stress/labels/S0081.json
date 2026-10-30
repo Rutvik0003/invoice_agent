@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0081",
+  "file_name": "S0081.jpg",
+  "set_name": "stress",
+  "scenario": "NOT_AN_INVOICE",
+  "template": "landscape",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "jpg",
+  "degradations": [
+    "mild_scan",
+    "dpi_177",
+    "signature",
+    "coffee_stain",
+    "rotation_+1.1deg",
+    "blur_0.6",
+    "noise_6",
+    "jpeg_q65"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "credit_note",
+      "printed": "Credit Note"
+    },
+    "vendor_name": {
+      "value": "Vriddhi Computer World",
+      "printed": "Vriddhi Computer World"
+    },
+    "vendor_gstin": {
+      "value": "03RWRPS3905Y2ZU",
+      "printed": "03RWRPS3905Y2ZU"
+    },
+    "vendor_address": {
+      "value": "77/85, Korpal Path, Mohali - 160010, Punjab",
+      "printed": "77/85, Korpal Path, Mohali - 160010, Punjab"
+    },
+    "vendor_state": {
+      "value": "Punjab",
+      "printed": "Punjab"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "CN-742",
+      "printed": "CN-742"
+    },
+    "invoice_date": {
+      "value": "2026-10-11",
+      "printed": "October 11, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1344",
+      "printed": "PO-2026-1344"
+    },
+    "line_items": [
+      {
+        "description": "Cat6 Patch Cable 3m",
+        "hsn_sac": "8544",
+        "quantity": 24,
+        "unit": "Nos",
+        "unit_price": 305.0,
+        "amount": 7320.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 7320.0,
+      "printed": "7,320"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": 250.0,
+      "printed": "250"
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 1362.6,
+      "printed": "1,362.60"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 8932.6,
+      "printed": "8,932.60"
+    },
+    "amount_in_words": {
+      "value": "Rupees Eight Thousand Nine Hundred Thirty Two and Sixty Paise Only",
+      "printed": "Rupees Eight Thousand Nine Hundred Thirty Two and Sixty Paise Only"
+    },
+    "bank_account": {
+      "value": "70590412339",
+      "printed": "70590412339"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0932158",
+      "printed": "IDFB0932158"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09383,
+        0.06421,
+        0.25223,
+        0.09033
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12743,
+        0.13074,
+        0.20586,
+        0.1463
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.43854,
+        0.1205,
+        0.51431,
+        0.13599
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.91939,
+        0.08045,
+        0.95182,
+        0.09644
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.87576,
+        0.10229,
+        0.95212,
+        0.11947
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.88941,
+        0.12412,
+        0.95242,
+        0.14095
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.93014,
+        0.29086,
+        0.95468,
+        0.30664
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.9172,
+        0.3347,
+        0.95528,
+        0.35085
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.91308,
+        0.36124,
+        0.95567,
+        0.37919
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07706,
+        0.40326,
+        0.13021,
+        0.41814
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06702,
+        0.42172,
+        0.11869,
+        0.43656
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "NOT_A_TAX_INVOICE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1344",
+  "knobs": {
+    "title": "Credit Note",
+    "invoice_no_label": "Credit Note No.",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "250.00",
+    "vendor_name_printed": "Vriddhi Computer World",
+    "template": "landscape"
+  },
+  "notes": "Document is a Credit Note, not a tax invoice; its document number is in invoice_number."
+}

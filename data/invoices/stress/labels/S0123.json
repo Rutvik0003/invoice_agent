@@ -1,0 +1,301 @@
+{
+  "invoice_id": "S0123",
+  "file_name": "S0123.jpg",
+  "set_name": "stress",
+  "scenario": "NO_PO_CLEAR_MATCH",
+  "template": "services",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "jpg",
+  "degradations": [
+    "mild_scan",
+    "dpi_196",
+    "fax",
+    "coffee_stain",
+    "rotation_+1.1deg",
+    "blur_0.4",
+    "noise_6",
+    "jpeg_q80"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Issac Property Services",
+      "printed": "Issac Property Services"
+    },
+    "vendor_gstin": {
+      "value": "08XCBFI2899Z1ZA",
+      "printed": "08XCBFI2899Z1ZA"
+    },
+    "vendor_address": {
+      "value": "H.No. 400, Mohan Nagar, Jaipur - 302077, Rajasthan",
+      "printed": "H.No. 400, Mohan Nagar, Jaipur - 302077, Rajasthan"
+    },
+    "vendor_state": {
+      "value": "Rajasthan",
+      "printed": "Rajasthan"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01531",
+      "printed": "INV-01531"
+    },
+    "invoice_date": {
+      "value": "2026-10-25",
+      "printed": "25/10/2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Pest Control Treatment",
+        "hsn_sac": "998531",
+        "quantity": 1,
+        "unit": "Visit",
+        "unit_price": 7350.0,
+        "amount": 7350.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 7350.0,
+      "printed": "Rs. 7,350/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 1323.0,
+      "printed": "Rs. 1,323/-"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 8673.0,
+      "printed": "Rs. 8,673/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "17559468834546535",
+      "printed": "17559468834546535"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0993906",
+      "printed": "UTIB0993906"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.04792,
+        0.03419,
+        0.40489,
+        0.05747
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10576,
+        0.07978,
+        0.2393,
+        0.09025
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.1112,
+        0.19073,
+        0.25984,
+        0.20196
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.84124,
+        0.13131,
+        0.92989,
+        0.14231
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.82919,
+        0.14794,
+        0.93034,
+        0.15911
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85238,
+        0.3085,
+        0.93468,
+        0.31941
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85281,
+        0.32414,
+        0.93511,
+        0.33506
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83239,
+        0.34283,
+        0.93564,
+        0.35518
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.13082,
+        0.85543,
+        0.29347,
+        0.86686
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.1179,
+        0.86938,
+        0.21092,
+        0.87987
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_INFERRED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1208",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Issac Property Services",
+    "template": "services"
+  },
+  "notes": "No PO printed. PO-2026-1208 matches every item, quantity and amount; none of the vendor's other open POs contain these items."
+}

@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0046",
+  "file_name": "S0046.pdf",
+  "set_name": "stress",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "small_vendor",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Akshar Furniture Pvt. Ltd.",
+      "printed": "Akshar Furniture Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "36FWLCA1691Q1ZM",
+      "printed": "36FWLCA1691Q1ZM"
+    },
+    "vendor_address": {
+      "value": "500, Manne Marg, Secunderabad - 500021, Telangana",
+      "printed": "500, Manne Marg, Secunderabad - 500021, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/AF/1576",
+      "printed": "2026/AF/1576"
+    },
+    "invoice_date": {
+      "value": "2026-10-27",
+      "printed": "27-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1300",
+      "printed": "PO-2026-1300"
+    },
+    "line_items": [
+      {
+        "description": "Storage Locker - 12 Door",
+        "hsn_sac": "9403",
+        "quantity": 7,
+        "unit": "Nos",
+        "unit_price": 23650.0,
+        "amount": 165550.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Retail Display Rack - Gondola",
+        "hsn_sac": "9403",
+        "quantity": 10,
+        "unit": "Nos",
+        "unit_price": 11900.0,
+        "amount": 119000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Conference Table 8-Seater",
+        "hsn_sac": "9403",
+        "quantity": 4,
+        "unit": "Nos",
+        "unit_price": 60480.0,
+        "amount": 241920.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 526470.0,
+      "printed": "INR 526470.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 94764.6,
+      "printed": "INR 94764.60"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 621234.6,
+      "printed": "INR 621234.60"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "3708415157748",
+      "printed": "3708415157748"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0202471",
+      "printed": "UTIB0202471"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.32466,
+        0.06132,
+        0.67534,
+        0.08027
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.46209,
+        0.10117,
+        0.59278,
+        0.11009
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.70659,
+        0.16592,
+        0.82901,
+        0.17721
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.69988,
+        0.18967,
+        0.78867,
+        0.20096
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.71555,
+        0.21343,
+        0.84003,
+        0.22472
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.16352,
+        0.23283,
+        0.32451,
+        0.24361
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.78825,
+        0.36289,
+        0.92272,
+        0.37417
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.79681,
+        0.38189,
+        0.92272,
+        0.39318
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.76081,
+        0.39932,
+        0.92272,
+        0.41266
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12739,
+        0.84164,
+        0.23205,
+        0.84985
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11767,
+        0.85447,
+        0.21084,
+        0.86268
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1300",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Akshar Furniture Pvt. Ltd.",
+    "template": "small_vendor"
+  },
+  "notes": "'Conference Table 8-Seater' billed at ₹60480.00 vs PO ₹57600.00 (+5%)."
+}

@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0059",
+  "file_name": "S0059.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Nirmaan Office Mart Pvt. Ltd.",
+      "printed": "Nirmaan Office Mart Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "09DJPCN6919I1Z5",
+      "printed": "09DJPCN6919I1Z5"
+    },
+    "vendor_address": {
+      "value": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh",
+      "printed": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/NOM/1510",
+      "printed": "2026/NOM/1510"
+    },
+    "invoice_date": {
+      "value": "2026-10-28",
+      "printed": "28-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1181",
+      "printed": "PO-2026-1181"
+    },
+    "line_items": [
+      {
+        "description": "Printer Labels A4 (100 sheets)",
+        "hsn_sac": "4821",
+        "quantity": 23,
+        "unit": "Pack",
+        "unit_price": 552.2,
+        "amount": 12700.6,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Gel Pen - Black (Box of 20)",
+        "hsn_sac": "9608",
+        "quantity": 7,
+        "unit": "Box",
+        "unit_price": 445.0,
+        "amount": 3115.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Spiral Notebook A5 - 200 pages",
+        "hsn_sac": "4820",
+        "quantity": 18,
+        "unit": "Nos",
+        "unit_price": 60.5,
+        "amount": 1089.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 16904.6,
+      "printed": "Rs. 16,904.60"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 2901.26,
+      "printed": "Rs. 2,901.26"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 19805.86,
+      "printed": "Rs. 19,805.86"
+    },
+    "amount_in_words": {
+      "value": "Rupees Nineteen Thousand Eight Hundred Five and Eighty Six Paise Only",
+      "printed": "Rupees Nineteen Thousand Eight Hundred Five and Eighty Six Paise Only"
+    },
+    "bank_account": {
+      "value": "911202032254021828",
+      "printed": "911202032254021828"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0854127",
+      "printed": "IDFB0854127"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.43865,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.3159,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.84796,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.80828,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.83447,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85552,
+        0.37669,
+        0.93952,
+        0.38641
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86308,
+        0.39326,
+        0.93952,
+        0.40298
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84526,
+        0.41336,
+        0.93952,
+        0.42397
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.45607,
+        0.23376,
+        0.46455
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.46874,
+        0.17966,
+        0.47738
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1181",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nirmaan Office Mart Pvt. Ltd.",
+    "template": "classic"
+  },
+  "notes": "'Printer Labels A4 (100 sheets)' billed at ₹552.20 vs PO ₹550.00 (₹50.60 on the line), inside tolerance."
+}

@@ -1,0 +1,347 @@
+{
+  "invoice_id": "S0221",
+  "file_name": "S0221.pdf",
+  "set_name": "stress",
+  "scenario": "DUPLICATE_DISGUISED_NUMBER",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Patil Textiles Pvt Ltd",
+      "printed": "Patil Textiles Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "07ZHNCP5749Q1ZA",
+      "printed": "07ZHNCP5749Q1ZA"
+    },
+    "vendor_address": {
+      "value": "61/552, Radhakrishnan Ganj, New Delhi - 110085, Delhi",
+      "printed": "61/552, Radhakrishnan Ganj, New Delhi - 110085, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "PT-991",
+      "printed": "PT-991"
+    },
+    "invoice_date": {
+      "value": "2026-08-29",
+      "printed": "29-Aug-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1151",
+      "printed": "PO-2026-1151"
+    },
+    "line_items": [
+      {
+        "description": "Mild Steel Sheet 1.2mm",
+        "hsn_sac": "7209",
+        "quantity": 1373,
+        "unit": "Kg",
+        "unit_price": 75.0,
+        "amount": 102975.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "PET Preforms 28mm",
+        "hsn_sac": "3923",
+        "quantity": 444,
+        "unit": "Nos",
+        "unit_price": 2.75,
+        "amount": 1221.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Acrylic Sheet 3mm Clear",
+        "hsn_sac": "3920",
+        "quantity": 272,
+        "unit": "Sq Ft",
+        "unit_price": 94.0,
+        "amount": 25568.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Synthetic Enamel Paint",
+        "hsn_sac": "3208",
+        "quantity": 49,
+        "unit": "Ltr",
+        "unit_price": 275.0,
+        "amount": 13475.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Polyester Yarn 150 Denier",
+        "hsn_sac": "5402",
+        "quantity": 7,
+        "unit": "Kg",
+        "unit_price": 145.0,
+        "amount": 1015.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Aluminium Sheet 2mm",
+        "hsn_sac": "7606",
+        "quantity": 38,
+        "unit": "Kg",
+        "unit_price": 255.0,
+        "amount": 9690.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 153944.0,
+      "printed": "1,53,944"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 27577.97,
+      "printed": "27,577.97"
+    },
+    "round_off": {
+      "value": 0.03,
+      "printed": "0.03"
+    },
+    "total_amount": {
+      "value": 181522.0,
+      "printed": "1,81,522"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Eighty One Thousand Five Hundred Twenty Two Only",
+      "printed": "Rupees One Lakh Eighty One Thousand Five Hundred Twenty Two Only"
+    },
+    "bank_account": {
+      "value": "83323960986",
+      "printed": "83323960986"
+    },
+    "bank_ifsc": {
+      "value": "CNRB0293366",
+      "printed": "CNRB0293366"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.20163,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.21229,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.21033,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.54636,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.79243,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.58769,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.90215,
+        0.40528,
+        0.94792,
+        0.41309
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.89561,
+        0.42072,
+        0.94792,
+        0.42853
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89561,
+        0.45193,
+        0.94792,
+        0.46085
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.62696,
+        0.62545,
+        0.63476
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.63818,
+        0.6241,
+        0.64598
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "DUPLICATE_INVOICE_NUMBER"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1151",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Patil Textiles Pvt Ltd",
+    "template": "tally"
+  },
+  "notes": "Duplicate of history H0224 (PT0991, 2026-08-29, ₹181522.00, paid); printed as PT-991."
+}

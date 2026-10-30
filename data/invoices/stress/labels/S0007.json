@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0007",
+  "file_name": "S0007.pdf",
+  "set_name": "stress",
+  "scenario": "ITEM_NOT_ON_PO",
+  "template": "compact",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Nirmaan Office Mart Private Limited",
+      "printed": "Nirmaan Office Mart Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "09DJPCN6919I1Z5",
+      "printed": "09DJPCN6919I1Z5"
+    },
+    "vendor_address": {
+      "value": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh",
+      "printed": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/NOM/1516",
+      "printed": "2026/NOM/1516"
+    },
+    "invoice_date": {
+      "value": "2026-10-10",
+      "printed": "10/10/2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1320",
+      "printed": "PO/2026/1320"
+    },
+    "line_items": [
+      {
+        "description": "Box File - Lever Arch",
+        "hsn_sac": "4820",
+        "quantity": 231,
+        "unit": "Nos",
+        "unit_price": 135.0,
+        "amount": 31185.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Whiteboard Marker - Assorted (Pack of 10)",
+        "hsn_sac": "9608",
+        "quantity": 2,
+        "unit": "Pack",
+        "unit_price": 290.0,
+        "amount": 580.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 31765.0,
+      "printed": "31,765"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 5717.7,
+      "printed": "5,717.70"
+    },
+    "round_off": {
+      "value": 0.3,
+      "printed": "0.30"
+    },
+    "total_amount": {
+      "value": 37483.0,
+      "printed": "37,483"
+    },
+    "amount_in_words": {
+      "value": "Rupees Thirty Seven Thousand Four Hundred Eighty Three Only",
+      "printed": "Rupees Thirty Seven Thousand Four Hundred Eighty Three Only"
+    },
+    "bank_account": {
+      "value": "911202032254021828",
+      "printed": "911202032254021828"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0854127",
+      "printed": "IDFB0854127"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07056,
+        0.084,
+        0.35528,
+        0.09515
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12137,
+        0.12239,
+        0.23133,
+        0.13075
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5609,
+        0.1163,
+        0.67784,
+        0.12466
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.21639,
+        0.16581,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28696,
+        0.21639,
+        0.35422,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50672,
+        0.21639,
+        0.5934,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.89585,
+        0.30771,
+        0.93952,
+        0.31719
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.88394,
+        0.32336,
+        0.93952,
+        0.33284
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89071,
+        0.35775,
+        0.93952,
+        0.36834
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.83984,
+        0.23673,
+        0.8482
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10149,
+        0.85187,
+        0.17924,
+        0.86023
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "ITEM_NOT_ON_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1320",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nirmaan Office Mart Private Limited",
+    "template": "compact"
+  },
+  "notes": "'Whiteboard Marker - Assorted (Pack of 10)' is not on PO-2026-1320."
+}

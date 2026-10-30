@@ -1,0 +1,328 @@
+{
+  "invoice_id": "S0153",
+  "file_name": "S0153.png",
+  "set_name": "stress",
+  "scenario": "POSSIBLE_DUPLICATE",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "png",
+  "degradations": [
+    "mild_scan",
+    "dpi_181",
+    "signature",
+    "rotation_-0.1deg",
+    "blur_0.7",
+    "noise_4",
+    "jpeg_q73"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Vig Paper Products Private Limited",
+      "printed": "Vig Paper Products Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "23EUACV4693J1ZU",
+      "printed": "23EUACV4693J1ZU"
+    },
+    "vendor_address": {
+      "value": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh",
+      "printed": "876, Prasad Chowk, Bhopal - 462093, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/341",
+      "printed": "2026-27/341"
+    },
+    "invoice_date": {
+      "value": "2026-10-20",
+      "printed": "20/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1251",
+      "printed": "PO-2026-1251"
+    },
+    "line_items": [
+      {
+        "description": "Spiral Notebook A5 - 200 pages",
+        "hsn_sac": "4820",
+        "quantity": 1610,
+        "unit": "Nos",
+        "unit_price": 81.0,
+        "amount": 130410.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Correction Pen",
+        "hsn_sac": "3824",
+        "quantity": 1670,
+        "unit": "Nos",
+        "unit_price": 55.0,
+        "amount": 91850.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Envelope - Brown A4 (Pack of 100)",
+        "hsn_sac": "4817",
+        "quantity": 140,
+        "unit": "Pack",
+        "unit_price": 285.0,
+        "amount": 39900.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 262160.0,
+      "printed": "INR 262160.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 30235.5,
+      "printed": "INR 30235.50"
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 292396.0,
+      "printed": "INR 292396.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "670314483232611348",
+      "printed": "670314483232611348"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0666435",
+      "printed": "HDFC0666435"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07111,
+        0.08371,
+        0.35118,
+        0.09505
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12187,
+        0.12213,
+        0.23884,
+        0.13057
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.56141,
+        0.11634,
+        0.67836,
+        0.12478
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.06757,
+        0.2161,
+        0.14305,
+        0.22507
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28733,
+        0.21625,
+        0.3546,
+        0.22521
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50709,
+        0.21639,
+        0.59526,
+        0.22537
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84369,
+        0.3271,
+        0.93975,
+        0.33664
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85161,
+        0.34276,
+        0.93973,
+        0.35229
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83232,
+        0.37712,
+        0.93969,
+        0.38779
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11014,
+        0.83958,
+        0.23627,
+        0.84802
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.101,
+        0.8516,
+        0.18506,
+        0.86002
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "POSSIBLE_DUPLICATE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1251",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vig Paper Products Private Limited",
+    "template": "compact"
+  },
+  "notes": "Same vendor and total (₹292396.00) as 2026-27/340 dated 2026-10-22; different invoice number."
+}

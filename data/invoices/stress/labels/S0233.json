@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0233",
+  "file_name": "S0233.pdf",
+  "set_name": "stress",
+  "scenario": "NO_PO_CLEAR_MATCH",
+  "template": "modern",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Kalpana Print Solns Pvt. Ltd.",
+      "printed": "Kalpana Print Solns Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "07WDRCK0545Z2ZJ",
+      "printed": "07WDRCK0545Z2ZJ"
+    },
+    "vendor_address": {
+      "value": "H.No. 31, Desai Ganj, New Delhi - 110049, Delhi",
+      "printed": "H.No. 31, Desai Ganj, New Delhi - 110049, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "KPS/1790/26",
+      "printed": "KPS/1790/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-27",
+      "printed": "27/10/2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Gift Vouchers - Printed, Numbered",
+        "hsn_sac": "4911",
+        "quantity": 1730,
+        "unit": "Nos",
+        "unit_price": 19.0,
+        "amount": 32870.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Roll-up Standee with Print",
+        "hsn_sac": "4911",
+        "quantity": 9,
+        "unit": "Nos",
+        "unit_price": 3150.0,
+        "amount": 28350.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 61220.0,
+      "printed": "61,220"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 11019.6,
+      "printed": "11,019.60"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 72239.6,
+      "printed": "72,239.60"
+    },
+    "amount_in_words": {
+      "value": "Rupees Seventy Two Thousand Two Hundred Thirty Nine and Sixty Paise Only",
+      "printed": "Rupees Seventy Two Thousand Two Hundred Thirty Nine and Sixty Paise Only"
+    },
+    "bank_account": {
+      "value": "52609381677",
+      "printed": "52609381677"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0191302",
+      "printed": "HDFC0191302"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.58457,
+        0.05139,
+        0.85217,
+        0.06477
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.72647,
+        0.09523,
+        0.85217,
+        0.10415
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.13864,
+        0.1707,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.35573,
+        0.13864,
+        0.44793,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11655,
+        0.22114,
+        0.24155,
+        0.23006
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.38969,
+        0.25138,
+        0.41644
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.8955,
+        0.36703,
+        0.93952,
+        0.37706
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87592,
+        0.3836,
+        0.93952,
+        0.39363
+      ],
+      "approximate": false
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.86278,
+        0.40346,
+        0.93952,
+        0.41461
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12124,
+        0.84104,
+        0.20627,
+        0.84996
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10512,
+        0.85387,
+        0.18967,
+        0.86279
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_INFERRED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1210",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Kalpana Print Solns Pvt. Ltd.",
+    "template": "modern"
+  },
+  "notes": "No PO printed. PO-2026-1210 matches every item, quantity and amount; none of the vendor's other open POs contain these items."
+}

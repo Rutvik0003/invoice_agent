@@ -1,0 +1,301 @@
+{
+  "invoice_id": "S0250",
+  "file_name": "S0250.pdf",
+  "set_name": "stress",
+  "scenario": "NO_PO_AMBIGUOUS",
+  "template": "small_vendor",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Kosmic Cartons Private Limited",
+      "printed": "Kosmic Cartons Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "33VFJCK7683V1ZH",
+      "printed": "33VFJCK7683V1ZH"
+    },
+    "vendor_address": {
+      "value": "H.No. 165, Chawla Zila, Chennai - 600020, Tamil Nadu",
+      "printed": "H.No. 165, Chawla Zila, Chennai - 600020, Tamil Nadu"
+    },
+    "vendor_state": {
+      "value": "Tamil Nadu",
+      "printed": "Tamil Nadu"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "KC/26-27/0139",
+      "printed": "KC/26-27/0139"
+    },
+    "invoice_date": {
+      "value": "2026-10-23",
+      "printed": "23/10/2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Poly Mailer Bag 12x16 in",
+        "hsn_sac": "3923",
+        "quantity": 545,
+        "unit": "Nos",
+        "unit_price": 7.4,
+        "amount": 4033.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Shipping Label Roll 4x6 in",
+        "hsn_sac": "4821",
+        "quantity": 95,
+        "unit": "Roll",
+        "unit_price": 295.0,
+        "amount": 28025.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 32058.0,
+      "printed": "INR 32058.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 5770.44,
+      "printed": "INR 5770.44"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 37828.44,
+      "printed": "INR 37828.44"
+    },
+    "amount_in_words": {
+      "value": "Rupees Thirty Seven Thousand Eight Hundred Twenty Eight and Forty Four Paise Only",
+      "printed": "Rupees Thirty Seven Thousand Eight Hundred Twenty Eight and Forty Four Paise Only"
+    },
+    "bank_account": {
+      "value": "551189396",
+      "printed": "551189396"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0622329",
+      "printed": "SBIN0622329"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.28417,
+        0.06132,
+        0.71583,
+        0.08027
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.46581,
+        0.10117,
+        0.58907,
+        0.11009
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.71033,
+        0.16592,
+        0.84075,
+        0.17721
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.69988,
+        0.18967,
+        0.80401,
+        0.20096
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.16352,
+        0.23283,
+        0.32451,
+        0.24361
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.79712,
+        0.34118,
+        0.92272,
+        0.35247
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.80882,
+        0.36018,
+        0.92272,
+        0.37147
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.76488,
+        0.37761,
+        0.92272,
+        0.39095
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12739,
+        0.84164,
+        0.19734,
+        0.84985
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11767,
+        0.85447,
+        0.21336,
+        0.86268
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_AMBIGUOUS"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": null,
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Kosmic Cartons Private Limited",
+    "template": "small_vendor"
+  },
+  "notes": "No PO printed. PO-2026-1226 and PO-2026-1227 are identical repeat orders."
+}

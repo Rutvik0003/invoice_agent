@@ -1,0 +1,303 @@
+{
+  "invoice_id": "S0254",
+  "file_name": "S0254.pdf",
+  "set_name": "stress",
+  "scenario": "PO_OVERRUN",
+  "template": "landscape",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Borah Polymers Pvt. Ltd.",
+      "printed": "Borah Polymers Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "07YNRCB1665I1ZX",
+      "printed": "07 YNRCB 1665 I1ZX"
+    },
+    "vendor_address": {
+      "value": "479, Dayal Ganj, New Delhi - 110082, Delhi",
+      "printed": "479, Dayal Ganj, New Delhi - 110082, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "BP/354/26",
+      "printed": "BP/354/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-29",
+      "printed": "29-10-2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1244",
+      "printed": "PO/2026/1244"
+    },
+    "line_items": [
+      {
+        "description": "Acrylic Sheet 3mm Clear",
+        "hsn_sac": "3920",
+        "quantity": 180,
+        "unit": "Sq Ft",
+        "unit_price": 110.0,
+        "amount": 19800.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 19800.0,
+      "printed": "19,800"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 3564.0,
+      "printed": "3,564"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 23364.0,
+      "printed": "23,364"
+    },
+    "amount_in_words": {
+      "value": "Rupees Twenty Three Thousand Three Hundred Sixty Four Only",
+      "printed": "Rupees Twenty Three Thousand Three Hundred Sixty Four Only"
+    },
+    "bank_account": {
+      "value": "68531535016",
+      "printed": "68531535016"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0436098",
+      "printed": "IDFB0436098"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09978,
+        0.05754,
+        0.25751,
+        0.07937
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13249,
+        0.1228,
+        0.21186,
+        0.13624
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44369,
+        0.12095,
+        0.52574,
+        0.13439
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.90928,
+        0.09281,
+        0.95724,
+        0.10793
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.90735,
+        0.11465,
+        0.95724,
+        0.12977
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.89179,
+        0.13649,
+        0.95724,
+        0.15161
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.92748,
+        0.30326,
+        0.95724,
+        0.31838
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.9329,
+        0.32519,
+        0.95724,
+        0.3403
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.92408,
+        0.35173,
+        0.95724,
+        0.36853
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07843,
+        0.39322,
+        0.13141,
+        0.40666
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06815,
+        0.41136,
+        0.11964,
+        0.4248
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_OVERRUN",
+    "QTY_EXCEEDS_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1244",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Borah Polymers Pvt. Ltd.",
+    "template": "landscape"
+  },
+  "notes": "Earlier bills BP/352/26 and BP/353/26 took 88% of PO-2026-1244; this invoice bills ~25% more, so the PO is exceeded."
+}

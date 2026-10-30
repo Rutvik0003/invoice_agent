@@ -1,0 +1,300 @@
+{
+  "invoice_id": "S0197",
+  "file_name": "S0197.pdf",
+  "set_name": "stress",
+  "scenario": "CLEAN_EXACT",
+  "template": "landscape",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vaidya Traders",
+      "printed": "Vaidya Traders"
+    },
+    "vendor_gstin": {
+      "value": "19OMLPV8045S1ZB",
+      "printed": "19OMLPV8045S1ZB"
+    },
+    "vendor_address": {
+      "value": "42/725, Kulkarni Street, Howrah - 711010, West Bengal",
+      "printed": "42/725, Kulkarni Street, Howrah - 711010, West Bengal"
+    },
+    "vendor_state": {
+      "value": "West Bengal",
+      "printed": "West Bengal"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VT-1031",
+      "printed": "VT-1031"
+    },
+    "invoice_date": {
+      "value": "2026-10-27",
+      "printed": "27 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1195",
+      "printed": "PO-2026-1195"
+    },
+    "line_items": [
+      {
+        "description": "Whiteboard Marker - Assorted (Pack of 10)",
+        "hsn_sac": "9608",
+        "quantity": 27,
+        "unit": "Pack",
+        "unit_price": 320.0,
+        "amount": 8640.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 8640.0,
+      "printed": "₹8,640.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 1555.2,
+      "printed": "₹1,555.20"
+    },
+    "round_off": {
+      "value": -0.2,
+      "printed": "-0.20"
+    },
+    "total_amount": {
+      "value": 10195.0,
+      "printed": "₹10,195.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Ten Thousand One Hundred Ninety Five Only",
+      "printed": "Rupees Ten Thousand One Hundred Ninety Five Only"
+    },
+    "bank_account": {
+      "value": "21465088012480",
+      "printed": "21465088012480"
+    },
+    "bank_ifsc": {
+      "value": "YESB0703740",
+      "printed": "YESB0703740"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09978,
+        0.05754,
+        0.1955,
+        0.07937
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13249,
+        0.1228,
+        0.20999,
+        0.13624
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44369,
+        0.12095,
+        0.51929,
+        0.13439
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.92068,
+        0.09281,
+        0.95724,
+        0.10793
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.90449,
+        0.11465,
+        0.95724,
+        0.12977
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.91395,
+        0.30326,
+        0.95724,
+        0.31838
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.91395,
+        0.32519,
+        0.95724,
+        0.3403
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.90284,
+        0.37365,
+        0.95724,
+        0.39045
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07843,
+        0.39322,
+        0.14586,
+        0.40666
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06815,
+        0.41136,
+        0.12067,
+        0.4248
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.6008,
+        0.32279,
+        0.65288,
+        0.33539
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1195",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": true,
+    "date_style": "d Mon yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vaidya Traders",
+    "template": "landscape"
+  },
+  "notes": "Clean invoice that exactly matches its PO."
+}

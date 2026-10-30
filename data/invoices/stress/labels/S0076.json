@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0076",
+  "file_name": "S0076.pdf",
+  "set_name": "stress",
+  "scenario": "BUYER_MISMATCH",
+  "template": "landscape",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Vaidya Traders",
+      "printed": "Vaidya Traders"
+    },
+    "vendor_gstin": {
+      "value": "19OMLPV8045S1ZB",
+      "printed": "19 OMLPV 8045 S1ZB"
+    },
+    "vendor_address": {
+      "value": "42/725, Kulkarni Street, Howrah - 711010, West Bengal",
+      "printed": "42/725, Kulkarni Street, Howrah - 711010, West Bengal"
+    },
+    "vendor_state": {
+      "value": "West Bengal",
+      "printed": "West Bengal"
+    },
+    "buyer_name": {
+      "value": "Nova Hypermarts Pvt Ltd",
+      "printed": "Nova Hypermarts Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27KUXCN7980M1ZR",
+      "printed": "27 KUXCN 7980 M1ZR"
+    },
+    "invoice_number": {
+      "value": "VT-1036",
+      "printed": "VT-1036"
+    },
+    "invoice_date": {
+      "value": "2026-10-24",
+      "printed": "24/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1364",
+      "printed": "PO-2026-1364"
+    },
+    "line_items": [
+      {
+        "description": "Box File - Lever Arch",
+        "hsn_sac": "4820",
+        "quantity": 154,
+        "unit": "Nos",
+        "unit_price": 160.0,
+        "amount": 24640.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Correction Pen",
+        "hsn_sac": "3824",
+        "quantity": 237,
+        "unit": "Nos",
+        "unit_price": 39.0,
+        "amount": 9243.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 33883.0,
+      "printed": "Rs. 33,883/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 6098.94,
+      "printed": "Rs. 6,098.94"
+    },
+    "round_off": {
+      "value": 0.06,
+      "printed": "0.06"
+    },
+    "total_amount": {
+      "value": 39982.0,
+      "printed": "Rs. 39,982/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Thirty Nine Thousand Nine Hundred Eighty Two Only",
+      "printed": "Rupees Thirty Nine Thousand Nine Hundred Eighty Two Only"
+    },
+    "bank_account": {
+      "value": "21465088012480",
+      "printed": "21465088012480"
+    },
+    "bank_ifsc": {
+      "value": "YESB0703740",
+      "printed": "YESB0703740"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.09978,
+        0.05754,
+        0.1955,
+        0.07937
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.13249,
+        0.1228,
+        0.21643,
+        0.13624
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.44369,
+        0.10415,
+        0.52997,
+        0.11759
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.92068,
+        0.09281,
+        0.95724,
+        0.10793
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.90471,
+        0.11465,
+        0.95724,
+        0.12977
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.89443,
+        0.13649,
+        0.95724,
+        0.15161
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.90498,
+        0.33396,
+        0.95724,
+        0.34908
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.90426,
+        0.35589,
+        0.95724,
+        0.371
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89805,
+        0.40435,
+        0.95724,
+        0.42115
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.07843,
+        0.42392,
+        0.14586,
+        0.43736
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.06815,
+        0.44206,
+        0.12067,
+        0.4555
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1364",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vaidya Traders",
+    "template": "landscape"
+  },
+  "notes": "Addressed to Nova Hypermarts Pvt Ltd (27KUXCN7980M1ZR), not Zenith Retail."
+}

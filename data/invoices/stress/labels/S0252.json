@@ -1,0 +1,323 @@
+{
+  "invoice_id": "S0252",
+  "file_name": "S0252.pdf",
+  "set_name": "stress",
+  "scenario": "MULTI_ISSUE",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_151",
+    "punch_holes",
+    "rotation_+0.3deg",
+    "blur_0.5",
+    "noise_4",
+    "jpeg_q67"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Mody Technologies Private Limited",
+      "printed": "Mody Technologies Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "27ADOCM2335H1Z6",
+      "printed": "27ADOCM2335H1Z6"
+    },
+    "vendor_address": {
+      "value": "992, Yadav Ganj, Thane - 400084, Maharashtra",
+      "printed": "992, Yadav Ganj, Thane - 400084, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Nova Hypermarts Pvt Ltd",
+      "printed": "Nova Hypermarts Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27HAWCN1170B1Z9",
+      "printed": "27HAWCN1170B1Z9"
+    },
+    "invoice_number": {
+      "value": "MT/26-27/1222",
+      "printed": "MT/26-27/1222"
+    },
+    "invoice_date": {
+      "value": "2026-10-24",
+      "printed": "24/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1379",
+      "printed": "PO-2026-1379"
+    },
+    "line_items": [
+      {
+        "description": "Help Desk Support - Per Seat",
+        "hsn_sac": "998316",
+        "quantity": 10,
+        "unit": "Seat",
+        "unit_price": 1400.0,
+        "amount": 15260.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 14000.0,
+      "printed": "14,000"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 1260.0,
+      "printed": "1,260"
+    },
+    "sgst": {
+      "value": 1260.0,
+      "printed": "1,260"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 16520.0,
+      "printed": "16,520"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "39716733397262967",
+      "printed": "39716733397262967"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0645309",
+      "printed": "UTIB0645309"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.06698,
+        0.08464,
+        0.34896,
+        0.09701
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11812,
+        0.12351,
+        0.23864,
+        0.13239
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.5575,
+        0.10439,
+        0.67871,
+        0.11327
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.06476,
+        0.21787,
+        0.15598,
+        0.22718
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28452,
+        0.21702,
+        0.35186,
+        0.22623
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50428,
+        0.21599,
+        0.59251,
+        0.22529
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.89402,
+        0.28667,
+        0.93777,
+        0.29634
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.9021,
+        0.30232,
+        0.93791,
+        0.31195
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.90223,
+        0.31797,
+        0.93804,
+        0.3276
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88945,
+        0.35235,
+        0.93835,
+        0.36315
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11355,
+        0.841,
+        0.23274,
+        0.84987
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10453,
+        0.85325,
+        0.18235,
+        0.86194
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH",
+    "BANK_DETAILS_MISMATCH",
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1379",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "arithmetic_error": "Line 'Help Desk Support - Per Seat' printed as 15260.00 instead of 14000.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Mody Technologies Private Limited",
+    "template": "compact"
+  },
+  "notes": "Problems: arithmetic, bank, buyer."
+}

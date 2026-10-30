@@ -1,0 +1,321 @@
+{
+  "invoice_id": "S0022",
+  "file_name": "S0022.pdf",
+  "set_name": "stress",
+  "scenario": "QTY_EXCEEDS_PO",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_187",
+    "fax",
+    "punch_holes",
+    "rotation_+0.0deg",
+    "blur_0.5",
+    "noise_5",
+    "jpeg_q60"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Vertex Enterprises",
+      "printed": "Vertex Enterprises"
+    },
+    "vendor_gstin": {
+      "value": "27TSSPN3544X1ZU",
+      "printed": "27TSSPN3544X1ZU"
+    },
+    "vendor_address": {
+      "value": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+      "printed": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "VE0399",
+      "printed": "VE0399"
+    },
+    "invoice_date": {
+      "value": "2026-10-18",
+      "printed": "October 18, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1313",
+      "printed": "PO-2026-1313"
+    },
+    "line_items": [
+      {
+        "description": "Mild Steel Sheet 1.2mm",
+        "hsn_sac": "7209",
+        "quantity": 275,
+        "unit": "Kg",
+        "unit_price": 84.5,
+        "amount": 23237.5,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 23237.5,
+      "printed": "23,237.50"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 2091.38,
+      "printed": "2,091.38"
+    },
+    "sgst": {
+      "value": 2091.38,
+      "printed": "2,091.38"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": -0.26,
+      "printed": "-0.26"
+    },
+    "total_amount": {
+      "value": 27420.0,
+      "printed": "27,420"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "319144834307",
+      "printed": "319144834307"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0977855",
+      "printed": "KKBK0977855"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07028,
+        0.0841,
+        0.21874,
+        0.0953
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12111,
+        0.12248,
+        0.23738,
+        0.13088
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.56064,
+        0.11624,
+        0.67758,
+        0.12464
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.06701,
+        0.21652,
+        0.11483,
+        0.22546
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.28677,
+        0.21643,
+        0.39434,
+        0.22538
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50653,
+        0.21636,
+        0.59469,
+        0.22531
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87586,
+        0.28841,
+        0.93938,
+        0.29791
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.88381,
+        0.30406,
+        0.93939,
+        0.31356
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.88382,
+        0.31971,
+        0.9394,
+        0.32921
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.89061,
+        0.35409,
+        0.93943,
+        0.3647
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11084,
+        0.83994,
+        0.19493,
+        0.84833
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10173,
+        0.85198,
+        0.18441,
+        0.86037
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "QTY_EXCEEDS_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1313",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vertex Enterprises",
+    "template": "compact"
+  },
+  "notes": "'Mild Steel Sheet 1.2mm': billed 275, PO has 250."
+}

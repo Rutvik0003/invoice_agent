@@ -49,10 +49,17 @@ Windows has no `make` by default, so `tasks.py` is the cross-platform entry poin
 All companies, people and numbers are fictional and fully reproducible (fixed seed, fixed reference date 30 Oct 2026).
 
 ```bash
-python -m datagen.generate_all --master-only   # writes data/master/*.csv + buyer.json
+python -m datagen.generate_all                 # master data + 12 golden + ~270 stress invoices with labels (~4 min)
+python -m datagen.generate_all --master-only   # only data/master/*.csv + buyer.json (same CSVs, no files)
 python -m datagen.validate_master              # 13 consistency checks (GSTIN checksums, PO ledger vs history, ...)
 python backend/scripts/seed_db.py              # loads data/master into the DB (safe to re-run)
 ```
+
+Generated invoices live in `data/invoices/golden/` and `data/invoices/stress/`, each with a `labels/` folder
+(ground truth exactly as printed, where each key value sits on the page, and the expected decision).
+`data/invoices/generation_report.md` summarises the sets; `contact_sheet_*.png` and `box_check_*.png` are for
+eyeballing variety and box placement. The generator uses standard Windows fonts (Arial, Calibri, Segoe UI,
+Georgia, Ink Free ...) for the ₹ glyph; the generated files are committed, so other machines don't need them.
 
 The SQLite file lives at `backend/local.db` whichever folder you run from.
 

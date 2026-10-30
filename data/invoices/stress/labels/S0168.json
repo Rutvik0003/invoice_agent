@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0168",
+  "file_name": "S0168.pdf",
+  "set_name": "stress",
+  "scenario": "NOT_AN_INVOICE",
+  "template": "tally",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_180",
+    "punch_holes",
+    "rotation_-0.2deg",
+    "blur_0.7",
+    "noise_4",
+    "jpeg_q60"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "delivery_challan",
+      "printed": "Delivery Challan"
+    },
+    "vendor_name": {
+      "value": "Vertex Enterprises",
+      "printed": "Vertex Enterprises"
+    },
+    "vendor_gstin": {
+      "value": "27TSSPN3544X1ZU",
+      "printed": "27TSSPN3544X1ZU"
+    },
+    "vendor_address": {
+      "value": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra",
+      "printed": "H.No. 62, Dyal Street, Bhiwandi - 421098, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "DC-4246",
+      "printed": "DC-4246"
+    },
+    "invoice_date": {
+      "value": "2026-10-24",
+      "printed": "24/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1347",
+      "printed": "PO-2026-1347"
+    },
+    "line_items": [
+      {
+        "description": "Buttons - Polyester (Gross)",
+        "hsn_sac": "9606",
+        "quantity": 81,
+        "unit": "Gross",
+        "unit_price": 270.0,
+        "amount": 21870.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 21870.0,
+      "printed": "₹21,870.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 546.75,
+      "printed": "₹546.75"
+    },
+    "sgst": {
+      "value": 546.75,
+      "printed": "₹546.75"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 22964.0,
+      "printed": "₹22,964.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Twenty Two Thousand Nine Hundred Sixty Four Only",
+      "printed": "Rupees Twenty Two Thousand Nine Hundred Sixty Four Only"
+    },
+    "bank_account": {
+      "value": "319144834307",
+      "printed": "319144834307"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0977855",
+      "printed": "KKBK0977855"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05603,
+        0.0552,
+        0.1897,
+        0.06558
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10328,
+        0.09043,
+        0.21182,
+        0.09851
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10267,
+        0.2076,
+        0.21185,
+        0.2157
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50724,
+        0.06955,
+        0.55771,
+        0.07804
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73372,
+        0.07014,
+        0.79683,
+        0.07866
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50654,
+        0.20496,
+        0.58923,
+        0.21353
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88999,
+        0.31692,
+        0.94888,
+        0.32487
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.90626,
+        0.3324,
+        0.9488,
+        0.34032
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.90618,
+        0.34666,
+        0.94872,
+        0.35457
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88125,
+        0.3778,
+        0.94856,
+        0.38689
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.49258,
+        0.63203,
+        0.50058
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.54494,
+        0.50378,
+        0.62214,
+        0.51179
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "NOT_A_TAX_INVOICE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1347",
+  "knobs": {
+    "title": "Delivery Challan",
+    "invoice_no_label": "Challan No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vertex Enterprises",
+    "template": "tally"
+  },
+  "notes": "Document is a Delivery Challan, not a tax invoice; its document number is in invoice_number."
+}

@@ -1,0 +1,341 @@
+{
+  "invoice_id": "S0154",
+  "file_name": "S0154.png",
+  "set_name": "stress",
+  "scenario": "MULTI_ISSUE",
+  "template": "modern",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "png",
+  "degradations": [
+    "mild_scan",
+    "dpi_192",
+    "signature",
+    "rotation_-1.1deg",
+    "blur_0.5",
+    "noise_5",
+    "jpeg_q70"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Nirmaan Office Mart Pvt. Ltd.",
+      "printed": "Nirmaan Office Mart Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "09DJPCN6919I1Z5",
+      "printed": "09DJPCN6919I1Z5"
+    },
+    "vendor_address": {
+      "value": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh",
+      "printed": "H.No. 53, Mandal Chowk, Lucknow - 226097, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/NOM/1519",
+      "printed": "2026/NOM/1519"
+    },
+    "invoice_date": {
+      "value": "2026-10-29",
+      "printed": "29/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1384",
+      "printed": "PO-2026-1384"
+    },
+    "line_items": [
+      {
+        "description": "Whiteboard Marker - Assorted (Pack of 10)",
+        "hsn_sac": "9608",
+        "quantity": 7,
+        "unit": "Pack",
+        "unit_price": 225.0,
+        "amount": 1575.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Spiral Notebook A5 - 200 pages",
+        "hsn_sac": "4820",
+        "quantity": 350,
+        "unit": "Nos",
+        "unit_price": 58.5,
+        "amount": 22185.0,
+        "tax_rate": 12.0
+      },
+      {
+        "description": "Desk Organiser - Mesh",
+        "hsn_sac": "8304",
+        "quantity": 46,
+        "unit": "Nos",
+        "unit_price": 450.0,
+        "amount": 20700.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 42750.0,
+      "printed": "INR 42750.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 6466.5,
+      "printed": "INR 6466.50"
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 49217.0,
+      "printed": "INR 49217.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "911202032254021828",
+      "printed": "911202032254021828"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0854127",
+      "printed": "IDFB0854127"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.58444,
+        0.0525,
+        0.86482,
+        0.06985
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.74593,
+        0.09864,
+        0.86357,
+        0.10922
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.07721,
+        0.13258,
+        0.21178,
+        0.14563
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.29357,
+        0.13565,
+        0.38607,
+        0.1481
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50993,
+        0.13871,
+        0.62416,
+        0.15147
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12428,
+        0.21576,
+        0.24951,
+        0.22645
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.06904,
+        0.40529,
+        0.32508,
+        0.43565
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85348,
+        0.39373,
+        0.94259,
+        0.40502
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86116,
+        0.41041,
+        0.94212,
+        0.42158
+      ],
+      "approximate": true
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.83441,
+        0.44647,
+        0.94108,
+        0.45913
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.1114,
+        0.8356,
+        0.25076,
+        0.84649
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.09492,
+        0.8482,
+        0.17312,
+        0.85823
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH",
+    "GST_RATE_UNUSUAL"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1384",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "unusual_rate": "'Spiral Notebook A5 - 200 pages' charged GST 12% (PO 5%) on 2026-10-29.",
+    "arithmetic_error": "Line 'Spiral Notebook A5 - 200 pages' printed as 22185.00 instead of 20475.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Nirmaan Office Mart Pvt. Ltd.",
+    "template": "modern"
+  },
+  "notes": "Problems: arithmetic, gst_rate."
+}

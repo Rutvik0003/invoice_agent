@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0134",
+  "file_name": "S0134.pdf",
+  "set_name": "stress",
+  "scenario": "NO_PO_AMBIGUOUS",
+  "template": "modern",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Evergreen Power Sys. Pvt. Ltd.",
+      "printed": "Evergreen Power Sys. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "09OENCE2571B1Z3",
+      "printed": "09OENCE2571B1Z3"
+    },
+    "vendor_address": {
+      "value": "21/095, Shankar Chowk, Lucknow - 226039, Uttar Pradesh",
+      "printed": "21/095, Shankar Chowk, Lucknow - 226039, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "365",
+      "printed": "365"
+    },
+    "invoice_date": {
+      "value": "2026-10-25",
+      "printed": "25/10/2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Copper Wire 2.5 sq mm (90m coil)",
+        "hsn_sac": "8544",
+        "quantity": 7,
+        "unit": "Coil",
+        "unit_price": 3250.0,
+        "amount": 22750.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "LED Panel Light 2x2 ft 36W",
+        "hsn_sac": "9405",
+        "quantity": 100,
+        "unit": "Nos",
+        "unit_price": 1500.0,
+        "amount": 150000.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 172750.0,
+      "printed": "INR 172750.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 31095.0,
+      "printed": "INR 31095.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 203845.0,
+      "printed": "INR 203845.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Two Lakh Three Thousand Eight Hundred Forty Five Only",
+      "printed": "Rupees Two Lakh Three Thousand Eight Hundred Forty Five Only"
+    },
+    "bank_account": {
+      "value": "138877069925",
+      "printed": "138877069925"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0881527",
+      "printed": "KKBK0881527"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.56593,
+        0.05139,
+        0.85217,
+        0.06477
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.73006,
+        0.10759,
+        0.85217,
+        0.1165
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.13864,
+        0.09618,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.35573,
+        0.13864,
+        0.44793,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11655,
+        0.22114,
+        0.24155,
+        0.23006
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.38969,
+        0.34572,
+        0.41644
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84253,
+        0.36703,
+        0.93952,
+        0.37706
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85068,
+        0.3836,
+        0.93952,
+        0.39363
+      ],
+      "approximate": false
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.82347,
+        0.42003,
+        0.93952,
+        0.43118
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12124,
+        0.84104,
+        0.214,
+        0.84996
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10512,
+        0.85387,
+        0.18692,
+        0.86279
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_AMBIGUOUS"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": null,
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Evergreen Power Sys. Pvt. Ltd.",
+    "template": "modern"
+  },
+  "notes": "No PO printed. PO-2026-1218 and PO-2026-1219 are identical repeat orders."
+}

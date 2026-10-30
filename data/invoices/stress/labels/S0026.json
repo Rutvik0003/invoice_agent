@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0026",
+  "file_name": "S0026.pdf",
+  "set_name": "stress",
+  "scenario": "ITEM_NOT_ON_PO",
+  "template": "small_vendor",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Mitter Engg. Servs. LLP",
+      "printed": "Mitter Engg. Servs. LLP"
+    },
+    "vendor_gstin": {
+      "value": "36OFEFM8914Z1ZF",
+      "printed": "36OFEFM8914Z1ZF"
+    },
+    "vendor_address": {
+      "value": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana",
+      "printed": "68/922, Shankar Nagar, Hyderabad - 500034, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/216",
+      "printed": "2026-27/216"
+    },
+    "invoice_date": {
+      "value": "2026-10-21",
+      "printed": "21-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO/2026/1319",
+      "printed": "PO/2026/1319"
+    },
+    "line_items": [
+      {
+        "description": "Distribution Board 8-Way",
+        "hsn_sac": "8537",
+        "quantity": 3,
+        "unit": "Nos",
+        "unit_price": 3400.0,
+        "amount": 10200.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "LED Panel Light 2x2 ft 36W",
+        "hsn_sac": "9405",
+        "quantity": 4,
+        "unit": "Nos",
+        "unit_price": 1100.0,
+        "amount": 4400.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 14600.0,
+      "printed": "INR 14600.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 2628.0,
+      "printed": "INR 2628.00"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 17228.0,
+      "printed": "INR 17228.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Seventeen Thousand Two Hundred Twenty Eight Only",
+      "printed": "Rupees Seventeen Thousand Two Hundred Twenty Eight Only"
+    },
+    "bank_account": {
+      "value": "850705382000915262",
+      "printed": "850705382000915262"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0882070",
+      "printed": "ICIC0882070"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.33973,
+        0.06132,
+        0.66027,
+        0.08027
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.46545,
+        0.10117,
+        0.58943,
+        0.11009
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.73125,
+        0.16592,
+        0.84598,
+        0.17721
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.69241,
+        0.18967,
+        0.77848,
+        0.20096
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.71555,
+        0.21343,
+        0.83973,
+        0.22472
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.16352,
+        0.23283,
+        0.32451,
+        0.24361
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.80346,
+        0.34118,
+        0.92272,
+        0.35247
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.80714,
+        0.36018,
+        0.92272,
+        0.37147
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.77643,
+        0.37761,
+        0.92272,
+        0.39095
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12739,
+        0.84164,
+        0.27327,
+        0.84985
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11767,
+        0.85447,
+        0.20871,
+        0.86268
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "ITEM_NOT_ON_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1319",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mitter Engg. Servs. LLP",
+    "template": "small_vendor"
+  },
+  "notes": "'LED Panel Light 2x2 ft 36W' is not on PO-2026-1319."
+}

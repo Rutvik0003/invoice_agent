@@ -1,0 +1,311 @@
+{
+  "invoice_id": "S0056",
+  "file_name": "S0056.pdf",
+  "set_name": "stress",
+  "scenario": "DUPLICATE_DISGUISED_NUMBER",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Akshar Furniture Pvt. Ltd.",
+      "printed": "Akshar Furniture Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "36FWLCA1691Q1ZM",
+      "printed": "36FWLCA1691Q1ZM"
+    },
+    "vendor_address": {
+      "value": "500, Manne Marg, Secunderabad - 500021, Telangana",
+      "printed": "500, Manne Marg, Secunderabad - 500021, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-AF-1566",
+      "printed": "2026-AF-1566"
+    },
+    "invoice_date": {
+      "value": "2026-04-10",
+      "printed": "10/04/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1019",
+      "printed": "PO-2026-1019"
+    },
+    "line_items": [
+      {
+        "description": "Garment Display Mannequin",
+        "hsn_sac": "9618",
+        "quantity": 10,
+        "unit": "Nos",
+        "unit_price": 7250.0,
+        "amount": 72500.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Storage Locker - 12 Door",
+        "hsn_sac": "9403",
+        "quantity": 3,
+        "unit": "Nos",
+        "unit_price": 21450.0,
+        "amount": 64350.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 136850.0,
+      "printed": "1,36,850"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 24633.0,
+      "printed": "24,633"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 161483.0,
+      "printed": "1,61,483"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Sixty One Thousand Four Hundred Eighty Three Only",
+      "printed": "Rupees One Lakh Sixty One Thousand Four Hundred Eighty Three Only"
+    },
+    "bank_account": {
+      "value": "3708415157748",
+      "printed": "3708415157748"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0202471",
+      "printed": "UTIB0202471"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.40537,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.33306,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.83368,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.81307,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.83447,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88661,
+        0.35754,
+        0.93952,
+        0.36726
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.89795,
+        0.37411,
+        0.93952,
+        0.38383
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88073,
+        0.41078,
+        0.93952,
+        0.42138
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.43691,
+        0.20016,
+        0.4454
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.44959,
+        0.1804,
+        0.45823
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "DUPLICATE_INVOICE_NUMBER"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1019",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Akshar Furniture Pvt. Ltd.",
+    "template": "classic"
+  },
+  "notes": "Duplicate of history H0017 (2026/AF/1566, 2026-04-10, ₹161483.00, paid); printed as 2026-AF-1566."
+}

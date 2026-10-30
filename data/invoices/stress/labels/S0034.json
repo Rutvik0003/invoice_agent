@@ -1,0 +1,323 @@
+{
+  "invoice_id": "S0034",
+  "file_name": "S0034.pdf",
+  "set_name": "stress",
+  "scenario": "MULTI_ISSUE",
+  "template": "multipage",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Vriddhi Computer World",
+      "printed": "Vriddhi Computer World"
+    },
+    "vendor_gstin": {
+      "value": "03RWRPS3905Y2ZU",
+      "printed": "03RWRPS3905Y2ZU"
+    },
+    "vendor_address": {
+      "value": "77/85, Korpal Path, Mohali - 160010, Punjab",
+      "printed": "77/85, Korpal Path, Mohali - 160010, Punjab"
+    },
+    "vendor_state": {
+      "value": "Punjab",
+      "printed": "Punjab"
+    },
+    "buyer_name": {
+      "value": "Zenitha Fashions LLP",
+      "printed": "Zenitha Fashions LLP"
+    },
+    "buyer_gstin": {
+      "value": "27UOLFZ5311K1ZE",
+      "printed": "27UOLFZ5311K1ZE"
+    },
+    "invoice_number": {
+      "value": "VCW0931",
+      "printed": "VCW0931"
+    },
+    "invoice_date": {
+      "value": "2026-10-20",
+      "printed": "20-10-2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1388",
+      "printed": "PO/2026/1388"
+    },
+    "line_items": [
+      {
+        "description": "LED Monitor 27\" QHD",
+        "hsn_sac": "8528",
+        "quantity": 6,
+        "unit": "Nos",
+        "unit_price": 22700.0,
+        "amount": 136200.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Laser Printer - Mono, Duplex",
+        "hsn_sac": "8443",
+        "quantity": 6,
+        "unit": "Nos",
+        "unit_price": 14650.0,
+        "amount": 87900.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "LED Monitor 24\" Full HD",
+        "hsn_sac": "8528",
+        "quantity": 11,
+        "unit": "Nos",
+        "unit_price": 12100.0,
+        "amount": 147388.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 357200.0,
+      "printed": "INR 357200.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 64296.0,
+      "printed": "INR 64296.00"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 421496.0,
+      "printed": "INR 421496.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Four Lakh Twenty One Thousand Four Hundred Ninety Six Only",
+      "printed": "Rupees Four Lakh Twenty One Thousand Four Hundred Ninety Six Only"
+    },
+    "bank_account": {
+      "value": "1068148394493239",
+      "printed": "1068148394493239"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0526297",
+      "printed": "IDFB0526297"
+    },
+    "page_count": {
+      "value": 2,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.12767,
+        0.04534,
+        0.4112,
+        0.06036
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.18242,
+        0.09152,
+        0.32825,
+        0.10077
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.7071,
+        0.10164,
+        0.77946,
+        0.11147
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.66452,
+        0.11708,
+        0.74846,
+        0.12691
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.70535,
+        0.13252,
+        0.81291,
+        0.14235
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11523,
+        0.22919,
+        0.24694,
+        0.23843
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 2,
+      "bbox": [
+        0.82836,
+        0.134,
+        0.93952,
+        0.14498
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 2,
+      "bbox": [
+        0.8371,
+        0.15149,
+        0.93952,
+        0.16247
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 2,
+      "bbox": [
+        0.80233,
+        0.18994,
+        0.93952,
+        0.20208
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 2,
+      "bbox": [
+        0.1163,
+        0.28849,
+        0.25167,
+        0.29773
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 2,
+      "bbox": [
+        0.10354,
+        0.30132,
+        0.18801,
+        0.31056
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH",
+    "BANK_DETAILS_MISMATCH",
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1388",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "arithmetic_error": "Line 'LED Monitor 24\" Full HD' printed as 147388.00 instead of 133100.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Vriddhi Computer World",
+    "template": "multipage"
+  },
+  "notes": "Problems: arithmetic, bank, buyer."
+}

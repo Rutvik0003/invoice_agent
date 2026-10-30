@@ -1,0 +1,323 @@
+{
+  "invoice_id": "S0089",
+  "file_name": "S0089.pdf",
+  "set_name": "stress",
+  "scenario": "MULTI_ISSUE",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Mody Technologies Pvt. Ltd.",
+      "printed": "Mody Technologies Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27ADOCM2335H1Z6",
+      "printed": "27ADOCM2335H1Z6"
+    },
+    "vendor_address": {
+      "value": "992, Yadav Ganj, Thane - 400084, Maharashtra",
+      "printed": "992, Yadav Ganj, Thane - 400084, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "MT/26-27/1223",
+      "printed": "MT/26-27/1223"
+    },
+    "invoice_date": {
+      "value": "2026-10-14",
+      "printed": "14-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO/2026/1383",
+      "printed": "PO/2026/1383"
+    },
+    "line_items": [
+      {
+        "description": "Annual Software Maintenance Support",
+        "hsn_sac": "998313",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 125750.0,
+        "amount": 129832.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Cybersecurity Audit",
+        "hsn_sac": "998313",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 78350.0,
+        "amount": 78350.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 204100.0,
+      "printed": "2,04,100"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 18369.0,
+      "printed": "18,369"
+    },
+    "sgst": {
+      "value": 18369.0,
+      "printed": "18,369"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 240838.0,
+      "printed": "2,40,838"
+    },
+    "amount_in_words": {
+      "value": "Rupees Two Lakh Forty Thousand Eight Hundred Thirty Eight Only",
+      "printed": "Rupees Two Lakh Forty Thousand Eight Hundred Thirty Eight Only"
+    },
+    "bank_account": {
+      "value": "810064691263273",
+      "printed": "810064691263273"
+    },
+    "bank_ifsc": {
+      "value": "BARB0642720",
+      "printed": "BARB0642720"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.41993,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.32933,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.84082,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.80828,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.8329,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88661,
+        0.35754,
+        0.93952,
+        0.36726
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.89795,
+        0.37411,
+        0.93952,
+        0.38383
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.89795,
+        0.39068,
+        0.93952,
+        0.4004
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88073,
+        0.42735,
+        0.93952,
+        0.43795
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.43691,
+        0.2136,
+        0.4454
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.44959,
+        0.18564,
+        0.45823
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH",
+    "BANK_DETAILS_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1383",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "arithmetic_error": "Line 'Annual Software Maintenance Support' printed as 129832.00 instead of 125750.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Mody Technologies Pvt. Ltd.",
+    "template": "classic"
+  },
+  "notes": "Problems: arithmetic, bank."
+}

@@ -1,0 +1,339 @@
+{
+  "invoice_id": "10_H_bad_maths",
+  "file_name": "10_H_bad_maths.pdf",
+  "set_name": "golden",
+  "scenario": "ARITHMETIC_ERROR",
+  "template": "multipage",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Prism Digital Sys. Pvt. Ltd.",
+      "printed": "Prism Digital Sys. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "19JXOCP0232P1ZD",
+      "printed": "19 JXOCP 0232 P1ZD"
+    },
+    "vendor_address": {
+      "value": "11/73, Taneja Zila, Kolkata - 700020, West Bengal",
+      "printed": "11/73, Taneja Zila, Kolkata - 700020, West Bengal"
+    },
+    "vendor_state": {
+      "value": "West Bengal",
+      "printed": "West Bengal"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01473",
+      "printed": "INV-01473"
+    },
+    "invoice_date": {
+      "value": "2026-10-24",
+      "printed": "October 24, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1140",
+      "printed": "PO-2026-1140"
+    },
+    "line_items": [
+      {
+        "description": "Online UPS 3 kVA",
+        "hsn_sac": "8504",
+        "quantity": 2,
+        "unit": "Nos",
+        "unit_price": 43600.0,
+        "amount": 87200.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Network Switch - 24 Port Gigabit",
+        "hsn_sac": "8517",
+        "quantity": 4,
+        "unit": "Nos",
+        "unit_price": 18200.0,
+        "amount": 72800.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Desktop PC - Core i5, 8GB RAM, 512GB SSD",
+        "hsn_sac": "8471",
+        "quantity": 2,
+        "unit": "Nos",
+        "unit_price": 43200.0,
+        "amount": 118929.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "POS Terminal - All-in-One Touch",
+        "hsn_sac": "8470",
+        "quantity": 3,
+        "unit": "Nos",
+        "unit_price": 55250.0,
+        "amount": 165750.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "LED Monitor 27\" QHD",
+        "hsn_sac": "8528",
+        "quantity": 5,
+        "unit": "Nos",
+        "unit_price": 26000.0,
+        "amount": 130000.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 542150.0,
+      "printed": "Rs. 5,42,150/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 97587.0,
+      "printed": "Rs. 97,587/-"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 639737.0,
+      "printed": "Rs. 6,39,737/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Six Lakh Thirty Nine Thousand Seven Hundred Thirty Seven Only",
+      "printed": "Rupees Six Lakh Thirty Nine Thousand Seven Hundred Thirty Seven Only"
+    },
+    "bank_account": {
+      "value": "864701210278",
+      "printed": "864701210278"
+    },
+    "bank_ifsc": {
+      "value": "BARB0634227",
+      "printed": "BARB0634227"
+    },
+    "page_count": {
+      "value": 3,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.12767,
+        0.04534,
+        0.42672,
+        0.06036
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.18242,
+        0.09152,
+        0.328,
+        0.10077
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.68244,
+        0.10164,
+        0.76019,
+        0.11147
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.67272,
+        0.11708,
+        0.79889,
+        0.12691
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.73216,
+        0.13252,
+        0.83513,
+        0.14235
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11523,
+        0.24106,
+        0.26268,
+        0.25031
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 3,
+      "bbox": [
+        0.83978,
+        0.134,
+        0.93952,
+        0.14498
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 3,
+      "bbox": [
+        0.85251,
+        0.15149,
+        0.93952,
+        0.16247
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 3,
+      "bbox": [
+        0.81513,
+        0.18994,
+        0.93952,
+        0.20208
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 3,
+      "bbox": [
+        0.1163,
+        0.28849,
+        0.21565,
+        0.29773
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 3,
+      "bbox": [
+        0.10354,
+        0.30132,
+        0.19219,
+        0.31056
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1140",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "arithmetic_error": "Line 'Desktop PC - Core i5, 8GB RAM, 512GB SSD' printed as 118929.00 instead of 86400.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Prism Digital Sys. Pvt. Ltd.",
+    "template": "multipage"
+  },
+  "notes": "Line 'Desktop PC - Core i5, 8GB RAM, 512GB SSD' printed as 118929.00 instead of 86400.00; lines no longer sum to the subtotal."
+}

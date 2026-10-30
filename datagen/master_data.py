@@ -374,8 +374,12 @@ class MasterData:
         status: str = "approved",
         intra_state: bool | None = None,
         predicate: Callable[[Vendor], bool] | None = None,
+        exclusive: bool = True,
     ) -> Vendor:
-        """Pick an unreserved vendor matching the filters and mark it reserved for one scenario."""
+        """Pick an unreserved vendor matching the filters.
+
+        Exclusive reservation also locks the vendor's POs, so no other scenario bills or adds to them.
+        """
         candidates = [
             v for v in self.vendors
             if v.vendor_id not in self._reserved_vendors
@@ -386,8 +390,12 @@ class MasterData:
         if not candidates:
             raise LookupError(f"No unreserved vendor with status={status}, intra_state={intra_state}")
         vendor = self.rng.choice(candidates)
-        self._reserved_vendors.add(vendor.vendor_id)
+        if exclusive:
+            self._reserved_vendors.add(vendor.vendor_id)
         return vendor
+
+    def is_reserved_vendor(self, vendor_id: str) -> bool:
+        return vendor_id in self._reserved_vendors
 
     def reserve_po(
         self,
@@ -400,6 +408,7 @@ class MasterData:
         candidates = [
             p for p in self.pos
             if p.po_number not in self._reserved_pos
+            and p.vendor_id not in self._reserved_vendors
             and p.status in statuses
             and self.vendor_of(p).status == vendor_status
             and (intra_state is None or self.vendor_of(p).is_intra_state == intra_state)

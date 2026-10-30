@@ -1,0 +1,301 @@
+{
+  "invoice_id": "S0109",
+  "file_name": "S0109.pdf",
+  "set_name": "stress",
+  "scenario": "NOT_AN_INVOICE",
+  "template": "compact",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_188",
+    "rubber_stamp",
+    "fax",
+    "rotation_+1.1deg",
+    "blur_0.4",
+    "noise_4",
+    "jpeg_q72"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "proforma",
+      "printed": "Proforma Invoice"
+    },
+    "vendor_name": {
+      "value": "Patil Textiles Pvt. Ltd.",
+      "printed": "Patil Textiles Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "07ZHNCP5749Q1ZA",
+      "printed": "07 ZHNCP 5749 Q1ZA"
+    },
+    "vendor_address": {
+      "value": "61/552, Radhakrishnan Ganj, New Delhi - 110085, Delhi",
+      "printed": "61/552, Radhakrishnan Ganj, New Delhi - 110085, Delhi"
+    },
+    "vendor_state": {
+      "value": "Delhi",
+      "printed": "Delhi"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "PI-1745",
+      "printed": "PI-1745"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "13/10/2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Buttons - Polyester (Gross)",
+        "hsn_sac": "9606",
+        "quantity": 102,
+        "unit": "Gross",
+        "unit_price": 195.0,
+        "amount": 19890.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 19890.0,
+      "printed": "Rs. 19,890/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 994.5,
+      "printed": "Rs. 994.50"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 20884.5,
+      "printed": "Rs. 20,884.50"
+    },
+    "amount_in_words": {
+      "value": "Rupees Twenty Thousand Eight Hundred Eighty Four and Fifty Paise Only",
+      "printed": "Rupees Twenty Thousand Eight Hundred Eighty Four and Fifty Paise Only"
+    },
+    "bank_account": {
+      "value": "83323960986",
+      "printed": "83323960986"
+    },
+    "bank_ifsc": {
+      "value": "CNRB0293366",
+      "printed": "CNRB0293366"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05897,
+        0.08767,
+        0.23288,
+        0.10125
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11085,
+        0.12596,
+        0.24061,
+        0.13614
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.55012,
+        0.11373,
+        0.67777,
+        0.12388
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.05933,
+        0.22186,
+        0.10664,
+        0.23144
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.35228,
+        0.21746,
+        0.41978,
+        0.22733
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85574,
+        0.28243,
+        0.93377,
+        0.293
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.86489,
+        0.29808,
+        0.93421,
+        0.30853
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.83423,
+        0.31681,
+        0.93476,
+        0.3288
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12022,
+        0.84416,
+        0.19751,
+        0.85359
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.11144,
+        0.8562,
+        0.19641,
+        0.86575
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "NOT_A_TAX_INVOICE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1346",
+  "knobs": {
+    "title": "Proforma Invoice",
+    "invoice_no_label": "Proforma No.",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": true,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Patil Textiles Pvt. Ltd.",
+    "template": "compact"
+  },
+  "notes": "Document is a Proforma Invoice, not a tax invoice; its document number is in invoice_number."
+}

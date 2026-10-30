@@ -1,0 +1,340 @@
+{
+  "invoice_id": "S0222",
+  "file_name": "S0222.pdf",
+  "set_name": "stress",
+  "scenario": "GST_RATE_UNUSUAL",
+  "template": "modern",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Jhaveri Packwell Inds. Pvt. Ltd.",
+      "printed": "Jhaveri Packwell Inds. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "29FAOCJ6684D2ZT",
+      "printed": "29FAOCJ6684D2ZT"
+    },
+    "vendor_address": {
+      "value": "02/490, Sibal Nagar, Mysuru - 570070, Karnataka",
+      "printed": "02/490, Sibal Nagar, Mysuru - 570070, Karnataka"
+    },
+    "vendor_state": {
+      "value": "Karnataka",
+      "printed": "Karnataka"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "JPI/1567/26",
+      "printed": "JPI/1567/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-06",
+      "printed": "October 6, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1366",
+      "printed": "PO-2026-1366"
+    },
+    "line_items": [
+      {
+        "description": "Corrugated Box 3-Ply 12x10x8 in",
+        "hsn_sac": "4819",
+        "quantity": 273,
+        "unit": "Nos",
+        "unit_price": 20.0,
+        "amount": 5460.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Stretch Wrap Film 23 Micron",
+        "hsn_sac": "3920",
+        "quantity": 41,
+        "unit": "Roll",
+        "unit_price": 450.0,
+        "amount": 18450.0,
+        "tax_rate": 28.0
+      },
+      {
+        "description": "Void Fill Paper Roll",
+        "hsn_sac": "4808",
+        "quantity": 78,
+        "unit": "Roll",
+        "unit_price": 1300.0,
+        "amount": 101400.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "PP Strapping Roll 12mm",
+        "hsn_sac": "3920",
+        "quantity": 12,
+        "unit": "Roll",
+        "unit_price": 860.0,
+        "amount": 10320.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 135630.0,
+      "printed": "Rs. 1,35,630/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 12366.6,
+      "printed": "Rs. 12,366.60"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 147996.6,
+      "printed": "Rs. 1,47,996.60"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "977141520",
+      "printed": "977141520"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0215216",
+      "printed": "UTIB0215216"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.56166,
+        0.05139,
+        0.85217,
+        0.06477
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.73112,
+        0.09523,
+        0.85217,
+        0.10415
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.13864,
+        0.16319,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.2836,
+        0.13864,
+        0.40953,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.5,
+        0.13864,
+        0.61394,
+        0.14979
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11655,
+        0.22114,
+        0.24155,
+        0.23006
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.43311,
+        0.3516,
+        0.45986
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84925,
+        0.41044,
+        0.93952,
+        0.42048
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85304,
+        0.42701,
+        0.93952,
+        0.43705
+      ],
+      "approximate": false
+    },
+    "total_amount#2": {
+      "page": 1,
+      "bbox": [
+        0.82102,
+        0.44688,
+        0.93952,
+        0.45802
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.12124,
+        0.84104,
+        0.19081,
+        0.84996
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10512,
+        0.85387,
+        0.18338,
+        0.86279
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "GST_RATE_UNUSUAL"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1366",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Inv Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "unusual_rate": "'Stretch Wrap Film 23 Micron' charged GST 28% (PO 18%) on 2026-10-06.",
+    "vendor_name_printed": "Jhaveri Packwell Inds. Pvt. Ltd.",
+    "template": "modern"
+  },
+  "notes": "'Stretch Wrap Film 23 Micron' charged GST 28% (PO 18%) on 2026-10-06."
+}

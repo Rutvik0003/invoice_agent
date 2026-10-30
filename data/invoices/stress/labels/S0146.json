@@ -1,0 +1,320 @@
+{
+  "invoice_id": "S0146",
+  "file_name": "S0146.pdf",
+  "set_name": "stress",
+  "scenario": "VENDOR_NOT_APPROVED",
+  "template": "classic",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Gala Office Solutions Pvt Ltd",
+      "printed": "Gala Office Solutions Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "03CFYCG8935N1ZB",
+      "printed": "03CFYCG8935N1ZB"
+    },
+    "vendor_address": {
+      "value": "69/952, Sridhar Marg, Mohali - 160079, Punjab",
+      "printed": "69/952, Sridhar Marg, Mohali - 160079, Punjab"
+    },
+    "vendor_state": {
+      "value": "Punjab",
+      "printed": "Punjab"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "GOS/26-27/1161",
+      "printed": "GOS/26-27/1161"
+    },
+    "invoice_date": {
+      "value": "2026-10-07",
+      "printed": "07-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1351",
+      "printed": "PO-2026-1351"
+    },
+    "line_items": [
+      {
+        "description": "Whiteboard Marker - Assorted (Pack of 10)",
+        "hsn_sac": "9608",
+        "quantity": 108,
+        "unit": "Pack",
+        "unit_price": 210.0,
+        "amount": 22680.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Correction Pen",
+        "hsn_sac": "3824",
+        "quantity": 301,
+        "unit": "Nos",
+        "unit_price": 31.5,
+        "amount": 9481.5,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Ball Pen - Blue (Box of 50)",
+        "hsn_sac": "9608",
+        "quantity": 7,
+        "unit": "Box",
+        "unit_price": 305.0,
+        "amount": 2135.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 34296.5,
+      "printed": "₹34,296.50"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 6173.37,
+      "printed": "₹6,173.37"
+    },
+    "round_off": {
+      "value": 0.13,
+      "printed": "0.13"
+    },
+    "total_amount": {
+      "value": 40470.0,
+      "printed": "₹40,470.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "881313318718885",
+      "printed": "881313318718885"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0141844",
+      "printed": "SBIN0141844"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.15119,
+        0.07982,
+        0.4266,
+        0.09361
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.2039,
+        0.12553,
+        0.32635,
+        0.13402
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.07987,
+        0.84798,
+        0.08889
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.09888,
+        0.80828,
+        0.10789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.74802,
+        0.11788,
+        0.83447,
+        0.1269
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11319,
+        0.24063,
+        0.23415,
+        0.24911
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.87149,
+        0.37669,
+        0.93952,
+        0.38641
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.87905,
+        0.39326,
+        0.93952,
+        0.40298
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.86393,
+        0.42993,
+        0.93952,
+        0.44054
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11281,
+        0.45607,
+        0.2136,
+        0.46455
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10201,
+        0.46874,
+        0.17966,
+        0.47738
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_NOT_APPROVED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1351",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Gala Office Solutions Pvt Ltd",
+    "template": "classic"
+  },
+  "notes": "Vendor V028 has status 'pending' in the vendor master."
+}

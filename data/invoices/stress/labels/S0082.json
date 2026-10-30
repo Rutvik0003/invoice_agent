@@ -1,0 +1,302 @@
+{
+  "invoice_id": "S0082",
+  "file_name": "S0082.pdf",
+  "set_name": "stress",
+  "scenario": "VENDOR_NOT_APPROVED",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Gala Office Solns Pvt. Ltd.",
+      "printed": "Gala Office Solns Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "03CFYCG8935N1ZB",
+      "printed": "03CFYCG8935N1ZB"
+    },
+    "vendor_address": {
+      "value": "69/952, Sridhar Marg, Mohali - 160079, Punjab",
+      "printed": "69/952, Sridhar Marg, Mohali - 160079, Punjab"
+    },
+    "vendor_state": {
+      "value": "Punjab",
+      "printed": "Punjab"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "GOS/26-27/1160",
+      "printed": "GOS/26-27/1160"
+    },
+    "invoice_date": {
+      "value": "2026-10-09",
+      "printed": "October 9, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1350",
+      "printed": "PO-2026-1350"
+    },
+    "line_items": [
+      {
+        "description": "Box File - Lever Arch",
+        "hsn_sac": "4820",
+        "quantity": 299,
+        "unit": "Nos",
+        "unit_price": 165.0,
+        "amount": 49335.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 49335.0,
+      "printed": "₹49,335.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 8880.3,
+      "printed": "₹8,880.30"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 58215.3,
+      "printed": "₹58,215.30"
+    },
+    "amount_in_words": {
+      "value": "Rupees Fifty Eight Thousand Two Hundred Fifteen and Thirty Paise Only",
+      "printed": "Rupees Fifty Eight Thousand Two Hundred Fifteen and Thirty Paise Only"
+    },
+    "bank_account": {
+      "value": "881313318718885",
+      "printed": "881313318718885"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0141844",
+      "printed": "SBIN0141844"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.24278,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.21229,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.21033,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.6003,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.82536,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.20494,
+        0.58769,
+        0.2133
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88907,
+        0.3159,
+        0.94792,
+        0.3237
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.89561,
+        0.33134,
+        0.94792,
+        0.33915
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.88066,
+        0.34829,
+        0.94792,
+        0.35721
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.46393,
+        0.65161,
+        0.47173
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.47516,
+        0.61823,
+        0.48296
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_NOT_APPROVED"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1350",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Gala Office Solns Pvt. Ltd.",
+    "template": "tally"
+  },
+  "notes": "Vendor V028 has status 'pending' in the vendor master."
+}

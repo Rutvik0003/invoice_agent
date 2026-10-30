@@ -1,0 +1,338 @@
+{
+  "invoice_id": "S0141",
+  "file_name": "S0141.pdf",
+  "set_name": "stress",
+  "scenario": "BANK_CHANGE",
+  "template": "multipage",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "M/s Pinnacle Softech & Co.",
+      "printed": "M/s Pinnacle Softech & Co."
+    },
+    "vendor_gstin": {
+      "value": "29CSBFP0836M1ZW",
+      "printed": "29CSBFP0836M1ZW"
+    },
+    "vendor_address": {
+      "value": "41/491, Dalal Ganj, Bengaluru - 560012, Karnataka",
+      "printed": "41/491, Dalal Ganj, Bengaluru - 560012, Karnataka"
+    },
+    "vendor_state": {
+      "value": "Karnataka",
+      "printed": "Karnataka"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/PS/479",
+      "printed": "2026/PS/479"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "13-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1262",
+      "printed": "PO-2026-1262"
+    },
+    "line_items": [
+      {
+        "description": "Data Backup and Recovery Service",
+        "hsn_sac": "998315",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 17850.0,
+        "amount": 17850.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "POS Software Customisation",
+        "hsn_sac": "998314",
+        "quantity": 85,
+        "unit": "Hrs",
+        "unit_price": 2350.0,
+        "amount": 199750.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Network Setup and Configuration",
+        "hsn_sac": "998316",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 43300.0,
+        "amount": 43300.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Software Licence Subscription - ERP Users",
+        "hsn_sac": "997331",
+        "quantity": 90,
+        "unit": "User",
+        "unit_price": 4050.0,
+        "amount": 364500.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Cybersecurity Audit",
+        "hsn_sac": "998313",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 104100.0,
+        "amount": 104100.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 729500.0,
+      "printed": "7,29,500"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 131310.0,
+      "printed": "1,31,310"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 860810.0,
+      "printed": "8,60,810"
+    },
+    "amount_in_words": {
+      "value": "Rupees Eight Lakh Sixty Thousand Eight Hundred Ten Only",
+      "printed": "Rupees Eight Lakh Sixty Thousand Eight Hundred Ten Only"
+    },
+    "bank_account": {
+      "value": "81543725951787",
+      "printed": "81543725951787"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0152536",
+      "printed": "UTIB0152536"
+    },
+    "page_count": {
+      "value": 3,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.12767,
+        0.04534,
+        0.42986,
+        0.06036
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.18242,
+        0.09152,
+        0.32686,
+        0.10077
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.7071,
+        0.10164,
+        0.80345,
+        0.11147
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.67272,
+        0.11708,
+        0.75362,
+        0.12691
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.68008,
+        0.13252,
+        0.78391,
+        0.14235
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11523,
+        0.24106,
+        0.25245,
+        0.25031
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 3,
+      "bbox": [
+        0.87693,
+        0.134,
+        0.93952,
+        0.14498
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 3,
+      "bbox": [
+        0.88294,
+        0.15149,
+        0.93952,
+        0.16247
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 3,
+      "bbox": [
+        0.85929,
+        0.18994,
+        0.93952,
+        0.20208
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 3,
+      "bbox": [
+        0.1163,
+        0.28849,
+        0.22838,
+        0.29773
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 3,
+      "bbox": [
+        0.10354,
+        0.30132,
+        0.18679,
+        0.31056
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BANK_DETAILS_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1262",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "M/s Pinnacle Softech & Co.",
+    "template": "multipage"
+  },
+  "notes": "Bank details on the invoice differ from the vendor master."
+}

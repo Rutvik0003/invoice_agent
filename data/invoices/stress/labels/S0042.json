@@ -1,0 +1,301 @@
+{
+  "invoice_id": "S0042",
+  "file_name": "S0042.pdf",
+  "set_name": "stress",
+  "scenario": "NO_PO_AMBIGUOUS",
+  "template": "tally",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Apex Infotech Systems Private Limited",
+      "printed": "Apex Infotech Systems Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "09ZLJCA3533S1ZQ",
+      "printed": "09ZLJCA3533S1ZQ"
+    },
+    "vendor_address": {
+      "value": "H.No. 67, Khosla Street, Kanpur - 208069, Uttar Pradesh",
+      "printed": "H.No. 67, Khosla Street, Kanpur - 208069, Uttar Pradesh"
+    },
+    "vendor_state": {
+      "value": "Uttar Pradesh",
+      "printed": "Uttar Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "AIS/26-27/1515",
+      "printed": "AIS/26-27/1515"
+    },
+    "invoice_date": {
+      "value": "2026-10-12",
+      "printed": "October 12, 2026"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Cat6 Patch Cable 3m",
+        "hsn_sac": "8544",
+        "quantity": 22,
+        "unit": "Nos",
+        "unit_price": 215.0,
+        "amount": 4730.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Wireless Keyboard and Mouse Combo",
+        "hsn_sac": "8471",
+        "quantity": 17,
+        "unit": "Nos",
+        "unit_price": 2350.0,
+        "amount": 39950.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 44680.0,
+      "printed": "Rs. 44,680/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 8042.4,
+      "printed": "Rs. 8,042.40"
+    },
+    "round_off": {
+      "value": -0.4,
+      "printed": "-0.40"
+    },
+    "total_amount": {
+      "value": 52722.0,
+      "printed": "Rs. 52,722/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees Fifty Two Thousand Seven Hundred Twenty Two Only",
+      "printed": "Rupees Fifty Two Thousand Seven Hundred Twenty Two Only"
+    },
+    "bank_account": {
+      "value": "87612332612550",
+      "printed": "87612332612550"
+    },
+    "bank_ifsc": {
+      "value": "SBIN0457384",
+      "printed": "SBIN0457384"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05376,
+        0.05636,
+        0.33271,
+        0.06639
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.09147,
+        0.20903,
+        0.09927
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10119,
+        0.20864,
+        0.21033,
+        0.21645
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.50504,
+        0.06953,
+        0.5933,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.73152,
+        0.06953,
+        0.83237,
+        0.07789
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88387,
+        0.33378,
+        0.94792,
+        0.34158
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.88124,
+        0.34922,
+        0.94792,
+        0.35702
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.87396,
+        0.38042,
+        0.94792,
+        0.38934
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.55351,
+        0.50794,
+        0.64507,
+        0.51574
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.545,
+        0.51916,
+        0.61823,
+        0.52697
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PO_AMBIGUOUS"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": null,
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Apex Infotech Systems Private Limited",
+    "template": "tally"
+  },
+  "notes": "No PO printed. PO-2026-1232 and PO-2026-1233 are identical repeat orders."
+}
