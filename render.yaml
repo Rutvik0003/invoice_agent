@@ -1,0 +1,44 @@
+# Render Blueprint: one web service serving the FastAPI API and the built React frontend.
+services:
+  - type: web
+    name: invoice-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt && cd frontend && npm ci && npm run build
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: APP_ENV
+        value: production
+      # Secrets and environment-specific values: set these in the Render dashboard
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        sync: false
+      - key: GROQ_MODEL
+        sync: false
+      # Business-rule settings: defaults live in backend/app/config.py; override here if needed
+      - key: DEFAULT_MODEL
+        sync: false
+      - key: TOLERANCE_PCT
+        sync: false
+      - key: TOLERANCE_ABS_INR
+        sync: false
+      - key: CONFIDENCE_THRESHOLD
+        sync: false
+      - key: PO_INFER_MIN_SCORE
+        sync: false
+      - key: PO_INFER_MIN_GAP
+        sync: false
+      - key: PO_INFER_FLOOR
+        sync: false
+      - key: POSSIBLE_DUP_DAYS
+        sync: false
