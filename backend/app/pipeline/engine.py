@@ -68,7 +68,7 @@ def run_rules(inv: ExtractedInvoice, ver: VerificationResult, repo: MasterReposi
 
     self_checks = run_self_check(inv, ver, repo.buyer, settings)
     finish("self_check", self_checks)
-    vendor, vendor_checks = run_vendor_check(inv, repo)
+    vendor, vendor_checks = run_vendor_check(inv, repo, ver)
     vendor_checks += run_duplicate_check(inv, vendor, repo, ver, settings, file_hash)
     finish("vendor_duplicate", vendor_checks)
     po, inferred, po_checks, ranked = run_po_match(inv, vendor, repo, settings)

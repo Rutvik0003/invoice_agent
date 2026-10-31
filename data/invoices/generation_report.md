@@ -54,9 +54,9 @@
 
 | Expected decision | Count |
 |---|---:|
-| HOLD | 145 |
+| HOLD | 137 |
 | REJECT | 71 |
-| APPROVE | 55 |
+| APPROVE | 63 |
 
 | Template | Count |
 |---|---:|
@@ -85,6 +85,6 @@
 
 ## Overall expected decisions (golden + stress)
 
-- APPROVE: 57 (20%)
-- HOLD: 151 (53%)
+- APPROVE: 65 (23%)
+- HOLD: 143 (51%)
 - REJECT: 75 (27%)

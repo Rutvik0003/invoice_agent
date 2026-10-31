@@ -10,7 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.common import engine_of
-from app.config import get_settings
+from app.runtime_settings import effective_settings
 from app.models import InvoiceHistory, POHeader, Run, Vendor
 from app.verification.ocr import tesseract_status
 from app.verification.verify import CRITICAL_FIELDS
@@ -20,17 +20,20 @@ MANUAL_MINUTES_PER_INVOICE = 8
 
 
 @router.get("/config")
-def config() -> dict:
-    """Read-only settings for the UI: which models can be used, and the business-rule thresholds."""
-    s = get_settings()
+def config(request: Request) -> dict:
+    """Settings for the UI: which models can be used, the business-rule thresholds and the editable settings."""
+    s = effective_settings(engine_of(request))
     return {
         "default_model": s.default_model,
         "models": [
             {"id": "gemini", "label": "Google Gemini", "model_name": s.gemini_model, "configured": s.gemini_configured,
+             "choices": s.model_choices("gemini"),
              "description": "Reads the PDF directly. Most accurate; about 15-20 s per invoice on the free tier."},
             {"id": "groq", "label": "Groq", "model_name": s.groq_model, "configured": s.groq_configured,
+             "choices": s.model_choices("groq"),
              "description": "Reads page images. Very fast (about 4 s); the free tier fits single-page invoices only."},
         ],
+        "ai_request_gap_s": s.ai_request_gap_s,
         "confidence_threshold": s.confidence_threshold,
         "tolerance_pct": s.tolerance_pct,
         "tolerance_abs_inr": s.tolerance_abs_inr,
@@ -51,7 +54,7 @@ def config() -> dict:
 def vendors(request: Request) -> list[dict]:
     with Session(engine_of(request)) as session:
         return [{c: getattr(v, c) for c in ("vendor_id", "legal_name", "trade_name", "gstin", "state", "state_code",
-                                             "status", "category", "bank_name", "bank_account", "ifsc", "payment_terms_days")}
+                                             "email", "status", "category", "bank_name", "bank_account", "ifsc", "payment_terms_days")}
                 for v in session.scalars(select(Vendor).order_by(Vendor.vendor_id))]
 
 

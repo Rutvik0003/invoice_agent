@@ -16,7 +16,10 @@ from app.pipeline.amount_match import map_lines
 from app.pipeline.decision import ledger_update
 from app.pipeline.ledger import apply_ledger_update
 from app.pipeline.orchestrator import load_buyer
+from app.pipeline.po_compare import compare
 from app.pipeline.repository import DbRepository
+from app.pipeline.self_check import invoice_date
+from app.runtime_settings import effective_settings
 from app.schemas import ExtractedInvoice
 
 logger = get_logger("holds")
@@ -68,6 +71,41 @@ def list_holds(request: Request, state: Literal["open", "resolved", "all"] = "op
         for question in item["routed_questions"]:
             by_role.setdefault(question["role"], []).append(item["id"])
     return {"items": items, "by_role": by_role}
+
+
+@router.get("/runs/{run_id}/po-compare")
+def po_compare(run_id: str, request: Request, po: str | None = None) -> dict:
+    """The invoice next to a PO, line by line. Default PO: the run's (quoted, inferred or assigned), else the best
+    candidate. `options` lists every PO of this vendor (and the candidates) so another one can be compared."""
+    engine = engine_of(request)
+    with Session(engine) as session:
+        run = get_run_or_404(session, run_id)
+        if run.extracted_json is None:
+            raise HTTPException(status_code=409, detail="Nothing was extracted from this invoice.")
+        repo = DbRepository(session, load_buyer())
+        invoice = ExtractedInvoice.model_validate(run.extracted_json)
+        quoted_po = repo.po(invoice.po_reference.value) if invoice.po_reference.value else None
+        candidates = [c["po_number"] for c in (run.decision_json or {}).get("po_candidates", [])]
+        # why each PO is offered, most relevant first: the run's PO, the one printed on the invoice, the suggestions,
+        # then every other open PO of this vendor
+        reasons: dict[str, str] = {}
+        if run.po_number:
+            reasons[run.po_number] = "matched"
+        if quoted_po is not None:
+            reasons.setdefault(quoted_po.po_number, "quoted")
+        for number in candidates:
+            reasons.setdefault(number, "suggested")
+        if run.vendor_id:
+            for p in sorted(repo.open_pos_for_vendor(run.vendor_id), key=lambda p: p.po_number):
+                reasons.setdefault(p.po_number, "other")
+        options = list(reasons)
+        chosen = po or (options[0] if options else None)
+        record = repo.po(chosen) if chosen else None
+        if chosen and record is None:
+            raise HTTPException(status_code=404, detail=f"PO {chosen} not found.")
+        result = compare(invoice, record, run.vendor_id, effective_settings(engine)) if record else None
+        return {"options": options, "option_reasons": reasons, "candidates": candidates,
+                "selected": record.po_number if record else None, "comparison": result}
 
 
 @router.post("/holds/{run_id}/action")
@@ -134,10 +172,18 @@ def _approve(session: Session, run: Run) -> dict:
         raise HTTPException(status_code=400, detail="Assign a PO before approving.")
     if not run.vendor_id:
         raise HTTPException(status_code=400, detail="The vendor is not in the vendor master; it cannot be paid yet.")
+    invoice = ExtractedInvoice.model_validate(run.extracted_json)
+    missing = []
+    if not invoice.invoice_number.value:
+        missing.append("invoice number")
+    if invoice_date(invoice) is None:
+        missing.append("invoice date")
+    if missing:  # the invoice history (duplicate checks, payment) cannot record an invoice without them
+        raise HTTPException(status_code=400, detail=f"The {' and '.join(missing)} {'is' if len(missing) == 1 else 'are'} "
+                                                    "missing. Enter it with 'Confirm value' first, then approve.")
     repo = DbRepository(session, load_buyer())
     po = repo.po(run.po_number)
     vendor = next((v for v in repo.vendors() if v.vendor_id == run.vendor_id), None)
-    invoice = ExtractedInvoice.model_validate(run.extracted_json)
     update = ledger_update(invoice, vendor, po, map_lines(invoice, po))
     if not run.is_test_run:
         change = apply_ledger_update(session, update, run.id)

@@ -7,7 +7,9 @@ export type Health = {
   ocr: { available: boolean; version: string | null }
 }
 
-export type ModelOption = { id: 'gemini' | 'groq'; label: string; model_name: string; configured: boolean; description: string }
+export type ModelOption = {
+  id: 'gemini' | 'groq'; label: string; model_name: string; choices: string[]; configured: boolean; description: string
+}
 
 export type AppConfig = {
   default_model: string
@@ -25,6 +27,7 @@ export type AppConfig = {
   possible_dup_days: number
   ocr: { available: boolean; version: string | null }
   max_upload_mb: number
+  ai_request_gap_s: number
 }
 
 export type Sample = {
@@ -50,12 +53,13 @@ export type LineItem = {
 export type ExtractedInvoice = Record<string, ScalarField> & { line_items: LineItem[] }
 
 export type FieldVerification = {
-  status: 'verified' | 'not_found' | 'not_applicable' | 'unavailable'
-  source: 'text_layer' | 'ocr' | null
+  status: 'verified' | 'cross_checked' | 'not_found' | 'not_applicable' | 'unavailable'
+  source: 'text_layer' | 'ocr' | 'master_data' | 'calculation' | null
   page: number | null
   bbox: [number, number, number, number] | null
   matched_text: string | null
   ocr_word_conf: number | null
+  reference_value?: string | null
 }
 
 export type CheckEvidence = {
@@ -159,13 +163,23 @@ export const api = {
   config: () => fetch('/api/config').then(json<AppConfig>),
   samples: () => fetch('/api/samples').then(json<Sample[]>),
   run: (id: string) => fetch(`/api/runs/${id}`).then(json<RunDetail>),
-  startRun: (input: { file?: File; sampleId?: string; model: string; useCache: boolean }) => {
+  startRun: (input: { file?: File; sampleId?: string; model: string; modelName?: string; useCache: boolean }) => {
     const form = new FormData()
     if (input.file) form.append('file', input.file)
     if (input.sampleId) form.append('sample_id', input.sampleId)
     form.append('model', input.model)
+    if (input.modelName) form.append('model_name', input.modelName)
     form.append('use_cache', String(input.useCache))
     return fetch('/api/runs', { method: 'POST', body: form }).then(json<{ run_id: string }>)
+  },
+  startBatch: (input: { files: File[]; model: string; modelName?: string; useCache: boolean }) => {
+    const form = new FormData()
+    input.files.forEach((f) => form.append('files', f))
+    form.append('model', input.model)
+    if (input.modelName) form.append('model_name', input.modelName)
+    form.append('use_cache', String(input.useCache))
+    return fetch('/api/batches', { method: 'POST', body: form })
+      .then(json<{ batch_id: string; run_ids: string[]; file_errors: { file_name: string; error: string }[] }>)
   },
   retry: (id: string, model: string) =>
     fetch(`/api/runs/${id}/retry?model=${model}`, { method: 'POST' }).then(json<{ run_id: string }>),

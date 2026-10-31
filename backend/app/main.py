@@ -12,12 +12,13 @@ from sqlalchemy import Engine, func, select
 from sqlalchemy.orm import Session
 
 from app import __version__
-from app.api import admin, data, eval as eval_api, holds, runs
+from app.api import admin, batches, data, email, eval as eval_api, holds, runs
 from app.config import REPO_ROOT, get_settings
 from app.db import get_engine, init_db
 from app.extraction import extract_document
 from app.logging_setup import configure_logging
 from app.models import Vendor
+from app.pipeline.batch_queue import BatchWorker
 from app.pipeline.orchestrator import mark_interrupted_runs
 from app.seed import seed_master
 from app.verification.ocr import OcrStatus, tesseract_status
@@ -54,12 +55,15 @@ def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None
         configure_logging()
         prepare_database(app.state.engine)
         mark_interrupted_runs(app.state.engine)
+        app.state.batch_worker.start()
         yield
+        app.state.batch_worker.stop()
 
     app = FastAPI(title="Invoice Agent", version=__version__, lifespan=lifespan)
     app.state.engine = engine or get_engine()
     app.state.extract_fn = extract_fn or extract_document
-    for module in (runs, holds, data, admin, eval_api):
+    app.state.batch_worker = BatchWorker(app.state.engine, app.state.extract_fn)
+    for module in (runs, batches, email, holds, data, admin, eval_api):
         app.include_router(module.router)
 
     @app.get("/api/health", response_model=HealthResponse)

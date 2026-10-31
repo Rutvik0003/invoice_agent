@@ -6,6 +6,7 @@ never auto-approved: the best case is PO_INFERRED (Hold with one-click confirm).
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from decimal import Decimal
 
@@ -30,8 +31,19 @@ class POCandidate:
     qty_match: float
 
 
-def description_score(a: str | None, b: str | None) -> int:
-    return int(fuzz.token_sort_ratio((a or "").lower(), (b or "").lower()))
+def _words(text: str | None) -> set[str]:
+    return set(re.findall(r"[a-z0-9]+", (text or "").lower()))
+
+
+def description_score(invoice_desc: str | None, po_desc: str | None) -> int:
+    """How surely an invoice line is this PO item (0-100): the better of overall similarity (token_sort_ratio) and
+    the share of the PO description's words that appear on the invoice line. Invoices often add words to the
+    item name ("Online UPS 3 kVA - supplied as per agreed specification"), which alone would sink the similarity;
+    different catalogue items share at most 83% of their words, below the match thresholds."""
+    similarity = fuzz.token_sort_ratio((invoice_desc or "").lower(), (po_desc or "").lower())
+    po_words = _words(po_desc)
+    contained = 100 * len(po_words & _words(invoice_desc)) / len(po_words) if po_words else 0
+    return int(max(similarity, contained))
 
 
 def best_po_line(line: LineItem, po: PORecord) -> tuple[POLineRecord | None, int]:

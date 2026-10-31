@@ -10,12 +10,12 @@
   "degradations": [
     "heavy_scan",
     "dpi_100",
-    "obscured_total_amount_ink_blot",
+    "obscured_invoice_number_ink_blot",
     "signature",
     "coffee_stain",
-    "rotation_+3.3deg",
-    "blur_1.3",
-    "noise_12",
+    "rotation_+2.5deg",
+    "blur_1.0",
+    "noise_16",
     "jpeg_q35"
   ],
   "ground_truth": {
@@ -103,8 +103,8 @@
       "printed": "16,089"
     },
     "amount_in_words": {
-      "value": null,
-      "printed": null
+      "value": "Rupees Sixteen Thousand Eighty Nine Only",
+      "printed": "Rupees Sixteen Thousand Eighty Nine Only"
     },
     "bank_account": {
       "value": "54611242954",
@@ -123,136 +123,136 @@
     "vendor_name": {
       "page": 1,
       "bbox": [
-        0.63713,
-        0.03768,
-        0.81579,
-        0.05834
+        0.64675,
+        0.04106,
+        0.82526,
+        0.05986
       ],
       "approximate": true
     },
     "vendor_gstin": {
       "page": 1,
       "bbox": [
-        0.70069,
-        0.08145,
-        0.81902,
-        0.09519
+        0.70943,
+        0.08486,
+        0.82767,
+        0.09737
       ],
       "approximate": true
     },
     "invoice_number": {
       "page": 1,
       "bbox": [
-        0.03822,
-        0.15287,
-        0.14016,
-        0.16816
+        0.04553,
+        0.14909,
+        0.14732,
+        0.16332
       ],
       "approximate": true
     },
     "invoice_date": {
       "page": 1,
       "bbox": [
-        0.32626,
-        0.14139,
-        0.41922,
-        0.15631
+        0.3338,
+        0.14057,
+        0.42659,
+        0.15452
       ],
       "approximate": true
     },
     "buyer_gstin": {
       "page": 1,
       "bbox": [
-        0.09427,
-        0.23223,
-        0.21979,
-        0.24627
+        0.09988,
+        0.22929,
+        0.22531,
+        0.24201
       ],
       "approximate": true
     },
     "total_amount": {
       "page": 1,
       "bbox": [
-        0.05708,
-        0.38077,
-        0.18593,
-        0.4127
+        0.05954,
+        0.37744,
+        0.18793,
+        0.40804
       ],
       "approximate": true
     },
     "subtotal": {
       "page": 1,
       "bbox": [
-        0.88211,
-        0.32752,
-        0.92688,
-        0.33935
+        0.88568,
+        0.33205,
+        0.93028,
+        0.34342
       ],
       "approximate": true
     },
     "cgst": {
       "page": 1,
       "bbox": [
-        0.87206,
-        0.34407,
-        0.92825,
-        0.35636
+        0.87528,
+        0.34861,
+        0.93129,
+        0.36032
       ],
       "approximate": true
     },
     "sgst": {
       "page": 1,
       "bbox": [
-        0.87343,
-        0.36061,
-        0.92961,
-        0.3729
+        0.87629,
+        0.36516,
+        0.9323,
+        0.37688
       ],
       "approximate": true
     },
     "total_amount#2": {
       "page": 1,
       "bbox": [
-        0.87901,
-        0.39698,
-        0.9327,
-        0.41028
+        0.8811,
+        0.40156,
+        0.93459,
+        0.41431
       ],
       "approximate": true
     },
     "bank_account": {
       "page": 1,
       "bbox": [
-        0.14992,
-        0.85253,
-        0.23554,
-        0.86493
+        0.14242,
+        0.84968,
+        0.22792,
+        0.86119
       ],
       "approximate": true
     },
     "bank_ifsc": {
       "page": 1,
       "bbox": [
-        0.13489,
-        0.86609,
-        0.2183,
-        0.8784
+        0.1271,
+        0.86306,
+        0.21039,
+        0.8745
       ],
       "approximate": true
     },
     "po_reference": {
       "page": 1,
       "bbox": [
-        0.69206,
-        0.81714,
-        0.77358,
-        0.82882
+        0.68525,
+        0.82,
+        0.76665,
+        0.83082
       ],
       "approximate": true
     }
   },
   "obscured_fields": [
-    "total_amount"
+    "invoice_number"
   ],
   "rules_eval_signals": {
     "vendor_gstin": {
@@ -264,16 +264,16 @@
       "verification_status": "verified"
     },
     "invoice_number": {
-      "confidence": 0.95,
-      "verification_status": "verified"
+      "confidence": 0.4,
+      "verification_status": "not_found"
     },
     "invoice_date": {
       "confidence": 0.95,
       "verification_status": "verified"
     },
     "total_amount": {
-      "confidence": 0.4,
-      "verification_status": "not_found"
+      "confidence": 0.95,
+      "verification_status": "verified"
     },
     "po_reference": {
       "confidence": 0.95,
@@ -326,12 +326,12 @@
     "amount_style": "no_symbol",
     "tax_per_line": true,
     "show_round_off": true,
-    "show_amount_in_words": false,
+    "show_amount_in_words": true,
     "gstin_spaced": false,
     "discount": "0.00",
     "other_charges": "0.00",
     "vendor_name_printed": "Ramesh Packaging",
     "template": "modern"
   },
-  "notes": "Underlying invoice is correct, but total_amount is obscured on the heavy scan."
+  "notes": "Underlying invoice is correct, but invoice_number is obscured on the heavy scan."
 }

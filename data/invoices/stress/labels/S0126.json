@@ -292,13 +292,15 @@
       "verification_status": "verified"
     }
   },
-  "expected_decision": "HOLD",
+  "expected_decision": "APPROVE",
   "acceptable_decisions": [
+    "APPROVE",
     "HOLD"
   ],
   "expected_reason_codes": [],
   "expected_reason_codes_any_of": [
     [
+      "FIELD_CROSS_CHECKED",
       "FIELD_NOT_VERIFIED",
       "LOW_CONFIDENCE_FIELD"
     ]
@@ -321,5 +323,5 @@
     "vendor_name_printed": "Nirmaan Office Mart Pvt. Ltd.",
     "template": "landscape"
   },
-  "notes": "Underlying invoice is correct, but total_amount is obscured on the heavy scan."
+  "notes": "Underlying invoice is correct; total_amount is obscured on the heavy scan, but the page's own arithmetic (subtotal + GST) confirms it."
 }

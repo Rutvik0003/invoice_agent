@@ -248,7 +248,8 @@ Trust = Literal["trusted", "absent", "FIELD_NOT_VERIFIED", "LOW_CONFIDENCE_FIELD
 def field_trust(name: str, invoice: ExtractedInvoice, verification: VerificationResult, threshold: float) -> list[Trust]:
     """CLAUDE.md §6 Stage 3 trust rule for one field.
 
-    Trusted if verified on the page, or if verification was unavailable and the model is confident.
+    Trusted if verified on the page, if confirmed by master data or the page's arithmetic (cross_checked),
+    or if verification was unavailable and the model is confident.
     Not found on the page -> FIELD_NOT_VERIFIED; not verified and model confidence below the threshold
     -> LOW_CONFIDENCE_FIELD. Independent verification overrides the model's own low self-rating.
     """
@@ -256,7 +257,7 @@ def field_trust(name: str, invoice: ExtractedInvoice, verification: Verification
     value = field_value(invoice, name)
     if value is None or value == "":
         return ["absent"]
-    if status is not None and status.status == "verified":
+    if status is not None and status.status in ("verified", "cross_checked"):
         return ["trusted"]
     reasons: list[Trust] = []
     if status is not None and status.status == "not_found":

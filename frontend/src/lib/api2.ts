@@ -67,6 +67,51 @@ export type Suite = {
   finished_at?: string | null; done?: number; passed?: number; total?: number; next_call_in_s?: number; items: SuiteItem[]
 }
 
+export type BatchItem = RunSummary & {
+  queue_position: number | null
+  attempt: number
+  reasons: { code: string; severity: 'REJECT' | 'HOLD' | 'INFO'; message: string }[]
+}
+
+export type Batch = {
+  id: string; created_at: string; model: string; model_name: string | null; total: number; done: number
+  finished: boolean; by_status: Record<string, number>; by_decision: Partial<Record<Outcome, number>>
+  file_errors: { file_name: string; error: string }[]; total_amount: number; failed: number; items?: BatchItem[]
+}
+
+export type EditableSettings = { ai_request_gap_s: number }
+
+export type EmailHistory = { created_at: string; recipient: string; subject: string; sent: boolean; error: string | null }
+
+export type EmailPreview = {
+  sender: string; recipient: string; subject: string; body: string
+  attachment_name: string; attachment_mime: string; history: EmailHistory[]
+}
+
+export type PoLineInfo = {
+  line_no: number; description: string; unit: string; qty_ordered: number; qty_billed: number; qty_remaining: number
+  unit_price: number
+}
+
+export type PoComparison = {
+  options: string[]
+  option_reasons: Record<string, 'matched' | 'quoted' | 'suggested' | 'other'>
+  candidates: string[]
+  selected: string | null
+  comparison: {
+    po: { po_number: string; vendor_id: string; po_date: string; status: string; taxable_value: number; billed_value: number; remaining_value: number }
+    belongs_to_vendor: boolean
+    closed: boolean
+    lines: {
+      index: number; description: string; quantity: number; unit_price: number; amount: number; adjustment: boolean
+      po_line: PoLineInfo | null; price_status?: 'match' | 'below_po' | 'within_tolerance' | 'over_tolerance'
+      price_diff_on_line?: number; issues: ('not_on_po' | 'qty_exceeds_po' | 'price_over_tolerance')[]
+    }[]
+    po_lines_not_billed: { line_no: number; description: string; unit: string; qty_remaining: number; unit_price: number }[]
+    totals: { this_invoice: number; remaining_before: number; remaining_after: number; tolerance: number; overrun: boolean }
+  } | null
+}
+
 export type ReportKind = 'rules' | 'extraction_gemini' | 'extraction_groq' | 'verification'
 export type Reports = Partial<Record<ReportKind, { file: string; markdown: string }>>
 
@@ -113,4 +158,15 @@ export const api2 = {
   suite: () => fetch('/api/eval/latest').then(json<Suite>),
   reports: () => fetch('/api/eval/reports').then(json<Reports>),
   resetDemo: () => post('/api/admin/reset-demo').then(json<Record<string, number | boolean>>),
+  batches: () => fetch('/api/batches').then(json<Batch[]>),
+  batch: (id: string) => fetch(`/api/batches/${id}`).then(json<Batch>),
+  retryBatch: (id: string, body: { model: string; run_ids?: string[] }) =>
+    post(`/api/batches/${id}/retry`, body).then(json<{ run_ids: string[] }>),
+  editableSettings: () => fetch('/api/admin/settings').then(json<EditableSettings>),
+  saveSettings: (body: EditableSettings) =>
+    fetch('/api/admin/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(json<EditableSettings>),
+  emailPreview: (runId: string) => fetch(`/api/runs/${runId}/email`).then(json<EmailPreview>),
+  sendEmail: (runId: string) => post(`/api/runs/${runId}/email`).then(json<{ sent: boolean; recipient: string; subject: string; history: EmailHistory[] }>),
+  poCompare: (runId: string, po?: string) => fetch(`/api/runs/${runId}/po-compare?${qs({ po })}`).then(json<PoComparison>),
 }

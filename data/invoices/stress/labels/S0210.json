@@ -293,13 +293,15 @@
       "verification_status": "verified"
     }
   },
-  "expected_decision": "HOLD",
+  "expected_decision": "APPROVE",
   "acceptable_decisions": [
+    "APPROVE",
     "HOLD"
   ],
   "expected_reason_codes": [],
   "expected_reason_codes_any_of": [
     [
+      "FIELD_CROSS_CHECKED",
       "FIELD_NOT_VERIFIED",
       "LOW_CONFIDENCE_FIELD"
     ]
@@ -322,5 +324,5 @@
     "vendor_name_printed": "Vardhan Interiors",
     "template": "landscape"
   },
-  "notes": "Underlying invoice is correct, but vendor_gstin is obscured on the mild scan."
+  "notes": "Underlying invoice is correct; vendor_gstin is obscured on the mild scan, but the vendor master (GSTIN of the vendor named on the page) confirms it."
 }

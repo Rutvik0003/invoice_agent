@@ -54,6 +54,10 @@ export function ExtractedFields({ invoice, threshold }: { invoice: ExtractedInvo
 
 const BADGE: Record<string, { text: (f: FieldEvent) => string; cls: string }> = {
   verified: { text: (f) => (f.source === 'ocr' ? '✓ OCR' : '✓ text layer'), cls: 'bg-emerald-50 text-emerald-700 ring-emerald-200' },
+  cross_checked: {
+    text: (f) => (f.source === 'calculation' ? '✓ by calculation' : '✓ our records'),
+    cls: 'bg-teal-50 text-teal-800 ring-teal-200',
+  },
   not_found: { text: () => '✗ not found on page', cls: 'bg-red-50 text-red-700 ring-red-200' },
   unavailable: { text: () => '— OCR unavailable', cls: 'bg-zinc-100 text-zinc-600 ring-zinc-200' },
   not_applicable: { text: () => 'not printed', cls: 'bg-white text-zinc-400 ring-zinc-200' },
@@ -71,7 +75,7 @@ export function VerifiedFields({ fields, selected, onSelect }: {
         <tbody>
           {rows.map((f) => {
             const badge = BADGE[f.status] ?? BADGE.not_applicable
-            const clickable = f.status === 'verified' || f.status === 'not_found'
+            const clickable = f.status === 'verified' || f.status === 'not_found' || (f.status === 'cross_checked' && !!f.bbox)
             return (
               <tr
                 key={f.field}
@@ -80,9 +84,13 @@ export function VerifiedFields({ fields, selected, onSelect }: {
                   selected === f.field && 'bg-emerald-50/60')}
               >
                 <td className="w-28 px-3 py-1.5 text-xs text-zinc-500">{fieldLabel(f.field)}</td>
-                <td className="px-3 py-1.5"><span className="break-words">{fieldValue(f.field, f.value)}</span></td>
+                <td className="px-3 py-1.5">
+                  <span className="break-words">{fieldValue(f.field, f.value)}</span>
+                  {f.status === 'cross_checked' && <div className="text-[11px] leading-snug text-teal-800">{f.matched_text}</div>}
+                </td>
                 <td className="px-3 py-1.5 text-right">
-                  <span className={cn('inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-medium ring-1', badge.cls)}>
+                  <span title={f.status === 'cross_checked' ? `Not found on the page, but confirmed: ${f.matched_text}` : undefined}
+                        className={cn('inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-medium ring-1', badge.cls)}>
                     {badge.text(f)}
                   </span>
                 </td>

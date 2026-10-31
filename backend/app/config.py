@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     gemini_model: str = ""
     groq_model: str = ""
     default_model: str = "gemini"
+    # other Gemini models the user may pick per run (comma-separated); GEMINI_MODEL is the default choice
+    gemini_models: str = "gemini-2.5-flash,gemini-3.6-flash,gemini-3.8-flash"
+    # minimum seconds between two AI requests (free-tier rate limits); editable in Settings
+    ai_request_gap_s: float = 6.0
 
     # Business rules
     tolerance_pct: float = 1.0
@@ -47,6 +51,15 @@ class Settings(BaseSettings):
     def gemini_configured(self) -> bool:
         """True when a Gemini API key is set."""
         return bool(self.gemini_api_key.strip())
+
+    @property
+    def gemini_choices(self) -> list[str]:
+        """GEMINI_MODEL first, then every other model listed in GEMINI_MODELS (no duplicates)."""
+        names = [self.gemini_model, *(m.strip() for m in self.gemini_models.split(","))]
+        return list(dict.fromkeys(n for n in names if n))
+
+    def model_choices(self, provider: str) -> list[str]:
+        return self.gemini_choices if provider == "gemini" else [self.groq_model] if self.groq_model else []
 
     @property
     def groq_configured(self) -> bool:

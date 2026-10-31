@@ -16,7 +16,7 @@ const NAV: { to: string; label: string; icon: LucideIcon }[] = [
 ]
 
 function isActive(to: string, path: string) {
-  if (to === '/') return path === '/' || path.startsWith('/runs/')
+  if (to === '/') return path === '/' || path.startsWith('/runs/') || path.startsWith('/batches/')
   return path.startsWith(to)
 }
 

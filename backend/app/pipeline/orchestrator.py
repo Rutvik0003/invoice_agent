@@ -16,7 +16,7 @@ from typing import Callable
 from sqlalchemy import Engine, select
 from sqlalchemy.orm import Session
 
-from app.config import REPO_ROOT, Settings
+from app.config import REPO_ROOT, Settings, get_settings
 from app.extraction import extract_document
 from app.logging_setup import get_logger
 from app.models import Run, RunEvent
@@ -25,6 +25,7 @@ from app.pipeline.intake import intake
 from app.pipeline.ledger import apply_ledger_update
 from app.pipeline.repository import BuyerRecord, DbRepository, InMemoryRepository, MasterRepository
 from app.schemas import ExtractionResult
+from app.verification.cross_check import cross_check
 from app.verification.verify import collect_page_words, unavailable_result, verify
 
 MASTER_DIR = REPO_ROOT / "data" / "master"
@@ -96,10 +97,14 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
     log = EventLog(engine, run_id)
     started = time.monotonic()
     stage = "intake"
+    repo_session: Session | None = None
     try:
         with Session(engine) as session:
             run = session.get(Run, run_id)
             data, file_name, provider, is_test = run.file_bytes, run.file_name, run.model, run.is_test_run
+            chosen_model = run.model_name
+        if chosen_model:  # the model picked for this run (e.g. one of several Gemini models)
+            settings = settings.model_copy(update={f"{provider}_model": chosen_model})
         _update_run(engine, run_id, status="running")
         logger.info("run started", extra={"run_id": run_id, "model": provider, "size_bytes": len(data),
                                           "test_run": is_test, "cached_allowed": use_cache})
@@ -131,14 +136,23 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
                      invoice=invoice.model_dump(mode="json"))
         _update_run(engine, run_id, extracted_json=invoice.model_dump(mode="json"))
 
-        # 3. verify on page (no AI)
+        # master data for stage 3b (cross-check) and stages 4-8
+        if repository is None:
+            repo_session = Session(engine)
+            repo: MasterRepository = DbRepository(repo_session, load_buyer(), exclude_run_id=run_id)
+        else:
+            repo = repository
+
+        # 3. verify on page (no AI), then confirm what the page could not show from our records / arithmetic
         stage = "verification"
         log.start("verification")
+        words = []
         if settings.verify_enabled:
             words = collect_page_words(data, info.mime, settings, engine, info.file_hash)
             verification = verify(invoice, words, settings)
         else:
             verification = unavailable_result(invoice, info.page_count)
+        verification = cross_check(invoice, verification, repo, settings.confidence_threshold, words)
         for name, field in verification.fields.items():
             log.emit("verification", "check_result", field=name, value=getattr(invoice, name).value,
                      confidence=getattr(invoice, name).confidence, **field.model_dump())
@@ -147,20 +161,16 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
                      value=invoice.line_items[index].amount, confidence=invoice.line_items[index].confidence,
                      **line.model_dump())
         found = sum(f.status == "verified" for f in verification.fields.values())
+        confirmed = sum(f.status == "cross_checked" for f in verification.fields.values())
         printed = sum(f.status != "not_applicable" for f in verification.fields.values())
         missing = any(f.status == "not_found" for f in verification.fields.values())
         log.complete("verification", status="warning" if missing or verification.engine_used == "unavailable" else "passed",
-                     engine_used=verification.engine_used, verified=found, printed=printed,
+                     engine_used=verification.engine_used, verified=found, cross_checked=confirmed, printed=printed,
                      pages=[p.model_dump() for p in verification.pages])
         _update_run(engine, run_id, verification_json=verification.model_dump(mode="json"))
 
         # 4-8. rules (pure Python): events are emitted as each stage finishes
         stage = "self_check"
-        if repository is None:
-            session = Session(engine)
-            repo: MasterRepository = DbRepository(session, load_buyer(), exclude_run_id=run_id)
-        else:
-            session, repo = None, repository
 
         def on_stage(result: StageResult) -> None:
             nonlocal stage
@@ -170,11 +180,7 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
                 log.emit(result.stage, "check_result", **check.model_dump(mode="json"))
             log.complete(result.stage, status=stage_status(result), duration_ms=result.duration_ms)
 
-        try:
-            rules: RulesResult = run_rules(invoice, verification, repo, settings, info.file_hash, on_stage)
-        finally:
-            if session is not None:
-                session.close()
+        rules: RulesResult = run_rules(invoice, verification, repo, settings, info.file_hash, on_stage)
         decision = rules.decision
 
         # apply the ledger update for a real (non-test) approval
@@ -204,6 +210,9 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
                                                                  "trace": traceback.format_exc()[-2000:]},
                     duration_ms=int((time.monotonic() - started) * 1000))
         log.emit("run", "run_completed", status="failed", decision=None)
+    finally:
+        if repo_session is not None:
+            repo_session.close()
 
 
 INTERRUPTED_MESSAGE = "The server restarted while this invoice was being processed. Retry to process it again."
@@ -211,9 +220,11 @@ INTERRUPTED_MESSAGE = "The server restarted while this invoice was being process
 
 def mark_interrupted_runs(engine: Engine) -> list[str]:
     """At startup: runs left 'queued' or 'running' by a previous server process will never finish, so mark them
-    'interrupted' (closing the open stage and the event stream) instead of leaving them spinning forever."""
+    'interrupted' (closing the open stage and the event stream) instead of leaving them spinning forever.
+    Queued runs of a batch are not touched: the batch worker processes them after the restart."""
     with Session(engine) as session:
-        run_ids = list(session.scalars(select(Run.id).where(Run.status.in_(("queued", "running")))))
+        unfinished = (Run.status == "running") | ((Run.status == "queued") & Run.batch_id.is_(None))
+        run_ids = list(session.scalars(select(Run.id).where(unfinished)))
     for run_id in run_ids:
         log = EventLog(engine, run_id)
         with Session(engine) as session:
@@ -230,16 +241,21 @@ def mark_interrupted_runs(engine: Engine) -> list[str]:
 
 
 def create_run_record(engine: Engine, file_name: str, data: bytes, model: str, retry_of: str | None = None,
-                      sample_id: str | None = None, is_test_run: bool = False) -> str:
-    """Stage 1 checks up front (raises IntakeError with a user-facing reason), then store a queued run."""
+                      sample_id: str | None = None, is_test_run: bool = False, model_name: str | None = None,
+                      batch_id: str | None = None, use_cache: bool | None = None) -> str:
+    """Stage 1 checks up front (raises IntakeError with a user-facing reason), then store a queued run.
+    model is the provider ('gemini' | 'groq'); model_name optionally picks one of its configured models."""
     if model not in ("gemini", "groq"):
         raise ValueError("model must be 'gemini' or 'groq'")
+    if model_name and model_name not in get_settings().model_choices(model):
+        raise ValueError(f"{model_name} is not one of the configured {model} models")
     info = intake(file_name, data)
     run_id = str(uuid.uuid4())
     with Session(engine) as session:
         session.add(Run(id=run_id, file_name=file_name, file_hash=info.file_hash, file_bytes=data, model=model,
                         status="queued", mime_type=info.mime, page_count=info.page_count, retry_of=retry_of,
-                        sample_id=sample_id, is_test_run=is_test_run))
+                        sample_id=sample_id, is_test_run=is_test_run, model_name=model_name or None,
+                        batch_id=batch_id, use_cache=use_cache))
         session.commit()
     return run_id
 

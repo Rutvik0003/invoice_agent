@@ -90,6 +90,48 @@ def gstin_state(gstin: str | None) -> str | None:
     return code if len(code) == 2 and code.isdigit() else None
 
 
+# GSTIN = 2-digit state + PAN (5 letters, 4 digits, 1 letter) + entity (1-9 / A-Z) + 'Z' + check character
+GSTIN_PATTERN = re.compile(r"^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$")
+_GSTIN_SLOTS = "DDLLLLLDDDDLEZC"  # D digit, L letter, E entity, Z the letter Z, C check character
+_AS_LETTER = {"0": "O", "1": "I", "2": "Z", "5": "S", "6": "G", "8": "B"}
+_AS_DIGIT = {"O": "0", "D": "0", "Q": "0", "I": "1", "L": "1", "Z": "2", "S": "5", "G": "6", "B": "8"}
+_BASE36 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+def gstin_check_char(first14: str) -> str:
+    """The GSTIN's 15th character: a mod-36 checksum of the first 14."""
+    total = 0
+    for index, char in enumerate(first14):
+        product = _BASE36.index(char) * (1 if index % 2 == 0 else 2)
+        total += product // 36 + product % 36
+    return _BASE36[(36 - total % 36) % 36]
+
+
+def gstin_valid(gstin: str) -> bool:
+    """Right shape and a correct check character."""
+    return bool(GSTIN_PATTERN.match(gstin)) and gstin_check_char(gstin[:14]) == gstin[14]
+
+
+def repair_gstin(text: str | None) -> str | None:
+    """A misread GSTIN corrected, or None. A look-alike character is swapped only where the GSTIN format forbids
+    what was read (a digit in a letter-only place: 0 -> O, 1 -> I, ...; a letter in a digit-only place: O -> 0),
+    and the result is kept only if its check character is then correct. A GSTIN already valid is not changed."""
+    code = normalise_code(text or "")
+    if len(code) != 15 or gstin_valid(code):
+        return None
+    fixed = []
+    for char, slot in zip(code, _GSTIN_SLOTS):
+        if slot == "D" and not char.isdigit():
+            char = _AS_DIGIT.get(char, char)
+        elif slot in "LZ" and not char.isalpha():
+            char = _AS_LETTER.get(char, char)
+        elif slot == "E" and char == "0":
+            char = "O"
+        fixed.append(char)
+    repaired = "".join(fixed)
+    return repaired if repaired != code and gstin_valid(repaired) else None
+
+
 # ---------------------------------------------------------------- names
 
 _NAME_WORDS = {"private": "pvt", "limited": "ltd", "and": "&", "company": "co"}

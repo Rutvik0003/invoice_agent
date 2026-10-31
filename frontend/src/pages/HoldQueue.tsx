@@ -1,9 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Check, ExternalLink, Loader2, UserCheck, X } from 'lucide-react'
+import { Check, ChevronDown, ExternalLink, Loader2, Scale, UserCheck, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import { PageHeader } from '@/components/AppShell'
 import { BoxCrop } from '@/components/BoxCrop'
+import { PoCompare } from '@/components/run/PoCompare'
+import { VendorEmail } from '@/components/run/VendorEmail'
 import { CheckIcon } from '@/components/status'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,7 +17,15 @@ import { cn } from '@/lib/utils'
 
 const ROLE_ORDER = ['Finance controller', 'Procurement', 'Tax team', 'Buyer', 'AP clerk']
 const PO_CODES = new Set(['PO_INFERRED', 'PO_AMBIGUOUS', 'PO_NOT_FOUND', 'PO_VENDOR_MISMATCH'])
-const FIELD_CODES = new Set(['LOW_CONFIDENCE_FIELD', 'FIELD_NOT_VERIFIED'])
+const FIELD_CODES = new Set(['LOW_CONFIDENCE_FIELD', 'FIELD_NOT_VERIFIED', 'MISSING_REQUIRED_FIELD'])
+
+/** The fields a person can confirm or fill in: doubtful values, and required values missing from the invoice. */
+function confirmableFields(item: HoldItem): string[] {
+  const fields = item.reasons
+    .filter((r) => r.code && FIELD_CODES.has(r.code) && r.evidence?.invoice_field)
+    .flatMap((r) => r.evidence.invoice_field!.split(',').map((f) => f.trim()))
+  return [...new Set(fields)].filter((f) => f !== 'line_items')
+}
 
 function primaryRole(item: HoldItem): string {
   const roles = item.routed_questions.map((q) => q.role)
@@ -63,7 +73,7 @@ export default function HoldQueue() {
         {holds.isPending && <div className="h-40 animate-pulse rounded-xl bg-zinc-100" />}
         {!holds.isPending && !items.length && (
           <div className="rounded-xl border border-dashed border-zinc-300 p-12 text-center text-sm text-zinc-500">
-            {state === 'open' ? 'Nothing on hold. Held invoices appear here with the question for the right person.' : 'No holds resolved yet.'}
+            {state === 'open' ? 'Nothing on hold. Held invoices appear here, grouped by who has to act.' : 'No holds resolved yet.'}
           </div>
         )}
         {groups.map(([r, list]) => (
@@ -81,12 +91,13 @@ function HoldCard({ item }: { item: HoldItem }) {
   const queryClient = useQueryClient()
   const codes = new Set(item.reasons.map((r) => r.code))
   const roles = [...new Set(item.routed_questions.map((q) => q.role))].sort((a, b) => ROLE_ORDER.indexOf(a) - ROLE_ORDER.indexOf(b))
-  const fieldReasons = item.reasons.filter((r) => r.code && FIELD_CODES.has(r.code) && r.evidence?.invoice_field)
+  const fields = confirmableFields(item)
   const [mode, setMode] = useState<'decide' | 'po' | 'confirm'>('decide')
+  const [comparing, setComparing] = useState(false)
   const [role, setRole] = useState(roles[0] ?? 'AP clerk')
   const [comment, setComment] = useState('')
   const [po, setPo] = useState(item.po_candidates[0]?.po_number ?? item.po_number ?? '')
-  const [field, setField] = useState(fieldReasons[0]?.evidence.invoice_field ?? '')
+  const [field, setField] = useState(fields[0] ?? '')
   const extractedValue = field && item.extracted?.[field] ? item.extracted[field].value : null
   const [value, setValue] = useState(extractedValue != null ? String(extractedValue) : '')
 
@@ -116,14 +127,16 @@ function HoldCard({ item }: { item: HoldItem }) {
           <div className="text-xs text-zinc-500">{inr(item.total_amount)} · {item.po_number ?? 'no PO'} · {item.file_name} · {timeAgo(item.created_at)}</div>
         </div>
         <div className="flex flex-wrap gap-1">{roles.map((r) => <span key={r} className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-900">{r}</span>)}</div>
+        <Button size="sm" variant={comparing ? 'secondary' : 'outline'} onClick={() => setComparing(!comparing)} disabled={!item.vendor_id}
+                title={item.vendor_id ? undefined : 'The vendor is not in the vendor master, so there is no PO to compare with'}>
+          <Scale />Compare with PO<ChevronDown className={cn('transition-transform', comparing && 'rotate-180')} />
+        </Button>
         <Link to={`/runs/${item.id}`} className="flex items-center gap-1 text-xs text-zinc-600 underline-offset-2 hover:underline">Open run <ExternalLink className="size-3" /></Link>
       </header>
+      {comparing && <div className="border-b border-zinc-100 bg-zinc-50/50 p-5"><PoCompare runId={item.id} /></div>}
 
       <div className="grid gap-5 p-5 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="space-y-3">
-          {item.routed_questions.map((q) => (
-            <p key={q.role} className="text-sm leading-relaxed whitespace-pre-line text-zinc-800"><b className="text-amber-800">{q.role}: </b>{q.question}</p>
-          ))}
           <div className="space-y-2">
             {evidence.map(({ reason, box, missing }, i) => (
               <div key={i} className="flex gap-3 rounded-lg bg-zinc-50 p-2.5">
@@ -139,13 +152,15 @@ function HoldCard({ item }: { item: HoldItem }) {
         </div>
 
         {item.resolved ? (
-          <ResolvedPanel item={item} />
+          <div className="space-y-3"><ResolvedPanel item={item} /><VendorEmail runId={item.id} compact /></div>
         ) : (
+          <div className="space-y-3">
+          <VendorEmail runId={item.id} compact />
           <div className="space-y-3 rounded-lg border border-zinc-200 p-4">
             <div className="flex gap-1 rounded-md bg-zinc-100 p-0.5 text-xs">
               {([['decide', 'Approve / Reject'], ['po', 'Assign PO'], ['confirm', 'Confirm value']] as const).map(([m, label]) => (
                 <button key={m} type="button" onClick={() => setMode(m)}
-                        disabled={(m === 'po' && ![...codes].some((c) => c && PO_CODES.has(c))) || (m === 'confirm' && !fieldReasons.length)}
+                        disabled={(m === 'po' && ![...codes].some((c) => c && PO_CODES.has(c))) || (m === 'confirm' && !fields.length)}
                         className={cn('flex-1 rounded px-2 py-1 disabled:opacity-40', mode === m ? 'bg-white font-medium shadow-sm' : 'text-zinc-600')}>{label}</button>
               ))}
             </div>
@@ -169,7 +184,7 @@ function HoldCard({ item }: { item: HoldItem }) {
                   const v = item.extracted?.[e.target.value]?.value
                   setValue(v != null ? String(v) : '')
                 }} className="h-9 w-full rounded-md border border-zinc-200 bg-white px-2 text-sm">
-                  {[...new Set(fieldReasons.map((r) => r.evidence.invoice_field!))].map((f) => <option key={f} value={f}>{fieldLabel(f)}</option>)}
+                  {fields.map((f) => <option key={f} value={f}>{fieldLabel(f)}</option>)}
                 </select>
                 <Input value={value} onChange={(e) => setValue(e.target.value)} placeholder="The correct value as printed" />
                 <p className="text-[11px] text-zinc-500">AI read: {fieldValue(field, extractedValue)}. Type what the document really says.</p>
@@ -200,6 +215,7 @@ function HoldCard({ item }: { item: HoldItem }) {
                 {item.hold_actions.map((a, i) => <div key={i}>{a.actor_role}: {a.action.replace('_', ' ')} · “{a.comment}”</div>)}
               </div>
             )}
+          </div>
           </div>
         )}
       </div>

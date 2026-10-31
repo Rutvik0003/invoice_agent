@@ -37,6 +37,9 @@ VERIFIED_FIELDS = (
 )
 LOW_SIGNAL = {"confidence": 0.40, "verification_status": "not_found"}
 DOUBTFUL_CODES = ["FIELD_NOT_VERIFIED", "LOW_CONFIDENCE_FIELD"]
+# fields our own records can confirm when the scan hides them (vendor master / the page's arithmetic)
+CROSS_CHECKABLE = {"vendor_gstin": "the vendor master (GSTIN of the vendor named on the page)",
+                   "total_amount": "the page's own arithmetic (subtotal + GST)"}
 
 APPROVE, HOLD, REJECT = "APPROVE", "HOLD", "REJECT"
 
@@ -534,13 +537,26 @@ class Planner:
     def heavy_scan(self, invoice_id: str, set_name: str, template: str | None = None,
                    obscure: str | None = None, scenario: str = "HEAVY_SCAN_LOW_CONFIDENCE",
                    scan: str = "heavy") -> PlannedInvoice:
-        """A correct invoice whose scan hides one critical field -> HOLD until a person confirms it."""
+        """A correct invoice whose scan hides one critical field.
+
+        Invoice number or date hidden -> HOLD until a person confirms it (nothing else can confirm it).
+        Vendor GSTIN hidden -> the vendor master confirms the GSTIN the AI read (its name is on the page);
+        total hidden -> subtotal + GST printed on the page add up to it. Both -> APPROVE with a note
+        (FIELD_CROSS_CHECKED); a real scan may also hide the anchors, so HOLD stays acceptable there.
+        """
         po = self.clean_po()
         spec = self.spec_from_po(invoice_id, po, self.pick_quantities(po, 0.8), self.invoice_date_for(po), template)
         field_name = obscure or self.rng.choice(["total_amount", "invoice_number", "invoice_date", "vendor_gstin"])
         if field_name == "total_amount":  # the words would give the hidden total away
             spec.show_amount_in_words = False
             spec.knobs["show_amount_in_words"] = False
+        if field_name in CROSS_CHECKABLE:
+            return self.planned(spec, set_name, scenario, APPROVE, [], acceptable_decisions=[APPROVE, HOLD],
+                                expected_reason_codes_any_of=[["FIELD_CROSS_CHECKED", *DOUBTFUL_CODES]],
+                                scan=scan, obscured_fields=[field_name],
+                                true_po_number=po.po_number,
+                                notes=f"Underlying invoice is correct; {field_name} is obscured on the {scan} scan, "
+                                      f"but {CROSS_CHECKABLE[field_name]} confirms it.")
         return self.planned(spec, set_name, scenario, HOLD, [], acceptable_decisions=[HOLD],
                             expected_reason_codes_any_of=[DOUBTFUL_CODES], scan=scan, obscured_fields=[field_name],
                             true_po_number=po.po_number,
@@ -794,7 +810,7 @@ def plan_golden(p: Planner) -> list[PlannedInvoice]:
         p.duplicate("04_B_duplicate", "golden", disguised=True, template="compact", golden_style=True),
         p.bank_change("06_D_bank_change", "golden", "small_vendor"),
         p.wrong_gst("07_E_wrong_gst", "golden", "classic", intra_state=False),
-        p.heavy_scan("08_F_blurry_scan", "golden", "modern", obscure="total_amount"),
+        p.heavy_scan("08_F_blurry_scan", "golden", "modern", obscure="invoice_number"),
         _golden_price_variance(p),
         p.arithmetic_error("10_H_bad_maths", "golden", "multipage", kind="line_amount", min_lines=4),
         p.not_an_invoice("11_I_quotation", "golden", "compact", doc=NOT_INVOICE_DOCS[0]),

@@ -60,9 +60,15 @@ def _register_hindi() -> None:
 
 # Hindi words chosen to render correctly without complex text shaping (no conjuncts or pre-base vowel signs)
 HI = {
-    "title": "कर बीजक", "invoice_no": "बीजक नं.", "date": "तारीख", "po": "खरीद आदेश", "seller": "बेचने वाला",
+    "invoice_no": "बीजक नं.", "date": "तारीख", "po": "खरीद आदेश", "seller": "बेचने वाला",
     "buyer": "खरीदार", "subtotal": "उप योग", "tax": "कर", "total": "कुल योग", "bank": "बैंक", "words": "शब्दों में",
 }
+
+
+# the Hindi heading must say the same as the English one ("tax invoice" over a purchase order would contradict it);
+# types without a conjunct-free Hindi name get the English heading only
+HI_TITLES = {"tax_invoice": "कर बीजक", "purchase_order": "खरीद आदेश", "delivery_challan": "माल चालान",
+             "quotation": "कोटेशन"}
 
 
 def _hi(doc: Doc, x: float, y: float, s: str, size: float, align: str = "left", color=GREY) -> float:
@@ -107,8 +113,12 @@ def render_bilingual(spec: InvoiceSpec, path: Path) -> RenderResult:
     doc = Doc(path, "trebuchet")
     band = HexColor("#7A3E00")
     doc.rect(M, 30, doc.w - 2 * M, 30, stroke=None, fill=HexColor("#FFF3E0"))
-    _hi(doc, doc.w / 2 - 6, 50, HI["title"] + "  /", 13, align="right", color=band)
-    doc.text(doc.w / 2, 50, spec.title.upper(), 13, bold=True, color=band)
+    hindi_title = HI_TITLES.get(spec.document_type)
+    if hindi_title:
+        _hi(doc, doc.w / 2 - 6, 50, hindi_title + "  /", 13, align="right", color=band)
+        doc.text(doc.w / 2, 50, spec.title.upper(), 13, bold=True, color=band)
+    else:
+        doc.text(doc.w / 2, 50, spec.title.upper(), 13, bold=True, color=band, align="center")
     _hi(doc, M, 80, HI["seller"], 8)
     y_left = vendor_block(doc, spec, M, 94, 250, name_size=12, size=8)
     # header grid: Hindi label / English label | value

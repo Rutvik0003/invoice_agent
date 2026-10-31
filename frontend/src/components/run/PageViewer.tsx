@@ -27,7 +27,7 @@ export function PageViewer({ runId, pageCount, fields, selected, pulseKey, onSel
   const boxRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
   const all = Object.values(fields)
-  const onPage = all.filter((f) => f.status === 'verified' && f.page === page && f.bbox)
+  const onPage = all.filter((f) => (f.status === 'verified' || f.status === 'cross_checked') && f.page === page && f.bbox)
   const missing = all.filter((f) => f.status === 'not_found')
   const unavailable = all.some((f) => f.status === 'unavailable')
 
@@ -94,6 +94,7 @@ export function PageViewer({ runId, pageCount, fields, selected, pulseKey, onSel
             const [x0, y0, x1, y1] = f.bbox!
             const isLine = f.field.startsWith('line_items')
             const active = selected === f.field
+            const confirmed = f.status === 'cross_checked'  // the master value printed here; the AI misread it
             return (
               <div
                 key={active ? `${f.field}-${pulseKey}` : f.field}
@@ -101,7 +102,8 @@ export function PageViewer({ runId, pageCount, fields, selected, pulseKey, onSel
                 onClick={() => onSelect(f.field)}
                 className={cn(
                   'group absolute cursor-pointer rounded-[2px] border-2 animate-in fade-in zoom-in-95 duration-300',
-                  isLine ? 'border-emerald-400/80 bg-emerald-400/10' : 'border-emerald-500 bg-emerald-500/15',
+                  confirmed ? 'border-teal-500 bg-teal-500/15'
+                    : isLine ? 'border-emerald-400/80 bg-emerald-400/10' : 'border-emerald-500 bg-emerald-500/15',
                   active && 'box-pulse z-10 border-emerald-600 bg-emerald-500/20',
                 )}
                 style={{ left: `${x0 * 100}%`, top: `${y0 * 100}%`, width: `${(x1 - x0) * 100}%`, height: `${(y1 - y0) * 100}%`,
@@ -111,8 +113,9 @@ export function PageViewer({ runId, pageCount, fields, selected, pulseKey, onSel
                   'pointer-events-none absolute bottom-full left-0 mb-1 whitespace-nowrap rounded bg-zinc-900 px-1.5 py-0.5 text-[11px] text-white shadow',
                   active ? 'block' : 'hidden group-hover:block',
                 )}>
-                  {fieldLabel(f.field)} · {fieldValue(f.field, f.value)}
-                  <span className="text-zinc-400"> · found “{f.matched_text}” ({f.source === 'ocr' ? 'OCR' : 'text layer'})</span>
+                  {confirmed ? <>{fieldLabel(f.field)} · page shows {f.reference_value}<span className="text-zinc-400"> · AI read {fieldValue(f.field, f.value)}</span></>
+                    : <>{fieldLabel(f.field)} · {fieldValue(f.field, f.value)}
+                      <span className="text-zinc-400"> · found “{f.matched_text}” ({f.source === 'ocr' ? 'OCR' : 'text layer'})</span></>}
                 </div>
               </div>
             )

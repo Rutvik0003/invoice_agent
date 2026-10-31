@@ -32,6 +32,13 @@ def amount(inv: ExtractedInvoice, name: str) -> Decimal:
     return to_decimal(getattr(inv, name).value) or Decimal("0.00")
 
 
+def confirmed_value(inv: ExtractedInvoice, ver: VerificationResult | None, name: str) -> object:
+    """The value to check: the AI's, unless Stage 3b found the master value printed on the page in place of a
+    provably wrong reading (then that printed value)."""
+    field = ver.fields.get(name) if ver else None
+    return field.reference_value if field and field.reference_value else getattr(inv, name).value
+
+
 def _verification_status(ver: VerificationResult, name: str) -> str | None:
     field = ver.fields.get(name)
     return field.status if field else None
@@ -85,6 +92,16 @@ def check_ocr_available(inv: ExtractedInvoice, ver: VerificationResult) -> Check
     detail = "OCR unavailable" if ver.engine_used in ("unavailable", "mixed") else "not checked"
     return raised(STAGE, "ocr_available", ReasonCode.OCR_UNAVAILABLE, CheckEvidence(verification_status="unavailable"),
                   detail=detail, fields=", ".join(unavailable))
+
+
+def check_cross_checked(inv: ExtractedInvoice, ver: VerificationResult) -> CheckResult | None:
+    """Values confirmed by master data or arithmetic instead of the page are listed, so a person can see how."""
+    confirmed = [(n, f) for n, f in ver.fields.items() if f.status == "cross_checked"]
+    if not confirmed:
+        return None
+    details = "; ".join(f"{n} {f.reference_value or show(getattr(inv, n).value)} = {f.matched_text}" for n, f in confirmed)
+    return raised(STAGE, "cross_checked", ReasonCode.FIELD_CROSS_CHECKED,
+                  CheckEvidence(verification_status="cross_checked"), details=details)
 
 
 def _untrusted(inv: ExtractedInvoice, ver: VerificationResult, threshold: float, names: list[str],
@@ -165,7 +182,7 @@ def check_total(inv: ExtractedInvoice, ver: VerificationResult, threshold: float
 
 def check_gst_type(inv: ExtractedInvoice, ver: VerificationResult, buyer: BuyerRecord, threshold: float) -> list[CheckResult]:
     """Same state as the buyer -> CGST + SGST; a different state -> IGST (state = first 2 digits of the vendor GSTIN)."""
-    vendor_state = gstin_state(inv.vendor_gstin.value)
+    vendor_state = gstin_state(confirmed_value(inv, ver, "vendor_gstin"))
     if vendor_state is None or field_trust("vendor_gstin", inv, ver, threshold) != ["trusted"]:
         return [passed(STAGE, "gst_type", "GST type not checked: the vendor GSTIN is missing or not confirmed.")]
     split = amount(inv, "cgst") + amount(inv, "sgst")
@@ -203,7 +220,7 @@ def check_gst_rates(inv: ExtractedInvoice, ver: VerificationResult, buyer: Buyer
     """Every line's GST rate must be a valid slab on the invoice date."""
     on = invoice_date(inv)
     allowed = valid_rates(on)
-    intra = gstin_state(inv.vendor_gstin.value) == buyer.state_code
+    intra = gstin_state(confirmed_value(inv, ver, "vendor_gstin")) == buyer.state_code
     out = []
     for line in inv.line_items:
         if line.tax_rate is None:
@@ -223,12 +240,16 @@ def check_gst_rates(inv: ExtractedInvoice, ver: VerificationResult, buyer: Buyer
 def check_buyer(inv: ExtractedInvoice, buyer: BuyerRecord, ver: VerificationResult | None = None) -> CheckResult:
     """The invoice must be addressed to our company: buyer GSTIN equal to ours, or (if no GSTIN) our name.
     A different GSTIN that is not on the page is a reading problem to confirm, not proof of a wrong buyer."""
-    gstin = inv.buyer_gstin.value
+    gstin = confirmed_value(inv, ver, "buyer_gstin")
     evidence = CheckEvidence(invoice_field="buyer_gstin", invoice_value=gstin, reference_source="buyer master",
                              reference_value=buyer.gstin,
                              verification_status=_verification_status(ver, "buyer_gstin") if ver else None)
     if gstin:
         if normalise_code(gstin) == normalise_code(buyer.gstin):
+            if gstin != inv.buyer_gstin.value:
+                return passed(STAGE, "buyer", f"Addressed to {buyer.legal_name} ({buyer.gstin}, printed on the page; "
+                                              f"the AI read {inv.buyer_gstin.value}, which is not a valid GSTIN).",
+                              evidence)
             return passed(STAGE, "buyer", f"Addressed to {buyer.legal_name} ({buyer.gstin}).", evidence)
         if ver is not None and _verification_status(ver, "buyer_gstin") == "not_found":
             return raised(STAGE, "trust_buyer_gstin", ReasonCode.FIELD_NOT_VERIFIED, evidence, field="buyer_gstin",
@@ -247,9 +268,7 @@ def run_self_check(inv: ExtractedInvoice, ver: VerificationResult, buyer: BuyerR
     threshold = settings.confidence_threshold
     checks = [check_document_type(inv), check_required_fields(inv)]
     checks += check_doubtful_fields(inv, ver, threshold)
-    ocr = check_ocr_available(inv, ver)
-    if ocr:
-        checks.append(ocr)
+    checks += [c for c in (check_cross_checked(inv, ver), check_ocr_available(inv, ver)) if c is not None]
     checks += [check_lines_sum(inv, ver, threshold), check_total(inv, ver, threshold)]
     checks += check_gst_type(inv, ver, buyer, threshold)
     checks += check_gst_rates(inv, ver, buyer)

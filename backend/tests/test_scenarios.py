@@ -198,8 +198,14 @@ def test_bank_change_and_obscured_fields(world):
     assert all(i.spec.bank_account != accounts[i.spec.vendor.gstin] for i in groups["BANK_CHANGE"])
     for name in ("HEAVY_SCAN_LOW_CONFIDENCE", "OBSCURED_INVOICE_NUMBER", "OBSCURED_GSTIN"):
         for item in groups[name]:
-            assert item.expected_decision == "HOLD" and item.acceptable_decisions == ["HOLD"]
-            assert item.expected_reason_codes_any_of == [["FIELD_NOT_VERIFIED", "LOW_CONFIDENCE_FIELD"]]
+            if item.obscured_fields[0] in ("vendor_gstin", "total_amount"):
+                # our records (vendor master / the page's arithmetic) confirm the hidden value -> approve with a note
+                assert item.expected_decision == "APPROVE" and item.acceptable_decisions == ["APPROVE", "HOLD"]
+                assert item.expected_reason_codes_any_of == [["FIELD_CROSS_CHECKED", "FIELD_NOT_VERIFIED",
+                                                              "LOW_CONFIDENCE_FIELD"]]
+            else:
+                assert item.expected_decision == "HOLD" and item.acceptable_decisions == ["HOLD"]
+                assert item.expected_reason_codes_any_of == [["FIELD_NOT_VERIFIED", "LOW_CONFIDENCE_FIELD"]]
             signals = item.rules_eval_signals()
             for field_name in item.obscured_fields:
                 assert signals[field_name] == {"confidence": 0.40, "verification_status": "not_found"}

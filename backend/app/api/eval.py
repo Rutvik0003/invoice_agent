@@ -21,6 +21,7 @@ from app.config import get_settings
 from app.models import Run
 from app.pipeline.evaluation import judge
 from app.pipeline.orchestrator import create_run_record, process_run, seeded_repository
+from app.runtime_settings import effective_settings
 
 router = APIRouter(prefix="/api", tags=["eval"])
 _lock = threading.Lock()
@@ -38,7 +39,7 @@ def _now() -> str:
 
 
 def run_suite(suite: dict, engine, extract_fn, model: str, use_cache: bool, delay_s: float) -> None:
-    settings = get_settings()
+    settings = effective_settings(engine)
     for index, item in enumerate(suite["items"]):
         label = sample_labels()[item["sample_id"]]
         name, data = sample_file(item["sample_id"])

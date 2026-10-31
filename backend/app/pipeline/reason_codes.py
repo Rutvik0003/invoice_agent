@@ -53,6 +53,7 @@ class ReasonCode(str, Enum):
     PO_OVERRUN = "PO_OVERRUN"
     PRICE_VARIANCE_WITHIN_TOLERANCE = "PRICE_VARIANCE_WITHIN_TOLERANCE"
     OCR_UNAVAILABLE = "OCR_UNAVAILABLE"
+    FIELD_CROSS_CHECKED = "FIELD_CROSS_CHECKED"
 
     @property
     def info(self) -> CodeInfo:
@@ -148,6 +149,8 @@ CODES: dict[ReasonCode, CodeInfo] = {
     ReasonCode.OCR_UNAVAILABLE: CodeInfo(
         "INFO", AP_CLERK, "Page verification was not possible ({detail}); the decision relied on the model's "
                           "confidence for {fields}."),
+    ReasonCode.FIELD_CROSS_CHECKED: CodeInfo(
+        "INFO", AP_CLERK, "Not found on the page, but confirmed independently: {details}."),
 }
 
 assert set(CODES) == set(ReasonCode), "every ReasonCode needs severity, role and template"

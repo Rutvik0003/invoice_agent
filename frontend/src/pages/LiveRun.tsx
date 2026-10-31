@@ -1,11 +1,13 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Loader2, Plus, Wifi, WifiOff } from 'lucide-react'
+import { Loader2, Plus, Scale, Wifi, WifiOff, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { AuditTrail, RawData } from '@/components/run/AuditTrail'
 import { ExtractedFields, VerifiedFields } from '@/components/run/FieldTables'
 import { DecisionCard, FailureCard } from '@/components/run/DecisionCard'
 import { PageViewer } from '@/components/run/PageViewer'
+import { PoCompare } from '@/components/run/PoCompare'
+import { VendorEmail } from '@/components/run/VendorEmail'
 import { ChecksList, StageStepper } from '@/components/run/StageStepper'
 import { Button } from '@/components/ui/button'
 import { api, type ExtractedInvoice, type RunDetail } from '@/lib/api'
@@ -30,6 +32,7 @@ export default function LiveRun({ runId }: { runId: string }) {
   const [selected, setSelected] = useState<string | null>(null)
   const [pulseKey, setPulseKey] = useState(0)
   const [tab, setTab] = useState<'overview' | 'audit' | 'raw'>('overview')
+  const [comparing, setComparing] = useState(false)
   const select = (field: string) => {
     setSelected(field)
     setPulseKey((k) => k + 1)
@@ -51,6 +54,7 @@ export default function LiveRun({ runId }: { runId: string }) {
   const stopped = live.finished?.status === 'failed' || live.finished?.status === 'interrupted'  // shown by its own card
   const extractionError = stopped ? null : live.stages.extraction.error ?? (live.finished?.status === 'extraction_failed' ? detail.error : null)
   const decided = live.finished?.decision && detail.rules?.decision
+  const outcome = decided ? detail.rules!.decision.outcome : null
 
   const renderDetail = (key: StageKey) => <StageDetail stageKey={key} live={live} detail={detail} threshold={threshold}
                                                        selected={selected} onSelect={select} />
@@ -81,8 +85,21 @@ export default function LiveRun({ runId }: { runId: string }) {
 
       <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_minmax(400px,500px)]">
         <div className="min-h-0 border-r border-zinc-200">
-          <PageViewer runId={runId} pageCount={detail.page_count ?? 1} fields={live.fields} selected={selected}
-                      pulseKey={pulseKey} onSelect={select} />
+          {comparing ? (
+            <div className="h-full overflow-y-auto bg-white p-6">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div>
+                  <h2 className="text-base font-semibold">Invoice vs purchase order</h2>
+                  <p className="text-xs text-zinc-500">Same rules as the Match amounts stage, line by line. Pick another PO of this vendor to compare.</p>
+                </div>
+                <Button variant="outline" size="sm" onClick={() => setComparing(false)}><X />Back to the invoice</Button>
+              </div>
+              <PoCompare runId={runId} />
+            </div>
+          ) : (
+            <PageViewer runId={runId} pageCount={detail.page_count ?? 1} fields={live.fields} selected={selected}
+                        pulseKey={pulseKey} onSelect={select} />
+          )}
         </div>
         <div className="min-h-0 space-y-4 overflow-y-auto bg-zinc-50 p-5">
           {live.finished && (
@@ -106,6 +123,16 @@ export default function LiveRun({ runId }: { runId: string }) {
           {detail.status === 'resolved_by_human' && <HumanResolution run={detail} />}
           {extractionError && <FailureCard run={detail} error={extractionError} config={config.data} />}
           {decided && <DecisionCard decision={detail.rules!.decision} ledger={detail.rules!.ledger_change} sample={detail.sample} />}
+          {(outcome === 'HOLD' || outcome === 'REJECT') && (
+            <div className="space-y-3">
+              {detail.vendor_id && (
+                <Button variant={comparing ? 'secondary' : 'outline'} className="w-full" onClick={() => setComparing(!comparing)}>
+                  <Scale />{comparing ? 'Show the invoice again' : 'Compare with the purchase order'}
+                </Button>
+              )}
+              <VendorEmail runId={runId} />
+            </div>
+          )}
           {live.finished?.decision && !detail.rules && (
             <div className="flex items-center gap-2 rounded-xl bg-white p-4 text-sm text-zinc-500 ring-1 ring-zinc-200">
               <Loader2 className="size-4 animate-spin" /> Loading the decision…

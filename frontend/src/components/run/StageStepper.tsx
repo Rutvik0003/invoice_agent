@@ -70,7 +70,7 @@ function StageSummary({ state, stageKey }: { state: LiveState; stageKey: StageKe
   const st = state.stages[stageKey]
   if (st.status === 'pending' || st.status === 'running') return null
   let text = ''
-  if (stageKey === 'verification' && st.payload.printed !== undefined) text = `${st.payload.verified}/${st.payload.printed} found`
+  if (stageKey === 'verification' && st.payload.printed !== undefined) text = `${st.payload.verified}/${st.payload.printed} found` + (st.payload.cross_checked ? ` · ${st.payload.cross_checked} confirmed independently` : '')
   else if (stageKey === 'extraction' && st.status !== 'failed') text = st.payload.cached ? 'cached' : ''
   else {
     const raised = st.checks.filter((c) => c.code && c.severity !== 'INFO').length

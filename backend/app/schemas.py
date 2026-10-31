@@ -136,17 +136,22 @@ class ExtractionResult(BaseModel):
 
 # ---------------------------------------------------------------- Stage 3
 
-VerificationStatus = Literal["verified", "not_found", "not_applicable", "unavailable"]
+# cross_checked = not found on the page, but confirmed by our master data or by the page's own arithmetic
+VerificationStatus = Literal["verified", "cross_checked", "not_found", "not_applicable", "unavailable"]
 WordSource = Literal["text_layer", "ocr"]
+CrossCheckSource = Literal["master_data", "calculation"]
 
 
 class FieldVerification(BaseModel):
     status: VerificationStatus
-    source: WordSource | None = None
+    source: WordSource | CrossCheckSource | None = None
     page: int | None = None
     bbox: list[float] | None = None  # [x0, y0, x1, y1] normalised 0-1, origin top-left
     matched_text: str | None = None
     ocr_word_conf: float | None = None
+    # cross_checked only: the master value printed on the page when the AI's reading was a provably wrong near-miss
+    # (e.g. Zenith's GSTIN on the page, the AI read one letter wrong and its value fails the GSTIN check digit)
+    reference_value: str | None = None
 
 
 class PageVerificationInfo(BaseModel):

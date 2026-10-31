@@ -21,6 +21,7 @@ from app.pipeline.evaluation import judge as judge_outcome
 from app.pipeline.reason_codes import inr
 from app.pipeline.repository import InMemoryRepository
 from app.schemas import ExtractedInvoice, FieldVerification, VerificationResult
+from app.verification.cross_check import cross_check
 
 OUTCOMES = ("APPROVE", "HOLD", "REJECT")
 
@@ -42,6 +43,13 @@ def verification_from_label(label: dict) -> VerificationResult:
     return VerificationResult(engine_used=engine, fields=fields)
 
 
+def rules_for_label(label: dict, repo, settings) -> RulesResult:
+    """Stages 3b-8 as production runs them: the label's Stage 2/3 signals, the master-data cross-check, the rules."""
+    invoice = invoice_from_label(label)
+    verification = cross_check(invoice, verification_from_label(label), repo, settings.confidence_threshold)
+    return run_rules(invoice, verification, repo, settings)
+
+
 def judge(label: dict, result: RulesResult) -> tuple[bool, list[str]]:
     """Pass = decision acceptable AND every must-include code present AND each any-of group satisfied."""
     return judge_outcome(label, result.decision.outcome, result.codes)
@@ -58,7 +66,7 @@ def main() -> None:
     started = time.time()
     results = []
     for _, label in load_labels(args.set):
-        result = run_rules(invoice_from_label(label), verification_from_label(label), repo, settings)
+        result = rules_for_label(label, repo, settings)
         ok, problems = judge(label, result)
         results.append((label, result, ok, problems))
         if args.show == label["invoice_id"]:

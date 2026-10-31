@@ -22,6 +22,7 @@ from app.extraction.pdf_utils import PDF
 from app.models import HoldAction, Run, RunEvent
 from app.pipeline.intake import IntakeError
 from app.pipeline.orchestrator import create_run_record, process_run
+from app.runtime_settings import effective_settings
 
 router = APIRouter(prefix="/api", tags=["runs"])
 PAGE_DPI = 110
@@ -29,29 +30,32 @@ _page_cache: OrderedDict[tuple[str, int], bytes] = OrderedDict()
 
 
 def create_run(request: Request, background: BackgroundTasks, file_name: str, data: bytes, model: str,
-               use_cache: bool, retry_of: str | None = None, sample_id: str | None = None) -> str:
+               use_cache: bool, retry_of: str | None = None, sample_id: str | None = None,
+               model_name: str | None = None) -> str:
     """Validate the file (Stage 1 checks happen up front so bad files get an immediate, clear error),
     store the run, and process it in the background."""
+    engine = engine_of(request)
     try:
-        run_id = create_run_record(engine_of(request), file_name, data, model, retry_of, sample_id)
+        run_id = create_run_record(engine, file_name, data, model, retry_of, sample_id, model_name=model_name)
     except (IntakeError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
-    background.add_task(process_run, run_id, engine_of(request), get_settings(), use_cache, request.app.state.extract_fn)
+    background.add_task(process_run, run_id, engine, effective_settings(engine), use_cache, request.app.state.extract_fn)
     return run_id
 
 
 @router.post("/runs")
 async def post_run(request: Request, background: BackgroundTasks, file: UploadFile | None = File(None),
                    sample_id: str | None = Form(None), model: str | None = Form(None),
-                   use_cache: bool = Form(False)) -> dict:
+                   model_name: str | None = Form(None), use_cache: bool = Form(False)) -> dict:
     """Start a run from an uploaded file OR a sample id. Returns the run id immediately."""
     model = model or get_settings().default_model
     if file is not None and file.filename:
         data = await file.read()
-        run_id = create_run(request, background, file.filename, data, model, use_cache)
+        run_id = create_run(request, background, file.filename, data, model, use_cache, model_name=model_name)
     elif sample_id:
         name, data = sample_file(sample_id)
-        run_id = create_run(request, background, name, data, model, use_cache, sample_id=sample_id)
+        run_id = create_run(request, background, name, data, model, use_cache, sample_id=sample_id,
+                            model_name=model_name)
     else:
         raise HTTPException(status_code=400, detail="Upload a file or choose a sample.")
     return {"run_id": run_id}
@@ -59,12 +63,16 @@ async def post_run(request: Request, background: BackgroundTasks, file: UploadFi
 
 @router.post("/runs/{run_id}/retry")
 def retry_run(run_id: str, request: Request, background: BackgroundTasks, model: str = Query(...),
-              use_cache: bool = Query(False)) -> dict:
-    """A new run with the same file and another (or the same) model, linked to the original."""
+              model_name: str | None = Query(None), use_cache: bool = Query(False)) -> dict:
+    """A new run with the same file and another (or the same) model, linked to the original.
+    Retrying with the same provider keeps the model picked for the original run unless another is given."""
     with Session(engine_of(request)) as session:
         run = get_run_or_404(session, run_id)
         name, data, sample_id = run.file_name, run.file_bytes, run.sample_id
-    return {"run_id": create_run(request, background, name, data, model, use_cache, retry_of=run_id, sample_id=sample_id)}
+        if model_name is None and model == run.model and run.model_name in get_settings().model_choices(model):
+            model_name = run.model_name
+    return {"run_id": create_run(request, background, name, data, model, use_cache, retry_of=run_id,
+                                 sample_id=sample_id, model_name=model_name)}
 
 
 @router.get("/runs")

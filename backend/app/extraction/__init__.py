@@ -10,9 +10,12 @@ from sqlalchemy import Engine
 from app.config import Settings
 from app.extraction.base import Extractor, ProviderError, make_error
 from app.extraction.cache import get_cached, put_cached
+from app.extraction.pacing import wait_for_turn
+from app.logging_setup import get_logger
 from app.schemas import ExtractionResult
 
 PROVIDERS = ("gemini", "groq")
+logger = get_logger("extraction")
 
 
 def file_hash(file_bytes: bytes) -> str:
@@ -59,6 +62,9 @@ def extract_document(
     except ProviderError as exc:
         return ExtractionResult(model_name=model_name or "(not set)", provider=provider,
                                 error=make_error(provider, exc.error_type, exc.detail))
+    waited = wait_for_turn(settings.ai_request_gap_s)
+    if waited:
+        logger.info("paced AI request", extra={"provider": provider, "waited_s": round(waited, 1)})
     result = extractor.extract(file_bytes, mime, page_images)
     if use_cache and engine is not None:
         put_cached(engine, digest, result)

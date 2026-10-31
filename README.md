@@ -87,6 +87,43 @@ The API (`python tasks.py dev`, then http://localhost:8000/docs) exposes runs wi
 Test Suite and `POST /api/admin/reset-demo`. Approving an invoice really updates the PO ledger, so running the
 same invoice twice is (correctly) rejected as a duplicate; reset the demo to start over.
 
+### Working with many invoices
+
+- **Confirmed from our own records (Stage 3b).** OCR sometimes misses a value the AI read correctly. Such a value
+  still counts as confirmed, shown as "✓ our records" or "✓ by calculation", when:
+  - **Buyer GSTIN:** it equals Zenith's GSTIN (we are the only buyer).
+  - **Vendor GSTIN and name:** both belong to the same vendor-master record.
+  - **Bank account and PO number:** they are that vendor's account and one of that vendor's POs.
+  - **Misread GSTIN:** the AI's GSTIN fails the GSTIN check digit, is at most 2 characters from Zenith's or a
+    vendor's GSTIN, and that GSTIN is printed on the page. The page's GSTIN is then the one checked.
+  - **Calculation:** a missing amount follows from amounts that *were* found on the page (lines → subtotal,
+    CGST = SGST, subtotal + GST → total).
+
+  This works even when OCR is unavailable. AI values that only agree with each other prove nothing, so a
+  calculation always needs an anchor found on the page. The invoice number and date cannot be confirmed this way,
+  so they still hold. Confirmed values are listed in an INFO note (`FIELD_CROSS_CHECKED`), and the decision may
+  then be Approve with that note.
+- **Bulk upload.** Drop several files on New Run. They are queued, then processed one at a time in upload order
+  by a background worker. The queue lives in the database, so it carries on after a restart. The batch page shows
+  progress, every decision and the combined result, and can be downloaded as CSV. The API is `POST /api/batches`.
+- **Pause between AI requests** (Settings, default `AI_REQUEST_GAP_S=6`). Every AI request (live runs, batches,
+  the Test Suite) starts at least this long after the previous one, so the free-tier per-minute limits are not
+  hit.
+- **One-tap vendor email** (Hold and Reject). The subject is `<vendor> - <problem> - Invoice <number>`. The body
+  gives each problem and the change needed, worded for the vendor (never "possible fraud" or "the AI read"), and
+  the invoice file is attached. It is addressed to the vendor's email on file. **Demo:** nothing is delivered;
+  the email is logged against the run and the screen shows "Mail sent".
+- **Misread GSTINs.** A GSTIN has a fixed shape: state digits, then the PAN (5 letters, 4 digits, 1 letter). A
+  digit read where only a letter can be (`33BUZC0...` → `33BUZCO...`), or the reverse, is corrected. The
+  corrected GSTIN is used only if its check character then validates, and the vendor check says what was
+  corrected. A valid GSTIN is never changed.
+- **Compare with PO.** On a held invoice (Hold Queue, or the run view), the invoice and its PO are shown side by
+  side, line by line. Each line shows quantity against the open quantity and price against the PO price, with the
+  same tolerance as Stage 7, plus the PO balance before and after this invoice. Any other PO of the vendor can be
+  picked to compare.
+- **Gemini model per run.** New Run offers every model in `GEMINI_MODELS` (default `gemini-2.5-flash`,
+  `gemini-3.6-flash`, `gemini-3.8-flash`, all free-tier Flash models). `GEMINI_MODEL` stays the default.
+
 ## Docker
 
 The `Dockerfile` is multi-stage: a Node image builds `frontend/dist`, then a `python:3.11-slim` image with
@@ -114,6 +151,24 @@ Windows path from your `.env`; inside the image Tesseract is on PATH.
 The free instance sleeps when idle; the first request after a while takes ~1 minute.
 
 ## Known limitations
+
+### Very poor scans: when neither the AI nor OCR can read a value
+
+On a badly degraded scan, the free-tier models we use can misread a value too badly for anything to recover it.
+Example: stress invoice `S0006` is scanned at 100 DPI, blurred, noisy, JPEG quality 47 and rotated 3.6°, with a
+stamp and a coffee stain.
+
+- **Groq** (`qwen/qwen3.8-27b`) read the vendor GSTIN as `07ZINCP5001Q1Z4`. The printed GSTIN is
+  `07ZHNCP5749Q1ZA`, so 5 of 15 characters are wrong. Groq only sees a page image reduced to 1400 px, because of
+  its free-tier token limit.
+- **Tesseract** found no text on the page that looks like a GSTIN.
+- **The rules** can prove the AI's value is wrong (it fails the GSTIN check digit), but not what it should be. The
+  misread rule accepts at most 2 differing characters; more would risk matching the wrong vendor.
+
+The invoice is therefore held, with `VENDOR_MATCHED_BY_NAME_ONLY` (the name matched, the GSTIN did not). This is
+the intended outcome: when unsure, hold. A larger vision model, or Gemini reading the PDF at full resolution, may
+read such a scan better; that is a model limit, not a rule we can safely loosen. In practice the fix is a clearer
+copy of the invoice, which is what the vendor email for this hold asks for.
 
 ### OCR verification recall on scanned invoices: 91.6% (target 95%)
 

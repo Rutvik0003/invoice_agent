@@ -127,6 +127,8 @@ class Run(Base):
     sample_id: Mapped[str | None] = mapped_column(String(60))
     error_json: Mapped[dict | None] = mapped_column(JSON)
     decision_json: Mapped[dict | None] = mapped_column(JSON)  # full Decision + per-stage checks
+    batch_id: Mapped[str | None] = mapped_column(String(36), index=True)  # set when uploaded as part of a batch
+    use_cache: Mapped[bool | None] = mapped_column(Boolean)  # remembered for queued batch runs
 
 
 class RunEvent(Base):
@@ -152,6 +154,43 @@ class HoldAction(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+class Batch(Base):
+    """Several invoices uploaded together: queued and processed one by one, in upload order."""
+
+    __tablename__ = "batches"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    model: Mapped[str] = mapped_column(String(20))
+    model_name: Mapped[str | None] = mapped_column(String(100))
+    file_errors: Mapped[list] = mapped_column(JSON, default=list)  # [{file_name, error}] rejected at upload
+
+
+class EmailLog(Base):
+    """Every vendor email the app sent (or tried to send)."""
+
+    __tablename__ = "email_log"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    run_id: Mapped[str] = mapped_column(ForeignKey("runs.id"), index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    sender: Mapped[str] = mapped_column(String(200))
+    recipient: Mapped[str] = mapped_column(String(200))
+    subject: Mapped[str] = mapped_column(String(300))
+    sent: Mapped[bool] = mapped_column(Boolean)
+    error: Mapped[str | None] = mapped_column(Text)
+
+
+class AppSetting(Base):
+    """Settings changed in the Settings screen (they override the environment defaults; kept on demo reset)."""
+
+    __tablename__ = "app_settings"
+
+    key: Mapped[str] = mapped_column(String(50), primary_key=True)
+    value: Mapped[object] = mapped_column(JSON)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+
+
 class ExtractionCache(Base):
     __tablename__ = "extraction_cache"
 
@@ -171,4 +210,4 @@ class PageWordsCache(Base):
 
 
 SEEDED_TABLES = [Vendor.__table__, POHeader.__table__, POLine.__table__, InvoiceHistory.__table__]
-RUN_TABLES = [Run.__table__, RunEvent.__table__, HoldAction.__table__]
+RUN_TABLES = [Run.__table__, RunEvent.__table__, HoldAction.__table__, Batch.__table__, EmailLog.__table__]
