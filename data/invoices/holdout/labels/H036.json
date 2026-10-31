@@ -1,0 +1,339 @@
+{
+  "invoice_id": "H036",
+  "file_name": "H036.pdf",
+  "set_name": "holdout",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "bilingual",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Nexa Industries Pvt Ltd",
+      "printed": "Nexa Industries Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "27CNUCN5911H2Z7",
+      "printed": "27 CNUCN 5911 H2Z7"
+    },
+    "vendor_address": {
+      "value": "17, Mani Zila, Bhiwandi - 421022, Maharashtra",
+      "printed": "17, Mani Zila, Bhiwandi - 421022, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "NI/903/26",
+      "printed": "NI/903/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-09",
+      "printed": "2026-10-09"
+    },
+    "po_reference": {
+      "value": "PO-2026-1408",
+      "printed": "PO-2026-1408"
+    },
+    "line_items": [
+      {
+        "description": "HDPE Granules",
+        "hsn_sac": "3901",
+        "quantity": 101,
+        "unit": "Kg",
+        "unit_price": 115.0,
+        "amount": 11615.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Synthetic Enamel Paint",
+        "hsn_sac": "3208",
+        "quantity": 11,
+        "unit": "Ltr",
+        "unit_price": 275.0,
+        "amount": 3025.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Cotton Fabric - Plain Weave 60 in",
+        "hsn_sac": "5208",
+        "quantity": 980,
+        "unit": "Mtr",
+        "unit_price": 116.6,
+        "amount": 114268.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Denim Fabric 12 oz",
+        "hsn_sac": "5209",
+        "quantity": 12,
+        "unit": "Mtr",
+        "unit_price": 325.0,
+        "amount": 3900.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 132808.0,
+      "printed": "INR 132808.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 4271.8,
+      "printed": "INR 4271.80"
+    },
+    "sgst": {
+      "value": 4271.8,
+      "printed": "INR 4271.80"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 141351.6,
+      "printed": "INR 141351.60"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "691684955076",
+      "printed": "691684955076"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0219371",
+      "printed": "HDFC0219371"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.10114,
+        0.28631,
+        0.11458
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11721,
+        0.14503,
+        0.25256,
+        0.15399
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.72282,
+        0.09827,
+        0.7893,
+        0.10779
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.72282,
+        0.1244,
+        0.80024,
+        0.13392
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.72282,
+        0.15053,
+        0.81866,
+        0.16005
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11721,
+        0.29113,
+        0.2502,
+        0.30009
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84196,
+        0.44071,
+        0.9328,
+        0.45023
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.85693,
+        0.45687,
+        0.9328,
+        0.46638
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.85693,
+        0.47302,
+        0.9328,
+        0.48254
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.81668,
+        0.48786,
+        0.9328,
+        0.49906
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11952,
+        0.55636,
+        0.2081,
+        0.56476
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10436,
+        0.56839,
+        0.18073,
+        0.57678
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1408",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nexa Industries Pvt Ltd",
+    "template": "bilingual"
+  },
+  "notes": "'Cotton Fabric - Plain Weave 60 in' billed at ₹116.60 vs PO ₹110.00 (+6%). Held-out layout/image type."
+}

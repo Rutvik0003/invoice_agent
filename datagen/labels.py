@@ -43,11 +43,11 @@ class Signal(BaseModel):
 class Label(BaseModel):
     invoice_id: str
     file_name: str
-    set_name: Literal["golden", "stress"]
+    set_name: Literal["golden", "stress", "holdout"]
     scenario: str
     template: str
     is_scanned: bool
-    scan_level: Literal["none", "mild", "heavy"]
+    scan_level: Literal["none", "mild", "heavy", "photo", "web"]
     file_format: Literal["pdf", "png", "jpg"]
     degradations: list[str]
     ground_truth: dict

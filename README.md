@@ -115,12 +115,12 @@ The free instance sleeps when idle; the first request after a while takes ~1 min
 
 ## Known limitations
 
-### OCR verification recall on scanned invoices: 89.8% (target 95%)
+### OCR verification recall on scanned invoices: 91.6% (target 95%)
 
 Stage 3 checks every value the AI read against the page itself. On digital PDFs it reads the exact text layer:
 **100% of printed values are found**. On scans and photos it uses Tesseract OCR, and on our mild scans
-(150–200 DPI, slight blur, noise and JPEG artefacts) it finds **89.8%** of the printed key values
-(707/787, `data/eval_reports/verification_eval_all_minconf40_*.md`), below the 95% target.
+(150–200 DPI, slight blur, noise and JPEG artefacts) it finds **91.6%** of the printed key values
+(721/787, `data/eval_reports/verification_eval_all_*.md`), below the 95% target.
 
 What this means in practice:
 
@@ -131,7 +131,8 @@ What this means in practice:
 
 What we tried (details in the Phase 3 report): deskew, denoising and 200/300/400 DPI made no real difference
 (77–79% on a sample); recognising a misread ₹ ("₹13,266" read as "213,266") and combining four OCR passes
-(normal and sharpened image × two page-layout modes) raised it to 89.8%. Remaining misses are genuine Tesseract
+(normal and sharpened image × two page-layout modes) raised it to 89.8%. A fifth pass on a locally thresholded
+image, which reads faded or unevenly lit print, raised it to 91.6% (Phase 8). Remaining misses are genuine Tesseract
 misreads of small or bold fonts, e.g. "PO-2026-1188" read as "PO-2026-1108".
 
 `OCR_MIN_WORD_CONF` stays at **40**. At 0, recall rises to 91.9%, but one deliberately wrong value was accepted
@@ -154,27 +155,50 @@ misreads of small or bold fonts, e.g. "PO-2026-1188" read as "PO-2026-1108".
   switching. These services are paid per page after a small free allowance, and they send invoice images to a
   third party, which needs a data-handling review in a real AP setting.
 
-### OCR speed on Render's free instance (0.1 CPU, 512 MB)
+### OCR speed and memory on small machines (Render free: 0.1 CPU, 512 MB)
 
-Measured in the Docker image with `--cpus` and `--memory` limits (Phase 8):
+**Accuracy comes first: every machine runs all five OCR passes.** The adaptive-threshold pass is skipped only when
+its black-and-white image is more than 10% ink, which means it is mostly noise.
+- The app reads its container's CPU and memory limits and decides how many passes run at the same time: one at
+  a time on a fraction of a CPU, at most two at once in 512 MB.
+- The time limit per pass stretches on slow CPUs (20 s on a full CPU, 200 s at 0.1 CPU), so OCR is not abandoned
+  just because the machine is slow.
+- If one pass fails, the words from the others are kept.
+- Small photos and web images are enlarged to 3000 px before OCR. On four real uploads this confirmed 20 values
+  instead of 15.
 
-| Machine | OCR passes | 1-page mild scan | Heavy 300-DPI scanned PDF | Peak memory |
+Measured on the whole server in the Docker image, with the pipeline running on a scan:
+
+| Machine | Passes at once | 1-page mild scan (PNG) | Heavy 300-DPI scanned PDF | Peak memory |
 |---|---:|---:|---:|---:|
-| Dev laptop (16 cores) | 4 | 5–6 s | 5.5 s | 466 MB (container) |
-| 0.5 CPU (Render Starter) | 2 | - | over 20 s → timeout | 313 MB |
-| 0.1 CPU (Render free) | 1 | 13.5–22 s | ~31 s, 3 words read | 172–233 MB |
+| 4 CPUs, 512 MB | 2 | 5.5 s, 11/11 fields verified | 15.5 s | 372 MB |
+| 0.1 CPU, 512 MB (Render free) | 1 | 77 s, 11/11 fields verified | 256 s | 301 MB |
 
+- **Same accuracy everywhere.** Only the time differs. The 8 s target for scans is not met on the free
+  instance; we chose accuracy over speed there.
+- **Memory limit:** running all passes at once would need about 466 MB plus the server, too close to 512 MB.
+  That is why passes are limited by memory.
 - **Digital PDFs are unaffected.** They are verified from the text layer in well under a second, and a typical
   digital invoice runs end to end in about 14 s on Gemini (13 s of that is the model call).
-- **Scans on the free instance don't meet the 8 s target.**
-  - The app counts its CPU quota and runs fewer OCR passes on small machines. Four parallel passes would also need
-    about 466 MB, too close to the 512 MB limit.
-  - Even one pass takes about 14–22 s on 0.1 CPU. A page that takes over 20 s is not checked: the run continues
-    with the "OCR unavailable" warning and holds anything the model is unsure of (rule 14).
-- **Lowering the DPI doesn't help.** Photos are images, so the DPI setting doesn't apply to them. On our
-  heavy scan, 200 DPI found 198 words instead of 542.
-- **For a live demo with scans, run locally or in Docker on a laptop**, or use a larger instance (2+ CPUs runs all
-  four passes).
+- **Lowering the DPI doesn't help.** Photos are images, so the DPI setting doesn't apply to them. On our heavy
+  scan, 200 DPI found 198 words instead of 542.
+- **For a snappy live demo with scans,** run locally or in Docker on a laptop.
+
+### Results on data the pipeline was never tuned on
+
+Verification only (no AI): the true printed values are looked up on the page. Wrong values must never pass.
+
+| Set | Values found on the page | Wrong values accepted |
+|---|---:|---:|
+| Held-out invoices (3 new layouts), digital PDF | 103/103 (100%) | 0 of 210 |
+| Held-out, phone photos (tilt, glare, shadow) | 112/115 (97.4%) | |
+| Held-out, low-res web images (700–1000 px) | 103/104 (99.0%) | |
+| Held-out, mild scans | 103/110 (93.6%) | |
+| Real receipt photos, CORD v2 (`fetch_cord.py`) | 18/33 | 0 of 38 |
+
+The real receipts are hard: faded thermal print, creases, and photos as small as 432×648 px. Seven of their
+values use the Indonesian `60.000` (sixty thousand) format, which an INR-only system reads as 60.00 and so does
+not find. All held-out decisions match their scenario (42/42, `eval_rules.py --set holdout`).
 
 ### Groq free tier
 

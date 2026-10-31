@@ -2,6 +2,26 @@
 
 Real invoices show whether the agent works outside our generated data. Examples: your own purchase invoices (online shopping, a restaurant bill with GST, a utility bill) or sample GST invoices published by accounting software vendors. Nothing in this folder is needed to run the app; it is only used by the evaluation scripts.
 
+## Included: 20 real receipt photos (CORD v2)
+
+`backend/scripts/fetch_cord.py` downloads 20 receipt photos and writes their labels (`cord_test_*.jpg`). They are
+git-ignored, so run the script once after cloning:
+
+```bash
+.venv/Scripts/python backend/scripts/fetch_cord.py
+```
+
+- **Source:** the test split of CORD v2, (c) NAVER Clova, licensed
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), from
+  [huggingface.co/datasets/naver-clova-ix/cord-v2](https://huggingface.co/datasets/naver-clova-ix/cord-v2).
+- **What they are:** real phone photos of Indonesian shop and restaurant receipts. They are not GST invoices.
+  - They test OCR and extraction on genuinely unseen, imperfect photos: faded thermal print, creases, small images.
+  - Only the subtotal and total are labelled.
+  - The sensible decision is HOLD or REJECT, never APPROVE: there is no GSTIN or PO, and they are not addressed to
+    Zenith.
+- **Amount format:** rupiah amounts group thousands with a dot ("60.000" = sixty thousand). An INR-only system reads
+  that as 60.00, so those values are expected to show as "not found". The evaluation reports them separately.
+
 ## Adding an invoice
 
 1. Put the file in this folder: PDF, PNG or JPG, at most 10 MB and 20 pages.

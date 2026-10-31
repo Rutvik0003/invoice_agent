@@ -46,27 +46,39 @@ FIELD_KIND = {
 # ---------------------------------------------------------------- collecting page words
 
 
+# Bump whenever OCR or page reading changes (passes, preprocessing, image sizing), so words cached by an older
+# version are read again instead of silently reused. 2 = all passes everywhere + small images enlarged;
+# 3 = adaptive-threshold pass added.
+PAGE_WORDS_VERSION = 3
+
+
 def _cached_page(engine: Engine | None, file_hash: str | None, page_no: int) -> PageWords | None:
     if engine is None or file_hash is None:
         return None
     with Session(engine) as session:
         row = session.get(PageWordsCache, (file_hash, page_no))
-        return PageWords.from_json(row.words_json) if row else None
+        if row is None or row.words_json.get("version") != PAGE_WORDS_VERSION:
+            return None
+        return PageWords.from_json(row.words_json)
 
 
 def _store_page(engine: Engine | None, file_hash: str | None, page: PageWords) -> None:
     if engine is None or file_hash is None or page.source == "unavailable":
         return
     with Session(engine) as session:
-        session.merge(PageWordsCache(file_hash=file_hash, page=page.page, words_json=page.to_json()))
+        session.merge(PageWordsCache(file_hash=file_hash, page=page.page,
+                                     words_json={**page.to_json(), "version": PAGE_WORDS_VERSION}))
         session.commit()
 
 
 MAX_OCR_SIDE = 3508  # pixels on the long side = an A4 page at 300 DPI; more costs time and memory, not accuracy
+MIN_OCR_SIDE = 3000  # smaller photos and web images are enlarged to this: Tesseract misses text that is only a few
+                     # pixels tall (user uploads: 15 -> 20 values confirmed on 4 images; mild scans unchanged)
 
 
 def ocr_page_image(file_bytes: bytes, mime: str, pdf, index: int, settings: Settings) -> Image.Image:
-    """The page as an image for OCR, at OCR_DPI but never larger than MAX_OCR_SIDE (large pages, 48 MP photos)."""
+    """The page as an image for OCR: at OCR_DPI, but never larger than MAX_OCR_SIDE (large pages, 48 MP photos);
+    image files smaller than MIN_OCR_SIDE are enlarged to it."""
     if pdf is not None:
         rect = pdf[index].rect
         dpi = min(settings.ocr_dpi, int(MAX_OCR_SIDE * 72 / max(rect.width, rect.height, 1)))
@@ -75,6 +87,9 @@ def ocr_page_image(file_bytes: bytes, mime: str, pdf, index: int, settings: Sett
     image = render_page_images(file_bytes, mime, settings.ocr_dpi)[0]
     if max(image.size) > MAX_OCR_SIDE:
         image.thumbnail((MAX_OCR_SIDE, MAX_OCR_SIDE), Image.LANCZOS)
+    elif max(image.size) < MIN_OCR_SIDE:
+        scale = MIN_OCR_SIDE / max(image.size)
+        image = image.resize((round(image.width * scale), round(image.height * scale)), Image.LANCZOS)
     return image
 
 

@@ -1,0 +1,321 @@
+{
+  "invoice_id": "H004",
+  "file_name": "H004.pdf",
+  "set_name": "holdout",
+  "scenario": "BANK_CHANGE",
+  "template": "receipt",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Nexa Industries Pvt Ltd",
+      "printed": "Nexa Industries Pvt Ltd"
+    },
+    "vendor_gstin": {
+      "value": "27CNUCN5911H2Z7",
+      "printed": "27CNUCN5911H2Z7"
+    },
+    "vendor_address": {
+      "value": "17, Mani Zila, Bhiwandi - 421022, Maharashtra",
+      "printed": "17, Mani Zila, Bhiwandi - 421022, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "NI/904/26",
+      "printed": "NI/904/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-24",
+      "printed": "October 24, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1410",
+      "printed": "PO-2026-1410"
+    },
+    "line_items": [
+      {
+        "description": "PET Preforms 28mm",
+        "hsn_sac": "3923",
+        "quantity": 436,
+        "unit": "Nos",
+        "unit_price": 3.85,
+        "amount": 1678.6,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Buttons - Polyester (Gross)",
+        "hsn_sac": "9606",
+        "quantity": 85,
+        "unit": "Gross",
+        "unit_price": 195.0,
+        "amount": 16575.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 18253.6,
+      "printed": "18,253.60"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 565.45,
+      "printed": "565.45"
+    },
+    "sgst": {
+      "value": 565.45,
+      "printed": "565.45"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 19384.5,
+      "printed": "19,384.50"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "931137368207",
+      "printed": "931137368207"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0219371",
+      "printed": "HDFC0219371"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.38316,
+        0.04969,
+        0.61684,
+        0.06275
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.08096,
+        0.40913,
+        0.0907
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.68382,
+        0.12717,
+        0.75198,
+        0.13691
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.63081,
+        0.14032,
+        0.75198,
+        0.15006
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.15346,
+        0.75198,
+        0.1632
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.2211,
+        0.40913,
+        0.23084
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.68382,
+        0.31552,
+        0.75198,
+        0.32526
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.70654,
+        0.32964,
+        0.75198,
+        0.33938
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.70654,
+        0.34376,
+        0.75198,
+        0.3535
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.67135,
+        0.35656,
+        0.75198,
+        0.36808
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.30685,
+        0.41285,
+        0.3922,
+        0.42199
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.29263,
+        0.42519,
+        0.37086,
+        0.43434
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BANK_DETAILS_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1410",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nexa Industries Pvt Ltd",
+    "template": "receipt"
+  },
+  "notes": "Bank details on the invoice differ from the vendor master. Held-out layout/image type."
+}

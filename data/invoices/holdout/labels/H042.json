@@ -1,0 +1,191 @@
+{
+  "invoice_id": "H042",
+  "file_name": "H042.jpg",
+  "set_name": "holdout",
+  "scenario": "CLEAN_EXACT",
+  "template": "bilingual",
+  "is_scanned": true,
+  "scan_level": "photo",
+  "file_format": "jpg",
+  "degradations": [
+    "phone_photo"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Mody Technologies Pvt. Ltd.",
+      "printed": "Mody Technologies Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27ADOCM2335H1Z6",
+      "printed": "27ADOCM2335H1Z6"
+    },
+    "vendor_address": {
+      "value": "992, Yadav Ganj, Thane - 400084, Maharashtra",
+      "printed": "992, Yadav Ganj, Thane - 400084, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "MT/26-27/1224",
+      "printed": "MT/26-27/1224"
+    },
+    "invoice_date": {
+      "value": "2026-10-10",
+      "printed": "10-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1395",
+      "printed": "PO-2026-1395"
+    },
+    "line_items": [
+      {
+        "description": "IT Infrastructure Management Services",
+        "hsn_sac": "998316",
+        "quantity": 3,
+        "unit": "Month",
+        "unit_price": 46300.0,
+        "amount": 138900.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 138900.0,
+      "printed": "₹1,38,900.00"
+    },
+    "discount": {
+      "value": 2778.0,
+      "printed": "₹2,778.00"
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 12250.98,
+      "printed": "₹12,250.98"
+    },
+    "sgst": {
+      "value": 12250.98,
+      "printed": "₹12,250.98"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.04,
+      "printed": "0.04"
+    },
+    "total_amount": {
+      "value": 160624.0,
+      "printed": "₹1,60,624.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Sixty Thousand Six Hundred Twenty Four Only",
+      "printed": "Rupees One Lakh Sixty Thousand Six Hundred Twenty Four Only"
+    },
+    "bank_account": {
+      "value": "850467706523111213",
+      "printed": "850467706523111213"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0114976",
+      "printed": "IDFB0114976"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {},
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1395",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Dated",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "2778.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mody Technologies Pvt. Ltd.",
+    "template": "bilingual"
+  },
+  "notes": "Clean invoice that exactly matches its PO. Held-out layout/image type."
+}

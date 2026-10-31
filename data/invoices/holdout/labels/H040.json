@@ -1,0 +1,309 @@
+{
+  "invoice_id": "H040",
+  "file_name": "H040.pdf",
+  "set_name": "holdout",
+  "scenario": "CLEAN_EXACT",
+  "template": "receipt",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Chacko Packwell Industries",
+      "printed": "Chacko Packwell Industries"
+    },
+    "vendor_gstin": {
+      "value": "06QBHPC6146O1Z0",
+      "printed": "06 QBHPC 6146 O1Z0"
+    },
+    "vendor_address": {
+      "value": "46/502, Palla Road, Faridabad - 121068, Haryana",
+      "printed": "46/502, Palla Road, Faridabad - 121068, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01679",
+      "printed": "INV-01679"
+    },
+    "invoice_date": {
+      "value": "2026-10-17",
+      "printed": "17 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1401",
+      "printed": "PO-2026-1401"
+    },
+    "line_items": [
+      {
+        "description": "Shipping Label Roll 4x6 in",
+        "hsn_sac": "4821",
+        "quantity": 6,
+        "unit": "Roll",
+        "unit_price": 290.0,
+        "amount": 1740.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Wooden Pallet 1200x1000 mm",
+        "hsn_sac": "4415",
+        "quantity": 75,
+        "unit": "Nos",
+        "unit_price": 875.0,
+        "amount": 65625.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 67365.0,
+      "printed": "INR 67365.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 12125.7,
+      "printed": "INR 12125.70"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 79490.7,
+      "printed": "INR 79490.70"
+    },
+    "amount_in_words": {
+      "value": "Rupees Seventy Nine Thousand Four Hundred Ninety and Seventy Paise Only",
+      "printed": "Rupees Seventy Nine Thousand Four Hundred Ninety and Seventy Paise Only"
+    },
+    "bank_account": {
+      "value": "5122763944232",
+      "printed": "5122763944232"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0408133",
+      "printed": "UTIB0408133"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.36792,
+        0.04969,
+        0.63208,
+        0.06275
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.08096,
+        0.43185,
+        0.0907
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.68382,
+        0.12717,
+        0.75198,
+        0.13691
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.66867,
+        0.14032,
+        0.75198,
+        0.15006
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.15346,
+        0.75198,
+        0.1632
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.2211,
+        0.43185,
+        0.23084
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.31552,
+        0.75198,
+        0.32526
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.32964,
+        0.75198,
+        0.33938
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.64448,
+        0.34244,
+        0.75198,
+        0.35396
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.30685,
+        0.42634,
+        0.39931,
+        0.43549
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.29263,
+        0.43869,
+        0.37086,
+        0.44783
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1401",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Chacko Packwell Industries",
+    "template": "receipt"
+  },
+  "notes": "Clean invoice that exactly matches its PO. Held-out layout/image type."
+}

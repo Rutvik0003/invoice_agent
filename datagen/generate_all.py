@@ -16,6 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 from datagen.contact_sheet import box_check, contact_sheet
+from datagen.holdout import plan_holdout
 from datagen.labels import Label
 from datagen.master_data import DEFAULT_SEED, MasterData, build_master, write_master
 from datagen.render import render_planned, write_label
@@ -32,7 +33,9 @@ STRESS_SHEET_SIZE = 48
 def plan(seed: int = DEFAULT_SEED) -> tuple[MasterData, list[PlannedInvoice], list[PlannedInvoice]]:
     md = build_master(seed)
     planner = Planner(md, seed)
-    return md, plan_golden(planner), plan_stress(planner)
+    golden, stress = plan_golden(planner), plan_stress(planner)
+    plan_holdout(planner)  # adds the held-out set's POs to the master data (rendered by datagen.holdout)
+    return md, golden, stress
 
 
 def _clear(folder: Path) -> None:

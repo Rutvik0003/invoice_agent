@@ -1,0 +1,308 @@
+{
+  "invoice_id": "H029",
+  "file_name": "H029.pdf",
+  "set_name": "holdout",
+  "scenario": "VENDOR_UNKNOWN",
+  "template": "stacked",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_171",
+    "rotation_-0.4deg",
+    "blur_0.4",
+    "noise_5",
+    "jpeg_q70"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Sapphire Trading Co.",
+      "printed": "Sapphire Trading Co."
+    },
+    "vendor_gstin": {
+      "value": "33XJNPS3737V1ZG",
+      "printed": "33XJNPS3737V1ZG"
+    },
+    "vendor_address": {
+      "value": "175, Industrial Estate, Chennai - 600006, Tamil Nadu",
+      "printed": "175, Industrial Estate, Chennai - 600006, Tamil Nadu"
+    },
+    "vendor_state": {
+      "value": "Tamil Nadu",
+      "printed": "Tamil Nadu"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "SA/566",
+      "printed": "SA/566"
+    },
+    "invoice_date": {
+      "value": "2026-10-12",
+      "printed": "2026-10-12"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "In-store Promotional Posters A2",
+        "hsn_sac": "4911",
+        "quantity": 1450,
+        "unit": "Nos",
+        "unit_price": 69.5,
+        "amount": 100775.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Social Media Campaign Management",
+        "hsn_sac": "998361",
+        "quantity": 2,
+        "unit": "Month",
+        "unit_price": 73800.0,
+        "amount": 147600.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 248375.0,
+      "printed": "2,48,375"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 44707.5,
+      "printed": "44,707.50"
+    },
+    "round_off": {
+      "value": 0.5,
+      "printed": "0.50"
+    },
+    "total_amount": {
+      "value": 293083.0,
+      "printed": "2,93,083"
+    },
+    "amount_in_words": {
+      "value": "Rupees Two Lakh Ninety Three Thousand Eighty Three Only",
+      "printed": "Rupees Two Lakh Ninety Three Thousand Eighty Three Only"
+    },
+    "bank_account": {
+      "value": "751543801522",
+      "printed": "751543801522"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0705182",
+      "printed": "KKBK0705182"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.07219,
+        0.03111,
+        0.33558,
+        0.05048
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11528,
+        0.0783,
+        0.2418,
+        0.08852
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.07101,
+        0.14489,
+        0.12367,
+        0.15582
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.2874,
+        0.14609,
+        0.37405,
+        0.15721
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12009,
+        0.23082,
+        0.24103,
+        0.24045
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.67255,
+        0.21012,
+        0.76715,
+        0.2196
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.65624,
+        0.22286,
+        0.73649,
+        0.23226
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.86538,
+        0.36285,
+        0.9209,
+        0.37268
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85766,
+        0.38301,
+        0.92068,
+        0.39287
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.84158,
+        0.42111,
+        0.92025,
+        0.43387
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_UNKNOWN"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": null,
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Sapphire Trading Co.",
+    "template": "stacked"
+  },
+  "notes": "'Sapphire Trading Co.' (GSTIN 33XJNPS3737V1ZG) is not in the vendor master; no PO quoted. Held-out layout/image type."
+}

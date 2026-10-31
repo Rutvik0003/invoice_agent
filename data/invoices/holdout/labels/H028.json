@@ -1,0 +1,302 @@
+{
+  "invoice_id": "H028",
+  "file_name": "H028.pdf",
+  "set_name": "holdout",
+  "scenario": "GST_WRONG_TYPE",
+  "template": "receipt",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Mody Tech. Pvt. Ltd.",
+      "printed": "Mody Tech. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27ADOCM2335H1Z6",
+      "printed": "27ADOCM2335H1Z6"
+    },
+    "vendor_address": {
+      "value": "992, Yadav Ganj, Thane - 400084, Maharashtra",
+      "printed": "992, Yadav Ganj, Thane - 400084, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "MT/26-27/1225",
+      "printed": "MT/26-27/1225"
+    },
+    "invoice_date": {
+      "value": "2026-10-11",
+      "printed": "October 11, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1416",
+      "printed": "PO-2026-1416"
+    },
+    "line_items": [
+      {
+        "description": "Cybersecurity Audit",
+        "hsn_sac": "998313",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 208500.0,
+        "amount": 208500.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 208500.0,
+      "printed": "INR 208500.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 37530.0,
+      "printed": "INR 37530.00"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 246030.0,
+      "printed": "INR 246030.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Two Lakh Forty Six Thousand Thirty Only",
+      "printed": "Rupees Two Lakh Forty Six Thousand Thirty Only"
+    },
+    "bank_account": {
+      "value": "850467706523111213",
+      "printed": "850467706523111213"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0114976",
+      "printed": "IDFB0114976"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.3984,
+        0.04969,
+        0.6016,
+        0.06275
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.08096,
+        0.40913,
+        0.0907
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.65353,
+        0.12717,
+        0.75198,
+        0.13691
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.63081,
+        0.14032,
+        0.75198,
+        0.15006
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.15346,
+        0.75198,
+        0.1632
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.2211,
+        0.40913,
+        0.23084
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.65353,
+        0.28873,
+        0.75198,
+        0.29847
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.30285,
+        0.75198,
+        0.31259
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.63552,
+        0.31565,
+        0.75198,
+        0.32718
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.30685,
+        0.38812,
+        0.43487,
+        0.39727
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.29263,
+        0.40047,
+        0.37086,
+        0.40962
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "GST_TYPE_INVALID"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1416",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "inr_plain",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mody Tech. Pvt. Ltd.",
+    "template": "receipt"
+  },
+  "notes": "IGST charged by a Maharashtra vendor. Held-out layout/image type."
+}

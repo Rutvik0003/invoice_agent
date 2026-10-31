@@ -1,0 +1,320 @@
+{
+  "invoice_id": "H016",
+  "file_name": "H016.pdf",
+  "set_name": "holdout",
+  "scenario": "BANK_CHANGE",
+  "template": "receipt",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Rao Traders",
+      "printed": "Rao Traders"
+    },
+    "vendor_gstin": {
+      "value": "23TZHPR6790M1Z3",
+      "printed": "23TZHPR6790M1Z3"
+    },
+    "vendor_address": {
+      "value": "H.No. 333, Prasad Circle, Indore - 452089, Madhya Pradesh",
+      "printed": "H.No. 333, Prasad Circle, Indore - 452089, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "RT0294",
+      "printed": "RT0294"
+    },
+    "invoice_date": {
+      "value": "2026-10-27",
+      "printed": "27/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1412",
+      "printed": "PO-2026-1412"
+    },
+    "line_items": [
+      {
+        "description": "In-store Promotional Posters A2",
+        "hsn_sac": "4911",
+        "quantity": 735,
+        "unit": "Nos",
+        "unit_price": 69.5,
+        "amount": 51082.5,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Visiting Cards (Box of 100)",
+        "hsn_sac": "4911",
+        "quantity": 27,
+        "unit": "Box",
+        "unit_price": 295.0,
+        "amount": 7965.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Roll-up Standee with Print",
+        "hsn_sac": "4911",
+        "quantity": 13,
+        "unit": "Nos",
+        "unit_price": 2150.0,
+        "amount": 27950.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 86997.5,
+      "printed": "Rs. 86,997.50"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 15659.55,
+      "printed": "Rs. 15,659.55"
+    },
+    "round_off": {
+      "value": -0.05,
+      "printed": "-0.05"
+    },
+    "total_amount": {
+      "value": 102657.0,
+      "printed": "Rs. 1,02,657/-"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "228159968698800",
+      "printed": "228159968698800"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0327008",
+      "printed": "IDFB0327008"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.44412,
+        0.04969,
+        0.55588,
+        0.06275
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.08096,
+        0.40913,
+        0.0907
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.70654,
+        0.12717,
+        0.75198,
+        0.13691
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.67625,
+        0.14032,
+        0.75198,
+        0.15006
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.6611,
+        0.15346,
+        0.75198,
+        0.1632
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.2211,
+        0.40913,
+        0.23084
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.65353,
+        0.3423,
+        0.75198,
+        0.35204
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.65353,
+        0.35642,
+        0.75198,
+        0.36616
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.62656,
+        0.38335,
+        0.75198,
+        0.39487
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.30685,
+        0.43963,
+        0.41353,
+        0.44878
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.29263,
+        0.45198,
+        0.37086,
+        0.46112
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BANK_DETAILS_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1412",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Rao Traders",
+    "template": "receipt"
+  },
+  "notes": "Bank details on the invoice differ from the vendor master. Held-out layout/image type."
+}

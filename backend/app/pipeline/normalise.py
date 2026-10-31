@@ -12,7 +12,7 @@ from decimal import Decimal, InvalidOperation
 
 # ---------------------------------------------------------------- amounts
 
-_CURRENCY = re.compile(r"(₹|rs\.?|inr|रु\.?|रू\.?|/-|\s)", re.IGNORECASE)
+_CURRENCY = re.compile(r"(₹|rs\.?|inr|रु\.?|रू\.?|\$|usd|/-|\s)", re.IGNORECASE)
 # Hindi invoices may print Devanagari digits (१,१८,०००); they mean exactly the same numbers
 _DEVANAGARI_DIGITS = str.maketrans("०१२३४५६७८९", "0123456789")
 _AMOUNT = re.compile(r"-?\d{1,3}(,\d{2})*,\d{3}(\.\d+)?|-?\d+(\.\d+)?")

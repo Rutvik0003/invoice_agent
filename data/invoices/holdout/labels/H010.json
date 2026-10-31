@@ -1,0 +1,200 @@
+{
+  "invoice_id": "H010",
+  "file_name": "H010.jpg",
+  "set_name": "holdout",
+  "scenario": "CLEAN_EXACT",
+  "template": "receipt",
+  "is_scanned": true,
+  "scan_level": "photo",
+  "file_format": "jpg",
+  "degradations": [
+    "phone_photo"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Suvidha Facility Servs. Pvt. Ltd.",
+      "printed": "Suvidha Facility Servs. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27LTJCS8824F1ZN",
+      "printed": "27LTJCS8824F1ZN"
+    },
+    "vendor_address": {
+      "value": "H.No. 01, Andra Street, Thane - 400066, Maharashtra",
+      "printed": "H.No. 01, Andra Street, Thane - 400066, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026-27/420",
+      "printed": "2026-27/420"
+    },
+    "invoice_date": {
+      "value": "2026-10-23",
+      "printed": "2026-10-23"
+    },
+    "po_reference": {
+      "value": "PO-2026-1398",
+      "printed": "PO-2026-1398"
+    },
+    "line_items": [
+      {
+        "description": "Facility Manager Deployment",
+        "hsn_sac": "998519",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 55550.0,
+        "amount": 55550.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Garden Maintenance",
+        "hsn_sac": "998534",
+        "quantity": 1,
+        "unit": "Month",
+        "unit_price": 20250.0,
+        "amount": 20250.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 75800.0,
+      "printed": "₹75,800.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 6822.0,
+      "printed": "₹6,822.00"
+    },
+    "sgst": {
+      "value": 6822.0,
+      "printed": "₹6,822.00"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 89444.0,
+      "printed": "₹89,444.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Eighty Nine Thousand Four Hundred Forty Four Only",
+      "printed": "Rupees Eighty Nine Thousand Four Hundred Forty Four Only"
+    },
+    "bank_account": {
+      "value": "282404859",
+      "printed": "282404859"
+    },
+    "bank_ifsc": {
+      "value": "YESB0531342",
+      "printed": "YESB0531342"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {},
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1398",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Suvidha Facility Servs. Pvt. Ltd.",
+    "template": "receipt"
+  },
+  "notes": "Clean invoice that exactly matches its PO. Held-out layout/image type."
+}

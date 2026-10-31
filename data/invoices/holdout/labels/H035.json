@@ -1,0 +1,304 @@
+{
+  "invoice_id": "H035",
+  "file_name": "H035.png",
+  "set_name": "holdout",
+  "scenario": "QTY_EXCEEDS_PO",
+  "template": "stacked",
+  "is_scanned": true,
+  "scan_level": "web",
+  "file_format": "png",
+  "degradations": [
+    "web_lowres"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Akshar Furniture Pvt. Ltd.",
+      "printed": "Akshar Furniture Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "36FWLCA1691Q1ZM",
+      "printed": "36FWLCA1691Q1ZM"
+    },
+    "vendor_address": {
+      "value": "500, Manne Marg, Secunderabad - 500021, Telangana",
+      "printed": "500, Manne Marg, Secunderabad - 500021, Telangana"
+    },
+    "vendor_state": {
+      "value": "Telangana",
+      "printed": "Telangana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/AF/1584",
+      "printed": "2026/AF/1584"
+    },
+    "invoice_date": {
+      "value": "2026-10-14",
+      "printed": "14-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1422",
+      "printed": "PO-2026-1422"
+    },
+    "line_items": [
+      {
+        "description": "Visitor Chair - Cantilever",
+        "hsn_sac": "9401",
+        "quantity": 41,
+        "unit": "Nos",
+        "unit_price": 4700.0,
+        "amount": 192700.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 192700.0,
+      "printed": "₹1,92,700.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 34686.0,
+      "printed": "₹34,686.00"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 227386.0,
+      "printed": "₹2,27,386.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "3708415157748",
+      "printed": "3708415157748"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0202471",
+      "printed": "UTIB0202471"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.0335,
+        0.39841,
+        0.05141
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11072,
+        0.08045,
+        0.24467,
+        0.08997
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.14728,
+        0.17387,
+        0.15792
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.24032,
+        0.14728,
+        0.31516,
+        0.15792
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.41344,
+        0.14728,
+        0.52055,
+        0.15792
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11721,
+        0.23293,
+        0.23806,
+        0.24189
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.66943,
+        0.20917,
+        0.7718,
+        0.21813
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.65326,
+        0.222,
+        0.73046,
+        0.23096
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.83624,
+        0.34168,
+        0.91937,
+        0.3512
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.84897,
+        0.36187,
+        0.91937,
+        0.37139
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.80156,
+        0.37988,
+        0.91937,
+        0.39219
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "QTY_EXCEEDS_PO"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1422",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": false,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Akshar Furniture Pvt. Ltd.",
+    "template": "stacked"
+  },
+  "notes": "'Visitor Chair - Cantilever': billed 41, PO has 38. Held-out layout/image type."
+}

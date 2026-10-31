@@ -1,6 +1,6 @@
 """Evaluate AI extraction against label ground truth.
 
-Usage: python backend/scripts/eval_extraction.py --set golden|stress|real_world --model gemini|groq|both
+Usage: python backend/scripts/eval_extraction.py --set golden|stress|holdout|real_world --model gemini|groq|both
            [--sample N] [--delay 13] [--no-cache]
 
 Resumable: results are cached by (file hash, model), so a re-run only calls the model for files not done yet.
@@ -104,7 +104,7 @@ def pct(n: int, d: int) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--set", default="golden", choices=["golden", "stress", "real_world"])
+    parser.add_argument("--set", default="golden", choices=["golden", "stress", "holdout", "real_world"])
     parser.add_argument("--model", default="both", choices=["gemini", "groq", "both"])
     parser.add_argument("--sample", type=int, default=None)
     parser.add_argument("--delay", type=float, default=13.0, help="seconds to wait after each real model call")

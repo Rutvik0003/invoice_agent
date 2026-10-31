@@ -1,0 +1,321 @@
+{
+  "invoice_id": "H033",
+  "file_name": "H033.pdf",
+  "set_name": "holdout",
+  "scenario": "BUYER_MISMATCH",
+  "template": "bilingual",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_197",
+    "coffee_stain",
+    "signature",
+    "rotation_+1.2deg",
+    "blur_0.7",
+    "noise_5",
+    "jpeg_q61"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Mody Tech. Pvt. Ltd.",
+      "printed": "Mody Tech. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27ADOCM2335H1Z6",
+      "printed": "27ADOCM2335H1Z6"
+    },
+    "vendor_address": {
+      "value": "992, Yadav Ganj, Thane - 400084, Maharashtra",
+      "printed": "992, Yadav Ganj, Thane - 400084, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Sahyadri Supermart Pvt Ltd",
+      "printed": "Sahyadri Supermart Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27ZSNCS3174Z1Z9",
+      "printed": "27ZSNCS3174Z1Z9"
+    },
+    "invoice_number": {
+      "value": "MT/26-27/1228",
+      "printed": "MT/26-27/1228"
+    },
+    "invoice_date": {
+      "value": "2026-10-09",
+      "printed": "October 9, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1427",
+      "printed": "PO-2026-1427"
+    },
+    "line_items": [
+      {
+        "description": "Cybersecurity Audit",
+        "hsn_sac": "998313",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 128750.0,
+        "amount": 128750.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 128750.0,
+      "printed": "Rs. 1,28,750/-"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 11587.5,
+      "printed": "Rs. 11,587.50"
+    },
+    "sgst": {
+      "value": 11587.5,
+      "printed": "Rs. 11,587.50"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 151925.0,
+      "printed": "Rs. 1,51,925/-"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Fifty One Thousand Nine Hundred Twenty Five Only",
+      "printed": "Rupees One Lakh Fifty One Thousand Nine Hundred Twenty Five Only"
+    },
+    "bank_account": {
+      "value": "850467706523111213",
+      "printed": "850467706523111213"
+    },
+    "bank_ifsc": {
+      "value": "IDFB0114976",
+      "printed": "IDFB0114976"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.05522,
+        0.10481,
+        0.25237,
+        0.12122
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.10655,
+        0.14902,
+        0.23133,
+        0.15987
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.7106,
+        0.09343,
+        0.81356,
+        0.10451
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.71139,
+        0.11946,
+        0.82104,
+        0.13063
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.71218,
+        0.14579,
+        0.80829,
+        0.15675
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11061,
+        0.28333,
+        0.22737,
+        0.29405
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.83705,
+        0.36486,
+        0.92909,
+        0.37575
+      ],
+      "approximate": true
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.84278,
+        0.381,
+        0.92958,
+        0.39183
+      ],
+      "approximate": true
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.84327,
+        0.39715,
+        0.93007,
+        0.40798
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.81791,
+        0.42814,
+        0.93106,
+        0.44104
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11921,
+        0.49077,
+        0.25232,
+        0.50118
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10442,
+        0.50396,
+        0.17588,
+        0.51344
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1427",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rs_slash",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Mody Tech. Pvt. Ltd.",
+    "template": "bilingual"
+  },
+  "notes": "Addressed to Sahyadri Supermart Pvt Ltd (27ZSNCS3174Z1Z9), not Zenith Retail. Held-out layout/image type."
+}

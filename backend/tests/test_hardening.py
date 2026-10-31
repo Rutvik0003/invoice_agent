@@ -224,7 +224,7 @@ def test_tesseract_timeout_run_completes_with_warning(tmp_path, monkeypatch):
 
     monkeypatch.setattr(pytesseract, "image_to_data", slow)
     _assert_completed_without_ocr(_run_scan(tmp_path, Settings(_env_file=None)))
-    assert seen["timeout"] == ocr.OCR_TIMEOUT_S == 20
+    assert seen["timeout"] == ocr.pass_timeout(ocr.available_cpus())
 
 
 def test_verification_disabled_run_completes_with_warning(tmp_path):
@@ -397,14 +397,127 @@ def test_phone_photo_gets_the_expected_decision_or_a_careful_hold(sample):
         assert {"FIELD_NOT_VERIFIED", "ARITHMETIC_UNCERTAIN", "LOW_CONFIDENCE_FIELD"} & set(result.codes)
 
 
-def test_ocr_passes_fit_the_cpu_budget(monkeypatch):
+def test_every_machine_runs_every_ocr_pass_within_its_memory(monkeypatch):
+    """Accuracy first: small machines run the same passes one after another instead of skipping any."""
     from app.verification import ocr
 
-    assert ocr.passes_for(16) == ocr.OCR_PASSES
-    assert len(ocr.passes_for(0.5)) == 2 and len(ocr.passes_for(0.1)) == 1
-    assert ocr.passes_for(0.1)[0] == (False, 3)  # the cheapest, most productive pass is always kept
-    monkeypatch.setattr(ocr.os, "cpu_count", lambda: 3)
+    assert ocr.parallel_passes(16, None) == 5
+    assert ocr.parallel_passes(16, 512) == 2  # the server + 2 Tesseract processes stay well under 512 MB
+    assert ocr.parallel_passes(16, 2048) == 5
+    assert ocr.parallel_passes(0.1, 512) == 1 and ocr.parallel_passes(0.5, 512) == 1  # Render free / Starter
+    assert ocr.pass_timeout(16) == 20 and ocr.pass_timeout(0.5) == 40 and ocr.pass_timeout(0.1) == 200
     real_read = Path.read_text
-    monkeypatch.setattr(Path, "read_text", lambda self, *a, **k: "10000 100000" if self.as_posix() == "/sys/fs/cgroup/cpu.max"
+    fake = {"/sys/fs/cgroup/cpu.max": "10000 100000", "/sys/fs/cgroup/memory.max": "536870912"}
+    monkeypatch.setattr(Path, "read_text", lambda self, *a, **k: fake[self.as_posix()] if self.as_posix() in fake
                         else real_read(self, *a, **k))
-    assert ocr.available_cpus() == 0.1  # Render free instance: the container quota wins over the host's cores
+    assert ocr.available_cpus() == 0.1 and ocr.available_memory_mb() == 512  # read from the container's cgroup
+
+
+def test_one_failed_ocr_pass_keeps_the_words_of_the_others(monkeypatch):
+    from PIL import Image
+
+    from app.verification import ocr
+
+    calls = []
+
+    def flaky(image, config, output_type, timeout):
+        calls.append(config)
+        if "psm 11" in config:
+            raise RuntimeError("Tesseract process timeout")
+        return {"text": ["INV-1"], "conf": [90], "left": [10], "top": [10], "width": [50], "height": [12],
+                "block_num": [1], "par_num": [1], "line_num": [1]}
+
+    monkeypatch.setattr(pytesseract, "image_to_data", flaky)
+    page = ocr.ocr_image(Image.new("RGB", (400, 300), "white"), 1, Settings(_env_file=None))
+    assert len(calls) == len(ocr.OCR_PASSES) and page.source == "ocr" and {w.text for w in page.words} == {"INV-1"}
+
+
+def test_small_images_are_enlarged_for_ocr_and_dollar_amounts_parse():
+    import io
+
+    from PIL import Image
+
+    from app.verification.verify import MIN_OCR_SIDE, ocr_page_image
+
+    buf = io.BytesIO()
+    Image.new("RGB", (465, 659), "white").save(buf, "PNG")
+    image = ocr_page_image(buf.getvalue(), "image/png", None, 0, Settings(_env_file=None))
+    assert max(image.size) == MIN_OCR_SIDE
+    assert parse_amount("$2,338.35") == parse_amount("USD 2338.35") == parse_amount("₹2,338.35")
+
+
+def test_page_words_cached_by_an_older_ocr_version_are_read_again(tmp_path, monkeypatch):
+    """A user's re-upload kept showing CGST/SGST 'not found': the words came from a cache made before an OCR fix."""
+    from sqlalchemy.orm import Session
+
+    from app.db import make_engine
+    from app.models import Base, PageWordsCache
+    from app.verification import verify as verify_mod
+    from app.verification.page_text import PageWords, Word
+
+    engine = make_engine(f"sqlite:///{(tmp_path / 'cache.db').as_posix()}")
+    Base.metadata.create_all(engine)
+    stale = PageWords(1, "ocr", [Word("old", (0, 0, 0.1, 0.1), (0, 1, 1, 1), 90.0)])
+    with Session(engine) as session:  # written by the previous version: no version stamp
+        session.add(PageWordsCache(file_hash="h", page=1, words_json=stale.to_json()))
+        session.commit()
+    monkeypatch.setattr(verify_mod, "ocr_image",
+                        lambda image, page_no, settings, **k: PageWords(page_no, "ocr", [Word("54.77", (0, 0, .1, .1), (0, 1, 1, 1), 90.0)]))
+    png = _png((300, 400))
+    first = verify_mod.collect_page_words(png, "image/png", Settings(_env_file=None), engine, "h")
+    assert [w.text for w in first[0].words] == ["54.77"]  # stale entry ignored, OCR ran again
+    monkeypatch.setattr(verify_mod, "ocr_image", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no OCR")))
+    again = verify_mod.collect_page_words(png, "image/png", Settings(_env_file=None), engine, "h")
+    assert [w.text for w in again[0].words] == ["54.77"]  # the fresh entry is reused
+    engine.dispose()
+
+
+def test_cord_labels_keep_printed_text_and_rupiah_value():
+    import sys
+
+    from app.config import REPO_ROOT
+
+    sys.path.insert(0, str(REPO_ROOT / "backend" / "scripts"))
+    from fetch_cord import idr_value, label_for
+
+    assert idr_value("Rp. 111,000") == idr_value("111.000") == idr_value("111000") == 111000
+    assert idr_value(None) is None
+    label = label_for(7, {"sub_total": {"subtotal_price": "100,909"}, "total": {"total_price": "Rp. 111,000"}})
+    assert label["invoice_id"] == "cord_test_007"
+    assert label["ground_truth"]["total_amount"] == {"value": 111000.0, "printed": "Rp. 111,000"}
+    assert label["ground_truth"]["subtotal"] == {"value": 100909.0, "printed": "100,909"}
+    missing = label_for(9, {"sub_total": {"subtotal_price": ["36000", "36000"]}, "total": {"cashprice": "50000"}})
+    assert missing["ground_truth"]["total_amount"] == {"value": None, "printed": None}  # not printed = null
+    assert missing["ground_truth"]["subtotal"]["value"] == 36000.0
+
+
+def test_adaptive_threshold_recovers_faint_print_on_a_shaded_page():
+    """Faded thermal print on a page darkening from left to right: one global threshold loses the faint text on
+    the bright side or blackens the shaded side; a local threshold keeps the text and drops the shading."""
+    import numpy as np
+    from PIL import Image
+
+    from app.verification.ocr import adaptive_threshold
+
+    shade = np.tile(np.linspace(230, 120, 300), (100, 1))  # background: bright -> dark
+    page = shade.copy()
+    page[40:60, 20:280] -= 30  # a faint stroke, only 30 levels darker than its surroundings
+    out = np.asarray(adaptive_threshold(Image.fromarray(page.astype(np.uint8))))
+    assert (out[45:55, 30:270] == 0).mean() > 0.9  # the stroke is ink everywhere along the page
+    assert (out[5:30, :] == 255).mean() > 0.99 and (out[70:95, :] == 255).mean() > 0.99  # the shading is gone
+
+
+def test_adaptive_pass_is_skipped_when_its_image_is_mostly_noise():
+    """On a heavy, speckled scan the thresholded image is mostly black dots: the pass read nothing there but took
+    ~5x longer and ~100 MB more memory, so it is skipped; clean pages keep it."""
+    import numpy as np
+    from PIL import Image
+
+    from app.verification import ocr
+
+    rng = np.random.default_rng(1)
+    clean = np.full((200, 300), 235, np.uint8)
+    clean[90:100, 20:280] = 120  # one line of text
+    noisy = np.clip(rng.normal(180, 45, (200, 300)), 0, 255).astype(np.uint8)  # speckle everywhere
+    assert "adaptive" in ocr.variants(Image.fromarray(clean), {"sharp", "adaptive"})
+    assert "adaptive" not in ocr.variants(Image.fromarray(noisy), {"sharp", "adaptive"})

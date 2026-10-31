@@ -1,0 +1,229 @@
+{
+  "invoice_id": "H014",
+  "file_name": "H014.jpg",
+  "set_name": "holdout",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "stacked",
+  "is_scanned": true,
+  "scan_level": "photo",
+  "file_format": "jpg",
+  "degradations": [
+    "phone_photo"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Nexa Industries Private Limited",
+      "printed": "Nexa Industries Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "27CNUCN5911H2Z7",
+      "printed": "27 CNUCN 5911 H2Z7"
+    },
+    "vendor_address": {
+      "value": "17, Mani Zila, Bhiwandi - 421022, Maharashtra",
+      "printed": "17, Mani Zila, Bhiwandi - 421022, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "NI/902/26",
+      "printed": "NI/902/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-13",
+      "printed": "October 13, 2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1407",
+      "printed": "PO-2026-1407"
+    },
+    "line_items": [
+      {
+        "description": "Buttons - Polyester (Gross)",
+        "hsn_sac": "9606",
+        "quantity": 37,
+        "unit": "Gross",
+        "unit_price": 170.0,
+        "amount": 6290.0,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "MDF Board 18mm",
+        "hsn_sac": "4411",
+        "quantity": 4,
+        "unit": "Sheet",
+        "unit_price": 2250.0,
+        "amount": 9000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Mild Steel Sheet 1.2mm",
+        "hsn_sac": "7209",
+        "quantity": 832,
+        "unit": "Kg",
+        "unit_price": 66.95,
+        "amount": 55702.4,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Synthetic Enamel Paint",
+        "hsn_sac": "3208",
+        "quantity": 31,
+        "unit": "Ltr",
+        "unit_price": 265.0,
+        "amount": 8215.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Denim Fabric 12 oz",
+        "hsn_sac": "5209",
+        "quantity": 18,
+        "unit": "Mtr",
+        "unit_price": 280.0,
+        "amount": 5040.0,
+        "tax_rate": 5.0
+      }
+    ],
+    "subtotal": {
+      "value": 84247.4,
+      "printed": "₹84,247.40"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 6845.82,
+      "printed": "₹6,845.82"
+    },
+    "sgst": {
+      "value": 6845.82,
+      "printed": "₹6,845.82"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": -0.04,
+      "printed": "-0.04"
+    },
+    "total_amount": {
+      "value": 97939.0,
+      "printed": "₹97,939.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Ninety Seven Thousand Nine Hundred Thirty Nine Only",
+      "printed": "Rupees Ninety Seven Thousand Nine Hundred Thirty Nine Only"
+    },
+    "bank_account": {
+      "value": "691684955076",
+      "printed": "691684955076"
+    },
+    "bank_ifsc": {
+      "value": "HDFC0219371",
+      "printed": "HDFC0219371"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {},
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1407",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "Month d, yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Nexa Industries Private Limited",
+    "template": "stacked"
+  },
+  "notes": "'Mild Steel Sheet 1.2mm' billed at ₹66.95 vs PO ₹65.00 (+3%). Held-out layout/image type."
+}

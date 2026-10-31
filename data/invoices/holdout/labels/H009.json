@@ -1,0 +1,318 @@
+{
+  "invoice_id": "H009",
+  "file_name": "H009.pdf",
+  "set_name": "holdout",
+  "scenario": "CLEAN_WITHIN_TOLERANCE",
+  "template": "bilingual",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_180",
+    "rotation_+0.7deg",
+    "blur_0.6",
+    "noise_4",
+    "jpeg_q72"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Tax Invoice"
+    },
+    "vendor_name": {
+      "value": "Vriddhi Enterprises",
+      "printed": "Vriddhi Enterprises"
+    },
+    "vendor_gstin": {
+      "value": "33UKBPC2992J2ZP",
+      "printed": "33UKBPC2992J2ZP"
+    },
+    "vendor_address": {
+      "value": "91/448, Manne Ganj, Chennai - 600016, Tamil Nadu",
+      "printed": "91/448, Manne Ganj, Chennai - 600016, Tamil Nadu"
+    },
+    "vendor_state": {
+      "value": "Tamil Nadu",
+      "printed": "Tamil Nadu"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "1109",
+      "printed": "1109"
+    },
+    "invoice_date": {
+      "value": "2026-10-24",
+      "printed": "24-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1403",
+      "printed": "PO-2026-1403"
+    },
+    "line_items": [
+      {
+        "description": "Water Tank Cleaning",
+        "hsn_sac": "998533",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 6600.0,
+        "amount": 6600.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Lift Maintenance AMC",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 57250.0,
+        "amount": 57250.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 63850.0,
+      "printed": "63,850"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 11493.0,
+      "printed": "11,493"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 75343.0,
+      "printed": "75,343"
+    },
+    "amount_in_words": {
+      "value": "Rupees Seventy Five Thousand Three Hundred Forty Three Only",
+      "printed": "Rupees Seventy Five Thousand Three Hundred Forty Three Only"
+    },
+    "bank_account": {
+      "value": "460960831845696484",
+      "printed": "460960831845696484"
+    },
+    "bank_ifsc": {
+      "value": "ICIC0154890",
+      "printed": "ICIC0154890"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.06011,
+        0.10342,
+        0.2418,
+        0.11848
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.1109,
+        0.14741,
+        0.23026,
+        0.15744
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.71562,
+        0.09601,
+        0.74925,
+        0.10583
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.71609,
+        0.12184,
+        0.78322,
+        0.13196
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.71656,
+        0.14771,
+        0.81256,
+        0.15809
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11351,
+        0.29349,
+        0.23451,
+        0.30353
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88835,
+        0.39855,
+        0.93119,
+        0.40844
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.88863,
+        0.4147,
+        0.93148,
+        0.4246
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.87649,
+        0.44569,
+        0.93206,
+        0.45738
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11987,
+        0.52027,
+        0.25289,
+        0.52985
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10493,
+        0.533,
+        0.1734,
+        0.54201
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "APPROVE",
+  "acceptable_decisions": [
+    "APPROVE"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_WITHIN_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1403",
+  "knobs": {
+    "title": "Tax Invoice",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Dated",
+    "po_label": "Buyer's Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vriddhi Enterprises",
+    "template": "bilingual"
+  },
+  "notes": "'Lift Maintenance AMC' billed at ₹57250.00 vs PO ₹57050.00 (₹200.00 on the line), inside tolerance. Held-out layout/image type."
+}

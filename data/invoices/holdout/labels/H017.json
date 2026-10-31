@@ -1,0 +1,311 @@
+{
+  "invoice_id": "H017",
+  "file_name": "H017.pdf",
+  "set_name": "holdout",
+  "scenario": "PRICE_OVER_TOLERANCE",
+  "template": "stacked",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_194",
+    "fax",
+    "rubber_stamp",
+    "rotation_-1.4deg",
+    "blur_0.5",
+    "noise_4",
+    "jpeg_q77"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Butala Freight Carriers",
+      "printed": "Butala Freight Carriers"
+    },
+    "vendor_gstin": {
+      "value": "06SKFPB6835W1ZY",
+      "printed": "06SKFPB6835W1ZY"
+    },
+    "vendor_address": {
+      "value": "H.No. 25, Zacharia Chowk, Faridabad - 121009, Haryana",
+      "printed": "H.No. 25, Zacharia Chowk, Faridabad - 121009, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "2026/BFC/865",
+      "printed": "2026/BFC/865"
+    },
+    "invoice_date": {
+      "value": "2026-10-29",
+      "printed": "29-Oct-26"
+    },
+    "po_reference": {
+      "value": "PO-2026-1406",
+      "printed": "PO-2026-1406"
+    },
+    "line_items": [
+      {
+        "description": "Warehousing Charges",
+        "hsn_sac": "996729",
+        "quantity": 1638,
+        "unit": "Sq Ft",
+        "unit_price": 47.7,
+        "amount": 78132.6,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 78132.6,
+      "printed": "₹78,132.60"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 14063.87,
+      "printed": "₹14,063.87"
+    },
+    "round_off": {
+      "value": -0.47,
+      "printed": "-0.47"
+    },
+    "total_amount": {
+      "value": 92196.0,
+      "printed": "₹92,196.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Ninety Two Thousand One Hundred Ninety Six Only",
+      "printed": "Rupees Ninety Two Thousand One Hundred Ninety Six Only"
+    },
+    "bank_account": {
+      "value": "140004184650",
+      "printed": "140004184650"
+    },
+    "bank_ifsc": {
+      "value": "BARB0245997",
+      "printed": "BARB0245997"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.08268,
+        0.02624,
+        0.36946,
+        0.04904
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12486,
+        0.07392,
+        0.25441,
+        0.08564
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.07903,
+        0.13998,
+        0.18584,
+        0.15244
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.2521,
+        0.14294,
+        0.32728,
+        0.15486
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.42517,
+        0.1459,
+        0.53261,
+        0.15837
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.12615,
+        0.22646,
+        0.24727,
+        0.23749
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.67902,
+        0.21215,
+        0.7738,
+        0.22273
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.66242,
+        0.2247,
+        0.743,
+        0.23503
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.85396,
+        0.34769,
+        0.92466,
+        0.35841
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.85327,
+        0.36788,
+        0.92397,
+        0.3786
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.82208,
+        0.40556,
+        0.92267,
+        0.41958
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "PRICE_VARIANCE_OVER_TOLERANCE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1406",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Bill No.",
+    "date_label": "Date",
+    "po_label": "Your Order No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Butala Freight Carriers",
+    "template": "stacked"
+  },
+  "notes": "'Warehousing Charges' billed at ₹47.70 vs PO ₹45.00 (+6%). Held-out layout/image type."
+}

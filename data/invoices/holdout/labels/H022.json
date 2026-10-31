@@ -1,0 +1,202 @@
+{
+  "invoice_id": "H022",
+  "file_name": "H022.jpg",
+  "set_name": "holdout",
+  "scenario": "BUYER_MISMATCH",
+  "template": "receipt",
+  "is_scanned": true,
+  "scan_level": "photo",
+  "file_format": "jpg",
+  "degradations": [
+    "phone_photo"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "GST Invoice"
+    },
+    "vendor_name": {
+      "value": "Vardhan Traders",
+      "printed": "Vardhan Traders"
+    },
+    "vendor_gstin": {
+      "value": "32PGNPB5751A1ZJ",
+      "printed": "32 PGNPB 5751 A1ZJ"
+    },
+    "vendor_address": {
+      "value": "00, Prabhu Circle, Thiruvananthapuram - 695090, Kerala",
+      "printed": "00, Prabhu Circle, Thiruvananthapuram - 695090, Kerala"
+    },
+    "vendor_state": {
+      "value": "Kerala",
+      "printed": "Kerala"
+    },
+    "buyer_name": {
+      "value": "Sahyadri Supermart Pvt Ltd",
+      "printed": "Sahyadri Supermart Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27IWPCS4992J1Z0",
+      "printed": "27 IWPCS 4992 J1Z0"
+    },
+    "invoice_number": {
+      "value": "VT/273/26",
+      "printed": "VT/273/26"
+    },
+    "invoice_date": {
+      "value": "2026-10-21",
+      "printed": "21/10/2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1425",
+      "printed": "PO-2026-1425"
+    },
+    "line_items": [
+      {
+        "description": "Part Truck Load Freight",
+        "hsn_sac": "996511",
+        "quantity": 1231,
+        "unit": "Kg",
+        "unit_price": 9.5,
+        "amount": 11694.5,
+        "tax_rate": 5.0
+      },
+      {
+        "description": "Reverse Logistics Pickup",
+        "hsn_sac": "996812",
+        "quantity": 330,
+        "unit": "Shipment",
+        "unit_price": 93.0,
+        "amount": 30690.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 42384.5,
+      "printed": "₹42,384.50"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 6108.93,
+      "printed": "₹6,108.93"
+    },
+    "round_off": {
+      "value": -0.43,
+      "printed": "-0.43"
+    },
+    "total_amount": {
+      "value": 48493.0,
+      "printed": "₹48,493.00"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "458510470633383251",
+      "printed": "458510470633383251"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0898882",
+      "printed": "UTIB0898882"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {},
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BUYER_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1425",
+  "knobs": {
+    "title": "GST Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "P.O. Ref",
+    "po_in_notes": false,
+    "date_style": "dd/mm/yyyy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Vardhan Traders",
+    "template": "receipt"
+  },
+  "notes": "Addressed to Sahyadri Supermart Pvt Ltd (27IWPCS4992J1Z0), not Zenith Retail. Held-out layout/image type."
+}

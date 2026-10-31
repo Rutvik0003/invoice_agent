@@ -31,7 +31,7 @@ def get_run_or_404(session: Session, run_id: str) -> Run:
 def sample_labels() -> dict[str, dict]:
     """Every generated invoice's label, keyed by invoice id (golden first)."""
     out: dict[str, dict] = {}
-    for set_name in ("golden", "stress"):
+    for set_name in ("golden", "stress", "holdout"):
         for path in sorted((INVOICE_DIR / set_name / "labels").glob("*.json")):
             label = json.loads(path.read_text(encoding="utf-8"))
             if (INVOICE_DIR / set_name / label["file_name"]).exists():

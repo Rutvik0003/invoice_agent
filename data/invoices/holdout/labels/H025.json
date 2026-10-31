@@ -1,0 +1,328 @@
+{
+  "invoice_id": "H025",
+  "file_name": "H025.pdf",
+  "set_name": "holdout",
+  "scenario": "BANK_CHANGE",
+  "template": "receipt",
+  "is_scanned": true,
+  "scan_level": "mild",
+  "file_format": "pdf",
+  "degradations": [
+    "mild_scan",
+    "dpi_169",
+    "fax",
+    "rotation_-1.4deg",
+    "blur_0.7",
+    "noise_6",
+    "jpeg_q74"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "TAX INVOICE"
+    },
+    "vendor_name": {
+      "value": "Prism Digital Systems Private Limited",
+      "printed": "Prism Digital Systems Private Limited"
+    },
+    "vendor_gstin": {
+      "value": "19JXOCP0232P1ZD",
+      "printed": "19 JXOCP 0232 P1ZD"
+    },
+    "vendor_address": {
+      "value": "11/73, Taneja Zila, Kolkata - 700020, West Bengal",
+      "printed": "11/73, Taneja Zila, Kolkata - 700020, West Bengal"
+    },
+    "vendor_state": {
+      "value": "West Bengal",
+      "printed": "West Bengal"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01481",
+      "printed": "INV-01481"
+    },
+    "invoice_date": {
+      "value": "2026-10-18",
+      "printed": "18 Oct 2026"
+    },
+    "po_reference": {
+      "value": "PO/2026/1413",
+      "printed": "PO/2026/1413"
+    },
+    "line_items": [
+      {
+        "description": "Desktop PC - Core i5, 8GB RAM, 512GB SSD",
+        "hsn_sac": "8471",
+        "quantity": 2,
+        "unit": "Nos",
+        "unit_price": 47000.0,
+        "amount": 94000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Laser Printer - Mono, Duplex",
+        "hsn_sac": "8443",
+        "quantity": 5,
+        "unit": "Nos",
+        "unit_price": 17600.0,
+        "amount": 88000.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Toner Cartridge - Black",
+        "hsn_sac": "8443",
+        "quantity": 3,
+        "unit": "Nos",
+        "unit_price": 4800.0,
+        "amount": 14400.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 196400.0,
+      "printed": "1,96,400"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 35352.0,
+      "printed": "35,352"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 231752.0,
+      "printed": "2,31,752"
+    },
+    "amount_in_words": {
+      "value": null,
+      "printed": null
+    },
+    "bank_account": {
+      "value": "359912194716805153",
+      "printed": "359912194716805153"
+    },
+    "bank_ifsc": {
+      "value": "BARB0634227",
+      "printed": "BARB0634227"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.32731,
+        0.04656,
+        0.70357,
+        0.06615
+      ],
+      "approximate": true
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.30984,
+        0.07753,
+        0.44645,
+        0.08964
+      ],
+      "approximate": true
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.6964,
+        0.13048,
+        0.76488,
+        0.1414
+      ],
+      "approximate": true
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.6808,
+        0.14336,
+        0.76442,
+        0.15455
+      ],
+      "approximate": true
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.67277,
+        0.15637,
+        0.76396,
+        0.16769
+      ],
+      "approximate": true
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.30496,
+        0.21763,
+        0.44158,
+        0.22974
+      ],
+      "approximate": true
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.69649,
+        0.34568,
+        0.75739,
+        0.35647
+      ],
+      "approximate": true
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.71114,
+        0.36006,
+        0.7569,
+        0.37059
+      ],
+      "approximate": true
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.68391,
+        0.38652,
+        0.75596,
+        0.39929
+      ],
+      "approximate": true
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.30869,
+        0.43629,
+        0.43699,
+        0.44766
+      ],
+      "approximate": true
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.29405,
+        0.44839,
+        0.37257,
+        0.45888
+      ],
+      "approximate": true
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "BANK_DETAILS_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1413",
+  "knobs": {
+    "title": "TAX INVOICE",
+    "invoice_no_label": "Invoice No.",
+    "date_label": "Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "d Mon yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": true,
+    "show_amount_in_words": false,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Prism Digital Systems Private Limited",
+    "template": "receipt"
+  },
+  "notes": "Bank details on the invoice differ from the vendor master. Held-out layout/image type."
+}

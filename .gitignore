@@ -23,3 +23,7 @@ Thumbs.db
 
 # Verify images from scripts/verify_one.py
 data/eval_reports/verify/
+
+# CORD v2 receipt photos (CC BY 4.0): fetched by backend/scripts/fetch_cord.py, not stored in git
+data/invoices/real_world/cord_*.jpg
+data/invoices/real_world/labels/cord_*.json

@@ -1,0 +1,320 @@
+{
+  "invoice_id": "H024",
+  "file_name": "H024.pdf",
+  "set_name": "holdout",
+  "scenario": "NOT_AN_INVOICE",
+  "template": "bilingual",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "purchase_order",
+      "printed": "Purchase Order"
+    },
+    "vendor_name": {
+      "value": "Suvidha Facility Servs. Pvt. Ltd.",
+      "printed": "Suvidha Facility Servs. Pvt. Ltd."
+    },
+    "vendor_gstin": {
+      "value": "27LTJCS8824F1ZN",
+      "printed": "27LTJCS8824F1ZN"
+    },
+    "vendor_address": {
+      "value": "H.No. 01, Andra Street, Thane - 400066, Maharashtra",
+      "printed": "H.No. 01, Andra Street, Thane - 400066, Maharashtra"
+    },
+    "vendor_state": {
+      "value": "Maharashtra",
+      "printed": "Maharashtra"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "PO-2026-1430",
+      "printed": "PO-2026-1430"
+    },
+    "invoice_date": {
+      "value": "2026-10-26",
+      "printed": "26-Oct-26"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Fire Extinguisher Refilling",
+        "hsn_sac": "998719",
+        "quantity": 6,
+        "unit": "Nos",
+        "unit_price": 1350.0,
+        "amount": 8100.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Housekeeping Services - Monthly",
+        "hsn_sac": "998533",
+        "quantity": 2,
+        "unit": "Month",
+        "unit_price": 139150.0,
+        "amount": 278300.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Lift Maintenance AMC",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 45950.0,
+        "amount": 45950.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 332350.0,
+      "printed": "₹3,32,350.00"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": 29911.5,
+      "printed": "₹29,911.50"
+    },
+    "sgst": {
+      "value": 29911.5,
+      "printed": "₹29,911.50"
+    },
+    "igst": {
+      "value": null,
+      "printed": null
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 392173.0,
+      "printed": "₹3,92,173.00"
+    },
+    "amount_in_words": {
+      "value": "Rupees Three Lakh Ninety Two Thousand One Hundred Seventy Three Only",
+      "printed": "Rupees Three Lakh Ninety Two Thousand One Hundred Seventy Three Only"
+    },
+    "bank_account": {
+      "value": "282404859",
+      "printed": "282404859"
+    },
+    "bank_ifsc": {
+      "value": "YESB0531342",
+      "printed": "YESB0531342"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.10114,
+        0.3676,
+        0.11458
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11721,
+        0.14503,
+        0.23457,
+        0.15399
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.72282,
+        0.09827,
+        0.81866,
+        0.10779
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.72282,
+        0.1244,
+        0.78978,
+        0.13392
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11721,
+        0.24932,
+        0.23806,
+        0.25828
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.84968,
+        0.37975,
+        0.9328,
+        0.38926
+      ],
+      "approximate": false
+    },
+    "cgst": {
+      "page": 1,
+      "bbox": [
+        0.86241,
+        0.3959,
+        0.9328,
+        0.40542
+      ],
+      "approximate": false
+    },
+    "sgst": {
+      "page": 1,
+      "bbox": [
+        0.86241,
+        0.41206,
+        0.9328,
+        0.42157
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.82571,
+        0.4269,
+        0.9328,
+        0.43809
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.11952,
+        0.4954,
+        0.18596,
+        0.50379
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.10436,
+        0.50742,
+        0.17773,
+        0.51582
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "NOT_A_TAX_INVOICE"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1430",
+  "knobs": {
+    "title": "Purchase Order",
+    "invoice_no_label": "Order No.",
+    "date_label": "Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd-Mon-yy",
+    "amount_style": "rupee_symbol",
+    "tax_per_line": true,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Suvidha Facility Servs. Pvt. Ltd.",
+    "template": "bilingual"
+  },
+  "notes": "Document is a Purchase Order, not a tax invoice; its document number is in invoice_number. Held-out layout/image type."
+}

@@ -1,0 +1,433 @@
+invoice_id,field,source,level,status,matched_text,printed
+H001,vendor_gstin,ocr,mild,verified,33BUZCO2645S1Z8,33BUZCO2645S1Z8
+H001,vendor_name,ocr,mild,verified,Orbit Electric Works Private Limited,Orbit Electric Works Private Limited
+H001,invoice_number,ocr,mild,verified,DC-4257,DC-4257
+H001,invoice_date,ocr,mild,verified,"October 12, 2026","October 12, 2026"
+H001,total_amount,ocr,mild,verified,Rupees One Lakh Fifty Six Thousand Five Hundred Eighty Six Only,"₹1,56,586.00"
+H001,po_reference,ocr,mild,verified,PO-2026-1428,PO-2026-1428
+H001,subtotal,ocr,mild,verified,"%1, 30,200.00","₹1,30,200.00"
+H001,igst,ocr,mild,not_found,,"₹23,886.00"
+H001,bank_account,ocr,mild,verified,738834837327,738834837327
+H001,buyer_gstin,ocr,mild,verified,27RHRCZS469N1Z7,27RHRCZ5469N1Z7
+H002,vendor_gstin,unknown,photo,verified,27CNUCN5911H2Z7,27CNUCN5911H2Z7
+H002,vendor_name,unknown,photo,verified,Nexa Industries Pvt Ltd,Nexa Industries Pvt Ltd
+H002,invoice_number,unknown,photo,verified,NI/901/26,NI/901/26
+H002,invoice_date,unknown,photo,verified,05-Oct-26,05-Oct-26
+H002,total_amount,unknown,photo,verified,"Rs. 69,502/-","Rs. 69,502/-"
+H002,po_reference,unknown,photo,verified,PO-2026-1397,PO-2026-1397
+H002,subtotal,unknown,photo,verified,"Rs. 58,400/-","Rs. 58,400/-"
+H002,cgst,unknown,photo,verified,"Rs. 5,301/-","Rs. 5,301/-"
+H002,sgst,unknown,photo,verified,"Rs. 5,301/-","Rs. 5,301/-"
+H002,bank_account,unknown,photo,verified,691684955076,691684955076
+H002,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H003,vendor_gstin,ocr,web,verified,29FAOCJ6684D2ZT,29FAOCJ6684D2ZT
+H003,vendor_name,ocr,web,verified,Jhaveri Packwell Industries Pvt. Ltd.,Jhaveri Packwell Industries Pvt. Ltd.
+H003,invoice_number,ocr,web,verified,JPI/1568/26,JPI/1568/26
+H003,invoice_date,ocr,web,verified,10 Oct 2026,10 Oct 2026
+H003,total_amount,ocr,web,verified,"Rs. 38,022.60","Rs. 38,022.60"
+H003,po_reference,ocr,web,verified,PO-2026-1415,PO-2026-1415
+H003,subtotal,ocr,web,verified,"Rs. 36,212/-","Rs. 36,212/-"
+H003,cgst,ocr,web,verified,Rs. 905.30,Rs. 905.30
+H003,sgst,ocr,web,verified,Rs. 905.30,Rs. 905.30
+H003,bank_account,ocr,web,verified,977141520,977141520
+H003,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H004,vendor_gstin,text_layer,none,verified,27CNUCN5911H2Z7,27CNUCN5911H2Z7
+H004,vendor_name,text_layer,none,verified,Nexa Industries Pvt Ltd,Nexa Industries Pvt Ltd
+H004,invoice_number,text_layer,none,verified,NI/904/26,NI/904/26
+H004,invoice_date,text_layer,none,verified,"October 24, 2026","October 24, 2026"
+H004,total_amount,text_layer,none,verified,"19,384.50","19,384.50"
+H004,po_reference,text_layer,none,verified,PO-2026-1410,PO-2026-1410
+H004,subtotal,text_layer,none,verified,"18,253.60","18,253.60"
+H004,cgst,text_layer,none,verified,565.45,565.45
+H004,sgst,text_layer,none,verified,565.45,565.45
+H004,bank_account,text_layer,none,verified,931137368207,931137368207
+H004,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H005,vendor_gstin,ocr,mild,verified,07YNRCB166511ZX,07YNRCB1665I1ZX
+H005,vendor_name,ocr,mild,verified,Borah Polymers Pvt. Ltd.,Borah Polymers Pvt. Ltd.
+H005,invoice_number,ocr,mild,verified,PO-2026-1429,PO-2026-1429
+H005,invoice_date,ocr,mild,verified,28-10-2026,28-10-2026
+H005,total_amount,ocr,mild,verified,INR 9739.00,INR 9739.00
+H005,subtotal,ocr,mild,verified,INR 9275.00,INR 9275.00
+H005,igst,ocr,mild,verified,INR 463.75,INR 463.75
+H005,bank_account,ocr,mild,verified,68531535016,68531535016
+H005,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H006,vendor_gstin,unknown,photo,verified,27IKYCN9490Z1ZL,27IKYCN9490Z1ZL
+H006,vendor_name,unknown,photo,verified,Nexa Softech Pvt Ltd,Nexa Softech Pvt Ltd
+H006,invoice_number,unknown,photo,verified,NS/888/26,NS/888/26
+H006,invoice_date,unknown,photo,verified,16/10/2026,16/10/2026
+H006,total_amount,unknown,photo,verified,"2,42,962","2,42,962"
+H006,po_reference,unknown,photo,verified,PO-2026-1402,PO-2026-1402
+H006,subtotal,unknown,photo,verified,"2,05,900","2,05,900"
+H006,cgst,unknown,photo,verified,"18,531","18,531"
+H006,sgst,unknown,photo,verified,"18,531","18,531"
+H006,bank_account,unknown,photo,verified,928712592876178,928712592876178
+H006,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H007,vendor_gstin,ocr,web,verified,27ADOCM2335H1Z6,27ADOCM2335H1Z6
+H007,vendor_name,ocr,web,verified,Mody Technologies Private Limited,Mody Technologies Private Limited
+H007,invoice_number,ocr,web,verified,MT/26-27/1226,MT/26-27/1226
+H007,invoice_date,ocr,web,verified,"October 29, 2026","October 29, 2026"
+H007,total_amount,ocr,web,verified,"2,05,674","2,05,674"
+H007,po_reference,ocr,web,verified,PO/2026/1424,PO/2026/1424
+H007,subtotal,ocr,web,verified,"1,74, 300.00","1,74,300"
+H007,cgst,ocr,web,verified,"15,687","15,687"
+H007,sgst,ocr,web,verified,"15,687","15,687"
+H007,bank_account,ocr,web,verified,850467706523111213,850467706523111213
+H007,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H008,vendor_gstin,text_layer,none,verified,06 QBHPC 6146 O1Z0,06 QBHPC 6146 O1Z0
+H008,vendor_name,text_layer,none,verified,Chacko Packwell Industries,Chacko Packwell Industries
+H008,invoice_number,text_layer,none,verified,INV-01680,INV-01680
+H008,invoice_date,text_layer,none,verified,11-10-2026,11-10-2026
+H008,total_amount,text_layer,none,verified,"10,030","10,030"
+H008,po_reference,text_layer,none,verified,PO-2026-1421,PO-2026-1421
+H008,subtotal,text_layer,none,verified,"8,500","8,500"
+H008,igst,text_layer,none,verified,"1,530","1,530"
+H008,bank_account,text_layer,none,verified,5122763944232,5122763944232
+H008,buyer_gstin,text_layer,none,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H009,vendor_gstin,ocr,mild,verified,33UKBPC2992J2ZP,33UKBPC2992J2ZP
+H009,vendor_name,ocr,mild,verified,Vriddhi Enterprises,Vriddhi Enterprises
+H009,invoice_number,ocr,mild,not_found,,1109
+H009,invoice_date,ocr,mild,not_found,,24-Oct-26
+H009,total_amount,ocr,mild,verified,"75,343","75,343"
+H009,po_reference,ocr,mild,verified,PO-2026-1403,PO-2026-1403
+H009,subtotal,ocr,mild,verified,"63,850","63,850"
+H009,igst,ocr,mild,verified,"11,493","11,493"
+H009,bank_account,ocr,mild,verified,460960831845696484,460960831845696484
+H009,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H010,vendor_gstin,unknown,photo,verified,27LTJCS8824F1ZN,27LTJCS8824F1ZN
+H010,vendor_name,unknown,photo,verified,Suvidha Facility Servs. Pvt. Ltd.,Suvidha Facility Servs. Pvt. Ltd.
+H010,invoice_number,unknown,photo,verified,2026-27/420,2026-27/420
+H010,invoice_date,unknown,photo,verified,2026-10-23,2026-10-23
+H010,total_amount,unknown,photo,verified,Eighty Nine Thousand Four Hundred Forty Four Only,"₹89,444.00"
+H010,po_reference,unknown,photo,verified,PO-2026-1398,PO-2026-1398
+H010,subtotal,unknown,photo,not_found,,"₹75,800.00"
+H010,cgst,unknown,photo,verified,"6,822.00","₹6,822.00"
+H010,sgst,unknown,photo,verified,"6,822.00","₹6,822.00"
+H010,bank_account,unknown,photo,verified,282404859,282404859
+H010,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H011,vendor_gstin,ocr,web,verified,33 BUZCO 2645 S1Z8,33 BUZCO 2645 S1Z8
+H011,vendor_name,ocr,web,verified,Orbit Electric Works Pvt. Ltd.,Orbit Electric Works Pvt. Ltd.
+H011,invoice_number,ocr,web,verified,OEW0432,OEW0432
+H011,invoice_date,ocr,web,verified,"October 6, 2026","October 6, 2026"
+H011,total_amount,ocr,web,verified,"%8,142.00","₹8,142.00"
+H011,po_reference,ocr,web,verified,PO-2026-1394,PO-2026-1394
+H011,subtotal,ocr,web,verified,"6,900.00","₹6,900.00"
+H011,igst,ocr,web,verified,"1,242.00","₹1,242.00"
+H011,bank_account,ocr,web,verified,738834837327,738834837327
+H011,buyer_gstin,ocr,web,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H012,vendor_gstin,text_layer,none,verified,29CSBFP0836M1ZW,29CSBFP0836M1ZW
+H012,vendor_name,text_layer,none,verified,Pinnacle Softech,Pinnacle Softech
+H012,invoice_number,text_layer,none,verified,2026/PS/483,2026/PS/483
+H012,invoice_date,text_layer,none,verified,18-10-2026,18-10-2026
+H012,total_amount,text_layer,none,verified,INR 496662.00,INR 496662.00
+H012,po_reference,text_layer,none,verified,PO-2026-1417,PO-2026-1417
+H012,subtotal,text_layer,none,verified,INR 420900.00,INR 420900.00
+H012,cgst,text_layer,none,verified,INR 37881.00,INR 37881.00
+H012,sgst,text_layer,none,verified,INR 37881.00,INR 37881.00
+H012,bank_account,text_layer,none,verified,595590741871,595590741871
+H012,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H013,vendor_gstin,ocr,mild,verified,27IKYCN9490Z1ZL,27IKYCN9490Z1ZL
+H013,vendor_name,ocr,mild,verified,Nexa Softech Pvt. Ltd.,Nexa Softech Pvt. Ltd.
+H013,invoice_number,ocr,mild,verified,NS/887/26,NS/887/26
+H013,invoice_date,ocr,mild,verified,"October 20, 2026","October 20, 2026"
+H013,total_amount,ocr,mild,verified,"22, 066","22,066"
+H013,po_reference,ocr,mild,verified,PO-2026-1392,PO-2026-1392
+H013,subtotal,ocr,mild,verified,"18, 700","18,700"
+H013,cgst,ocr,mild,verified,"1,683","1,683"
+H013,sgst,ocr,mild,verified,"1,683","1,683"
+H013,bank_account,ocr,mild,verified,928712592876178,928712592876178
+H013,buyer_gstin,ocr,mild,verified,27RHRCZ5469N127,27RHRCZ5469N1Z7
+H014,vendor_gstin,unknown,photo,verified,27 CNUCN 5911 H2Z7,27 CNUCN 5911 H2Z7
+H014,vendor_name,unknown,photo,verified,Nexa Industries Private Limited,Nexa Industries Private Limited
+H014,invoice_number,unknown,photo,verified,NI/902/26,NI/902/26
+H014,invoice_date,unknown,photo,verified,"October 13, 2026","October 13, 2026"
+H014,total_amount,unknown,photo,verified,"%97,939.00","₹97,939.00"
+H014,po_reference,unknown,photo,verified,PO-2026-1407,PO-2026-1407
+H014,subtotal,unknown,photo,verified,"%84,247.40","₹84,247.40"
+H014,cgst,unknown,photo,verified,"6,845.82","₹6,845.82"
+H014,sgst,unknown,photo,verified,"6,845.82","₹6,845.82"
+H014,bank_account,unknown,photo,verified,691684955076,691684955076
+H014,buyer_gstin,unknown,photo,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H015,vendor_gstin,ocr,web,verified,27LTJCS8824F1ZN,27LTJCS8824F1ZN
+H015,vendor_name,ocr,web,verified,Suvidha Facility Services,Suvidha Facility Services
+H015,invoice_number,ocr,web,verified,2026-27/419,2026-27/419
+H015,invoice_date,ocr,web,verified,17 Oct 2026,17 Oct 2026
+H015,total_amount,ocr,web,verified,INR 239457.00,INR 239457.00
+H015,po_reference,ocr,web,verified,PO-2026-1393,PO-2026-1393
+H015,subtotal,ocr,web,verified,INR 202930.00,INR 202930.00
+H015,cgst,ocr,web,verified,INR 18263.70,INR 18263.70
+H015,sgst,ocr,web,verified,INR 18263.70,INR 18263.70
+H015,bank_account,ocr,web,verified,282404859,282404859
+H015,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H016,vendor_gstin,text_layer,none,verified,23TZHPR6790M1Z3,23TZHPR6790M1Z3
+H016,vendor_name,text_layer,none,verified,Rao Traders,Rao Traders
+H016,invoice_number,text_layer,none,verified,RT0294,RT0294
+H016,invoice_date,text_layer,none,verified,27/10/2026,27/10/2026
+H016,total_amount,text_layer,none,verified,"Rs. 1,02,657/-","Rs. 1,02,657/-"
+H016,po_reference,text_layer,none,verified,PO-2026-1412,PO-2026-1412
+H016,subtotal,text_layer,none,verified,"Rs. 86,997.50","Rs. 86,997.50"
+H016,igst,text_layer,none,verified,"Rs. 15,659.55","Rs. 15,659.55"
+H016,bank_account,text_layer,none,verified,228159968698800,228159968698800
+H016,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H017,vendor_gstin,ocr,mild,verified,O6SKFPB6835W1ZY,06SKFPB6835W1ZY
+H017,vendor_name,ocr,mild,verified,Butala Freight Carriers,Butala Freight Carriers
+H017,invoice_number,ocr,mild,verified,2026/BFC/865,2026/BFC/865
+H017,invoice_date,ocr,mild,verified,29-Oct-26,29-Oct-26
+H017,total_amount,ocr,mild,verified,"%92,196.00","₹92,196.00"
+H017,po_reference,ocr,mild,verified,PO-2026-1406,PO-2026-1406
+H017,subtotal,ocr,mild,verified,"78,132.60","₹78,132.60"
+H017,igst,ocr,mild,verified,"14,063.87","₹14,063.87"
+H017,bank_account,ocr,mild,verified,140004184650,140004184650
+H017,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H018,vendor_gstin,unknown,photo,verified,32IAHFS8168A1Z3,32IAHFS8168A1Z3
+H018,vendor_name,unknown,photo,verified,Silverline Distributors,Silverline Distributors
+H018,invoice_number,unknown,photo,verified,S1/867,SI/867
+H018,invoice_date,unknown,photo,verified,"Oct 23, 2026","October 23, 2026"
+H018,total_amount,unknown,photo,verified,"85,668","85,668"
+H018,subtotal,unknown,photo,verified,"72,600:","72,600"
+H018,igst,unknown,photo,verified,"13,068","13,068"
+H018,bank_account,unknown,photo,verified,985434800558358337,985434800558358337
+H018,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H019,vendor_gstin,ocr,web,verified,23KRSFS6433I1ZL,23KRSFS6433I1ZL
+H019,vendor_name,ocr,web,verified,Saxena Trading Co.,Saxena Trading Co.
+H019,invoice_number,ocr,web,verified,SA/590,SA/590
+H019,invoice_date,ocr,web,verified,2026-10-29,2026-10-29
+H019,total_amount,ocr,web,verified,"1,50,509","1,50,509"
+H019,subtotal,ocr,web,verified,"1,27,550","1,27,550"
+H019,igst,ocr,web,verified,"22,959","22,959"
+H019,bank_account,ocr,web,verified,4843552661015654,4843552661015654
+H019,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H020,vendor_gstin,text_layer,none,verified,32PGNPB5751A1ZJ,32PGNPB5751A1ZJ
+H020,vendor_name,text_layer,none,verified,Vardhan Traders,Vardhan Traders
+H020,invoice_number,text_layer,none,verified,VT/272/26,VT/272/26
+H020,invoice_date,text_layer,none,verified,2026-10-29,2026-10-29
+H020,total_amount,text_layer,none,verified,INR 512053.00,INR 512053.00
+H020,po_reference,text_layer,none,verified,PO-2026-1399,PO-2026-1399
+H020,subtotal,text_layer,none,verified,INR 439088.50,INR 439088.50
+H020,igst,text_layer,none,verified,INR 72964.93,INR 72964.93
+H020,bank_account,text_layer,none,verified,458510470633383251,458510470633383251
+H020,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H021,vendor_gstin,ocr,mild,verified,23TZHPR6790M1Z3,23TZHPR6790M1Z3
+H021,vendor_name,ocr,mild,verified,Rao Traders,Rao Traders
+H021,invoice_number,ocr,mild,verified,RTO295,RT0295
+H021,invoice_date,ocr,mild,verified,"October 24, 2026","October 24, 2026"
+H021,total_amount,ocr,mild,verified,INR 720044.00,INR 720044.00
+H021,po_reference,ocr,mild,not_found,,PO-2026-1420
+H021,subtotal,ocr,mild,verified,INR 590200.00,INR 590200.00
+H021,igst,ocr,mild,verified,INR 106236.00,INR 106236.00
+H021,bank_account,ocr,mild,verified,703581970218940,703581970218940
+H021,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H022,vendor_gstin,unknown,photo,verified,32 PGNPB 5751 A1ZJ,32 PGNPB 5751 A1ZJ
+H022,vendor_name,unknown,photo,verified,Vardhan Traders,Vardhan Traders
+H022,invoice_number,unknown,photo,verified,VT/273/26,VT/273/26
+H022,invoice_date,unknown,photo,verified,21/10/2026,21/10/2026
+H022,total_amount,unknown,photo,verified,"248,493.00","₹48,493.00"
+H022,po_reference,unknown,photo,verified,PO-2026-1425,PO-2026-1425
+H022,subtotal,unknown,photo,verified,"%42, 384.50","₹42,384.50"
+H022,igst,unknown,photo,verified,"%6, 108.93","₹6,108.93"
+H022,bank_account,unknown,photo,verified,458510470633383251,458510470633383251
+H022,buyer_gstin,unknown,photo,verified,27 IWPCS 4992 J1Z@,27 IWPCS 4992 J1Z0
+H023,vendor_gstin,ocr,web,not_found,,06VYDCV0800N1ZH
+H023,vendor_name,ocr,web,verified,Varghese Property Services Private Limited,Varghese Property Services Private Limited
+H023,invoice_number,ocr,web,verified,VPS/26-27/1344,VPS/26-27/1344
+H023,invoice_date,ocr,web,verified,2026-10-12,2026-10-12
+H023,total_amount,ocr,web,verified,"Rs. 3,73,253/-","Rs. 3,73,253/-"
+H023,po_reference,ocr,web,verified,PO-2026-1419,PO-2026-1419
+H023,subtotal,ocr,web,verified,"Rs. 2,93,900/-","Rs. 2,93,900/-"
+H023,igst,ocr,web,verified,"Rs. 52,902/-","Rs. 52,902/-"
+H023,bank_account,ocr,web,verified,3261212429713675,3261212429713675
+H023,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H024,vendor_gstin,text_layer,none,verified,27LTJCS8824F1ZN,27LTJCS8824F1ZN
+H024,vendor_name,text_layer,none,verified,Suvidha Facility Servs. Pvt. Ltd.,Suvidha Facility Servs. Pvt. Ltd.
+H024,invoice_number,text_layer,none,verified,PO-2026-1430,PO-2026-1430
+H024,invoice_date,text_layer,none,verified,26-Oct-26,26-Oct-26
+H024,total_amount,text_layer,none,verified,"₹3,92,173.00","₹3,92,173.00"
+H024,subtotal,text_layer,none,verified,"₹3,32,350.00","₹3,32,350.00"
+H024,cgst,text_layer,none,verified,"₹29,911.50","₹29,911.50"
+H024,sgst,text_layer,none,verified,"₹29,911.50","₹29,911.50"
+H024,bank_account,text_layer,none,verified,282404859,282404859
+H024,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H025,vendor_gstin,ocr,mild,verified,19 JXOCP 9232 P1ZD,19 JXOCP 0232 P1ZD
+H025,vendor_name,ocr,mild,verified,Prism Digital Systems Private Limited,Prism Digital Systems Private Limited
+H025,invoice_number,ocr,mild,verified,INV-01481.,INV-01481
+H025,invoice_date,ocr,mild,verified,18 Oct 2026,18 Oct 2026
+H025,total_amount,ocr,mild,verified,"2,31,752","2,31,752"
+H025,po_reference,ocr,mild,verified,P0/2026/1413,PO/2026/1413
+H025,subtotal,ocr,mild,not_found,,"1,96,400"
+H025,igst,ocr,mild,verified,"35,352","35,352"
+H025,bank_account,ocr,mild,verified,359912194716805153,359912194716805153
+H025,buyer_gstin,ocr,mild,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H026,vendor_gstin,unknown,photo,verified,29 CSBFP 0836 M1ZW,29 CSBFP 0836 M1ZW
+H026,vendor_name,unknown,photo,verified,M/s Pinnacle Softech & Co.,M/s Pinnacle Softech & Co.
+H026,invoice_number,unknown,photo,verified,2026/PS/484,2026/PS/484
+H026,invoice_date,unknown,photo,verified,19/10/2026,19/10/2026
+H026,total_amount,unknown,photo,verified,"1,36,762/-","Rs. 1,36,762/-"
+H026,po_reference,unknown,photo,verified,PO-2026-1418,PO-2026-1418
+H026,subtotal,unknown,photo,verified,"Rs. 1,15,900/-","Rs. 1,15,900/-"
+H026,igst,unknown,photo,verified,"Rs. 27,816/-","Rs. 27,816/-"
+H026,bank_account,unknown,photo,verified,595590741871,595590741871
+H026,buyer_gstin,unknown,photo,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H027,vendor_gstin,ocr,web,verified,27IKYCN9490Z1ZL,27IKYCN9490Z1ZL
+H027,vendor_name,ocr,web,verified,Nexa Softech Pvt Ltd,Nexa Softech Pvt Ltd
+H027,invoice_number,ocr,web,verified,NS/889/26,NS/889/26
+H027,invoice_date,ocr,web,verified,16/10/2026,16/10/2026
+H027,total_amount,ocr,web,verified,"1,73,165","1,73,165"
+H027,po_reference,ocr,web,verified,PO-2026-1404,PO-2026-1404
+H027,subtotal,ocr,web,verified,"1,46,750.00","1,46,750"
+H027,cgst,ocr,web,verified,"13,207.50","13,207.50"
+H027,sgst,ocr,web,verified,"13,207.50","13,207.50"
+H027,bank_account,ocr,web,verified,928712592876178,928712592876178
+H027,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H028,vendor_gstin,text_layer,none,verified,27ADOCM2335H1Z6,27ADOCM2335H1Z6
+H028,vendor_name,text_layer,none,verified,Mody Tech. Pvt. Ltd.,Mody Tech. Pvt. Ltd.
+H028,invoice_number,text_layer,none,verified,MT/26-27/1225,MT/26-27/1225
+H028,invoice_date,text_layer,none,verified,"October 11, 2026","October 11, 2026"
+H028,total_amount,text_layer,none,verified,INR 246030.00,INR 246030.00
+H028,po_reference,text_layer,none,verified,PO-2026-1416,PO-2026-1416
+H028,subtotal,text_layer,none,verified,INR 208500.00,INR 208500.00
+H028,igst,text_layer,none,verified,INR 37530.00,INR 37530.00
+H028,bank_account,text_layer,none,verified,850467706523111213,850467706523111213
+H028,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H029,vendor_gstin,ocr,mild,verified,33XJNPS3737V1ZG,33XJNPS3737V1ZG
+H029,vendor_name,ocr,mild,verified,Sapphire Trading Co.,Sapphire Trading Co.
+H029,invoice_number,ocr,mild,verified,SA/566,SA/566
+H029,invoice_date,ocr,mild,verified,2026-10-12,2026-10-12
+H029,total_amount,ocr,mild,verified,"2,93,083","2,93,083"
+H029,subtotal,ocr,mild,verified,"2,48,375","2,48,375"
+H029,igst,ocr,mild,verified,"44,707.50","44,707.50"
+H029,bank_account,ocr,mild,verified,751543801522,751543801522
+H029,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H030,vendor_gstin,unknown,photo,not_found,,09DJPCN6919I1Z5
+H030,vendor_name,unknown,photo,verified,Nirmaan Office Mart Pvt. Ltd.,Nirmaan Office Mart Pvt. Ltd.
+H030,invoice_number,unknown,photo,verified,2026/NOM/1521,2026/NOM/1521
+H030,invoice_date,unknown,photo,verified,15-Oct-26,15-Oct-26
+H030,total_amount,unknown,photo,verified,"%85,961.00","₹85,961.00"
+H030,po_reference,unknown,photo,verified,PO-2026-1400,PO-2026-1400
+H030,subtotal,unknown,photo,not_found,,"₹74,335.00"
+H030,igst,unknown,photo,verified,"213,112.69","₹13,112.69"
+H030,bank_account,unknown,photo,verified,911202032254021828,911202032254021828
+H030,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H031,vendor_gstin,ocr,web,verified,33UKBPC299232zP,33UKBPC2992J2ZP
+H031,vendor_name,ocr,web,verified,Vriddhi Enterprises,Vriddhi Enterprises
+H031,invoice_number,ocr,web,verified,1108,1108
+H031,invoice_date,ocr,web,verified,2026-10-25,2026-10-25
+H031,total_amount,ocr,web,verified,"3,33,232","3,33,232"
+H031,po_reference,ocr,web,verified,PO-2026-1396,PO-2026-1396
+H031,subtotal,ocr,web,verified,"2,82,400","2,82,400"
+H031,igst,ocr,web,verified,"50,832","50,832"
+H031,bank_account,ocr,web,verified,460960831845696484,460960831845696484
+H031,buyer_gstin,ocr,web,verified,27RHRCZS469N1Z7,27RHRCZ5469N1Z7
+H032,vendor_gstin,text_layer,none,verified,19JXOCP0232P1ZD,19JXOCP0232P1ZD
+H032,vendor_name,text_layer,none,verified,Prism Digital Sys. Pvt. Ltd.,Prism Digital Sys. Pvt. Ltd.
+H032,invoice_number,text_layer,none,verified,INV-01480,INV-01480
+H032,invoice_date,text_layer,none,verified,"October 25, 2026","October 25, 2026"
+H032,total_amount,text_layer,none,verified,INR 1326261.00,INR 1326261.00
+H032,po_reference,text_layer,none,verified,PO-2026-1411,PO-2026-1411
+H032,subtotal,text_layer,none,verified,INR 1123950.00,INR 1123950.00
+H032,igst,text_layer,none,verified,INR 202311.00,INR 202311.00
+H032,bank_account,text_layer,none,verified,5155381529960640,5155381529960640
+H032,buyer_gstin,text_layer,none,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H033,vendor_gstin,ocr,mild,verified,27ADOCM2335H1Z6,27ADOCM2335H1Z6
+H033,vendor_name,ocr,mild,verified,Mody Tech. Pvt. Ltd.,Mody Tech. Pvt. Ltd.
+H033,invoice_number,ocr,mild,verified,MT/26-27/1228,MT/26-27/1228
+H033,invoice_date,ocr,mild,verified,"October 9, 2026","October 9, 2026"
+H033,total_amount,ocr,mild,verified,"Rs. 1,51,925/-","Rs. 1,51,925/-"
+H033,po_reference,ocr,mild,verified,PO-2026-1427,PO-2026-1427
+H033,subtotal,ocr,mild,verified,"Rs. 1,28,750/-","Rs. 1,28,750/-"
+H033,cgst,ocr,mild,verified,"Rs. 11,587.50","Rs. 11,587.50"
+H033,sgst,ocr,mild,verified,"Rs. 11,587.50","Rs. 11,587.50"
+H033,bank_account,ocr,mild,verified,850467706523111213,850467706523111213
+H033,buyer_gstin,ocr,mild,verified,27ZSNCS3174Z1Z9,27ZSNCS3174Z1Z9
+H034,vendor_gstin,unknown,photo,verified,@3RWRPS3905Y2ZU,03RWRPS3905Y2ZU
+H034,vendor_name,unknown,photo,verified,Vriddhi Computer World,Vriddhi Computer World
+H034,invoice_number,unknown,photo,verified,vcwe932,VCW0932
+H034,invoice_date,unknown,photo,verified,28 Oct 2026,28 Oct 2026
+H034,total_amount,unknown,photo,verified,"Rs. 3,49,752/-","Rs. 3,49,752/-"
+H034,po_reference,unknown,photo,verified,PO-2026-1405,PO-2026-1405
+H034,subtotal,unknown,photo,verified,"Rs. 2,96,400/-","Rs. 2,96,400/-"
+H034,igst,unknown,photo,verified,"Rs. 53,352/-","Rs. 53,352/-"
+H034,bank_account,unknown,photo,verified,70590412339,70590412339
+H034,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H035,vendor_gstin,ocr,web,verified,36FWLCA1691Q1ZM,36FWLCA1691Q1ZM
+H035,vendor_name,ocr,web,verified,Akshar Furniture Pvt. Ltd.,Akshar Furniture Pvt. Ltd.
+H035,invoice_number,ocr,web,verified,2026/AF/1584,2026/AF/1584
+H035,invoice_date,ocr,web,verified,14-Oct-26,14-Oct-26
+H035,total_amount,ocr,web,verified,"€2,27,386.00","₹2,27,386.00"
+H035,po_reference,ocr,web,verified,PO-2026-1422,PO-2026-1422
+H035,subtotal,ocr,web,verified,"1,92,700.00","₹1,92,700.00"
+H035,igst,ocr,web,verified,"%34,686.00","₹34,686.00"
+H035,bank_account,ocr,web,verified,3708415157748,3708415157748
+H035,buyer_gstin,ocr,web,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H036,vendor_gstin,text_layer,none,verified,27 CNUCN 5911 H2Z7,27 CNUCN 5911 H2Z7
+H036,vendor_name,text_layer,none,verified,Nexa Industries Pvt Ltd,Nexa Industries Pvt Ltd
+H036,invoice_number,text_layer,none,verified,NI/903/26,NI/903/26
+H036,invoice_date,text_layer,none,verified,2026-10-09,2026-10-09
+H036,total_amount,text_layer,none,verified,INR 141351.60,INR 141351.60
+H036,po_reference,text_layer,none,verified,PO-2026-1408,PO-2026-1408
+H036,subtotal,text_layer,none,verified,INR 132808.00,INR 132808.00
+H036,cgst,text_layer,none,verified,INR 4271.80,INR 4271.80
+H036,sgst,text_layer,none,verified,INR 4271.80,INR 4271.80
+H036,bank_account,text_layer,none,verified,691684955076,691684955076
+H036,buyer_gstin,text_layer,none,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H037,vendor_gstin,ocr,mild,not_found,,19JXOCP0232P1ZD
+H037,vendor_name,ocr,mild,verified,Prism Digital Systems Private Limited,Prism Digital Systems Private Limited
+H037,invoice_number,ocr,mild,verified,INV-01482,INV-01482
+H037,invoice_date,ocr,mild,not_found,,09-10-2026
+H037,total_amount,ocr,mild,verified,"Rs. 17,487.60","Rs. 17,487.60"
+H037,po_reference,ocr,mild,verified,PO-2026-1423,PO-2026-1423
+H037,subtotal,ocr,mild,verified,"Rs. 14,820/-","Rs. 14,820/-"
+H037,igst,ocr,mild,verified,"RS. 2,667.68","Rs. 2,667.60"
+H037,bank_account,ocr,mild,verified,864701210278,864701210278
+H037,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H038,vendor_gstin,unknown,photo,verified,O6SKFPB6835W1ZY,06SKFPB6835W1ZY
+H038,vendor_name,unknown,photo,verified,Butala Freight Carriers,Butala Freight Carriers
+H038,invoice_number,unknown,photo,verified,2026/BFC/867,2026/BFC/867
+H038,invoice_date,unknown,photo,verified,7 Oct 2026,7 Oct 2026
+H038,total_amount,unknown,photo,verified,INR 205457.00,INR 205457.00
+H038,po_reference,unknown,photo,verified,PO-2026-1414,PO-2026-1414
+H038,subtotal,unknown,photo,verified,INR 174116.00,INR 174116.00
+H038,cgst,unknown,photo,verified,INR 15670.44,INR 15670.44
+H038,sgst,unknown,photo,verified,INR 15670.44,INR 15670.44
+H038,bank_account,unknown,photo,verified,140004184650,140004184650
+H038,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H039,vendor_gstin,ocr,web,verified,27ADOCM2335H1Z6,27ADOCM2335H1Z6
+H039,vendor_name,ocr,web,verified,Mody Technologies Pvt. Ltd.,Mody Technologies Pvt. Ltd.
+H039,invoice_number,ocr,web,verified,MT/26-27/1227,MT/26-27/1227
+H039,invoice_date,ocr,web,verified,2026-10-19,2026-10-19
+H039,total_amount,ocr,web,verified,"Rs. 77,585/-","Rs. 77,585/-"
+H039,po_reference,ocr,web,verified,PO-2026-1426,PO-2026-1426
+H039,subtotal,ocr,web,verified,"Rs. 65,750/-","Rs. 65,750/-"
+H039,cgst,ocr,web,verified,"Rs. 5,917.50","Rs. 5,917.50"
+H039,sgst,ocr,web,verified,"Rs. 5,917.50","Rs. 5,917.50"
+H039,bank_account,ocr,web,verified,850467706523111213,850467706523111213
+H039,buyer_gstin,ocr,web,verified,27IWXFZ4471S1Z7,27IWXFZ4471S1Z7
+H040,vendor_gstin,text_layer,none,verified,06 QBHPC 6146 O1Z0,06 QBHPC 6146 O1Z0
+H040,vendor_name,text_layer,none,verified,Chacko Packwell Industries,Chacko Packwell Industries
+H040,invoice_number,text_layer,none,verified,INV-01679,INV-01679
+H040,invoice_date,text_layer,none,verified,17 Oct 2026,17 Oct 2026
+H040,total_amount,text_layer,none,verified,INR 79490.70,INR 79490.70
+H040,po_reference,text_layer,none,verified,PO-2026-1401,PO-2026-1401
+H040,subtotal,text_layer,none,verified,INR 67365.00,INR 67365.00
+H040,igst,text_layer,none,verified,INR 12125.70,INR 12125.70
+H040,bank_account,text_layer,none,verified,5122763944232,5122763944232
+H040,buyer_gstin,text_layer,none,verified,27 RHRCZ 5469 N1Z7,27 RHRCZ 5469 N1Z7
+H041,vendor_gstin,ocr,mild,verified,O6SKFPB6835W1ZY.,06SKFPB6835W1ZY
+H041,vendor_name,ocr,mild,verified,Butala Freight Carriers,Butala Freight Carriers
+H041,invoice_number,ocr,mild,verified,2026/BFC/866,2026/BFC/866
+H041,invoice_date,ocr,mild,verified,5 Oct 2026,5 Oct 2026
+H041,total_amount,ocr,mild,verified,Rupees One Lakh Sixty One Thousand Three Hundred Sixty Only Sub Total,"₹1,61,360.00"
+H041,po_reference,ocr,mild,verified,PO-2026-1409,PO-2026-1409
+H041,subtotal,ocr,mild,verified,"1,53,676.00","₹1,53,676.00"
+H041,igst,ocr,mild,verified,"7,683.80","₹7,683.80"
+H041,bank_account,ocr,mild,verified,140004184650,140004184650
+H041,buyer_gstin,ocr,mild,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7
+H042,vendor_gstin,unknown,photo,verified,27ADOCM2335H1Z6,27ADOCM2335H1Z6
+H042,vendor_name,unknown,photo,verified,"Mody Technologies Pvt, Ltd.",Mody Technologies Pvt. Ltd.
+H042,invoice_number,unknown,photo,verified,MT/26-27/1224,MT/26-27/1224
+H042,invoice_date,unknown,photo,verified,10-10-2026,10-10-2026
+H042,total_amount,unknown,photo,verified,"%1,60,624.00","₹1,60,624.00"
+H042,po_reference,unknown,photo,verified,PO-2026-1395,PO-2026-1395
+H042,subtotal,unknown,photo,verified,"%1,38,900.00","₹1,38,900.00"
+H042,cgst,unknown,photo,verified,"212,250.98","₹12,250.98"
+H042,sgst,unknown,photo,verified,"212,250.98","₹12,250.98"
+H042,bank_account,unknown,photo,verified,850467706523111213,850467706523111213
+H042,buyer_gstin,unknown,photo,verified,27RHRCZ5469N1Z7,27RHRCZ5469N1Z7

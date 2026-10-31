@@ -1,0 +1,303 @@
+{
+  "invoice_id": "H008",
+  "file_name": "H008.pdf",
+  "set_name": "holdout",
+  "scenario": "ARITHMETIC_ERROR",
+  "template": "stacked",
+  "is_scanned": false,
+  "scan_level": "none",
+  "file_format": "pdf",
+  "degradations": [],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Chacko Packwell Industries",
+      "printed": "Chacko Packwell Industries"
+    },
+    "vendor_gstin": {
+      "value": "06QBHPC6146O1Z0",
+      "printed": "06 QBHPC 6146 O1Z0"
+    },
+    "vendor_address": {
+      "value": "46/502, Palla Road, Faridabad - 121068, Haryana",
+      "printed": "46/502, Palla Road, Faridabad - 121068, Haryana"
+    },
+    "vendor_state": {
+      "value": "Haryana",
+      "printed": "Haryana"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27 RHRCZ 5469 N1Z7"
+    },
+    "invoice_number": {
+      "value": "INV-01680",
+      "printed": "INV-01680"
+    },
+    "invoice_date": {
+      "value": "2026-10-11",
+      "printed": "11-10-2026"
+    },
+    "po_reference": {
+      "value": "PO-2026-1421",
+      "printed": "PO-2026-1421"
+    },
+    "line_items": [
+      {
+        "description": "Stretch Wrap Film 23 Micron",
+        "hsn_sac": "3920",
+        "quantity": 17,
+        "unit": "Roll",
+        "unit_price": 500.0,
+        "amount": 9010.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 8500.0,
+      "printed": "8,500"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 1530.0,
+      "printed": "1,530"
+    },
+    "round_off": {
+      "value": null,
+      "printed": null
+    },
+    "total_amount": {
+      "value": 10030.0,
+      "printed": "10,030"
+    },
+    "amount_in_words": {
+      "value": "Rupees Ten Thousand Thirty Only",
+      "printed": "Rupees Ten Thousand Thirty Only"
+    },
+    "bank_account": {
+      "value": "5122763944232",
+      "printed": "5122763944232"
+    },
+    "bank_ifsc": {
+      "value": "UTIB0408133",
+      "printed": "UTIB0408133"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.0335,
+        0.40831,
+        0.05141
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11072,
+        0.08045,
+        0.25409,
+        0.08997
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.0672,
+        0.14728,
+        0.14482,
+        0.15792
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.24032,
+        0.14728,
+        0.32685,
+        0.15792
+      ],
+      "approximate": false
+    },
+    "po_reference": {
+      "page": 1,
+      "bbox": [
+        0.41344,
+        0.14728,
+        0.52055,
+        0.15792
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.11721,
+        0.23293,
+        0.2502,
+        0.24189
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.66943,
+        0.20917,
+        0.7718,
+        0.21813
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.65326,
+        0.222,
+        0.73046,
+        0.23096
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.88417,
+        0.34168,
+        0.91937,
+        0.3512
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.88417,
+        0.36187,
+        0.91937,
+        0.37139
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.85844,
+        0.37988,
+        0.91937,
+        0.39219
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "REJECT",
+  "acceptable_decisions": [
+    "REJECT"
+  ],
+  "expected_reason_codes": [
+    "ARITHMETIC_MISMATCH"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": "PO-2026-1421",
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Inv. No.",
+    "date_label": "Inv Date",
+    "po_label": "PO No.",
+    "po_in_notes": false,
+    "date_style": "dd-mm-yyyy",
+    "amount_style": "no_symbol",
+    "tax_per_line": false,
+    "show_round_off": false,
+    "show_amount_in_words": true,
+    "gstin_spaced": true,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "arithmetic_error": "Line 'Stretch Wrap Film 23 Micron' printed as 9010.00 instead of 8500.00; lines no longer sum to the subtotal.",
+    "vendor_name_printed": "Chacko Packwell Industries",
+    "template": "stacked"
+  },
+  "notes": "Line 'Stretch Wrap Film 23 Micron' printed as 9010.00 instead of 8500.00; lines no longer sum to the subtotal. Held-out layout/image type."
+}

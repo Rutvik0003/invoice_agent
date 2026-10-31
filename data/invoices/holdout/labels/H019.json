@@ -1,0 +1,312 @@
+{
+  "invoice_id": "H019",
+  "file_name": "H019.png",
+  "set_name": "holdout",
+  "scenario": "VENDOR_UNKNOWN",
+  "template": "receipt",
+  "is_scanned": true,
+  "scan_level": "web",
+  "file_format": "png",
+  "degradations": [
+    "web_lowres"
+  ],
+  "ground_truth": {
+    "document_type": {
+      "value": "tax_invoice",
+      "printed": "Invoice"
+    },
+    "vendor_name": {
+      "value": "Saxena Trading Co.",
+      "printed": "Saxena Trading Co."
+    },
+    "vendor_gstin": {
+      "value": "23KRSFS6433I1ZL",
+      "printed": "23KRSFS6433I1ZL"
+    },
+    "vendor_address": {
+      "value": "159, Industrial Estate, Bhopal - 462094, Madhya Pradesh",
+      "printed": "159, Industrial Estate, Bhopal - 462094, Madhya Pradesh"
+    },
+    "vendor_state": {
+      "value": "Madhya Pradesh",
+      "printed": "Madhya Pradesh"
+    },
+    "buyer_name": {
+      "value": "Zenith Retail Pvt Ltd",
+      "printed": "Zenith Retail Pvt Ltd"
+    },
+    "buyer_gstin": {
+      "value": "27RHRCZ5469N1Z7",
+      "printed": "27RHRCZ5469N1Z7"
+    },
+    "invoice_number": {
+      "value": "SA/590",
+      "printed": "SA/590"
+    },
+    "invoice_date": {
+      "value": "2026-10-29",
+      "printed": "2026-10-29"
+    },
+    "po_reference": {
+      "value": null,
+      "printed": null
+    },
+    "line_items": [
+      {
+        "description": "Water Tank Cleaning",
+        "hsn_sac": "998533",
+        "quantity": 1,
+        "unit": "Job",
+        "unit_price": 4250.0,
+        "amount": 4250.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "HVAC Annual Maintenance Contract",
+        "hsn_sac": "998719",
+        "quantity": 1,
+        "unit": "Year",
+        "unit_price": 96500.0,
+        "amount": 96500.0,
+        "tax_rate": 18.0
+      },
+      {
+        "description": "Pest Control Treatment",
+        "hsn_sac": "998531",
+        "quantity": 4,
+        "unit": "Visit",
+        "unit_price": 6700.0,
+        "amount": 26800.0,
+        "tax_rate": 18.0
+      }
+    ],
+    "subtotal": {
+      "value": 127550.0,
+      "printed": "1,27,550"
+    },
+    "discount": {
+      "value": null,
+      "printed": null
+    },
+    "other_charges": {
+      "value": null,
+      "printed": null
+    },
+    "cgst": {
+      "value": null,
+      "printed": null
+    },
+    "sgst": {
+      "value": null,
+      "printed": null
+    },
+    "igst": {
+      "value": 22959.0,
+      "printed": "22,959"
+    },
+    "round_off": {
+      "value": 0.0,
+      "printed": "0.00"
+    },
+    "total_amount": {
+      "value": 150509.0,
+      "printed": "1,50,509"
+    },
+    "amount_in_words": {
+      "value": "Rupees One Lakh Fifty Thousand Five Hundred Nine Only",
+      "printed": "Rupees One Lakh Fifty Thousand Five Hundred Nine Only"
+    },
+    "bank_account": {
+      "value": "4843552661015654",
+      "printed": "4843552661015654"
+    },
+    "bank_ifsc": {
+      "value": "KKBK0899292",
+      "printed": "KKBK0899292"
+    },
+    "page_count": {
+      "value": 1,
+      "printed": null
+    }
+  },
+  "field_boxes": {
+    "vendor_name": {
+      "page": 1,
+      "bbox": [
+        0.40856,
+        0.04969,
+        0.59144,
+        0.06275
+      ],
+      "approximate": false
+    },
+    "vendor_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.08096,
+        0.40913,
+        0.0907
+      ],
+      "approximate": false
+    },
+    "invoice_number": {
+      "page": 1,
+      "bbox": [
+        0.70654,
+        0.12717,
+        0.75198,
+        0.13691
+      ],
+      "approximate": false
+    },
+    "invoice_date": {
+      "page": 1,
+      "bbox": [
+        0.67625,
+        0.14032,
+        0.75198,
+        0.15006
+      ],
+      "approximate": false
+    },
+    "buyer_gstin": {
+      "page": 1,
+      "bbox": [
+        0.29553,
+        0.20795,
+        0.40913,
+        0.21769
+      ],
+      "approximate": false
+    },
+    "subtotal": {
+      "page": 1,
+      "bbox": [
+        0.6914,
+        0.32915,
+        0.75198,
+        0.33889
+      ],
+      "approximate": false
+    },
+    "igst": {
+      "page": 1,
+      "bbox": [
+        0.70654,
+        0.34328,
+        0.75198,
+        0.35302
+      ],
+      "approximate": false
+    },
+    "total_amount": {
+      "page": 1,
+      "bbox": [
+        0.68031,
+        0.3702,
+        0.75198,
+        0.38172
+      ],
+      "approximate": false
+    },
+    "bank_account": {
+      "page": 1,
+      "bbox": [
+        0.30685,
+        0.44267,
+        0.42064,
+        0.45181
+      ],
+      "approximate": false
+    },
+    "bank_ifsc": {
+      "page": 1,
+      "bbox": [
+        0.29263,
+        0.45501,
+        0.37086,
+        0.46416
+      ],
+      "approximate": false
+    }
+  },
+  "obscured_fields": [],
+  "rules_eval_signals": {
+    "vendor_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "vendor_name": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_number": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "invoice_date": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "total_amount": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "po_reference": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "subtotal": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "cgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "sgst": {
+      "confidence": 0.95,
+      "verification_status": "not_applicable"
+    },
+    "igst": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "bank_account": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    },
+    "buyer_gstin": {
+      "confidence": 0.95,
+      "verification_status": "verified"
+    }
+  },
+  "expected_decision": "HOLD",
+  "acceptable_decisions": [
+    "HOLD"
+  ],
+  "expected_reason_codes": [
+    "VENDOR_UNKNOWN"
+  ],
+  "expected_reason_codes_any_of": [],
+  "true_po_number": null,
+  "knobs": {
+    "title": "Invoice",
+    "invoice_no_label": "Invoice #",
+    "date_label": "Inv Date",
+    "po_label": "Against PO",
+    "po_in_notes": false,
+    "date_style": "yyyy-mm-dd",
+    "amount_style": "no_symbol",
+    "tax_per_line": true,
+    "show_round_off": true,
+    "show_amount_in_words": true,
+    "gstin_spaced": false,
+    "discount": "0.00",
+    "other_charges": "0.00",
+    "vendor_name_printed": "Saxena Trading Co.",
+    "template": "receipt"
+  },
+  "notes": "'Saxena Trading Co.' (GSTIN 23KRSFS6433I1ZL) is not in the vendor master; no PO quoted. Held-out layout/image type."
+}

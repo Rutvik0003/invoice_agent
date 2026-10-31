@@ -16,7 +16,8 @@ from app.schemas import ExtractedInvoice  # noqa: E402
 
 INVOICE_DIR = REPO_ROOT / "data" / "invoices"
 REPORT_DIR = REPO_ROOT / "data" / "eval_reports"
-SETS = {"golden": INVOICE_DIR / "golden", "stress": INVOICE_DIR / "stress", "real_world": INVOICE_DIR / "real_world"}
+SETS = {"golden": INVOICE_DIR / "golden", "stress": INVOICE_DIR / "stress", "holdout": INVOICE_DIR / "holdout",
+        "real_world": INVOICE_DIR / "real_world"}  # "all" = golden + stress; holdout and real_world are run on their own
 
 
 def load_labels(set_name: str) -> list[tuple[Path, dict]]:

@@ -3,7 +3,7 @@
 Each invoice uses its label's ground truth plus rules_eval_signals (the confidence / verification status the
 rules should assume), and is judged independently against the seeded master data.
 
-Usage: python backend/scripts/eval_rules.py --set golden|stress|all [--show S0042]
+Usage: python backend/scripts/eval_rules.py --set golden|stress|holdout|all [--show S0042]
 """
 
 from __future__ import annotations
@@ -49,7 +49,7 @@ def judge(label: dict, result: RulesResult) -> tuple[bool, list[str]]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--set", default="all", choices=["golden", "stress", "all"])
+    parser.add_argument("--set", default="all", choices=["golden", "stress", "holdout", "all"])
     parser.add_argument("--show", help="print every check for one invoice id")
     args = parser.parse_args()
 

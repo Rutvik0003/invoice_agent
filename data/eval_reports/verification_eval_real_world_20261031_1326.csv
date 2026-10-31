@@ -1,0 +1,34 @@
+invoice_id,field,source,level,status,matched_text,printed
+cord_test_000,total_amount,unknown,real_scan,verified,"60, 000",60.000
+cord_test_000,subtotal,unknown,real_scan,verified,"60, 000",60.000
+cord_test_001,total_amount,unknown,real_scan,verified,91000,91000
+cord_test_002,total_amount,unknown,real_scan,verified,"28, 000","28,000"
+cord_test_002,subtotal,unknown,real_scan,verified,"28, 000","28,000"
+cord_test_003,total_amount,unknown,real_scan,verified,"11,000","11,000"
+cord_test_003,subtotal,unknown,real_scan,verified,"11,000","11,000"
+cord_test_004,total_amount,unknown,real_scan,not_found,,"174,600"
+cord_test_004,subtotal,unknown,real_scan,not_found,,"194,000"
+cord_test_005,total_amount,unknown,real_scan,not_found,,31.000
+cord_test_005,subtotal,unknown,real_scan,not_found,,28.182
+cord_test_006,total_amount,unknown,real_scan,verified,"46, 000","46,000"
+cord_test_007,total_amount,unknown,real_scan,not_found,,"111,000"
+cord_test_007,subtotal,unknown,real_scan,not_found,,"100,909"
+cord_test_008,total_amount,unknown,real_scan,not_found,,"50,000"
+cord_test_008,subtotal,unknown,real_scan,verified,"45,455","45,455"
+cord_test_009,subtotal,unknown,real_scan,verified,36000,36000
+cord_test_010,total_amount,unknown,real_scan,verified,"17, 000","17,000"
+cord_test_010,subtotal,unknown,real_scan,verified,"17, 000","17,000"
+cord_test_011,total_amount,unknown,real_scan,not_found,,"230,000"
+cord_test_012,total_amount,unknown,real_scan,not_found,,"120,000"
+cord_test_013,total_amount,unknown,real_scan,not_found,,51.300
+cord_test_013,subtotal,unknown,real_scan,not_found,,46.636
+cord_test_014,total_amount,unknown,real_scan,not_found,,"281,435"
+cord_test_014,subtotal,unknown,real_scan,verified,"238 , 000","238,000"
+cord_test_015,total_amount,unknown,real_scan,not_found,,63.000
+cord_test_016,total_amount,unknown,real_scan,verified,"70,000","70,000"
+cord_test_016,subtotal,unknown,real_scan,verified,"63,636","63,636"
+cord_test_017,total_amount,unknown,real_scan,verified,"91,000","Rp. 91,000"
+cord_test_017,subtotal,unknown,real_scan,verified,"91,000","91,000"
+cord_test_018,total_amount,unknown,real_scan,verified,156000,156000
+cord_test_019,total_amount,unknown,real_scan,not_found,,176000
+cord_test_019,subtotal,unknown,real_scan,not_found,,160000
