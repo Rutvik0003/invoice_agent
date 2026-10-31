@@ -154,6 +154,28 @@ misreads of small or bold fonts, e.g. "PO-2026-1188" read as "PO-2026-1108".
   switching. These services are paid per page after a small free allowance, and they send invoice images to a
   third party, which needs a data-handling review in a real AP setting.
 
+### OCR speed on Render's free instance (0.1 CPU, 512 MB)
+
+Measured in the Docker image with `--cpus` and `--memory` limits (Phase 8):
+
+| Machine | OCR passes | 1-page mild scan | Heavy 300-DPI scanned PDF | Peak memory |
+|---|---:|---:|---:|---:|
+| Dev laptop (16 cores) | 4 | 5–6 s | 5.5 s | 466 MB (container) |
+| 0.5 CPU (Render Starter) | 2 | - | over 20 s → timeout | 313 MB |
+| 0.1 CPU (Render free) | 1 | 13.5–22 s | ~31 s, 3 words read | 172–233 MB |
+
+- **Digital PDFs are unaffected.** They are verified from the text layer in well under a second, and a typical
+  digital invoice runs end to end in about 14 s on Gemini (13 s of that is the model call).
+- **Scans on the free instance don't meet the 8 s target.**
+  - The app counts its CPU quota and runs fewer OCR passes on small machines. Four parallel passes would also need
+    about 466 MB, too close to the 512 MB limit.
+  - Even one pass takes about 14–22 s on 0.1 CPU. A page that takes over 20 s is not checked: the run continues
+    with the "OCR unavailable" warning and holds anything the model is unsure of (rule 14).
+- **Lowering the DPI doesn't help.** Photos are images, so the DPI setting doesn't apply to them. On our
+  heavy scan, 200 DPI found 198 words instead of 542.
+- **For a live demo with scans, run locally or in Docker on a laptop**, or use a larger instance (2+ CPUs runs all
+  four passes).
+
 ### Groq free tier
 
 Groq's free tier for `qwen/qwen3.8-27b` (its only image model on this account) allows about 1,000 output and

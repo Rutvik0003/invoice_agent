@@ -14,7 +14,7 @@ import { Link, navigate } from '@/lib/router'
 import { useRunEvents, type LiveState, type StageKey } from '@/lib/useRunEvents'
 import { cn } from '@/lib/utils'
 
-const FINAL = ['completed', 'extraction_failed', 'failed', 'resolved_by_human']
+const FINAL = ['completed', 'extraction_failed', 'failed', 'interrupted', 'resolved_by_human']
 
 export default function LiveRun({ runId }: { runId: string }) {
   const queryClient = useQueryClient()
@@ -48,7 +48,8 @@ export default function LiveRun({ runId }: { runId: string }) {
   }
   const detail = run.data
   const threshold = config.data?.confidence_threshold ?? 0.8
-  const extractionError = live.stages.extraction.error ?? (live.finished?.status === 'extraction_failed' ? detail.error : null)
+  const stopped = live.finished?.status === 'failed' || live.finished?.status === 'interrupted'  // shown by its own card
+  const extractionError = stopped ? null : live.stages.extraction.error ?? (live.finished?.status === 'extraction_failed' ? detail.error : null)
   const decided = live.finished?.decision && detail.rules?.decision
 
   const renderDetail = (key: StageKey) => <StageDetail stageKey={key} live={live} detail={detail} threshold={threshold}
@@ -110,10 +111,11 @@ export default function LiveRun({ runId }: { runId: string }) {
               <Loader2 className="size-4 animate-spin" /> Loading the decision…
             </div>
           )}
-          {live.finished?.status === 'failed' && (
-            <div className="rounded-xl bg-white p-4 text-sm text-red-700 ring-1 ring-red-200">
-              Processing stopped because of an internal error. {detail.error?.message}
-            </div>
+          {stopped && detail.error && (
+            <FailureCard run={detail} config={config.data} heading="Processing stopped"
+                         error={live.finished?.status === 'failed'
+                           ? { ...detail.error, message: 'Processing stopped because of an internal error. Retry the run; if it keeps failing, check the server log for this run id.', detail: detail.error.message }
+                           : detail.error} />
           )}
           <section className="rounded-xl bg-white px-4 py-2 ring-1 ring-zinc-200">
             <StageStepper state={live} renderDetail={renderDetail} />

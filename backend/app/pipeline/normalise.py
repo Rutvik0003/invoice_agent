@@ -12,13 +12,15 @@ from decimal import Decimal, InvalidOperation
 
 # ---------------------------------------------------------------- amounts
 
-_CURRENCY = re.compile(r"(₹|rs\.?|inr|/-|\s)", re.IGNORECASE)
+_CURRENCY = re.compile(r"(₹|rs\.?|inr|रु\.?|रू\.?|/-|\s)", re.IGNORECASE)
+# Hindi invoices may print Devanagari digits (१,१८,०००); they mean exactly the same numbers
+_DEVANAGARI_DIGITS = str.maketrans("०१२३४५६७८९", "0123456789")
 _AMOUNT = re.compile(r"-?\d{1,3}(,\d{2})*,\d{3}(\.\d+)?|-?\d+(\.\d+)?")
 
 
 def parse_amount(text: str) -> Decimal | None:
     """'₹1,18,000.00', 'Rs.118000/-', 'INR 118000.00', '1,18,000' -> Decimal; anything else -> None."""
-    cleaned = _CURRENCY.sub("", text or "").strip(":")
+    cleaned = _CURRENCY.sub("", (text or "").translate(_DEVANAGARI_DIGITS)).strip(":")
     if not cleaned or not _AMOUNT.fullmatch(cleaned):
         return None
     try:
@@ -50,7 +52,7 @@ def parse_date(text: str | None) -> date | None:
     """Day-first Indian dates in the common printed formats (and ISO) -> date."""
     if not text:
         return None
-    cleaned = re.sub(r"\s+", " ", text.strip().strip(":,;")).replace("Sept", "Sep")
+    cleaned = re.sub(r"\s+", " ", text.translate(_DEVANAGARI_DIGITS).strip().strip(":,;")).replace("Sept", "Sep")
     for fmt in DATE_FORMATS:
         try:
             return datetime.strptime(cleaned, fmt).date()

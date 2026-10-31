@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils'
 const PAGE_SIZE = 12
 const STATUS_TEXT: Record<string, string> = {
   completed: 'Completed', resolved_by_human: 'Resolved by person', extraction_failed: 'Extraction failed',
-  failed: 'Failed', running: 'Running', queued: 'Queued',
+  failed: 'Failed', interrupted: 'Interrupted', running: 'Running', queued: 'Queued',
 }
 
 function Tile({ label, value, hint, accent, children }: { label: string; value: ReactNode; hint?: ReactNode; accent?: string; children?: ReactNode }) {

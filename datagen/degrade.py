@@ -237,3 +237,45 @@ def save_scan(result: ScanResult, path, file_format: str) -> None:
         result.pages[0].save(path, "PNG", optimize=True, dpi=(result.dpi, result.dpi))
     else:
         result.pages[0].save(path, "JPEG", quality=result.jpeg_quality, dpi=(result.dpi, result.dpi))
+
+
+# ---------------------------------------------------------------- phone photos (Phase 8 robustness tests)
+
+
+def _perspective_coeffs(src: list[tuple[float, float]], dst: list[tuple[float, float]]) -> list[float]:
+    """PIL PERSPECTIVE coefficients mapping output pixels (dst quad) back to input pixels (src quad)."""
+    rows = []
+    for (x, y), (u, v) in zip(dst, src):
+        rows.append([x, y, 1, 0, 0, 0, -u * x, -u * y])
+        rows.append([0, 0, 0, x, y, 1, -v * x, -v * y])
+    return list(np.linalg.solve(np.array(rows, dtype=float), np.array(src, dtype=float).reshape(8)))
+
+
+def phone_photo(img: Image.Image, rng: random.Random) -> Image.Image:
+    """A page photographed with a phone: on a desk, tilted (perspective), unevenly lit, with a glare spot,
+    slightly soft and JPEG-compressed. Field boxes are NOT tracked through this (tests check outcomes only)."""
+    w, h = img.size
+    m = 0.06
+    jitter = lambda: rng.uniform(0.0, m)  # noqa: E731
+    corners = [(w * jitter(), h * jitter()), (w * (1 - jitter()), h * jitter()),
+               (w * (1 - jitter()), h * (1 - jitter())), (w * jitter(), h * (1 - jitter()))]
+    canvas_w, canvas_h = int(w * 1.05), int(h * 1.05)
+    off_x, off_y = (canvas_w - w) / 2, (canvas_h - h) / 2
+    dst = [(x + off_x, y + off_y) for x, y in corners]
+    src = [(0, 0), (w, 0), (w, h), (0, h)]
+    desk = Image.new("RGB", (canvas_w, canvas_h), (118, 96, 74))
+    page = img.transform((canvas_w, canvas_h), Image.PERSPECTIVE, _perspective_coeffs(src, dst), Image.BICUBIC,
+                         fillcolor=(0, 0, 0))
+    mask = Image.new("L", img.size, 255).transform((canvas_w, canvas_h), Image.PERSPECTIVE,
+                                                   _perspective_coeffs(src, dst), Image.BICUBIC, fillcolor=0)
+    desk.paste(page, (0, 0), mask)
+    photo = _shadow_gradient(desk, rng)
+    # glare: a soft bright ellipse that washes out part of the page
+    gx, gy = rng.uniform(0.2, 0.8) * canvas_w, rng.uniform(0.2, 0.8) * canvas_h
+    ys, xs = np.mgrid[0:canvas_h, 0:canvas_w]
+    radius = 0.18 * canvas_w
+    glare = np.exp(-(((xs - gx) / radius) ** 2 + ((ys - gy) / (radius * 0.6)) ** 2)) * 0.55
+    arr = np.asarray(photo).astype(np.float32)
+    arr = arr + (255 - arr) * glare[..., None]
+    photo = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.8))
+    return _jpeg_roundtrip(_add_noise(photo, 4, rng), 80)

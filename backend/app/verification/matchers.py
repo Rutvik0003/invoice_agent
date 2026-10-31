@@ -152,3 +152,81 @@ def match_name(value: str, text: str, minimum: int = 90) -> int | None:
         return None
     score = fuzz.token_set_ratio(a, b)
     return int(score) if score >= minimum else None
+
+
+# ---------------------------------------------------------------- amounts in words ("Rupees One Lakh ... Only")
+
+_UNIT_WORDS = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+    "seventeen eighteen nineteen".split())}
+_TENS_WORDS = {w: 10 * i for i, w in enumerate("_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()) if w != "_"}
+_SCALE_WORDS = {"hundred": 100, "thousand": 1_000, "lakh": 100_000, "lakhs": 100_000, "lac": 100_000, "lacs": 100_000,
+                "million": 1_000_000, "crore": 10_000_000, "crores": 10_000_000}
+_NUMBER_WORDS = set(_UNIT_WORDS) | set(_TENS_WORDS) | set(_SCALE_WORDS)
+
+
+def _words_value(tokens: list[str]) -> int:
+    """['one', 'lakh', 'eighteen', 'thousand'] -> 118000 (Indian lakh/crore and international scales)."""
+    total, current = 0, 0
+    for token in tokens:
+        if token in _UNIT_WORDS:
+            current += _UNIT_WORDS[token]
+        elif token in _TENS_WORDS:
+            current += _TENS_WORDS[token]
+        elif token == "hundred":
+            current = max(current, 1) * 100
+        else:
+            scale = _SCALE_WORDS[token]
+            # 'twelve crore three lakh': everything so far below this scale is multiplied by it
+            below = total % scale
+            total = total - below + (below + max(current, 1)) * scale
+            current = 0
+    return total + current
+
+
+def words_to_amount(text: str) -> Decimal | None:
+    """An amount written in words -> Decimal ('Rupees One Lakh Eighteen Thousand and Fifty Paise Only' -> 118000.50);
+    None if the text holds no number words. Paise are the number words just before 'paise' (always < 100)."""
+    tokens = re.findall(r"[a-z]+", (text or "").lower())
+    numbers = [t for t in tokens if t in _NUMBER_WORDS]
+    if not numbers or not any(t in _SCALE_WORDS or t in ("rupees", "rupee", "rs", "inr", "only") for t in tokens):
+        return None
+    paise = 0
+    if "paise" in tokens or "paisa" in tokens:
+        end = tokens.index("paise" if "paise" in tokens else "paisa")
+        start = end
+        while start > 0 and (tokens[start - 1] in _UNIT_WORDS or tokens[start - 1] in _TENS_WORDS):
+            start -= 1
+        paise = _words_value(tokens[start:end]) if start < end else 0
+        tokens = tokens[:start]
+    rupee_tokens = [t for t in tokens if t in _NUMBER_WORDS]
+    if not rupee_tokens and not paise:
+        return None
+    return Decimal(_words_value(rupee_tokens)) + Decimal(paise) / 100
+
+
+def amount_in_words_candidates(pages: list[PageWords]) -> list[Candidate]:
+    """Each printed line (and each line joined with the next, for wrapped text) as one candidate: amounts in
+    words are long phrases, beyond the 6-word runs used for other values."""
+    out = []
+    for page in pages:
+        lines: dict[tuple, list] = {}
+        for word in page.words:
+            lines.setdefault(word.line, []).append(word)
+        ordered = sorted((sorted(ws, key=lambda w: w.bbox[0]) for ws in lines.values()),
+                         key=lambda ws: (min(w.bbox[1] for w in ws), ws[0].bbox[0]))
+        for words in ordered + [a + b for a, b in zip(ordered, ordered[1:])]:
+            confs = [w.conf for w in words if w.conf is not None]
+            out.append(Candidate(" ".join(w.text for w in words), page.page, page.source,
+                                 (min(w.bbox[0] for w in words), min(w.bbox[1] for w in words),
+                                  max(w.bbox[2] for w in words), max(w.bbox[3] for w in words)),
+                                 len(words), round(sum(confs) / len(confs), 1) if confs else None))
+    return out
+
+
+def match_amount_in_words(value: float, text: str) -> int | None:
+    """The phrase, read as an amount in words, equals the value within ± ₹1 (scores below a printed figure)."""
+    parsed = words_to_amount(text)
+    if parsed is None or abs(parsed - Decimal(str(value))) > AMOUNT_TOLERANCE:
+        return None
+    return 85

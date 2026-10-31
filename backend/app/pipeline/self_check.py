@@ -10,6 +10,7 @@ from rapidfuzz import fuzz
 from app.config import Settings
 from app.pipeline.normalise import gstin_state, normalise_code, normalise_name, parse_date, to_decimal
 from app.pipeline.reason_codes import ReasonCode, inr, passed, raised, show
+from app.pipeline.po_match import lines_include_tax, total_tax
 from app.pipeline.repository import BuyerRecord
 from app.schemas import CheckEvidence, CheckResult, ExtractedInvoice, VerificationResult
 from app.verification.verify import CRITICAL_FIELDS, doubtful_fields, field_trust
@@ -36,12 +37,16 @@ def _verification_status(ver: VerificationResult, name: str) -> str | None:
     return field.status if field else None
 
 
+DOC_TYPE_LABELS = {"proforma": "proforma invoice", "purchase_order": "purchase order copy",
+                   "other": "document that is not an invoice (for example a receipt, letter or photo)"}
+
+
 def check_document_type(inv: ExtractedInvoice) -> CheckResult:
     """Only a tax invoice can be paid; quotations, proformas, credit notes, challans and PO copies are rejected."""
     doc_type = inv.document_type.value
     if doc_type in (None, "tax_invoice"):
         return passed(STAGE, "document_type", "The document is a tax invoice.")
-    label = doc_type.replace("_", " ")
+    label = DOC_TYPE_LABELS.get(doc_type, doc_type.replace("_", " "))
     return raised(STAGE, "document_type", ReasonCode.NOT_A_TAX_INVOICE,
                   CheckEvidence(invoice_field="document_type", invoice_value=doc_type), doc_type=label)
 
@@ -129,6 +134,9 @@ def check_lines_sum(inv: ExtractedInvoice, ver: VerificationResult, threshold: f
     evidence = CheckEvidence(invoice_field="subtotal", invoice_value=float(subtotal),
                              verification_status=_verification_status(ver, "subtotal"),
                              reference_source="sum of line amounts", reference_value=float(lines))
+    if lines_include_tax(inv):
+        return passed(STAGE, "lines_sum", f"Line amounts include GST: they add up to the subtotal ₹{inr(subtotal)} "
+                                          f"plus GST ₹{inr(total_tax(inv))}.", evidence)
     untrusted = _untrusted(inv, ver, threshold, ["subtotal"], include_lines=True)
     if lines < subtotal - ONE_RUPEE and "line items" not in untrusted:
         # a shortfall can mean the reader missed a line; finding the lines it did read cannot rule that out

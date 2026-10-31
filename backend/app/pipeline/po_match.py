@@ -43,17 +43,51 @@ def best_po_line(line: LineItem, po: PORecord) -> tuple[POLineRecord | None, int
     return best, best_score
 
 
+ONE_RUPEE = Decimal("1.00")
+
+
+def _money(inv: ExtractedInvoice, name: str) -> Decimal:
+    return to_decimal(getattr(inv, name).value) or Decimal("0.00")
+
+
+def total_tax(inv: ExtractedInvoice) -> Decimal:
+    return _money(inv, "cgst") + _money(inv, "sgst") + _money(inv, "igst")
+
+
+def lines_include_tax(inv: ExtractedInvoice) -> bool:
+    """Retail-style invoices print line amounts that already include GST: the lines then add up to the
+    taxable value plus GST (or, with no subtotal printed, to the total before round-off), not to the subtotal."""
+    if not inv.line_items or any(l.amount is None for l in inv.line_items) or total_tax(inv) <= 0:
+        return False
+    lines = sum((to_decimal(l.amount) for l in inv.line_items), Decimal("0.00"))
+    subtotal = to_decimal(inv.subtotal.value)
+    if subtotal is not None:
+        return abs(lines - subtotal) > ONE_RUPEE and abs(lines - (subtotal + total_tax(inv))) <= ONE_RUPEE
+    total = to_decimal(inv.total_amount.value)
+    if total is None:
+        return False
+    before_round_off = total - _money(inv, "round_off") - _money(inv, "other_charges") + abs(_money(inv, "discount"))
+    return abs(lines - before_round_off) <= ONE_RUPEE
+
+
+def is_adjustment(line: LineItem) -> bool:
+    """A negative line (a discount, credit or return) is not an item bought on the PO."""
+    return (line.amount is not None and line.amount < 0) or (line.unit_price is not None and line.unit_price < 0)
+
+
 def invoice_taxable(inv: ExtractedInvoice) -> Decimal:
-    """What this invoice bills before tax: the subtotal, or the sum of line amounts if no subtotal is printed."""
+    """What this invoice bills before tax: the subtotal, or the sum of line amounts if no subtotal is printed
+    (less the GST, when those line amounts include it)."""
     subtotal = to_decimal(inv.subtotal.value)
     if subtotal is not None:
         return subtotal
-    return sum((to_decimal(l.amount) or Decimal("0") for l in inv.line_items), Decimal("0.00"))
+    lines = sum((to_decimal(l.amount) or Decimal("0") for l in inv.line_items), Decimal("0.00"))
+    return lines - total_tax(inv) if lines_include_tax(inv) else lines
 
 
 def score_po(inv: ExtractedInvoice, po: PORecord) -> POCandidate:
     """0.5 x item similarity + 0.3 x amount closeness + 0.2 x quantity fit (each 0-1)."""
-    lines = inv.line_items or []
+    lines = [l for l in inv.line_items or [] if not is_adjustment(l)]
     sims, fits = [], []
     for line in lines:
         po_line, score = best_po_line(line, po)

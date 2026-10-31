@@ -13,11 +13,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
-from sqlalchemy import Engine
+from sqlalchemy import Engine, select
 from sqlalchemy.orm import Session
 
 from app.config import REPO_ROOT, Settings
 from app.extraction import extract_document
+from app.logging_setup import get_logger
 from app.models import Run, RunEvent
 from app.pipeline.engine import TITLES, RulesResult, StageResult, run_rules
 from app.pipeline.intake import intake
@@ -34,6 +35,7 @@ STAGE_ORDER = (
     *((key, title) for key, title in TITLES.items()),
 )
 ExtractFn = Callable[..., ExtractionResult]
+logger = get_logger("pipeline")
 
 
 def load_buyer(master_dir: Path = MASTER_DIR) -> BuyerRecord:
@@ -63,10 +65,15 @@ class EventLog:
         if duration_ms is None:
             duration_ms = int((time.monotonic() - self._started.get(stage, time.monotonic())) * 1000)
         self.emit(stage, "stage_completed", status=status, duration_ms=duration_ms, **payload)
+        logger.info("stage completed", extra={"run_id": self.run_id, "stage": stage, "status": status,
+                                              "duration_ms": duration_ms})
 
     def fail(self, stage: str, **payload: object) -> None:
         duration_ms = int((time.monotonic() - self._started.get(stage, time.monotonic())) * 1000)
         self.emit(stage, "stage_failed", duration_ms=duration_ms, **payload)
+        error = payload.get("error") if isinstance(payload.get("error"), dict) else {}
+        logger.warning("stage failed", extra={"run_id": self.run_id, "stage": stage, "duration_ms": duration_ms,
+                                              "error_type": error.get("type"), "error": error.get("message")})
 
 
 def stage_status(stage: StageResult) -> str:
@@ -94,6 +101,8 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
             run = session.get(Run, run_id)
             data, file_name, provider, is_test = run.file_bytes, run.file_name, run.model, run.is_test_run
         _update_run(engine, run_id, status="running")
+        logger.info("run started", extra={"run_id": run_id, "model": provider, "size_bytes": len(data),
+                                          "test_run": is_test, "cached_allowed": use_cache})
 
         # 1. intake
         log.start("intake")
@@ -113,6 +122,8 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
             _update_run(engine, run_id, status="extraction_failed", error_json=extraction.error.model_dump(),
                         duration_ms=int((time.monotonic() - started) * 1000))
             log.emit("run", "run_completed", status="extraction_failed", decision=None)
+            logger.info("run completed", extra={"run_id": run_id, "status": "extraction_failed",
+                                                "duration_ms": int((time.monotonic() - started) * 1000)})
             return
         invoice = extraction.invoice
         log.complete("extraction", model_name=extraction.model_name, provider=extraction.provider,
@@ -181,7 +192,11 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
                                    "ledger_change": ledger_change})
         log.emit("run", "run_completed", status="completed", decision=decision.outcome, summary=decision.summary,
                  duration_ms=duration, ledger_applied=ledger_applied, ledger_change=ledger_change)
+        logger.info("run completed", extra={"run_id": run_id, "status": "completed", "decision": decision.outcome,
+                                            "codes": rules.codes, "duration_ms": duration,
+                                            "verification": verification.engine_used, "ledger_applied": ledger_applied})
     except Exception as exc:  # noqa: BLE001 - a run must always end in a final state
+        logger.exception("run failed with an internal error", extra={"run_id": run_id, "stage": stage})
         detail = f"{type(exc).__name__}: {exc}"
         log.fail(stage, error={"type": "internal_error", "message": "Processing stopped because of an internal error.",
                                "detail": detail[:500]})
@@ -189,6 +204,29 @@ def process_run(run_id: str, engine: Engine, settings: Settings, use_cache: bool
                                                                  "trace": traceback.format_exc()[-2000:]},
                     duration_ms=int((time.monotonic() - started) * 1000))
         log.emit("run", "run_completed", status="failed", decision=None)
+
+
+INTERRUPTED_MESSAGE = "The server restarted while this invoice was being processed. Retry to process it again."
+
+
+def mark_interrupted_runs(engine: Engine) -> list[str]:
+    """At startup: runs left 'queued' or 'running' by a previous server process will never finish, so mark them
+    'interrupted' (closing the open stage and the event stream) instead of leaving them spinning forever."""
+    with Session(engine) as session:
+        run_ids = list(session.scalars(select(Run.id).where(Run.status.in_(("queued", "running")))))
+    for run_id in run_ids:
+        log = EventLog(engine, run_id)
+        with Session(engine) as session:
+            events = session.scalars(select(RunEvent).where(RunEvent.run_id == run_id).order_by(RunEvent.id)).all()
+            open_stages = {e.stage for e in events if e.event_type == "stage_started"} - {
+                e.stage for e in events if e.event_type in ("stage_completed", "stage_failed")}
+        error = {"type": "interrupted", "message": INTERRUPTED_MESSAGE}
+        for stage in open_stages:
+            log.emit(stage, "stage_failed", error=error)
+        _update_run(engine, run_id, status="interrupted", error_json=error)
+        log.emit("run", "run_completed", status="interrupted", decision=None)
+        logger.warning("run interrupted by a server restart", extra={"run_id": run_id})
+    return run_ids
 
 
 def create_run_record(engine: Engine, file_name: str, data: bytes, model: str, retry_of: str | None = None,

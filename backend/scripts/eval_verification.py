@@ -5,7 +5,7 @@
   c) fault injection: plausible AI mistakes must come back not_found (catch rate)
   d) obscured fields must come back not_found
 
-Usage: python backend/scripts/eval_verification.py --set golden|stress|all [--limit N]
+Usage: python backend/scripts/eval_verification.py --set golden|stress|real_world|all [--limit N]
 """
 
 from __future__ import annotations
@@ -101,7 +101,7 @@ def pct(n: int, d: int) -> float:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--set", default="all", choices=["golden", "stress", "all"])
+    parser.add_argument("--set", default="all", choices=["golden", "stress", "real_world", "all"])
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--no-cache", action="store_true", help="re-run OCR instead of using cached page words")
     args = parser.parse_args()

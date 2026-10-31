@@ -10,6 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.common import engine_of, get_run_or_404, iso_utc, run_summary
+from app.logging_setup import get_logger
 from app.models import HoldAction, Run
 from app.pipeline.amount_match import map_lines
 from app.pipeline.decision import ledger_update
@@ -18,6 +19,7 @@ from app.pipeline.orchestrator import load_buyer
 from app.pipeline.repository import DbRepository
 from app.schemas import ExtractedInvoice
 
+logger = get_logger("holds")
 router = APIRouter(prefix="/api", tags=["holds"])
 CONFIRMABLE = set(ExtractedInvoice.model_fields) - {"line_items"}
 
@@ -93,6 +95,8 @@ def hold_action(run_id: str, body: HoldActionIn, request: Request) -> dict:
         session.add(HoldAction(run_id=run_id, actor_role=body.role, action=body.action, comment=body.comment,
                                payload={**body.payload, **result}))
         session.commit()
+        logger.info("hold action", extra={"run_id": run_id, "action": body.action, "role": body.role,
+                                          "status": run.status})
         return {"run": run_summary(run), "result": result}
 
 

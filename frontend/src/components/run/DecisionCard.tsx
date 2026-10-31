@@ -147,22 +147,24 @@ const ERROR_TITLE: Record<string, string> = {
   auth_error: 'The API key was rejected',
   unsupported_file: 'This file type cannot be read',
   internal_error: 'Processing stopped unexpectedly',
+  interrupted: 'The server restarted during this run',
 }
 
 /** Extraction failed: say why in plain words and offer a one-click retry (same file). */
-export function FailureCard({ run, error, config }: { run: RunDetail; error: RunError; config: AppConfig | undefined }) {
+export function FailureCard({ run, error, config, heading = 'Could not read the invoice' }:
+  { run: RunDetail; error: RunError; config: AppConfig | undefined; heading?: string }) {
   const other = run.model === 'gemini' ? 'groq' : 'gemini'
   const otherInfo = config?.models.find((m) => m.id === other)
   const retry = useMutation({ mutationFn: (model: string) => api.retry(run.id, model), onSuccess: ({ run_id }) => navigate(`/runs/${run_id}`) })
   return (
     <section className="overflow-hidden rounded-xl bg-white ring-1 ring-zinc-300">
       <div className="bg-zinc-700 px-5 py-4 text-white">
-        <div className="text-xs font-medium tracking-wide uppercase opacity-80">Could not read the invoice</div>
+        <div className="text-xs font-medium tracking-wide uppercase opacity-80">{heading}</div>
         <div className="text-lg font-semibold">{ERROR_TITLE[error.type] ?? 'Extraction failed'}</div>
       </div>
       <div className="space-y-4 px-5 py-4">
         <p className="text-sm leading-relaxed text-zinc-700">{error.message}</p>
-        <p className="text-xs text-zinc-500">No decision was made: the rules only run on an invoice that was read successfully.</p>
+        <p className="text-xs text-zinc-500">No decision was made: the rules only run on an invoice that was read and checked completely.</p>
         <div className="flex flex-wrap gap-2">
           {otherInfo && (
             <Button disabled={!otherInfo.configured || retry.isPending} onClick={() => retry.mutate(other)}>

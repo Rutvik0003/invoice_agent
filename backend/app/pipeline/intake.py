@@ -12,6 +12,7 @@ from PIL import Image, UnidentifiedImageError
 from app.extraction.pdf_utils import JPEG, PDF, PNG, guess_mime, text_layer_pages
 
 MAX_BYTES = 10 * 1024 * 1024  # files are stored in the database (CLAUDE.md §4)
+MAX_PAGES = 20  # one invoice per file; longer documents are statements or bundles, and slow to OCR
 
 
 class IntakeError(ValueError):
@@ -39,6 +40,18 @@ def sniff_mime(file_name: str, data: bytes) -> str | None:
     return guess_mime(file_name)
 
 
+def check_image(data: bytes) -> None:
+    """The image must decode completely (a truncated upload passes a header check but fails later) and not be
+    absurdly large (Pillow refuses 'decompression bomb' sizes)."""
+    try:
+        with Image.open(io.BytesIO(data)) as image:
+            image.load()
+    except Image.DecompressionBombError as exc:
+        raise IntakeError("The image is too large to process. Upload a smaller photo or a PDF.") from exc
+    except (UnidentifiedImageError, OSError, SyntaxError, ValueError) as exc:
+        raise IntakeError("The image could not be read (it may be damaged or incomplete).") from exc
+
+
 def intake(file_name: str, data: bytes) -> IntakeResult:
     """Accept PDF/PNG/JPG up to 10 MB; reject empty, unreadable or password-protected files with a clear reason."""
     if not data:
@@ -57,11 +70,11 @@ def intake(file_name: str, data: bytes) -> IntakeResult:
             raise IntakeError("The PDF is password-protected. Upload an unprotected copy.")
         if len(doc) == 0:
             raise IntakeError("The PDF has no pages.")
+        if len(doc) > MAX_PAGES:
+            raise IntakeError(f"The PDF has {len(doc)} pages; the limit is {MAX_PAGES} (one invoice per file). "
+                              "Upload just the invoice pages.")
         pages = len(doc)
     else:
-        try:
-            Image.open(io.BytesIO(data)).verify()
-        except (UnidentifiedImageError, OSError) as exc:
-            raise IntakeError("The image could not be read (it may be damaged).") from exc
+        check_image(data)
         pages = 1
     return IntakeResult(file_name, mime, hashlib.sha256(data).hexdigest(), len(data), pages, text_layer_pages(data, mime))

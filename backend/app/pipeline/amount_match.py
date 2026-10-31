@@ -7,10 +7,10 @@ from decimal import Decimal
 
 from app.config import Settings
 from app.pipeline.normalise import to_decimal
-from app.pipeline.po_match import description_score, invoice_taxable
+from app.pipeline.po_match import description_score, invoice_taxable, is_adjustment, lines_include_tax
 from app.pipeline.reason_codes import ReasonCode, inr, passed, raised, show
 from app.pipeline.repository import PORecord, POLineRecord
-from app.schemas import CheckEvidence, CheckResult, ExtractedInvoice
+from app.schemas import CheckEvidence, CheckResult, ExtractedInvoice, LineItem
 
 STAGE = "amount_match"
 LINE_MATCH_MIN = 85  # description similarity for an invoice line to map onto a PO line
@@ -27,6 +27,7 @@ class LineMatch:
     unit_price: Decimal
     amount: Decimal
     po_line: POLineRecord | None
+    adjustment: bool = False  # a negative (discount / credit) line, not an item on the PO
 
 
 def tolerance(value: Decimal, settings: Settings) -> Decimal:
@@ -35,11 +36,22 @@ def tolerance(value: Decimal, settings: Settings) -> Decimal:
     return min(pct, Decimal(str(settings.tolerance_abs_inr)))
 
 
+def ex_tax(value: Decimal, line: LineItem, inclusive: bool) -> Decimal:
+    """A tax-inclusive price or amount without its GST (PO prices are always before tax)."""
+    if not inclusive or not line.tax_rate:
+        return value
+    return (value / (1 + Decimal(str(line.tax_rate)) / 100)).quantize(Decimal("0.01"))
+
+
 def map_lines(inv: ExtractedInvoice, po: PORecord) -> list[LineMatch]:
-    """Greedy best-first mapping on description similarity, unit price as tie-break; each PO line used once."""
+    """Greedy best-first mapping on description similarity, unit price as tie-break; each PO line used once.
+    Negative lines (discounts, credits) are kept aside; tax-inclusive prices are compared without their GST."""
+    inclusive = lines_include_tax(inv)
     pairs = []
     for i, line in enumerate(inv.line_items):
-        price = to_decimal(line.unit_price) or Decimal("0")
+        if is_adjustment(line):
+            continue
+        price = ex_tax(to_decimal(line.unit_price) or Decimal("0"), line, inclusive)
         for po_line in po.lines:
             score = description_score(line.description, po_line.description)
             if score >= LINE_MATCH_MIN:
@@ -56,7 +68,8 @@ def map_lines(inv: ExtractedInvoice, po: PORecord) -> list[LineMatch]:
         qty = Decimal(str(line.quantity)) if line.quantity is not None else Decimal("0")
         price = to_decimal(line.unit_price) or Decimal("0")
         amount = to_decimal(line.amount) if line.amount is not None else (qty * price).quantize(Decimal("0.01"))
-        matches.append(LineMatch(i, line.description or f"line {i + 1}", qty, price, amount, mapping.get(i)))
+        matches.append(LineMatch(i, line.description or f"line {i + 1}", qty, ex_tax(price, line, inclusive),
+                                 ex_tax(amount, line, inclusive), mapping.get(i), is_adjustment(line)))
     return matches
 
 
@@ -66,8 +79,10 @@ def check_items(matches: list[LineMatch], po: PORecord) -> list[CheckResult]:
                   CheckEvidence(invoice_field=f"line_items[{m.index}]", invoice_value=m.description,
                                 reference_source=po.po_number, reference_value=[l.description for l in po.lines]),
                   item=m.description, amount=inr(m.amount), po=po.po_number)
-           for m in matches if m.po_line is None]
-    return out or [passed(STAGE, "item_on_po", f"Every line is an item on {po.po_number}.")]
+           for m in matches if m.po_line is None and not m.adjustment]
+    adjustments = sum(m.adjustment for m in matches)
+    note = f" ({adjustments} discount/credit line{'s' if adjustments > 1 else ''} not matched to the PO)" if adjustments else ""
+    return out or [passed(STAGE, "item_on_po", f"Every line is an item on {po.po_number}{note}.")]
 
 
 def check_quantities(matches: list[LineMatch], po: PORecord) -> list[CheckResult]:

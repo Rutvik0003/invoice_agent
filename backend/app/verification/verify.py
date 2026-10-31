@@ -9,17 +9,21 @@ from __future__ import annotations
 import time
 from typing import Literal
 
+from PIL import Image
 from sqlalchemy import Engine
 from sqlalchemy.orm import Session
 
 from app.config import Settings
 from app.extraction.pdf_utils import PDF, open_pdf, render_page_images, text_layer_pages
+from app.logging_setup import get_logger
 from app.models import PageWordsCache
 from app.schemas import ExtractedInvoice, FieldVerification, PageVerificationInfo, VerificationResult
 from app.verification.matchers import (
     Candidate,
+    amount_in_words_candidates,
     candidates,
     match_amount,
+    match_amount_in_words,
     match_code,
     match_date,
     match_identifier,
@@ -28,6 +32,7 @@ from app.verification.matchers import (
 from app.verification.ocr import OcrUnavailable, ocr_image
 from app.verification.page_text import PageWords, text_layer_words
 
+logger = get_logger("verification")
 CRITICAL_FIELDS = ("vendor_gstin", "vendor_name", "invoice_number", "invoice_date", "total_amount")
 VERIFIED_FIELDS = CRITICAL_FIELDS + ("po_reference", "subtotal", "cgst", "sgst", "igst", "bank_account", "buyer_gstin")
 FIELD_KIND = {
@@ -57,6 +62,22 @@ def _store_page(engine: Engine | None, file_hash: str | None, page: PageWords) -
         session.commit()
 
 
+MAX_OCR_SIDE = 3508  # pixels on the long side = an A4 page at 300 DPI; more costs time and memory, not accuracy
+
+
+def ocr_page_image(file_bytes: bytes, mime: str, pdf, index: int, settings: Settings) -> Image.Image:
+    """The page as an image for OCR, at OCR_DPI but never larger than MAX_OCR_SIDE (large pages, 48 MP photos)."""
+    if pdf is not None:
+        rect = pdf[index].rect
+        dpi = min(settings.ocr_dpi, int(MAX_OCR_SIDE * 72 / max(rect.width, rect.height, 1)))
+        pix = pdf[index].get_pixmap(dpi=dpi)
+        return Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+    image = render_page_images(file_bytes, mime, settings.ocr_dpi)[0]
+    if max(image.size) > MAX_OCR_SIDE:
+        image.thumbnail((MAX_OCR_SIDE, MAX_OCR_SIDE), Image.LANCZOS)
+    return image
+
+
 def collect_page_words(file_bytes: bytes, mime: str, settings: Settings, engine: Engine | None = None,
                        file_hash: str | None = None) -> list[PageWords]:
     """Words for every page: text layer where it exists, Tesseract OCR otherwise (cached by file hash + page)."""
@@ -74,18 +95,14 @@ def collect_page_words(file_bytes: bytes, mime: str, settings: Settings, engine:
             page = text_layer_words(pdf[index], page_no)
         else:
             try:
-                if pdf is not None:
-                    pix = pdf[index].get_pixmap(dpi=settings.ocr_dpi)
-                    from PIL import Image
-
-                    image = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
-                else:
-                    image = render_page_images(file_bytes, mime, settings.ocr_dpi)[0]
-                page = ocr_image(image, page_no, all_words)
+                page = ocr_image(ocr_page_image(file_bytes, mime, pdf, index, settings), page_no, all_words)
             except OcrUnavailable as exc:
                 page = PageWords(page_no, "unavailable", error=str(exc))
             except Exception as exc:  # noqa: BLE001 - rule 14: OCR problems never crash a run
                 page = PageWords(page_no, "unavailable", error=f"{type(exc).__name__}: {exc}")
+            if page.source == "unavailable":
+                logger.warning("OCR unavailable for a page", extra={"file_hash": file_hash, "page": page_no,
+                                                                     "error": page.error})
         _store_page(engine, file_hash, page)
         pages.append(_confident(page, settings))
     return pages
@@ -133,6 +150,16 @@ def best_match(field: str, value: object, cands: list[Candidate], settings: Sett
     return best
 
 
+def total_in_words(value: object, pages: list[PageWords]) -> Candidate | None:
+    """Some invoices print the total only in words ("Rupees Seventy Thousand Eight Hundred Only"):
+    the total then counts as found if a printed line, read as words, is the same amount (± ₹1)."""
+    try:
+        target = float(value)
+    except (TypeError, ValueError):
+        return None
+    return next((c for c in amount_in_words_candidates(pages) if match_amount_in_words(target, c.text)), None)
+
+
 def field_value(invoice: ExtractedInvoice, name: str) -> object:
     return getattr(invoice, name).value
 
@@ -150,6 +177,8 @@ def verify(invoice: ExtractedInvoice, pages: list[PageWords], settings: Settings
             fields[name] = FieldVerification(status="not_applicable")
             continue
         match = best_match(name, value, cands, settings)
+        if match is None and name == "total_amount":
+            match = total_in_words(value, usable)
         if match is not None:
             fields[name] = FieldVerification(
                 status="verified", source=match.source, page=match.page,

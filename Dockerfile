@@ -8,10 +8,12 @@ RUN npm run build
 
 # Stage 2: Python runtime with Tesseract OCR
 FROM python:3.11-slim
+# OMP_THREAD_LIMIT: OCR runs its passes as separate Tesseract processes; threads inside each only fight for the CPU
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    OMP_THREAD_LIMIT=1
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-eng \

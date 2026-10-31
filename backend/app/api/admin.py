@@ -6,10 +6,12 @@ from fastapi import APIRouter, Request
 
 from app.api.common import engine_of
 from app.db import Base
+from app.logging_setup import get_logger
 from app.models import RUN_TABLES
 from app.seed import seed_master
 
 router = APIRouter(prefix="/api", tags=["admin"])
+logger = get_logger("admin")
 
 
 def reset_demo(engine) -> dict:
@@ -17,6 +19,7 @@ def reset_demo(engine) -> dict:
     counts = seed_master(engine)
     Base.metadata.drop_all(engine, tables=list(reversed(RUN_TABLES)))
     Base.metadata.create_all(engine, tables=RUN_TABLES)
+    logger.info("demo data reset", extra=counts)
     return {"reset": True, **counts, "runs": 0}
 
 

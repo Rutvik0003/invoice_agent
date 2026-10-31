@@ -16,7 +16,9 @@ from app.api import admin, data, eval as eval_api, holds, runs
 from app.config import REPO_ROOT, get_settings
 from app.db import get_engine, init_db
 from app.extraction import extract_document
+from app.logging_setup import configure_logging
 from app.models import Vendor
+from app.pipeline.orchestrator import mark_interrupted_runs
 from app.seed import seed_master
 from app.verification.ocr import OcrStatus, tesseract_status
 
@@ -49,7 +51,9 @@ def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
+        configure_logging()
         prepare_database(app.state.engine)
+        mark_interrupted_runs(app.state.engine)
         yield
 
     app = FastAPI(title="Invoice Agent", version=__version__, lifespan=lifespan)
