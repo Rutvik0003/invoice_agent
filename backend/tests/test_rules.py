@@ -209,7 +209,9 @@ def test_bank_details_must_match_master():
 
 
 def test_duplicates():
-    r = repo(hashes={"abc": "run-1"})
+    from app.pipeline.repository import ProcessedFile
+
+    r = repo(hashes={"abc": ProcessedFile("run-1", "APPROVE")})
     inv = invoice(INTER, invoice_number="KOS/457", invoice_date="2026-09-10")
     ver = verification(inv)
     found = codes(run_duplicate_check(inv, INTER, r, ver, SETTINGS, "abc"))

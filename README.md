@@ -85,7 +85,16 @@ python backend/scripts/eval_rules.py --set all                          # stages
 The API (`python tasks.py dev`, then http://localhost:8000/docs) exposes runs with a live event stream
 (`GET /api/runs/{id}/events`, Server-Sent Events), the hold queue, master data, stats, the sandboxed golden
 Test Suite and `POST /api/admin/reset-demo`. Approving an invoice really updates the PO ledger, so running the
-same invoice twice is (correctly) rejected as a duplicate; reset the demo to start over.
+same invoice twice is (correctly) rejected as already paid; reset the demo to start over.
+
+- **Approved = paid** (demo assumption): an approved invoice goes into the invoice history as paid, dated today.
+- **The same file again:** if an earlier run approved it, the new run is rejected (`DUPLICATE_FILE`, "already
+  approved and paid"). If earlier runs only held or rejected it, the new run is a retry or second opinion. It is
+  judged on its own, with an INFO note linking the earlier run (`FILE_SEEN_BEFORE`). A person also cannot approve
+  a hold whose invoice has been paid since.
+- **Reset demo data** is a first visit. Master data, the PO ledger and the history are reseeded. Every run, batch,
+  hold action and email is deleted. Admin settings go back to their defaults, and the Test Suite result is
+  forgotten. Only the extraction and OCR caches stay; they are invisible and save free-tier quota.
 
 ### Working with many invoices
 

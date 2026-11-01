@@ -16,13 +16,18 @@ STAGE = "duplicate_check"
 
 
 def check_duplicate_file(file_hash: str | None, repo: MasterRepository) -> CheckResult:
-    """The exact same file (same SHA-256) must not be processed twice."""
-    original = repo.run_with_file_hash(file_hash) if file_hash else None
-    if original:
-        return raised(STAGE, "duplicate_file", ReasonCode.DUPLICATE_FILE,
-                      CheckEvidence(invoice_field="file_hash", invoice_value=file_hash, reference_source="runs",
-                                    reference_value=original), run_id=original)
-    return passed(STAGE, "duplicate_file", "This file has not been processed before.")
+    """The exact same file (same SHA-256) must not be paid twice: if an earlier run approved it, Reject. If earlier
+    runs only held or rejected it, this run is a retry or second opinion and is judged on its own (with a note)."""
+    earlier = repo.processed_file(file_hash) if file_hash else None
+    if earlier is None:
+        return passed(STAGE, "duplicate_file", "This file has not been processed before.")
+    evidence = CheckEvidence(invoice_field="file_hash", invoice_value=file_hash, reference_source="runs",
+                             reference_value=earlier.run_id)
+    when = f"{earlier.created_at:%d %b %Y}" if earlier.created_at else "earlier"
+    if earlier.decision == "APPROVE":
+        return raised(STAGE, "duplicate_file", ReasonCode.DUPLICATE_FILE, evidence, run_id=earlier.run_id[:8], when=when)
+    return raised(STAGE, "duplicate_file", ReasonCode.FILE_SEEN_BEFORE, evidence, run_id=earlier.run_id[:8],
+                  decision=(earlier.decision or "no decision").lower(), when=when)
 
 
 def check_duplicate_invoice(inv: ExtractedInvoice, vendor: VendorRecord | None, repo: MasterRepository,

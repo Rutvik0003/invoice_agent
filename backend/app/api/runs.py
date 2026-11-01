@@ -181,6 +181,11 @@ async def run_events(run_id: str, request: Request) -> EventSourceResponse:
     return EventSourceResponse(stream(), ping=15)
 
 
+def clear_page_images() -> None:
+    """Drop rendered page images (demo reset deletes the runs they belong to)."""
+    _page_cache.clear()
+
+
 @router.get("/runs/{run_id}/pages/{page:int}.png")
 def page_image(run_id: str, page: int, request: Request) -> Response:
     """A page as PNG: the same page the verification boxes (normalised 0-1) refer to."""

@@ -101,13 +101,14 @@ def test_extraction_waits_for_its_turn(monkeypatch):
     assert waits == [9]
 
 
-def test_settings_are_saved_validated_and_survive_a_demo_reset(client):
-    saved = client.put("/api/admin/settings", json={"ai_request_gap_s": 12})
-    assert saved.status_code == 200 and saved.json()["ai_request_gap_s"] == 12
-    assert client.get("/api/config").json()["ai_request_gap_s"] == 12
+def test_settings_are_saved_validated_and_a_demo_reset_restores_the_defaults(client):
+    default = client.get("/api/admin/settings").json()["ai_request_gap_s"]
+    saved = client.put("/api/admin/settings", json={"ai_request_gap_s": default + 6})
+    assert saved.status_code == 200 and saved.json()["ai_request_gap_s"] == default + 6
+    assert client.get("/api/config").json()["ai_request_gap_s"] == default + 6
     assert client.put("/api/admin/settings", json={"ai_request_gap_s": -1}).status_code == 422
     client.post("/api/admin/reset-demo")
-    assert client.get("/api/admin/settings").json()["ai_request_gap_s"] == 12
+    assert client.get("/api/admin/settings").json()["ai_request_gap_s"] == default
 
 
 # ---------------------------------------------------------------- Gemini model choice
@@ -323,3 +324,57 @@ def test_approving_without_an_invoice_number_asks_for_it_instead_of_failing(clie
     assert confirmed.status_code == 200
     approved = client.post(f"/api/holds/{run['id']}/action", json={**body, "action": "approve"})
     assert approved.status_code == 200 and approved.json()["result"]["decision"] == "APPROVE"
+
+
+# ---------------------------------------------------------------- the same file again
+
+
+def test_rerunning_a_held_or_rejected_file_is_judged_again_not_rejected_as_duplicate(client):
+    first = start(client, "07_E_wrong_gst")  # Reject (wrong GST type)
+    second = start(client, "07_E_wrong_gst")
+    codes = {r["code"] for r in second["reasons"]}
+    assert "DUPLICATE_FILE" not in codes and "FILE_SEEN_BEFORE" in codes
+    note = next(r for r in second["reasons"] if r["code"] == "FILE_SEEN_BEFORE")
+    assert first["id"][:8] in note["message"] and "reject" in note["message"]
+    held = start(client, "09_G_price_variance")
+    again = start(client, "09_G_price_variance")
+    assert again["decision"] == "HOLD" and "FILE_SEEN_BEFORE" in {r["code"] for r in again["reasons"]}
+    assert held["id"] != again["id"]
+
+
+def test_an_approved_invoice_is_recorded_as_paid_and_a_rerun_says_so(client):
+    first = start(client, "01_happy_clean")
+    history = [h for h in client.get("/api/data/history").json() if h["from_run"]]
+    assert [h["status"] for h in history] == ["paid"]
+    second = start(client, "01_happy_clean")
+    duplicate = next(r for r in second["reasons"] if r["code"] == "DUPLICATE_FILE")
+    assert second["decision"] == "REJECT" and "already approved and paid" in duplicate["message"]
+    assert first["id"][:8] in duplicate["message"]
+    number = next(r for r in second["reasons"] if r["code"] == "DUPLICATE_INVOICE_NUMBER")
+    assert "paid" in number["message"]
+
+
+def test_a_person_cannot_pay_the_same_invoice_twice_from_two_holds(client):
+    """The same file run twice -> two open holds. Approving the first pays it; the second must be refused."""
+    first = start(client, "05_C_no_po")  # Hold: no PO quoted
+    second = start(client, "05_C_no_po")  # Hold again (a re-run, not a duplicate)
+    po = first["rules"]["po_candidates"][0]["po_number"]
+    body = {"role": "Buyer", "comment": "checked"}
+    for run in (first, second):
+        client.post(f"/api/holds/{run['id']}/action", json={**body, "action": "assign_po", "payload": {"po_number": po}})
+    assert client.post(f"/api/holds/{first['id']}/action", json={**body, "action": "approve"}).status_code == 200
+    refused = client.post(f"/api/holds/{second['id']}/action", json={**body, "action": "approve"})
+    assert refused.status_code == 409 and "already approved and paid" in refused.json()["detail"]
+
+
+def test_demo_reset_is_a_first_visit(client):
+    start(client, "09_G_price_variance")
+    client.post(f"/api/runs/{start(client, '07_E_wrong_gst')['id']}/email")
+    client.put("/api/admin/settings", json={"ai_request_gap_s": 30})
+    client.post("/api/admin/reset-demo")
+    assert client.get("/api/runs").json()["total"] == 0
+    assert client.get("/api/holds").json()["items"] == []
+    assert client.get("/api/batches").json() == []
+    assert client.get("/api/eval/latest").json()["status"] == "never_run"
+    assert client.get("/api/admin/settings").json()["ai_request_gap_s"] != 30
+    assert not [h for h in client.get("/api/data/history").json() if h["from_run"]]

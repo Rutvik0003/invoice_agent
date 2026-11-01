@@ -54,6 +54,7 @@ class ReasonCode(str, Enum):
     PRICE_VARIANCE_WITHIN_TOLERANCE = "PRICE_VARIANCE_WITHIN_TOLERANCE"
     OCR_UNAVAILABLE = "OCR_UNAVAILABLE"
     FIELD_CROSS_CHECKED = "FIELD_CROSS_CHECKED"
+    FILE_SEEN_BEFORE = "FILE_SEEN_BEFORE"
 
     @property
     def info(self) -> CodeInfo:
@@ -76,8 +77,9 @@ CODES: dict[ReasonCode, CodeInfo] = {
         "REJECT", VENDOR, "The document is a {doc_type}, not a tax invoice.",
         "send a tax invoice for this supply (a {doc_type} cannot be paid against)."),
     ReasonCode.DUPLICATE_FILE: CodeInfo(
-        "REJECT", VENDOR, "This exact file was already processed in run {run_id}.",
-        "note that this file has already been received; no action is needed unless it is a different invoice."),
+        "REJECT", VENDOR, "This exact file was already approved and paid (run {run_id}, {when}).",
+        "note that this invoice has already been received and paid; no action is needed unless it is a different "
+        "invoice."),
     ReasonCode.DUPLICATE_INVOICE_NUMBER: CodeInfo(
         "REJECT", VENDOR, "Invoice number {number} was already received from this vendor as {original} "
                           "on {original_date} (₹{original_total}, {original_status}).",
@@ -149,6 +151,9 @@ CODES: dict[ReasonCode, CodeInfo] = {
     ReasonCode.OCR_UNAVAILABLE: CodeInfo(
         "INFO", AP_CLERK, "Page verification was not possible ({detail}); the decision relied on the model's "
                           "confidence for {fields}."),
+    ReasonCode.FILE_SEEN_BEFORE: CodeInfo(
+        "INFO", AP_CLERK, "This file was processed before (run {run_id}, {when}: {decision}) but not approved, so it "
+                          "is checked again on its own."),
     ReasonCode.FIELD_CROSS_CHECKED: CodeInfo(
         "INFO", AP_CLERK, "Not found on the page, but confirmed independently: {details}."),
 }

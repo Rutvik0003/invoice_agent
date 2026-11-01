@@ -3,11 +3,16 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Request
+from sqlalchemy import delete
+from sqlalchemy.orm import Session
 
 from app.api.common import engine_of
 from app.db import Base
 from app.logging_setup import get_logger
-from app.models import RUN_TABLES
+from app.api.eval import clear_suite
+from app.api.runs import clear_page_images
+from app.extraction import pacing
+from app.models import RUN_TABLES, AppSetting
 from app.runtime_settings import EditableSettings, current_editable, save_editable
 from app.seed import seed_master
 
@@ -16,10 +21,19 @@ logger = get_logger("admin")
 
 
 def reset_demo(engine) -> dict:
-    """Restore vendors, POs and invoice history from data/master, and clear every run (caches are kept)."""
+    """Back to a first visit: vendors, POs and invoice history from data/master; every run, batch, hold action and
+    email deleted; Settings back to their defaults; the Test Suite result and the request pacing forgotten.
+    Only the extraction and OCR caches are kept: they are invisible (a cached reading is used only when asked for,
+    and always badged) and they save free-tier quota."""
     counts = seed_master(engine)
     Base.metadata.drop_all(engine, tables=list(reversed(RUN_TABLES)))
     Base.metadata.create_all(engine, tables=RUN_TABLES)
+    with Session(engine) as session:
+        session.execute(delete(AppSetting))
+        session.commit()
+    clear_suite()
+    clear_page_images()
+    pacing.reset()
     logger.info("demo data reset", extra=counts)
     return {"reset": True, **counts, "runs": 0}
 

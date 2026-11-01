@@ -49,7 +49,7 @@ HISTORY = [
 
 
 def repo(pos: list[PORecord] | None = None, history: list[HistoryRecord] | None = None,
-         hashes: dict[str, str] | None = None) -> InMemoryRepository:
+         hashes: dict | None = None) -> InMemoryRepository:
     return InMemoryRepository(BUYER, [INTRA, INTER, PENDING, BLOCKED],
                               pos if pos is not None else [PO_OPEN, PO_PARTIAL, PO_CLOSED, PO_PENDING],
                               history if history is not None else list(HISTORY), hashes)

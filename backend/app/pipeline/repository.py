@@ -9,7 +9,7 @@ from __future__ import annotations
 import csv
 import json
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Protocol
@@ -77,6 +77,15 @@ class PORecord:
 
 
 @dataclass(frozen=True)
+class ProcessedFile:
+    """An earlier finished run of the same file: its id, its final decision and when it ran."""
+
+    run_id: str
+    decision: str | None  # APPROVE | HOLD | REJECT (a person's decision once a hold is resolved)
+    created_at: datetime | None = None
+
+
+@dataclass(frozen=True)
 class HistoryRecord:
     history_id: str
     vendor_id: str
@@ -101,14 +110,14 @@ class MasterRepository(Protocol):
 
     def history_for_vendor(self, vendor_id: str) -> list[HistoryRecord]: ...
 
-    def run_with_file_hash(self, file_hash: str) -> str | None: ...
+    def processed_file(self, file_hash: str) -> ProcessedFile | None: ...
 
 
 class InMemoryRepository:
     """Master data held in memory (from the CSVs). Each lookup treats the data as the seeded state."""
 
     def __init__(self, buyer: BuyerRecord, vendors: list[VendorRecord], pos: list[PORecord],
-                 history: list[HistoryRecord], processed_hashes: dict[str, str] | None = None) -> None:
+                 history: list[HistoryRecord], processed_hashes: dict[str, ProcessedFile] | None = None) -> None:
         self.buyer = buyer
         self._vendors = vendors
         self._by_gstin = {normalise_code(v.gstin): v for v in vendors}
@@ -131,7 +140,7 @@ class InMemoryRepository:
     def history_for_vendor(self, vendor_id: str) -> list[HistoryRecord]:
         return [h for h in self._history if h.vendor_id == vendor_id]
 
-    def run_with_file_hash(self, file_hash: str) -> str | None:
+    def processed_file(self, file_hash: str) -> ProcessedFile | None:
         return self._hashes.get(file_hash)
 
     @classmethod
@@ -199,10 +208,15 @@ class DbRepository:
                               Decimal(h.taxable_value), Decimal(h.total_amount), h.status)
                 for h in self.session.scalars(query)]
 
-    def run_with_file_hash(self, file_hash: str) -> str | None:
-        # only runs that actually finished count as "processed" (a failed extraction can be retried)
-        query = select(Run.id).where(Run.file_hash == file_hash, Run.is_test_run.is_(False),
-                                     Run.status.in_(("completed", "resolved_by_human")))
+    def processed_file(self, file_hash: str) -> ProcessedFile | None:
+        """The earliest approved run of this file (it was paid), else the latest finished one. Only runs that
+        finished count (a failed extraction can be retried); test runs never count."""
+        query = select(Run).where(Run.file_hash == file_hash, Run.is_test_run.is_(False),
+                                  Run.status.in_(("completed", "resolved_by_human")))
         if self._exclude_run_id:
             query = query.where(Run.id != self._exclude_run_id)
-        return self.session.scalars(query.order_by(Run.created_at)).first()
+        runs = list(self.session.scalars(query.order_by(Run.created_at)))
+        if not runs:
+            return None
+        run = next((r for r in runs if r.decision == "APPROVE"), runs[-1])
+        return ProcessedFile(run.id, run.decision, run.created_at)

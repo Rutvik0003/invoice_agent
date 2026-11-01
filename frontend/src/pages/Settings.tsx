@@ -49,7 +49,7 @@ function AdminForm({ saved: initial }: { saved: EditableSettings }) {
   return (
     <section className="rounded-xl border border-zinc-200 bg-white p-5">
       <h2 className="text-sm font-semibold">Admin settings</h2>
-      <p className="mt-0.5 text-xs text-zinc-500">Changed here, used immediately. They override the environment defaults and survive a demo reset.</p>
+      <p className="mt-0.5 text-xs text-zinc-500">Changed here, used immediately. They override the environment defaults until the next demo reset.</p>
       <div className="mt-3 max-w-xl">
         <div className="space-y-1.5">
           <label htmlFor="gap" className="text-sm font-medium">Pause between AI requests</label>
@@ -151,8 +151,9 @@ export default function Settings() {
         <section className="rounded-xl border border-red-200 bg-white p-5">
           <h2 className="text-sm font-semibold">Reset demo data</h2>
           <p className="mt-1 text-sm text-zinc-600">
-            Restores vendors, purchase orders and invoice history to the seeded state and deletes every run and hold action.
-            Use it before a demo: approving an invoice changes the ledger, so running it again is (correctly) rejected as a duplicate.
+            Starts over as if the app were opened for the first time: vendors, purchase orders and invoice history go back to the
+            seeded state, and every run, batch, hold action and email is deleted. Admin settings return to their defaults.
+            Use it before a demo: an approved invoice is paid, so running it again is (correctly) rejected as already paid.
           </p>
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -164,7 +165,7 @@ export default function Settings() {
               <AlertDialogHeader>
                 <AlertDialogTitle>Reset all demo data?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Every run, decision and hold action is deleted, and the PO ledger and invoice history go back to the seeded state. This cannot be undone.
+                  Every run, batch, decision, hold action and email is deleted, the PO ledger and invoice history go back to the seeded state, and admin settings return to their defaults. This cannot be undone.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -175,7 +176,7 @@ export default function Settings() {
           </AlertDialog>
           {reset.isSuccess && (
             <p className="mt-2 text-sm text-emerald-700">
-              Done: {String(reset.data.vendors)} vendors, {String(reset.data.po_headers)} POs and {String(reset.data.invoice_history)} past invoices restored; all runs cleared.
+              Done: {String(reset.data.vendors)} vendors, {String(reset.data.po_headers)} POs and {String(reset.data.invoice_history)} past invoices restored; all runs cleared; settings back to defaults.
             </p>
           )}
           {reset.isError && <p className="mt-2 text-sm text-red-700">{reset.error.message}</p>}

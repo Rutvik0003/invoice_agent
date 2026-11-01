@@ -1,4 +1,7 @@
-"""Apply an approved invoice to the PO ledger and the invoice history (the only place runs change master data)."""
+"""Apply an approved invoice to the PO ledger and the invoice history (the only place runs change master data).
+
+Demo assumption: approving an invoice pays it, so it is recorded as paid (dated today).
+"""
 
 from __future__ import annotations
 
@@ -56,7 +59,7 @@ def apply_ledger_update(session: Session, update: LedgerUpdate, run_id: str) -> 
         round_off=Decimal(row["round_off"]),
         total_amount=Decimal(row["total_amount"]),
         status=row["status"],
-        payment_date=None,
+        payment_date=date.today() if row["status"] == "paid" else None,
         lines_json=row["lines_json"],
     ))
     return change

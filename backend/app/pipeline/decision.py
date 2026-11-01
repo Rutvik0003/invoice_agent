@@ -91,7 +91,7 @@ def ledger_update(inv: ExtractedInvoice, vendor: VendorRecord, po: PORecord, mat
         "taxable_value": str(taxable), "cgst": str(to_decimal(inv.cgst.value) or Decimal("0.00")),
         "sgst": str(to_decimal(inv.sgst.value) or Decimal("0.00")), "igst": str(to_decimal(inv.igst.value) or Decimal("0.00")),
         "round_off": str(to_decimal(inv.round_off.value) or Decimal("0.00")), "total_amount": str(total),
-        "status": "approved",
+        "status": "paid",
         "lines_json": [{"po_line_no": l.po_line_no, "description": l.description, "quantity": l.quantity,
                         "unit_price": l.unit_price, "amount": l.amount} for l in lines],
     }

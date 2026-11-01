@@ -34,7 +34,7 @@ VENDOR_TEXT: dict[ReasonCode, VendorText] = {
         "Not a tax invoice", "The document we received is a {doc_type}, not a tax invoice.",
         "Please send a tax invoice for this supply."),
     ReasonCode.DUPLICATE_FILE: VendorText(
-        "Duplicate submission", "This exact file has already been received and processed.",
+        "Already paid", "This invoice has already been received, approved and paid.",
         "No action is needed unless this is a different invoice; if it is, please send that invoice instead."),
     ReasonCode.DUPLICATE_INVOICE_NUMBER: VendorText(
         "Duplicate invoice number", "Invoice number {number} was already received from you as {original} on "

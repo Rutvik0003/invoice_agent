@@ -63,6 +63,14 @@ def run_suite(suite: dict, engine, extract_fn, model: str, use_cache: bool, dela
     suite.update(status="done", finished_at=_now())
 
 
+def clear_suite() -> None:
+    """Forget the last Test Suite result (demo reset). A suite still running keeps its own record."""
+    global _latest
+    with _lock:
+        if _latest.get("status") != "running":
+            _latest = {}
+
+
 @router.post("/eval/golden")
 def start_suite(body: SuiteRequest, request: Request, background: BackgroundTasks) -> dict:
     """Start the golden Test Suite in the background (one at a time)."""

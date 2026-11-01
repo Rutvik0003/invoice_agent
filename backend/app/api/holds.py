@@ -15,6 +15,7 @@ from app.models import HoldAction, Run
 from app.pipeline.amount_match import map_lines
 from app.pipeline.decision import ledger_update
 from app.pipeline.ledger import apply_ledger_update
+from app.pipeline.normalise import normalise_invoice_number
 from app.pipeline.orchestrator import load_buyer
 from app.pipeline.po_compare import compare
 from app.pipeline.repository import DbRepository
@@ -166,6 +167,22 @@ def _confirm_field(run: Run, payload: dict) -> dict:
     return {"field": field, "old_value": old, "new_value": entry["value"]}
 
 
+def already_paid(repo: DbRepository, run: Run, invoice: ExtractedInvoice) -> None:
+    """A person must not pay an invoice twice: refuse if this file was approved in another run since, or the
+    vendor's history already has this invoice number (for example a re-run of the same invoice was approved)."""
+    earlier = repo.processed_file(run.file_hash)
+    if earlier is not None and earlier.decision == "APPROVE":
+        raise HTTPException(status_code=409, detail=f"This file was already approved and paid in run {earlier.run_id[:8]}. "
+                                                    "Reject this hold instead.")
+    number = normalise_invoice_number(str(invoice.invoice_number.value))
+    paid = next((h for h in repo.history_for_vendor(run.vendor_id)
+                 if normalise_invoice_number(h.invoice_number) == number), None)
+    if paid is not None:
+        raise HTTPException(status_code=409, detail=f"Invoice {paid.invoice_number} from this vendor is already in the "
+                                                    f"invoice history ({paid.status}, {paid.invoice_date:%d %b %Y}). "
+                                                    "Reject this hold instead.")
+
+
 def _approve(session: Session, run: Run) -> dict:
     """Human approval: bill the PO (inferred, or assigned by a person) and record the invoice in history."""
     if not run.po_number:
@@ -181,7 +198,8 @@ def _approve(session: Session, run: Run) -> dict:
     if missing:  # the invoice history (duplicate checks, payment) cannot record an invoice without them
         raise HTTPException(status_code=400, detail=f"The {' and '.join(missing)} {'is' if len(missing) == 1 else 'are'} "
                                                     "missing. Enter it with 'Confirm value' first, then approve.")
-    repo = DbRepository(session, load_buyer())
+    repo = DbRepository(session, load_buyer(), exclude_run_id=run.id)
+    already_paid(repo, run, invoice)
     po = repo.po(run.po_number)
     vendor = next((v for v in repo.vendors() if v.vendor_id == run.vendor_id), None)
     update = ledger_update(invoice, vendor, po, map_lines(invoice, po))
