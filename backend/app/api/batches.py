@@ -170,12 +170,17 @@ def retry_batch(batch_id: str, body: BatchRetry, request: Request) -> dict:
         wanted = [r for r in latest if r.status in FAILED and (body.run_ids is None or r.id in body.run_ids)]
         if not wanted:
             raise HTTPException(status_code=409, detail="Nothing to retry: no failed invoice in this batch matches.")
-        originals = [(r.id, r.file_name, r.file_bytes, bool(r.use_cache), r.sample_id, r.source_json) for r in wanted]
-    check_demo_quota(request, engine, len(originals), effective_settings(engine).demo_max_runs_per_hour)
+        settings = effective_settings(engine)
+        # no model named: the same provider keeps the model each invoice was read with (as a single retry does)
+        originals = [(r.id, r.file_name, r.file_bytes, bool(r.use_cache), r.sample_id, r.source_json,
+                      body.model_name or (r.model_name if r.model == body.model
+                                          and r.model_name in settings.model_choices(body.model) else None))
+                     for r in wanted]
+    check_demo_quota(request, engine, len(originals), settings.demo_max_runs_per_hour)
     try:
-        new_ids = [create_run_record(engine, name, data, body.model, retry_of=run_id, model_name=body.model_name,
+        new_ids = [create_run_record(engine, name, data, body.model, retry_of=run_id, model_name=model_name,
                                      batch_id=batch_id, use_cache=use_cache, sample_id=sample_id, source=source)
-                   for run_id, name, data, use_cache, sample_id, source in originals]
+                   for run_id, name, data, use_cache, sample_id, source, model_name in originals]
     except (IntakeError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     request.app.state.batch_worker.notify()

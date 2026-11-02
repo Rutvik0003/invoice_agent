@@ -397,3 +397,27 @@ def test_cookies_are_secure_on_https_only(app_and_engine):
     deployed = TestClient(app).post("/api/mode", json={"mode": "demo"}, headers={"X-Forwarded-Proto": "https"})
     cookies = deployed.headers.get_list("set-cookie")
     assert cookies and all("secure" in c.lower() and "httponly" in c.lower() for c in cookies)
+
+
+def test_a_batch_retry_keeps_the_model_each_invoice_was_read_with(tmp_path, demo_env):
+    """Real mode: a batch on gemini-3.6-flash that fails is retried on gemini-3.6-flash, not on GEMINI_MODEL."""
+    calls = {"n": 0}
+
+    def fails_first(data, mime, provider, settings, engine=None, use_cache=False, page_images=None):
+        calls["n"] += 1
+        if calls["n"] <= 1:  # like the real reader, a failed reading names the model it tried
+            failed = failing_extract(data, mime, provider, settings, engine, use_cache, page_images)
+            return failed.model_copy(update={"model_name": settings.gemini_model})
+        return recording_extract(data, mime, provider, settings, engine, use_cache, page_images)
+
+    app, engine = make_app(tmp_path, extract_fn=fails_first)
+    with TestClient(app):
+        owner = TestClient(app)
+        upload = ("01.pdf", (INVOICES / "golden" / "01_happy_clean.pdf").read_bytes(), "application/pdf")
+        batch_id = owner.post("/api/batches", files=[("files", upload)],
+                              data={"model": "gemini", "model_name": "gemini-3.6-flash"}).json()["batch_id"]
+        assert wait_for_batch(owner, batch_id)["failed"] == 1
+        assert owner.post(f"/api/batches/{batch_id}/retry", json={"model": "gemini"}).status_code == 200
+        assert wait_for_batch(owner, batch_id)["failed"] == 0
+        assert SEEN_KEYS[-1] == ("gemini", "real-key", "gemini-3.6-flash")
+    engine.dispose()

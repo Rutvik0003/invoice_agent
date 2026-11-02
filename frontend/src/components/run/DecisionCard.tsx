@@ -181,7 +181,7 @@ export function FailureCard({ run, error, config, heading = 'Could not read the 
             {isDemo ? 'Try again' : `Retry with ${run.model === 'gemini' ? 'Gemini' : 'Groq'}`}
             {run.model_name && <> · <span className="font-mono text-xs">{run.model_name}</span></>}
           </Button>
-          {isDemo && otherGemini.map((m) => (
+          {otherGemini.map((m) => (
             <Button key={m} variant="outline" disabled={retry.isPending} onClick={() => retry.mutate(m)}>
               Try · <span className="font-mono text-xs">{m}</span>
             </Button>

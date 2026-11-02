@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils'
 const OUTCOMES: Outcome[] = ['APPROVE', 'HOLD', 'REJECT']
 const FAILED = ['extraction_failed', 'failed', 'interrupted']
 const MODEL_LABEL: Record<string, string> = { gemini: 'Gemini', groq: 'Groq' }
-const otherModel = (model: string) => (model === 'gemini' ? 'groq' : 'gemini')
+type ModelChoice = { provider: string; name: string }
 
 function itemState(item: BatchItem): { label: string; cls: string; icon?: 'spin' | 'clock' } {
   switch (item.status) {
@@ -51,12 +51,16 @@ export default function BatchView({ batchId }: { batchId: string }) {
     mutationFn: (body: { model: string; model_name?: string; run_ids?: string[] }) => api2.retryBatch(batchId, body),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['batch', batchId] }),
   })
-  const usable = (model: string) => !!config.data?.models.find((m) => m.id === model)?.configured
   const { isDemo } = useMode()
-  const geminiChoices = config.data?.models.find((m) => m.id === 'gemini')?.choices ?? []
-  /** Demo: the same Gemini model first ("Try again · model"), then each other Gemini model. */
-  const geminiOrder = (current: string | null) =>
-    current && geminiChoices.includes(current) ? [current, ...geminiChoices.filter((c) => c !== current)] : geminiChoices
+  // every model this mode can use (the demo: its Gemini models; real mode: the Gemini models and Groq)
+  const choices: ModelChoice[] = (config.data?.models ?? []).filter((m) => m.configured)
+    .flatMap((m) => m.choices.map((name) => ({ provider: m.id, name })))
+  /** The model the invoice was read with first ("Try again · model"), then every other model. */
+  const ordered = (current: string | null) => {
+    const same = choices.find((c) => c.name === current)
+    return same ? [same, ...choices.filter((c) => c !== same)] : choices
+  }
+  const label = (c: ModelChoice) => (c.provider === 'groq' ? `Groq · ${c.name}` : c.name)
   const batch = useQuery({
     queryKey: ['batch', batchId],
     queryFn: () => api2.batch(batchId),
@@ -69,7 +73,6 @@ export default function BatchView({ batchId }: { batchId: string }) {
   const pct = b.total ? Math.round((b.done / b.total) * 100) : 0
   const running = items.find((i) => i.status === 'running')
   const failed = b.failed
-  const retryModel = otherModel(b.model)
   const download = () => {
     const url = URL.createObjectURL(new Blob([csv(b)], { type: 'text/csv' }))
     const a = Object.assign(document.createElement('a'), { href: url, download: `batch_${b.id.slice(0, 8)}.csv` })
@@ -123,23 +126,15 @@ export default function BatchView({ batchId }: { batchId: string }) {
               <span className="min-w-0 flex-1">
                 {isDemo
                   ? `${failed} invoice${failed > 1 ? 's were' : ' was'} not read: the AI model was busy or at its free-tier limit. Try again, or with another Gemini model.`
-                  : `${failed} invoice${failed > 1 ? 's' : ''} could not be read by the AI (for example a rate limit). They can be queued again here.`}
+                  : `${failed} invoice${failed > 1 ? 's' : ''} could not be read by the AI (for example a rate limit or a busy model). Try again, or pick another model.`}
               </span>
-              {!isDemo && (
-                <Button size="sm" disabled={retry.isPending || !usable(retryModel)} onClick={() => retry.mutate({ model: retryModel })}>
-                  {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Retry all with {MODEL_LABEL[retryModel]}
-                </Button>
-              )}
-              {isDemo ? geminiOrder(b.model_name).map((m, i) => (
-                <Button key={m} size="sm" variant="outline" disabled={retry.isPending} onClick={() => retry.mutate({ model: 'gemini', model_name: m })}>
+              {ordered(b.model_name).map((c, i) => (
+                <Button key={`${c.provider}|${c.name}`} size="sm" variant="outline" disabled={retry.isPending}
+                        onClick={() => retry.mutate({ model: c.provider, model_name: c.name })}>
                   {i === 0 && retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}
-                  {i === 0 ? 'Try again' : 'Try'} · <span className="font-mono text-xs">{m}</span>
+                  {i === 0 ? 'Try again' : 'Try'} · <span className="font-mono text-xs">{label(c)}</span>
                 </Button>
-              )) : (
-                <Button size="sm" variant="outline" disabled={retry.isPending || !usable(b.model)} onClick={() => retry.mutate({ model: b.model })}>
-                  Retry with {MODEL_LABEL[b.model]}
-                </Button>
-              )}
+              ))}
               {retry.isError && <span className="w-full text-xs text-red-700">{retry.error.message}</span>}
             </div>
           )}
@@ -179,21 +174,16 @@ export default function BatchView({ batchId }: { batchId: string }) {
                         {state.icon === 'spin' && <Loader2 className="size-3 animate-spin" />}
                         {state.icon === 'clock' && <Clock className="size-3" />}
                         {state.label}{item.duration_ms && item.status !== 'queued' && item.status !== 'running' ? ` · ${duration(item.duration_ms)}` : ''}
-                        {item.attempt > 1 && ` · attempt ${item.attempt} (${MODEL_LABEL[item.model]})`}
+                        {item.attempt > 1 && ` · attempt ${item.attempt}`}
+                        {FAILED.includes(item.status) && ` · ${item.model_name ?? MODEL_LABEL[item.model]}`}
                       </div>
                       {FAILED.includes(item.status) && (
                         <div className="mt-1 flex flex-wrap gap-1.5" onClick={(e) => e.stopPropagation()}>
-                          {isDemo ? geminiOrder(item.model_name).map((m, i) => (
-                            <button key={m} type="button" disabled={retry.isPending}
-                                    onClick={() => retry.mutate({ model: 'gemini', model_name: m, run_ids: [item.id] })}
+                          {ordered(item.model_name).map((c, i) => (
+                            <button key={`${c.provider}|${c.name}`} type="button" disabled={retry.isPending}
+                                    onClick={() => retry.mutate({ model: c.provider, model_name: c.name, run_ids: [item.id] })}
                                     className="flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-0.5 text-[11px] font-medium text-zinc-700 ring-1 ring-zinc-300 hover:bg-zinc-100 disabled:opacity-40">
-                              <RotateCcw className="size-3" />{i === 0 ? 'Try again' : 'Try'} · <span className="font-mono">{m}</span>
-                            </button>
-                          )) : [otherModel(item.model), item.model].map((m) => (
-                            <button key={m} type="button" disabled={retry.isPending || !usable(m)}
-                                    onClick={() => retry.mutate({ model: m, run_ids: [item.id] })}
-                                    className="flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-0.5 text-[11px] font-medium text-zinc-700 ring-1 ring-zinc-300 hover:bg-zinc-100 disabled:opacity-40">
-                              <RotateCcw className="size-3" />Retry with {MODEL_LABEL[m]}
+                              <RotateCcw className="size-3" />{i === 0 ? 'Try again' : 'Try'} · <span className="font-mono">{label(c)}</span>
                             </button>
                           ))}
                         </div>
