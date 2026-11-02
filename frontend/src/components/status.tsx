@@ -1,4 +1,5 @@
-/** Shared status visuals: decision colours (green Approve, amber Hold, red Reject, gray running/failed). */
+/** Shared status visuals: decision colours (green Paid, amber Needs human verification, red Rejected, gray running/failed).
+ *  The engine's codes stay APPROVE / HOLD / REJECT; these are the words people see (approving pays the invoice). */
 
 import { AlertTriangle, Check, Circle, Info, Loader2, X } from 'lucide-react'
 
@@ -7,16 +8,16 @@ import type { StageStatus } from '@/lib/useRunEvents'
 import { cn } from '@/lib/utils'
 
 export const OUTCOME_STYLE: Record<Outcome, { bg: string; text: string; ring: string; soft: string; label: string }> = {
-  APPROVE: { bg: 'bg-emerald-600', text: 'text-emerald-700', ring: 'ring-emerald-200', soft: 'bg-emerald-50', label: 'Approve' },
-  HOLD: { bg: 'bg-amber-500', text: 'text-amber-700', ring: 'ring-amber-200', soft: 'bg-amber-50', label: 'Hold' },
-  REJECT: { bg: 'bg-red-600', text: 'text-red-700', ring: 'ring-red-200', soft: 'bg-red-50', label: 'Reject' },
+  APPROVE: { bg: 'bg-emerald-600', text: 'text-emerald-700', ring: 'ring-emerald-200', soft: 'bg-emerald-50', label: 'Paid' },
+  HOLD: { bg: 'bg-amber-500', text: 'text-amber-700', ring: 'ring-amber-200', soft: 'bg-amber-50', label: 'Needs human verification' },
+  REJECT: { bg: 'bg-red-600', text: 'text-red-700', ring: 'ring-red-200', soft: 'bg-red-50', label: 'Rejected' },
 }
 
 export function DecisionPill({ outcome, className }: { outcome: Outcome | null; className?: string }) {
   if (!outcome) return <span className={cn('rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600', className)}>—</span>
   const s = OUTCOME_STYLE[outcome]
   return (
-    <span className={cn('rounded-full px-2 py-0.5 text-xs font-semibold text-white', s.bg, className)}>{s.label.toUpperCase()}</span>
+    <span className={cn('rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap text-white', s.bg, className)}>{s.label}</span>
   )
 }
 

@@ -25,6 +25,9 @@ def map_gemini_error(exc: Exception) -> ProviderError:
             return ProviderError("auth_error", text)
         if code == 504 or "DEADLINE" in text.upper():
             return ProviderError("timeout", text)
+        if code == 503:  # Google: "This model is currently experiencing high demand"
+            return ProviderError("provider_error", text, message="This Gemini model is busy right now (high demand at "
+                                 "Google; usually temporary). Try again in a minute, or pick another Gemini model.")
         if code == 404:  # e.g. a model Google retired, or one a newer API key may not use
             return ProviderError("provider_error", text, message="This Gemini model is not available for the API key in "
                                  "use (Google may have retired it, or limited it to older accounts). Pick another Gemini "

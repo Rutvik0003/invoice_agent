@@ -127,7 +127,8 @@ def hold_action(run_id: str, body: HoldActionIn, request: Request) -> dict:
         elif body.action == "confirm_field":
             result = _confirm_field(run, body.payload)
         elif body.action == "approve":
-            result = _approve(session, run)
+            result = _corrections(session, run, body.payload)
+            result.update(_approve(session, run))
         else:
             run.decision, run.status = "REJECT", "resolved_by_human"
             result = {"decision": "REJECT"}
@@ -151,6 +152,18 @@ def _assign_po(session: Session, run: Run, payload: dict) -> dict:
         raise HTTPException(status_code=400, detail=f"{po.po_number} is closed.")
     run.po_number = po.po_number
     return {"po_number": po.po_number}
+
+
+def _corrections(session: Session, run: Run, payload: dict) -> dict:
+    """What the person checked before paying, applied in the same step: the PO chosen (payload 'po_number') and the
+    values confirmed or corrected against the document (payload 'fields': {field: value})."""
+    applied: dict = {}
+    if payload.get("po_number") and payload["po_number"] != run.po_number:
+        applied.update(_assign_po(session, run, payload))
+    confirmed = [_confirm_field(run, {"field": f, "value": v}) for f, v in (payload.get("fields") or {}).items()]
+    if confirmed:
+        applied["confirmed"] = confirmed
+    return applied
 
 
 def _confirm_field(run: Run, payload: dict) -> dict:

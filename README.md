@@ -86,6 +86,10 @@ The first screen offers two ways in:
 **Running** (sidebar, with a live count) lists every invoice and batch still processing; they keep going on the
 server when you leave their screen.
 
+Decisions are shown as **Paid** (approved; approving pays the invoice in this demo), **Needs human
+verification** (held) and **Rejected**. The **Verification queue** asks one thing per invoice: choose the PO if
+one is needed, confirm or correct the values the AI was unsure of, add a note, then **Verify & pay** or **Reject**.
+
 Both modes run exactly the same pipeline and rules; the mode only decides which database and which AI key a
 request uses (`app/api/common.engine_of`).
 

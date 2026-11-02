@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Check, ChevronDown, ExternalLink, Loader2, Scale, UserCheck, X } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 import { PageHeader } from '@/components/AppShell'
 import { BoxCrop } from '@/components/BoxCrop'
@@ -34,54 +34,33 @@ function primaryRole(item: HoldItem): string {
 
 export default function HoldQueue() {
   const [state, setState] = useState<'open' | 'resolved'>('open')
-  const [role, setRole] = useState<string>('all')
   const holds = useQuery({ queryKey: ['holds', state], queryFn: () => api2.holds(state), refetchInterval: 15_000 })
   const items = holds.data?.items ?? []
-  const roles = useMemo(() => {
-    const counts: Record<string, number> = {}
-    for (const i of items) counts[primaryRole(i)] = (counts[primaryRole(i)] ?? 0) + 1
-    return Object.entries(counts).sort((a, b) => ROLE_ORDER.indexOf(a[0]) - ROLE_ORDER.indexOf(b[0]))
-  }, [items])
-  const shown = items.filter((i) => role === 'all' || primaryRole(i) === role)
-  const groups = ROLE_ORDER.map((r) => [r, shown.filter((i) => primaryRole(i) === r)] as const).filter(([, list]) => list.length)
 
   return (
     <div>
       <PageHeader
-        title="Hold Queue"
-        subtitle="Invoices the rules could not decide alone, grouped by who has to act. Every action needs a comment and is logged."
+        title="Verification queue"
+        subtitle="Invoices the rules could not decide alone. Check the points listed on each one, then pay or reject it."
         actions={
           <div className="flex rounded-lg bg-zinc-100 p-1 text-sm">
             {(['open', 'resolved'] as const).map((s) => (
               <button key={s} type="button" onClick={() => setState(s)}
                       className={cn('rounded-md px-3 py-1', state === s ? 'bg-white font-medium shadow-sm' : 'text-zinc-600')}>
-                {s === 'open' ? 'Open' : 'Resolved'}
+                {s === 'open' ? `To check${state === 'open' && items.length ? ` (${items.length})` : ''}` : 'Done'}
               </button>
             ))}
           </div>
         }
       />
-      <div className="space-y-5 px-8 py-6">
-        <div className="flex flex-wrap gap-1.5">
-          {[['all', items.length] as const, ...roles].map(([r, n]) => (
-            <button key={r} type="button" onClick={() => setRole(r)}
-                    className={cn('rounded-full px-3 py-1 text-sm ring-1', role === r ? 'bg-zinc-900 text-white ring-zinc-900' : 'bg-white text-zinc-700 ring-zinc-200 hover:ring-zinc-400')}>
-              {r === 'all' ? 'All' : r} <span className="opacity-60">{n}</span>
-            </button>
-          ))}
-        </div>
+      <div className="space-y-4 px-8 py-6">
         {holds.isPending && <div className="h-40 animate-pulse rounded-xl bg-zinc-100" />}
         {!holds.isPending && !items.length && (
           <div className="rounded-xl border border-dashed border-zinc-300 p-12 text-center text-sm text-zinc-500">
-            {state === 'open' ? 'Nothing on hold. Held invoices appear here, grouped by who has to act.' : 'No holds resolved yet.'}
+            {state === 'open' ? 'Nothing needs human verification right now.' : 'No invoices verified by a person yet.'}
           </div>
         )}
-        {groups.map(([r, list]) => (
-          <section key={r} className="space-y-3">
-            <h2 className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">{r} · {list.length}</h2>
-            {list.map((item) => <HoldCard key={item.id} item={item} />)}
-          </section>
-        ))}
+        {items.map((item) => <HoldCard key={item.id} item={item} />)}
       </div>
     </div>
   )
@@ -90,20 +69,25 @@ export default function HoldQueue() {
 function HoldCard({ item }: { item: HoldItem }) {
   const queryClient = useQueryClient()
   const codes = new Set(item.reasons.map((r) => r.code))
-  const roles = [...new Set(item.routed_questions.map((q) => q.role))].sort((a, b) => ROLE_ORDER.indexOf(a) - ROLE_ORDER.indexOf(b))
+  const role = primaryRole(item)
   const fields = confirmableFields(item)
-  const [mode, setMode] = useState<'decide' | 'po' | 'confirm'>('decide')
+  const needsPo = [...codes].some((c) => c && PO_CODES.has(c))
   const [comparing, setComparing] = useState(false)
-  const [role, setRole] = useState(roles[0] ?? 'AP clerk')
   const [comment, setComment] = useState('')
   const [po, setPo] = useState(item.po_candidates[0]?.po_number ?? item.po_number ?? '')
-  const [field, setField] = useState(fields[0] ?? '')
-  const extractedValue = field && item.extracted?.[field] ? item.extracted[field].value : null
-  const [value, setValue] = useState(extractedValue != null ? String(extractedValue) : '')
+  const [values, setValues] = useState<Record<string, string>>(() => Object.fromEntries(fields.map((f) => {
+    const v = item.extracted?.[f]?.value
+    return [f, v != null ? String(v) : '']
+  })))
 
   const act = useMutation({
-    mutationFn: (body: { action: string; payload?: Record<string, unknown> }) =>
-      api2.holdAction(item.id, { ...body, role, comment: comment.trim() }),
+    mutationFn: (action: 'approve' | 'reject') => {
+      // what the person checked travels with the approval: the PO, and every value they confirmed or corrected
+      const checked = Object.fromEntries(Object.entries(values).filter(([, v]) => v.trim())
+        .map(([f, v]) => [f, MONEY_FIELDS.has(f) ? Number(v.replace(/[₹,\s]|rs\.?/gi, '')) : v.trim()]))
+      const payload = action === 'approve' ? { ...(needsPo && po.trim() ? { po_number: po.trim() } : {}), fields: checked } : {}
+      return api2.holdAction(item.id, { action, role, comment: comment.trim(), payload })
+    },
     onSuccess: () => {
       setComment('')
       queryClient.invalidateQueries({ queryKey: ['holds'] })
@@ -126,7 +110,7 @@ function HoldCard({ item }: { item: HoldItem }) {
           <div className="truncate font-medium">{item.vendor_name ?? 'Unknown vendor'} · {item.invoice_number ?? 'no invoice number'}</div>
           <div className="text-xs text-zinc-500">{inr(item.total_amount)} · {item.po_number ?? 'no PO'} · {item.file_name} · {timeAgo(item.created_at)}</div>
         </div>
-        <div className="flex flex-wrap gap-1">{roles.map((r) => <span key={r} className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-900">{r}</span>)}</div>
+        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-900">Usually checked by: {role}</span>
         <Button size="sm" variant={comparing ? 'secondary' : 'outline'} onClick={() => setComparing(!comparing)} disabled={!item.vendor_id}
                 title={item.vendor_id ? undefined : 'The vendor is not in the vendor master, so there is no PO to compare with'}>
           <Scale />Compare with PO<ChevronDown className={cn('transition-transform', comparing && 'rotate-180')} />
@@ -156,16 +140,11 @@ function HoldCard({ item }: { item: HoldItem }) {
         ) : (
           <div className="space-y-3">
           <VendorEmail runId={item.id} compact />
-          <div className="space-y-3 rounded-lg border border-zinc-200 p-4">
-            <div className="flex gap-1 rounded-md bg-zinc-100 p-0.5 text-xs">
-              {([['decide', 'Approve / Reject'], ['po', 'Assign PO'], ['confirm', 'Confirm value']] as const).map(([m, label]) => (
-                <button key={m} type="button" onClick={() => setMode(m)}
-                        disabled={(m === 'po' && ![...codes].some((c) => c && PO_CODES.has(c))) || (m === 'confirm' && !fields.length)}
-                        className={cn('flex-1 rounded px-2 py-1 disabled:opacity-40', mode === m ? 'bg-white font-medium shadow-sm' : 'text-zinc-600')}>{label}</button>
-              ))}
-            </div>
-            {mode === 'po' && (
+          <div className="space-y-4 rounded-lg border border-zinc-200 p-4">
+            <h3 className="text-sm font-semibold">Your check</h3>
+            {needsPo && (
               <div className="space-y-1.5">
+                <div className="text-xs font-medium text-zinc-700">1. Which purchase order is this invoice for?</div>
                 {item.po_candidates.map((c) => (
                   <label key={c.po_number} className={cn('flex cursor-pointer items-center gap-2 rounded-md border px-2.5 py-1.5 text-sm',
                     po === c.po_number ? 'border-zinc-900' : 'border-zinc-200')}>
@@ -174,42 +153,37 @@ function HoldCard({ item }: { item: HoldItem }) {
                     <span className="ml-auto text-xs text-zinc-500">match {Math.round(c.score * 100)}%</span>
                   </label>
                 ))}
-                <Input value={po} onChange={(e) => setPo(e.target.value)} placeholder="PO number, e.g. PO-2026-1201" className="font-mono text-xs" />
+                <Input value={po} onChange={(e) => setPo(e.target.value)} placeholder="or type a PO number, e.g. PO-2026-1201" className="font-mono text-xs" />
               </div>
             )}
-            {mode === 'confirm' && (
-              <div className="space-y-1.5">
-                <select value={field} onChange={(e) => {
-                  setField(e.target.value)
-                  const v = item.extracted?.[e.target.value]?.value
-                  setValue(v != null ? String(v) : '')
-                }} className="h-9 w-full rounded-md border border-zinc-200 bg-white px-2 text-sm">
-                  {fields.map((f) => <option key={f} value={f}>{fieldLabel(f)}</option>)}
-                </select>
-                <Input value={value} onChange={(e) => setValue(e.target.value)} placeholder="The correct value as printed" />
-                <p className="text-[11px] text-zinc-500">AI read: {fieldValue(field, extractedValue)}. Type what the document really says.</p>
+            {fields.length > 0 && (
+              <div className="space-y-2">
+                <div className="text-xs font-medium text-zinc-700">
+                  {needsPo ? '2. ' : '1. '}Compare with the invoice; correct anything the AI read wrongly
+                </div>
+                {fields.map((f) => (
+                  <label key={f} className="block">
+                    <span className="text-[11px] text-zinc-500">{fieldLabel(f)} · AI read: {fieldValue(f, item.extracted?.[f]?.value ?? null)}</span>
+                    <Input value={values[f] ?? ''} onChange={(e) => setValues({ ...values, [f]: e.target.value })}
+                           placeholder="as printed on the invoice" className="mt-0.5 h-8 text-sm" />
+                  </label>
+                ))}
               </div>
             )}
-            <select value={role} onChange={(e) => setRole(e.target.value)} className="h-9 w-full rounded-md border border-zinc-200 bg-white px-2 text-sm" aria-label="Acting as">
-              {ROLE_ORDER.map((r) => <option key={r} value={r}>Acting as: {r}</option>)}
-            </select>
-            <Textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Comment (required): why you decided this" className="min-h-16 text-sm" />
-            <div className="flex flex-wrap gap-2">
-              {mode === 'decide' && <>
-                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" disabled={needComment || act.isPending}
-                        onClick={() => act.mutate({ action: 'approve' })}><Check />Approve</Button>
-                <Button size="sm" variant="outline" className="border-red-300 text-red-700 hover:bg-red-50" disabled={needComment || act.isPending}
-                        onClick={() => act.mutate({ action: 'reject' })}><X />Reject</Button>
-              </>}
-              {mode === 'po' && <Button size="sm" disabled={needComment || !po || act.isPending} onClick={() => act.mutate({ action: 'assign_po', payload: { po_number: po.trim() } })}>Assign PO</Button>}
-              {mode === 'confirm' && <Button size="sm" disabled={needComment || !value || act.isPending} onClick={() => act.mutate({
-                action: 'confirm_field',
-                payload: { field, value: MONEY_FIELDS.has(field) ? Number(value.replace(/[₹,\s]|rs\.?/gi, '')) : value },
-              })}>Confirm value</Button>}
-              {act.isPending && <Loader2 className="size-4 animate-spin self-center text-zinc-400" />}
+            {!needsPo && !fields.length && (
+              <p className="text-xs text-zinc-600">Read the points on the left (open “Compare with PO” if it helps), then decide.</p>
+            )}
+            <Textarea value={comment} onChange={(e) => setComment(e.target.value)}
+                      placeholder="Note for the audit trail (required), e.g. “Price agreed by phone with the vendor”" className="min-h-14 text-sm" />
+            <div className="flex flex-wrap items-center gap-2">
+              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" disabled={needComment || act.isPending || (needsPo && !po.trim())}
+                      onClick={() => act.mutate('approve')}><Check />Verify &amp; pay</Button>
+              <Button size="sm" variant="outline" className="border-red-300 text-red-700 hover:bg-red-50" disabled={needComment || act.isPending}
+                      onClick={() => act.mutate('reject')}><X />Reject</Button>
+              {act.isPending && <Loader2 className="size-4 animate-spin text-zinc-400" />}
+              <span className="ml-auto text-[11px] text-zinc-400">logged as {role}</span>
             </div>
             {act.isError && <p className="text-xs text-red-700">{act.error.message}</p>}
-            {act.isSuccess && !item.resolved && <p className="text-xs text-emerald-700">Saved. {String(act.data.result.decision ?? 'The hold stays open until someone approves or rejects it.')}</p>}
             {item.hold_actions.length > 0 && (
               <div className="border-t border-zinc-100 pt-2 text-[11px] text-zinc-500">
                 {item.hold_actions.map((a, i) => <div key={i}>{a.actor_role}: {a.action.replace('_', ' ')} · “{a.comment}”</div>)}
@@ -227,7 +201,7 @@ function ResolvedPanel({ item }: { item: HoldItem }) {
   return (
     <div className="space-y-2 rounded-lg bg-zinc-50 p-4">
       <div className={cn('text-sm font-semibold', item.decision === 'APPROVE' ? 'text-emerald-700' : 'text-red-700')}>
-        {item.decision === 'APPROVE' ? 'Approved' : 'Rejected'} by a person
+        {item.decision === 'APPROVE' ? 'Verified and paid' : 'Rejected'} by a person
       </div>
       <ol className="space-y-2">
         {item.hold_actions.map((a, i) => (

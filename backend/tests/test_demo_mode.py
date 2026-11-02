@@ -364,3 +364,25 @@ def test_running_lists_work_in_progress_and_recent_results(app_and_engine):
     assert now["runs"] == []  # the single run already finished (background task)
     assert now["recent_runs"][0]["id"] == single and now["recent_runs"][0]["decision"] == "REJECT"
     assert TestClient(app).get("/api/running").json()["active"] == 0  # real mode has its own list
+
+
+def test_a_failed_demo_batch_can_be_retried_with_another_gemini_model(tmp_path, demo_env):
+    """The default model is busy (fails); 'Try · gemini-3.6-flash' reads the invoice with that model."""
+    def busy_default(data, mime, provider, settings, engine=None, use_cache=False, page_images=None):
+        if settings.gemini_model == "gemini-demo":
+            return failing_extract(data, mime, provider, settings, engine, use_cache, page_images)
+        return recording_extract(data, mime, provider, settings, engine, use_cache, page_images)
+
+    app, engine = make_app(tmp_path, extract_fn=busy_default)
+    with TestClient(app):
+        client = visitor(app)
+        batch_id = run_from_inbox(client, "01_happy_clean.pdf", "07_E_wrong_gst.pdf")["batch_id"]
+        assert wait_for_batch(client, batch_id)["failed"] == 2
+        retried = client.post(f"/api/batches/{batch_id}/retry", json={"model": "gemini", "model_name": "gemini-3.6-flash"})
+        assert retried.status_code == 200, retried.text
+        batch = wait_for_batch(client, batch_id)
+        assert batch["failed"] == 0 and batch["by_decision"] == {"APPROVE": 1, "REJECT": 1}
+        assert SEEN_KEYS[-1] == ("gemini", "demo-key", "gemini-3.6-flash")
+        for sandbox in app.state.sandboxes.engines():
+            sandbox.dispose()
+    engine.dispose()

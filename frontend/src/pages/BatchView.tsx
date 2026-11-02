@@ -48,11 +48,15 @@ export default function BatchView({ batchId }: { batchId: string }) {
   const queryClient = useQueryClient()
   const config = useQuery({ queryKey: ['config'], queryFn: api.config })
   const retry = useMutation({
-    mutationFn: (body: { model: string; run_ids?: string[] }) => api2.retryBatch(batchId, body),
+    mutationFn: (body: { model: string; model_name?: string; run_ids?: string[] }) => api2.retryBatch(batchId, body),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['batch', batchId] }),
   })
   const usable = (model: string) => !!config.data?.models.find((m) => m.id === model)?.configured
   const { isDemo } = useMode()
+  const geminiChoices = config.data?.models.find((m) => m.id === 'gemini')?.choices ?? []
+  /** Demo: the same Gemini model first ("Try again · model"), then each other Gemini model. */
+  const geminiOrder = (current: string | null) =>
+    current && geminiChoices.includes(current) ? [current, ...geminiChoices.filter((c) => c !== current)] : geminiChoices
   const batch = useQuery({
     queryKey: ['batch', batchId],
     queryFn: () => api2.batch(batchId),
@@ -118,7 +122,7 @@ export default function BatchView({ batchId }: { batchId: string }) {
               <AlertTriangle className="size-4 text-zinc-600" />
               <span className="min-w-0 flex-1">
                 {isDemo
-                  ? `${failed} invoice${failed > 1 ? 's were' : ' was'} not read: the AI model has reached its rate limit (free tier). Please try again after some time.`
+                  ? `${failed} invoice${failed > 1 ? 's were' : ' was'} not read: the AI model was busy or at its free-tier limit. Try again, or with another Gemini model.`
                   : `${failed} invoice${failed > 1 ? 's' : ''} could not be read by the AI (for example a rate limit). They can be queued again here.`}
               </span>
               {!isDemo && (
@@ -126,9 +130,16 @@ export default function BatchView({ batchId }: { batchId: string }) {
                   {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Retry all with {MODEL_LABEL[retryModel]}
                 </Button>
               )}
-              <Button size="sm" variant="outline" disabled={retry.isPending || !usable(b.model)} onClick={() => retry.mutate({ model: b.model })}>
-                {isDemo ? 'Try again' : `Retry with ${MODEL_LABEL[b.model]}`}
-              </Button>
+              {isDemo ? geminiOrder(b.model_name).map((m, i) => (
+                <Button key={m} size="sm" variant="outline" disabled={retry.isPending} onClick={() => retry.mutate({ model: 'gemini', model_name: m })}>
+                  {i === 0 && retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}
+                  {i === 0 ? 'Try again' : 'Try'} · <span className="font-mono text-xs">{m}</span>
+                </Button>
+              )) : (
+                <Button size="sm" variant="outline" disabled={retry.isPending || !usable(b.model)} onClick={() => retry.mutate({ model: b.model })}>
+                  Retry with {MODEL_LABEL[b.model]}
+                </Button>
+              )}
               {retry.isError && <span className="w-full text-xs text-red-700">{retry.error.message}</span>}
             </div>
           )}
@@ -171,12 +182,18 @@ export default function BatchView({ batchId }: { batchId: string }) {
                         {item.attempt > 1 && ` · attempt ${item.attempt} (${MODEL_LABEL[item.model]})`}
                       </div>
                       {FAILED.includes(item.status) && (
-                        <div className="mt-1 flex gap-1.5" onClick={(e) => e.stopPropagation()}>
-                          {(isDemo ? [item.model] : [otherModel(item.model), item.model]).map((m) => (
+                        <div className="mt-1 flex flex-wrap gap-1.5" onClick={(e) => e.stopPropagation()}>
+                          {isDemo ? geminiOrder(item.model_name).map((m, i) => (
+                            <button key={m} type="button" disabled={retry.isPending}
+                                    onClick={() => retry.mutate({ model: 'gemini', model_name: m, run_ids: [item.id] })}
+                                    className="flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-0.5 text-[11px] font-medium text-zinc-700 ring-1 ring-zinc-300 hover:bg-zinc-100 disabled:opacity-40">
+                              <RotateCcw className="size-3" />{i === 0 ? 'Try again' : 'Try'} · <span className="font-mono">{m}</span>
+                            </button>
+                          )) : [otherModel(item.model), item.model].map((m) => (
                             <button key={m} type="button" disabled={retry.isPending || !usable(m)}
                                     onClick={() => retry.mutate({ model: m, run_ids: [item.id] })}
                                     className="flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-0.5 text-[11px] font-medium text-zinc-700 ring-1 ring-zinc-300 hover:bg-zinc-100 disabled:opacity-40">
-                              <RotateCcw className="size-3" />{isDemo ? 'Try again' : `Retry with ${MODEL_LABEL[m]}`}
+                              <RotateCcw className="size-3" />Retry with {MODEL_LABEL[m]}
                             </button>
                           ))}
                         </div>
@@ -205,7 +222,7 @@ export default function BatchView({ batchId }: { batchId: string }) {
           </table>
         </section>
         <p className="text-xs text-zinc-500">
-          Held invoices are also in the <Link to="/holds" className="underline underline-offset-2">Hold Queue</Link>. AI requests are spaced by the pause set in <Link to="/settings" className="underline underline-offset-2">Settings</Link> to stay inside the free-tier rate limits.
+          Invoices that need human verification are also in the <Link to="/holds" className="underline underline-offset-2">Verification queue</Link>. AI requests are spaced by the pause set in <Link to="/settings" className="underline underline-offset-2">Settings</Link> to stay inside the free-tier rate limits.
         </p>
       </div>
     </div>

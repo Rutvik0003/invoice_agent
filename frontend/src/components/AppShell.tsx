@@ -13,7 +13,7 @@ const NAV: { to: string; label: string; icon: LucideIcon; realOnly?: boolean }[]
   { to: '/inbox', label: 'Inbox', icon: Inbox },
   { to: '/running', label: 'Running', icon: Activity },
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/holds', label: 'Hold Queue', icon: ClipboardList },
+  { to: '/holds', label: 'Verification queue', icon: ClipboardList },
   { to: '/tests', label: 'Test Suite', icon: FlaskConical },
   { to: '/data', label: 'Data', icon: Database },
   { to: '/settings', label: 'Settings', icon: Settings },

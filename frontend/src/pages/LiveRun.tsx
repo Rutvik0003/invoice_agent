@@ -168,7 +168,7 @@ function HumanResolution({ run }: { run: RunDetail }) {
   return (
     <div className={cn('rounded-xl p-4 ring-1', run.decision === 'APPROVE' ? 'bg-emerald-50 ring-emerald-200' : 'bg-red-50 ring-red-200')}>
       <div className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">Resolved by a person</div>
-      <div className="mt-0.5 text-lg font-semibold">{run.decision === 'APPROVE' ? 'Approved' : 'Rejected'}
+      <div className="mt-0.5 text-lg font-semibold">{run.decision === 'APPROVE' ? 'Paid' : 'Rejected'}
         {final && <span className="text-sm font-normal text-zinc-600"> by {final.actor_role} · {new Date(final.created_at).toLocaleString('en-IN')}</span>}</div>
       {final && <p className="mt-1 text-sm text-zinc-700">“{final.comment}”</p>}
       {run.rules?.ledger_applied && run.decision === 'APPROVE' && run.rules.ledger_change && (

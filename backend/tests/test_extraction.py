@@ -248,3 +248,8 @@ def test_a_model_the_key_may_not_use_says_so():
     assert error.error_type == "provider_error"
     assert "Pick another Gemini model" in error.message
     assert "gemini-2.5-flash" in error.detail
+
+
+def test_a_busy_model_says_it_is_busy():
+    error = map_gemini_error(_gemini_error(503, "This model is currently experiencing high demand."))
+    assert error.error_type == "provider_error" and "busy right now" in error.message

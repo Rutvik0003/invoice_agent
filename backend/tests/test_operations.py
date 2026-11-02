@@ -378,3 +378,25 @@ def test_demo_reset_is_a_first_visit(client):
     assert client.get("/api/eval/latest").json()["status"] == "never_run"
     assert client.get("/api/admin/settings").json()["ai_request_gap_s"] != 30
     assert not [h for h in client.get("/api/data/history").json() if h["from_run"]]
+
+
+def test_verify_and_pay_applies_the_checked_values_in_one_step(client):
+    """The simplified check: the PO and any corrected values travel with the approval, as one logged action."""
+    from app.api.common import sample_labels
+
+    sample = next(k for k, l in sample_labels().items() if l["scenario"] == "MISSING_INVOICE_NUMBER")
+    run = start(client, sample)
+    url = f"/api/holds/{run['id']}/action"
+    body = {"action": "approve", "role": "AP clerk", "comment": "Checked against the PDF"}
+    # a correction that does not make the invoice payable is not half-applied
+    refused = client.post(url, json={**body, "payload": {"fields": {"invoice_date": "2026-10-20"}}})
+    assert refused.status_code == 400
+    assert client.get(f"/api/runs/{run['id']}").json()["extracted"]["invoice_date"]["value"] != "2026-10-20"
+
+    paid = client.post(url, json={**body, "payload": {"po_number": run["po_number"], "fields": {"invoice_number": "INV-77"}}})
+    assert paid.status_code == 200, paid.text
+    result = paid.json()["result"]
+    assert result["decision"] == "APPROVE" and result["confirmed"][0]["new_value"] == "INV-77"
+    detail = client.get(f"/api/runs/{run['id']}").json()
+    assert [a["action"] for a in detail["hold_actions"]] == ["approve"]
+    assert detail["extracted"]["invoice_number"]["evidence"] == "confirmed by a person"

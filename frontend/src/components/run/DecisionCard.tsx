@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 const ROLE_ORDER = ['Finance controller', 'Procurement', 'Tax team', 'Buyer', 'AP clerk']
 
-/** The final answer, kept short: Approve / Hold / Reject, who acts on a hold, and every reason in one line each. */
+/** The final answer, kept short: Paid / Needs human verification / Rejected, who checks it, and every reason in one line. */
 export function DecisionCard({ decision, ledger, sample }: {
   decision: Decision; ledger: LedgerChange | null; sample: RunDetail['sample']
 }) {
@@ -22,13 +22,13 @@ export function DecisionCard({ decision, ledger, sample }: {
     <section className={cn('overflow-hidden rounded-xl bg-white ring-1', style.ring)}>
       <div className={cn('flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5', style.bg)}>
         <div className="text-lg font-bold tracking-tight text-white">
-          {decision.outcome}
+          {style.label}
           {decision.approve_with_note && <span className="ml-1.5 align-middle text-xs font-medium opacity-90">with note</span>}
         </div>
         {roles.length > 0 && <span className="text-xs text-white/90">for {roles.join(', ')}</span>}
         {sample && (
           <span className="ml-auto rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-medium text-white">
-            Expected {sample.expected_decision} {sample.expected_decision === decision.outcome ? '✓' : '✗'}
+            Expected: {OUTCOME_STYLE[sample.expected_decision].label} {sample.expected_decision === decision.outcome ? '✓' : '✗'}
           </span>
         )}
       </div>
@@ -105,8 +105,9 @@ function LedgerTable({ ledger }: { ledger: LedgerChange }) {
 }
 
 /** Demo: the free-tier AI key is busy. Not an error of the invoice or the app: try again later. */
-function RateLimitNotice({ onRetry, others, retry }: {
-  onRetry: (choice: string) => void; others: string[]; retry: { isPending: boolean; isError: boolean; error: Error | null }
+function RateLimitNotice({ onRetry, current, others, retry }: {
+  onRetry: (choice: string) => void; current: string | null; others: string[]
+  retry: { isPending: boolean; isError: boolean; error: Error | null }
 }) {
   return (
     <section className="rounded-xl bg-sky-50 px-5 py-4 ring-1 ring-sky-200">
@@ -121,10 +122,11 @@ function RateLimitNotice({ onRetry, others, retry }: {
       <div className="mt-3 flex flex-wrap gap-2">
         <Button size="sm" variant="outline" disabled={retry.isPending} onClick={() => onRetry('gemini')}>
           {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Try again
+          {current && <> · <span className="font-mono text-xs">{current}</span></>}
         </Button>
         {others.map((m) => (
           <Button key={m} size="sm" variant="outline" disabled={retry.isPending} onClick={() => onRetry(m)}>
-            Try with <span className="font-mono text-xs">{m}</span>
+            Try · <span className="font-mono text-xs">{m}</span>
           </Button>
         ))}
       </div>
@@ -157,7 +159,7 @@ export function FailureCard({ run, error, config, heading = 'Could not read the 
   const { isDemo } = useMode()
   const otherGemini = (config?.models.find((m) => m.id === 'gemini')?.choices ?? []).filter((c) => c !== run.model_name)
   if (isDemo && error.type === 'rate_limited') {
-    return <RateLimitNotice onRetry={(choice) => retry.mutate(choice)} others={otherGemini} retry={retry} />
+    return <RateLimitNotice onRetry={(choice) => retry.mutate(choice)} current={run.model_name} others={otherGemini} retry={retry} />
   }
   return (
     <section className="overflow-hidden rounded-xl bg-white ring-1 ring-zinc-300">
@@ -175,8 +177,15 @@ export function FailureCard({ run, error, config, heading = 'Could not read the 
             </Button>
           )}
           <Button variant="outline" disabled={retry.isPending} onClick={() => retry.mutate(run.model)}>
-            Retry with {run.model === 'gemini' ? 'Gemini' : 'Groq'}
+            {isDemo && retry.isPending ? <Loader2 className="animate-spin" /> : isDemo ? <RotateCcw /> : null}
+            {isDemo ? 'Try again' : `Retry with ${run.model === 'gemini' ? 'Gemini' : 'Groq'}`}
+            {run.model_name && <> · <span className="font-mono text-xs">{run.model_name}</span></>}
           </Button>
+          {isDemo && otherGemini.map((m) => (
+            <Button key={m} variant="outline" disabled={retry.isPending} onClick={() => retry.mutate(m)}>
+              Try · <span className="font-mono text-xs">{m}</span>
+            </Button>
+          ))}
         </div>
         {retry.isError && <p className="text-sm text-red-700">{retry.error.message}</p>}
         {error.detail && (

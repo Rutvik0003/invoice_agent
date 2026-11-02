@@ -4,7 +4,7 @@ import { useState, type ReactNode } from 'react'
 
 import { PageHeader } from '@/components/AppShell'
 import { DecisionsByDay, ReasonBars } from '@/components/charts'
-import { DecisionPill } from '@/components/status'
+import { DecisionPill, OUTCOME_STYLE } from '@/components/status'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
@@ -73,7 +73,7 @@ export default function Dashboard() {
             <div className="mt-1 text-xs text-zinc-500">{s?.by_status.extraction_failed ?? 0} could not be read</div>
           </Tile>
           {(['APPROVE', 'HOLD', 'REJECT'] as Outcome[]).map((o) => (
-            <Tile key={o} label={o === 'APPROVE' ? 'Approved' : o === 'HOLD' ? 'On hold' : 'Rejected'}
+            <Tile key={o} label={OUTCOME_STYLE[o].label}
                   accent={{ APPROVE: '#059669', HOLD: '#f59e0b', REJECT: '#dc2626' }[o]} value={s?.by_decision[o] ?? 0}>
               <div className="mt-1 text-xs text-zinc-500">{pct(s?.by_decision[o])} of runs</div>
             </Tile>
@@ -109,7 +109,7 @@ export default function Dashboard() {
               <Search className="absolute top-2.5 left-2.5 size-4 text-zinc-400" />
               <Input value={search} onChange={(e) => resetPage(setSearch)(e.target.value)} placeholder="Search file, vendor, invoice no., PO…" className="pl-8" />
             </div>
-            <Filter value={decision} onChange={resetPage(setDecision)} label="Decision" options={[['APPROVE', 'Approve'], ['HOLD', 'Hold'], ['REJECT', 'Reject']]} />
+            <Filter value={decision} onChange={resetPage(setDecision)} label="Decision" options={[['APPROVE', 'Paid'], ['HOLD', 'Needs human verification'], ['REJECT', 'Rejected']]} />
             <Filter value={status} onChange={resetPage(setStatus)} label="Status" options={Object.entries(STATUS_TEXT)} />
             <Filter value={model} onChange={resetPage(setModel)} label="Model" options={[['gemini', 'Gemini'], ['groq', 'Groq']]} />
           </div>

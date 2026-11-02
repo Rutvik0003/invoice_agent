@@ -7,7 +7,7 @@ import { humanize } from '@/lib/format'
 
 const OUTCOMES: Outcome[] = ['APPROVE', 'HOLD', 'REJECT']
 const FILL: Record<Outcome, string> = { APPROVE: '#059669', HOLD: '#f59e0b', REJECT: '#dc2626' }
-const LABEL: Record<Outcome, string> = { APPROVE: 'Approve', HOLD: 'Hold', REJECT: 'Reject' }
+const LABEL: Record<Outcome, string> = { APPROVE: 'Paid', HOLD: 'Needs human verification', REJECT: 'Rejected' }
 
 type DayRow = { date: string; decision: Outcome; count: number }
 

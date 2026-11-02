@@ -175,7 +175,7 @@ export const api2 = {
   resetDemo: () => post('/api/admin/reset-demo').then(json<Record<string, number | boolean>>),
   batches: () => fetch('/api/batches').then(json<Batch[]>),
   batch: (id: string) => fetch(`/api/batches/${id}`).then(json<Batch>),
-  retryBatch: (id: string, body: { model: string; run_ids?: string[] }) =>
+  retryBatch: (id: string, body: { model: string; model_name?: string; run_ids?: string[] }) =>
     post(`/api/batches/${id}/retry`, body).then(json<{ run_ids: string[] }>),
   editableSettings: () => fetch('/api/admin/settings').then(json<EditableSettings>),
   saveSettings: (body: EditableSettings) =>
