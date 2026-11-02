@@ -79,9 +79,9 @@ The first screen offers two ways in:
   email in the Inbox; logged, not delivered).
   Uploads, samples and Test Suite runs are off in the demo, because only the inbox invoices have their vendors
   and POs in the demo data.
-- **Real mode**: the full app on the main database, as before (uploads, samples, batches, Test Suite, both
-  models). Gmail sign-in and an owner-only lock come next (Phase 11); until then real mode is open to anyone
-  who reaches the app, so don't deploy publicly before Phase 11.
+- **Real mode**: the full app on the main database (uploads, samples, batches, Test Suite, both models) plus
+  your **Gmail inbox**. "Sign in with Google" connects Gmail read-only; with `OWNER_EMAIL` set, only that account
+  gets into real mode (anyone else is sent back to the start screen and offered the demo).
 
 **Running** (sidebar, with a live count) lists every invoice and batch still processing; they keep going on the
 server when you leave their screen.
@@ -162,6 +162,37 @@ same invoice twice is (correctly) rejected as already paid; reset the demo to st
   picked to compare.
 - **Gemini model per run.** New Run offers every model in `GEMINI_MODELS` (default `gemini-2.5-flash`,
   `gemini-3.6-flash`, `gemini-3.8-flash`, all free-tier Flash models). `GEMINI_MODEL` stays the default.
+
+## Connect Gmail (real mode)
+
+One-time setup in Google Cloud (free):
+
+1. <https://console.cloud.google.com/> → create a project (e.g. "Invoice Agent").
+2. **APIs & Services → Library** → enable **Gmail API**.
+3. **APIs & Services → OAuth consent screen** → External → app name, your email as support and developer
+   contact → **Scopes**: add `openid`, `.../auth/userinfo.email`, `.../auth/gmail.readonly` → **Test users**: add
+   the Gmail address you will connect. (Leave the app in *Testing*: no Google review is needed for your own
+   account; Google shows an "unverified app" notice, click *Continue*. Refresh tokens of apps in Testing expire
+   after 7 days, so you may need to sign in again after a week.)
+4. **APIs & Services → Credentials → Create credentials → OAuth client ID** → *Web application* →
+   **Authorized redirect URIs**: `http://localhost:5173/api/auth/google/callback` (Vite dev server),
+   `http://localhost:8000/api/auth/google/callback` (backend / Docker), and later
+   `https://<your-render-app>.onrender.com/api/auth/google/callback`.
+5. Put the client id and secret in `.env` with your address:
+
+   ```
+   GOOGLE_CLIENT_ID=....apps.googleusercontent.com
+   GOOGLE_CLIENT_SECRET=...
+   OWNER_EMAIL=you@gmail.com
+   ```
+
+6. Restart the backend → start screen → **Real mode → Sign in with Google**. The Inbox now lists your emails
+   with PDF/PNG/JPG attachments (search box = Gmail search). Tick bills → **Check**. Settings → Gmail →
+   *Disconnect* withdraws the access at Google.
+
+The app only reads Gmail (`gmail.readonly`); replies to vendors are kept in the app and shown in the email's
+thread, never sent from your account. The refresh token is stored encrypted (`TOKEN_ENCRYPTION_KEY`, or a key
+derived from the client secret).
 
 ## Docker
 

@@ -12,7 +12,14 @@ export type DemoInfo = {
   runs_last_hour: number
   sandbox_hours: number
 }
-export type ModeInfo = { mode: 'demo' | 'real' | null; demo?: DemoInfo }
+export type AuthInfo = {
+  google_configured: boolean   // Google sign-in set up on this server
+  locked: boolean              // real mode only for the owner (OWNER_EMAIL)
+  signed_in_as: string | null
+  gmail: string | null         // the connected Gmail real mode reads
+  sign_in_url: string
+}
+export type ModeInfo = { mode: 'demo' | 'real' | null; demo?: DemoInfo; auth?: AuthInfo }
 
 export type InboxAttachment = {
   id: string
@@ -33,7 +40,10 @@ export type InboxMessage = {
   attachments: InboxAttachment[]
   replies: { sent_at: string; from: string; to: string; subject: string; body: string | null; run_id: string }[]
 }
-export type Inbox = { source: 'demo' | 'gmail'; connected: boolean; mailbox: string | null; messages: InboxMessage[] }
+export type Inbox = {
+  source: 'demo' | 'gmail'; connected: boolean; can_connect?: boolean; mailbox: string | null
+  next_page_token: string | null; messages: InboxMessage[]
+}
 export type RunSource = { kind: string; from_name: string; from_email: string; subject: string; received_at: string }
 
 /** An API error with the backend's own type (e.g. 'demo_limit', 'demo_restricted'). */
@@ -72,9 +82,15 @@ export const modeApi = {
   get: () => fetch('/api/mode').then(json<ModeInfo>),
   choose: (mode: 'demo' | 'real') => send('POST', '/api/mode', { mode }).then(json<ModeInfo>),
   leave: () => send('DELETE', '/api/mode').then(json<ModeInfo>),
-  inbox: () => fetch('/api/inbox').then(json<Inbox>),
-  runAttachments: (items: { message_id: string; attachment_id: string }[], modelName?: string) =>
-    send('POST', '/api/inbox/run', { items, model_name: modelName }).then(json<{ run_id?: string; batch_id?: string }>),
+  inbox: (params: { billsOnly: boolean; q?: string; pageToken?: string | null }) => {
+    const query = new URLSearchParams({ bills_only: String(params.billsOnly), q: params.q ?? '' })
+    if (params.pageToken) query.set('page_token', params.pageToken)
+    return fetch(`/api/inbox?${query}`).then(json<Inbox>)
+  },
+  runAttachments: (items: { message_id: string; attachment_id: string }[], model?: string, modelName?: string) =>
+    send('POST', '/api/inbox/run', { items, model, model_name: modelName }).then(json<{ run_id?: string; batch_id?: string }>),
+  signOut: () => send('POST', '/api/auth/logout').then(json<ModeInfo>),
+  disconnectGmail: () => send('POST', '/api/auth/disconnect').then(json<{ mode: null; disconnected: string | null }>),
 }
 
 export const attachmentUrl = (messageId: string, attachmentId: string) =>

@@ -40,6 +40,13 @@ class Settings(BaseSettings):
     demo_sandbox_ttl_hours: float = 24.0
     demo_sandbox_dir: str = "demo_sandboxes"  # relative paths are under backend/
 
+    # Real mode (CLAUDE.md §12, Phase 11): Google sign-in + read-only Gmail. Secrets only from the environment.
+    google_client_id: str = ""
+    google_client_secret: str = ""
+    google_redirect_uri: str = ""  # empty = <this server>/api/auth/google/callback (set it behind a proxy)
+    owner_email: str = ""  # the only Google account allowed into real mode; empty = real mode is not locked
+    token_encryption_key: str = ""  # Fernet key for the stored Gmail token; empty = derived from the client secret
+
     # Business rules
     tolerance_pct: float = 1.0
     tolerance_abs_inr: float = 500.0
@@ -78,6 +85,10 @@ class Settings(BaseSettings):
             "gemini_model": self.demo_gemini_model or self.gemini_model,
             "gemini_models": self.demo_gemini_models or self.gemini_models, "groq_api_key": "", "groq_model": "", "default_model": "gemini",
         })
+
+    @property
+    def google_configured(self) -> bool:
+        return bool(self.google_client_id.strip() and self.google_client_secret.strip())
 
     @property
     def groq_configured(self) -> bool:

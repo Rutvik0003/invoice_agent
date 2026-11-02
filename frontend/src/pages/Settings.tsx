@@ -19,7 +19,8 @@ import { Input } from '@/components/ui/input'
 import { api } from '@/lib/api'
 import { api2, type EditableSettings } from '@/lib/api2'
 import { inr } from '@/lib/format'
-import { useMode } from '@/lib/mode'
+import { modeApi, useMode } from '@/lib/mode'
+import { navigate } from '@/lib/router'
 
 /** The settings an admin may change here (saved in the database; a demo reset keeps them). */
 function AdminSettings() {
@@ -86,6 +87,64 @@ function Row({ name, value, env, children }: { name: string; value: ReactNode; e
   )
 }
 
+/** Real mode: which Gmail the Inbox reads, and a way to withdraw that access. */
+function GmailSection() {
+  const queryClient = useQueryClient()
+  const auth = useMode().data?.auth
+  const disconnect = useMutation({
+    mutationFn: modeApi.disconnectGmail,
+    onSuccess: (data) => {
+      queryClient.removeQueries({ predicate: (q) => q.queryKey[0] !== 'mode' })
+      queryClient.setQueryData(['mode'], data)
+      navigate('/')
+    },
+  })
+  if (!auth) return null
+  return (
+    <section className="rounded-xl border border-zinc-200 bg-white p-5">
+      <h2 className="text-sm font-semibold">Gmail</h2>
+      {auth.gmail ? (
+        <>
+          <p className="mt-1 text-sm text-zinc-600">
+            Connected: <b className="font-medium text-zinc-900">{auth.gmail}</b> (read-only). The Inbox lists its emails with
+            bills; replies to vendors stay in this app and are never sent from your account.
+          </p>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline" className="mt-3" disabled={disconnect.isPending}>
+                {disconnect.isPending && <Loader2 className="animate-spin" />}Disconnect Gmail
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Disconnect Gmail?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  The app's access is withdrawn at Google and the stored access is deleted; you are signed out. Runs already
+                  made from your emails stay.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={() => disconnect.mutate()}>Disconnect</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+          {disconnect.isError && <p className="mt-2 text-sm text-red-700">{disconnect.error.message}</p>}
+        </>
+      ) : auth.google_configured ? (
+        <>
+          <p className="mt-1 text-sm text-zinc-600">Not connected. Sign in with Google to read your inbox (read-only).</p>
+          <Button className="mt-3" onClick={() => window.location.assign(auth.sign_in_url)}>Connect Gmail</Button>
+        </>
+      ) : (
+        <p className="mt-1 text-sm text-zinc-600">
+          Google sign-in is not set up on this server: set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and OWNER_EMAIL in the environment.
+        </p>
+      )}
+    </section>
+  )
+}
+
 export default function Settings() {
   const queryClient = useQueryClient()
   const config = useQuery({ queryKey: ['config'], queryFn: api.config })
@@ -149,6 +208,8 @@ export default function Settings() {
             </Row>
           ))}
         </section>
+
+        {!isDemo && <GmailSection />}
 
         <section className="rounded-xl border border-red-200 bg-white p-5">
           <h2 className="text-sm font-semibold">Reset demo data</h2>

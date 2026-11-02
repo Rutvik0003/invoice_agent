@@ -317,7 +317,7 @@ def test_logs_are_json_per_run_and_never_contain_keys_or_file_contents(tmp_path,
 
     from app.logging_setup import LOGGER_NAME, JsonFormatter, get_logger
 
-    secret = "AIzaSy-TEST-SECRET-KEY-123456"
+    secret = "not-a-real-key-for-tests"
     monkeypatch.setenv("GEMINI_API_KEY", secret)
     stream = io.StringIO()
     handler = logging.StreamHandler(stream)

@@ -433,7 +433,8 @@ Read CLAUDE.md. We are doing PHASE 11 only.
 1. Google sign-in (OAuth 2.0, scope gmail.readonly + openid email). Client id/secret from env only. The refresh
    token is stored encrypted (Fernet key from env). Real mode is allowed only for OWNER_EMAIL.
 2. The Inbox screen (same as demo) lists Gmail messages with PDF/PNG/JPG attachments (query + paging); chosen
-   attachments are downloaded and queued exactly like demo inbox files; runs store the Gmail message id.
+   attachments are downloaded and queued exactly like demo inbox files; runs store the Gmail message id. Vendor
+   replies stay in the app (shown in the email's thread); nothing is sent from Gmail (Rutvik's decision).
 3. Disconnect button; token expiry handled with a clear "reconnect Gmail" message.
 4. Tests with a fake Gmail client (tests/ only). No change to demo mode or decisions.
 Phase Report, commit "Phase 11: gmail inbox".

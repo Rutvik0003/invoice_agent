@@ -9,4 +9,6 @@ google-genai>=1.0
 groq>=0.11
 rapidfuzz>=3.0
 sse-starlette>=2.0
+httpx>=0.27  # Google sign-in + Gmail API calls (real mode)
+cryptography>=42  # encrypts the stored Gmail token
 python-multipart>=0.0.9  # required by FastAPI for file uploads

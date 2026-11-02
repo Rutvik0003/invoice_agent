@@ -91,7 +91,7 @@ def wait_for_batch(client, batch_id: str) -> dict:
 def test_no_mode_chosen_means_the_start_screen_and_the_real_database(app_and_engine):
     app, _ = app_and_engine
     client = TestClient(app)
-    assert client.get("/api/mode").json() == {"mode": None}
+    assert client.get("/api/mode").json()["mode"] is None
     assert client.get("/api/inbox").json()["source"] == "gmail"
 
 
@@ -102,7 +102,7 @@ def test_choosing_demo_creates_a_sandbox_and_leaving_keeps_it(app_and_engine):
     assert mode["mode"] == "demo" and mode["demo"]["model_name"] == "gemini-demo" and mode["demo"]["uses_demo_key"]
     assert len(app.state.sandboxes.engines()) == 1
     assert client.delete("/api/mode").json() == {"mode": None}
-    assert client.get("/api/mode").json() == {"mode": None}
+    assert client.get("/api/mode").json()["mode"] is None
     client.post("/api/mode", json={"mode": "demo"})  # coming back: the same sandbox
     assert len(app.state.sandboxes.engines()) == 1
 
@@ -281,14 +281,15 @@ def test_real_mode_inbox_is_not_connected_yet(app_and_engine):
     app, _ = app_and_engine
     owner = TestClient(app)
     owner.post("/api/mode", json={"mode": "real"})
-    assert owner.get("/api/inbox").json() == {"source": "gmail", "connected": False, "mailbox": None, "messages": []}
+    inbox = owner.get("/api/inbox").json()
+    assert inbox["source"] == "gmail" and not inbox["connected"] and inbox["messages"] == []
     assert owner.post("/api/inbox/run", json={"items": [first_attachment("01_happy_clean.pdf")]}).status_code == 409
 
 
 def test_a_bad_visitor_cookie_is_ignored(app_and_engine):
     app, _ = app_and_engine
     client = TestClient(app, cookies={"ia_mode": "demo", "ia_visitor": "../../etc"})
-    assert client.get("/api/mode").json() == {"mode": None}  # back to the start screen
+    assert client.get("/api/mode").json()["mode"] is None  # back to the start screen
     assert app.state.sandboxes.engines() == []
 
 
@@ -386,3 +387,13 @@ def test_a_failed_demo_batch_can_be_retried_with_another_gemini_model(tmp_path, 
         for sandbox in app.state.sandboxes.engines():
             sandbox.dispose()
     engine.dispose()
+
+
+def test_cookies_are_secure_on_https_only(app_and_engine):
+    """Behind HTTPS (Render says so in X-Forwarded-Proto) cookies carry Secure; local http keeps working."""
+    app, _ = app_and_engine
+    local = TestClient(app).post("/api/mode", json={"mode": "demo"})
+    assert all("secure" not in c.lower() for c in local.headers.get_list("set-cookie"))
+    deployed = TestClient(app).post("/api/mode", json={"mode": "demo"}, headers={"X-Forwarded-Proto": "https"})
+    cookies = deployed.headers.get_list("set-cookie")
+    assert cookies and all("secure" in c.lower() and "httponly" in c.lower() for c in cookies)

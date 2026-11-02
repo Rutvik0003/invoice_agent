@@ -213,4 +213,26 @@ class PageWordsCache(Base):
 
 
 SEEDED_TABLES = [Vendor.__table__, POHeader.__table__, POLine.__table__, InvoiceHistory.__table__]
+class GmailAccount(Base):
+    """The owner's connected Gmail (real mode). The refresh token is stored encrypted; a demo reset keeps it."""
+
+    __tablename__ = "gmail_accounts"
+
+    email: Mapped[str] = mapped_column(String(200), primary_key=True)
+    refresh_token_encrypted: Mapped[str] = mapped_column(Text)
+    scopes: Mapped[str] = mapped_column(Text)
+    connected_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class OwnerSession(Base):
+    """A signed-in browser of the owner (real mode). Only a hash of the cookie value is stored."""
+
+    __tablename__ = "owner_sessions"
+
+    token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+    email: Mapped[str] = mapped_column(String(200))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
 RUN_TABLES = [Run.__table__, RunEvent.__table__, HoldAction.__table__, Batch.__table__, EmailLog.__table__]

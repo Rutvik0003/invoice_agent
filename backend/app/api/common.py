@@ -11,7 +11,7 @@ from sqlalchemy import Engine
 from sqlalchemy.orm import Session
 
 from app.config import REPO_ROOT
-from app.demo.mode import demo_engine
+from app.demo.mode import demo_engine, require_owner
 from app.models import Run
 
 INVOICE_DIR = REPO_ROOT / "data" / "invoices"
@@ -19,7 +19,11 @@ INVOICE_DIR = REPO_ROOT / "data" / "invoices"
 
 def engine_of(request: Request) -> Engine:
     """The database this request works on: the visitor's sandbox in demo mode, else the main database."""
-    return demo_engine(request) or request.app.state.engine
+    sandbox = demo_engine(request)
+    if sandbox is not None:
+        return sandbox
+    require_owner(request)
+    return request.app.state.engine
 
 
 def get_run_or_404(session: Session, run_id: str) -> Run:

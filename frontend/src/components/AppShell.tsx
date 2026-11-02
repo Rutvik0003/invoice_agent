@@ -28,12 +28,13 @@ function isActive(to: string, path: string, demo: boolean) {
 
 export function AppShell({ path, children }: { path: string; children: ReactNode }) {
   const health = useQuery({ queryKey: ['health'], queryFn: api.health, staleTime: 60_000 })
-  const { isDemo, demo } = useMode()
+  const { isDemo, demo, data: modeInfo } = useMode()
+  const owner = modeInfo?.auth?.signed_in_as
   const running = useQuery({ queryKey: ['running'], queryFn: api2.running, refetchInterval: (q) => runningInterval(q.state.data) })
   const active = running.data?.active ?? 0
   const queryClient = useQueryClient()
   const leave = useMutation({
-    mutationFn: modeApi.leave,
+    mutationFn: (how: 'leave' | 'sign_out') => (how === 'sign_out' ? modeApi.signOut() : modeApi.leave()),
     onSuccess: (data) => {
       // data of the other mode must not be shown: drop every cached answer except the mode itself
       queryClient.removeQueries({ predicate: (q) => q.queryKey[0] !== 'mode' })
@@ -79,9 +80,10 @@ export function AppShell({ path, children }: { path: string; children: ReactNode
               {isDemo ? 'Private sandbox' : 'Real mode'}
             </div>
             {isDemo ? `Sample inbox of Zenith Retail. Only you see it; cleared after ${demo?.sandbox_hours ?? 24} h unused.` : 'Zenith Retail Pvt Ltd'}
-            <button type="button" onClick={() => leave.mutate()} disabled={leave.isPending}
+            {owner && <div className="truncate text-zinc-600" title={owner}>{owner}</div>}
+            <button type="button" onClick={() => leave.mutate(owner ? 'sign_out' : 'leave')} disabled={leave.isPending}
                     className="mt-1.5 flex items-center gap-1 text-zinc-600 underline-offset-2 hover:text-zinc-900 hover:underline">
-              <LogOut className="size-3" />{isDemo ? 'Exit demo' : 'Switch mode'}
+              <LogOut className="size-3" />{isDemo ? 'Exit demo' : owner ? 'Sign out' : 'Switch mode'}
             </button>
           </div>
           <div className="flex items-center gap-1.5 text-[11px] text-zinc-500">

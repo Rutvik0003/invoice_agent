@@ -1,10 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { CornerUpLeft, ExternalLink, FileText, Info, Loader2, Mail, Paperclip, Play } from 'lucide-react'
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { CornerUpLeft, ExternalLink, FileText, Info, Loader2, Mail, Paperclip, Play, Search } from 'lucide-react'
 import { useState } from 'react'
 
 import { PageHeader } from '@/components/AppShell'
 import { DecisionPill } from '@/components/status'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { api } from '@/lib/api'
 import { timeAgo } from '@/lib/format'
 import { attachmentUrl, modeApi, useMode, type InboxAttachment, type InboxMessage } from '@/lib/mode'
@@ -128,13 +129,25 @@ function Reader({ message, picked, onToggle, onRun, running }: {
 export default function Inbox() {
   const queryClient = useQueryClient()
   const { isDemo, demo } = useMode()
-  const inbox = useQuery({ queryKey: ['inbox'], queryFn: modeApi.inbox })
+  const [onlyBills, setOnlyBills] = useState<boolean | null>(null)
+  const billsOnly = onlyBills ?? !isDemo  // Gmail: bills first (searched by Gmail); demo: every sample email
+  const [search, setSearch] = useState('')
+  const [q, setQ] = useState('')
+  const inbox = useInfiniteQuery({
+    queryKey: ['inbox', billsOnly, q],
+    queryFn: ({ pageParam }) => modeApi.inbox({ billsOnly, q, pageToken: pageParam }),
+    initialPageParam: null as string | null,
+    getNextPageParam: (last) => last.next_page_token ?? undefined,
+  })
   const config = useQuery({ queryKey: ['config'], queryFn: api.config })
-  const gemini = config.data?.models.find((m) => m.id === 'gemini')
-  const [modelName, setModelName] = useState<string | null>(null)
-  const chosenModel = modelName ?? gemini?.model_name
+  // every model this mode can use, as "provider|model" (the demo offers its Gemini models only)
+  const models = (config.data?.models ?? []).filter((m) => m.configured)
+    .flatMap((m) => m.choices.map((c) => ({ value: `${m.id}|${c}`, label: m.id === 'groq' ? `Groq · ${c}` : c })))
+  const defaultInfo = config.data?.models.find((m) => m.id === config.data?.default_model)
+  const defaultModel = defaultInfo ? `${defaultInfo.id}|${defaultInfo.model_name}` : ''
+  const [modelChoice, setModelChoice] = useState<string | null>(null)
+  const chosenModel = modelChoice ?? (models.some((m) => m.value === defaultModel) ? defaultModel : models[0]?.value) ?? ''
   const [openId, setOpenId] = useState<string | null>(() => new URLSearchParams(window.location.search).get('open'))
-  const [onlyBills, setOnlyBills] = useState(false)
   const [picked, setPicked] = useState<Set<string>>(new Set())
   const toggle = (p: Pick) => setPicked((old) => {
     const next = new Set(old)
@@ -143,28 +156,39 @@ export default function Inbox() {
     return next
   })
   const run = useMutation({
-    mutationFn: (items: Pick[]) => modeApi.runAttachments(items, chosenModel),
+    mutationFn: (items: Pick[]) => {
+      const [provider, name] = chosenModel.split('|')
+      return modeApi.runAttachments(items, provider || undefined, name || undefined)
+    },
     onSuccess: (r) => {
       queryClient.invalidateQueries({ queryKey: ['mode'] })
       navigate(r.run_id ? `/runs/${r.run_id}` : `/batches/${r.batch_id}`)
     },
   })
 
-  const data = inbox.data
+  const first = inbox.data?.pages[0]
+  const data = first && { ...first, messages: inbox.data!.pages.flatMap((p) => p.messages) }
   if (data && !data.connected) {
     return (
       <div>
         <PageHeader title="Inbox" subtitle="Bills arriving by email" />
         <div className="mx-auto mt-12 max-w-md rounded-xl bg-white p-6 text-center ring-1 ring-zinc-200">
           <Mail className="mx-auto size-8 text-zinc-400" />
-          <h2 className="mt-3 font-semibold">Gmail is not connected yet</h2>
-          <p className="mt-1 text-sm text-zinc-600">Connecting a Gmail inbox is coming next. Until then, upload invoices on New Run.</p>
-          <Button className="mt-4" variant="outline" onClick={() => navigate('/')}>Go to New Run</Button>
+          <h2 className="mt-3 font-semibold">Connect your Gmail</h2>
+          <p className="mt-1 text-sm text-zinc-600">
+            {data.can_connect
+              ? 'Sign in with Google to read your inbox (read-only). You pick which bills to check; nothing is sent from your account.'
+              : 'Google sign-in is not set up on this server (GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET). You can still upload invoices on New Run.'}
+          </p>
+          <div className="mt-4 flex justify-center gap-2">
+            {data.can_connect && <Button onClick={() => { window.location.href = '/api/auth/google/start' }}><Mail />Connect Gmail</Button>}
+            <Button variant="outline" onClick={() => navigate('/')}>Go to New Run</Button>
+          </div>
         </div>
       </div>
     )
   }
-  const messages = (data?.messages ?? []).filter((m) => !onlyBills || bills(m).length > 0)
+  const messages = (data?.messages ?? []).filter((m) => !billsOnly || bills(m).length > 0)
   const open = messages.find((m) => m.id === openId) ?? messages.find((m) => bills(m).length > 0) ?? messages[0]
   const chosen = [...picked].map((k) => { const [message_id, attachment_id] = k.split('/'); return { message_id, attachment_id } })
   const left = demo ? Math.max(0, demo.max_runs_per_hour - demo.runs_last_hour) : null
@@ -173,16 +197,16 @@ export default function Inbox() {
     <div className="flex h-screen flex-col">
       <PageHeader
         title="Inbox"
-        subtitle={data ? <>{data.mailbox} · {data.messages.length} emails{isDemo && ' · sample inbox of the demo'}</> : 'Loading…'}
+        subtitle={data ? <>{data.mailbox} · {data.messages.length}{data.next_page_token ? '+' : ''} emails{isDemo ? ' · sample inbox of the demo' : ' · Gmail, read-only'}</> : 'Loading…'}
         actions={
           <>
             {left !== null && <span className="text-xs text-zinc-500">{left} of {demo!.max_runs_per_hour} demo runs left this hour</span>}
-            {gemini && gemini.choices.length > 1 && (
+            {models.length > 1 && (
               <label className="flex items-center gap-1.5 text-xs text-zinc-500">
-                Gemini model
-                <select value={chosenModel ?? ''} onChange={(e) => setModelName(e.target.value)}
+                Model
+                <select value={chosenModel} onChange={(e) => setModelChoice(e.target.value)}
                         className="h-8 rounded-md border border-zinc-300 bg-white px-2 font-mono text-xs text-zinc-800">
-                  {gemini.choices.map((c) => <option key={c} value={c}>{c}</option>)}
+                  {models.map((m) => <option key={m.value} value={m.value}>{m.label}</option>)}
                 </select>
               </label>
             )}
@@ -198,15 +222,24 @@ export default function Inbox() {
           <Info className="size-4 shrink-0" />{run.error.message}
         </div>
       )}
-      {inbox.isError && <div className="p-8 text-sm text-red-700">Could not load the inbox: {inbox.error.message}</div>}
+      {inbox.isError && <div className="p-8 text-sm text-red-700">Could not read the inbox: {inbox.error.message}</div>}
       {!data && !inbox.isError && <div className="grid flex-1 place-items-center text-zinc-400"><Loader2 className="animate-spin" /></div>}
       {data && (
         <div className="flex min-h-0 flex-1">
           <aside className="flex w-[380px] shrink-0 flex-col border-r border-zinc-200 bg-white">
+            {!isDemo && (
+              <form className="border-b border-zinc-200 px-4 py-2" onSubmit={(e) => { e.preventDefault(); setQ(search.trim()) }}>
+                <div className="relative">
+                  <Search className="absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-zinc-400" />
+                  <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search Gmail, e.g. from:vendor.com invoice"
+                         className="h-8 pl-8 text-xs" />
+                </div>
+              </form>
+            )}
             <div className="flex items-center gap-1 border-b border-zinc-200 px-4 py-2 text-xs">
               {[['All emails', false], ['With bills', true]].map(([label, value]) => (
                 <button key={String(label)} type="button" onClick={() => setOnlyBills(value as boolean)}
-                        className={cn('rounded-md px-2.5 py-1', onlyBills === value ? 'bg-zinc-900 text-white' : 'text-zinc-600 hover:bg-zinc-100')}>
+                        className={cn('rounded-md px-2.5 py-1', billsOnly === value ? 'bg-zinc-900 text-white' : 'text-zinc-600 hover:bg-zinc-100')}>
                   {label as string}
                 </button>
               ))}
@@ -217,6 +250,14 @@ export default function Inbox() {
                 <MessageRow key={m.id} message={m} active={m.id === open?.id} picked={picked}
                             onOpen={() => setOpenId(m.id)} onToggle={toggle} />
               ))}
+              {inbox.hasNextPage && (
+                <li className="p-3 text-center">
+                  <Button size="sm" variant="outline" disabled={inbox.isFetchingNextPage} onClick={() => inbox.fetchNextPage()}>
+                    {inbox.isFetchingNextPage && <Loader2 className="animate-spin" />}Load more
+                  </Button>
+                </li>
+              )}
+              {!messages.length && <li className="p-6 text-center text-sm text-zinc-500">No emails{q ? ` for “${q}”` : ''}.</li>}
             </ul>
           </aside>
           {open ? <Reader message={open} picked={picked} onToggle={toggle} onRun={(p) => run.mutate(p)} running={run.isPending} />

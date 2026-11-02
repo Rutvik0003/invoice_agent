@@ -12,7 +12,7 @@ from sqlalchemy import Engine, func, select
 from sqlalchemy.orm import Session
 
 from app import __version__
-from app.api import admin, batches, data, email, eval as eval_api, holds, inbox, mode, running, runs
+from app.api import admin, auth, batches, data, email, eval as eval_api, holds, inbox, mode, running, runs
 from app.config import REPO_ROOT, get_settings
 from app.db import get_engine, init_db
 from app.demo.sandbox import SandboxPool
@@ -66,7 +66,9 @@ def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None
     app.state.extract_fn = extract_fn or extract_document
     app.state.sandboxes = SandboxPool(prepare_database, mark_interrupted_runs, directory=sandbox_root)
     app.state.batch_worker = BatchWorker(app.state.engine, app.state.extract_fn, app.state.sandboxes.engines)
-    for module in (mode, inbox, running, runs, batches, email, holds, data, admin, eval_api):
+    app.state.gmail_factory = inbox.default_gmail_factory  # tests replace it with a fake mailbox
+    app.state.gmail_clients = {}
+    for module in (auth, mode, inbox, running, runs, batches, email, holds, data, admin, eval_api):
         app.include_router(module.router)
 
     @app.get("/api/health", response_model=HealthResponse)

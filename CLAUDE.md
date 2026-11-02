@@ -82,6 +82,7 @@ invoice-agent/
 | PDF handling | PyMuPDF (`pymupdf`) — text-layer detection, page → PNG rendering |
 | Fuzzy matching | RapidFuzz |
 | Live updates | Server-Sent Events (`sse-starlette`) |
+| Real mode: sign-in + Gmail | Google OAuth 2.0 + Gmail API v1 over HTTPS (`httpx`), stored token encrypted with `cryptography` (Fernet); scopes `openid email gmail.readonly` |
 | Data generation | ReportLab (PDFs), Pillow + NumPy (scan degradation), Faker (`en_IN` locale) |
 | Tests | pytest |
 | Frontend | React + Vite + TypeScript + Tailwind + shadcn/ui + lucide-react icons + TanStack Query |
@@ -209,5 +210,6 @@ PHASE N REPORT
 - **Demo inbox:** `data/demo_inbox/inbox.json`, fixed emails from the fictional vendors with the golden invoices attached (plus emails without bills). In demo, invoices come only from these emails: no uploads, no samples, no Test Suite runs.
 - **Demo AI:** Gemini only, `DEMO_GEMINI_API_KEY` (a separate Google Cloud project, so its free-tier quota is separate); the visitor picks one of the Gemini models (`DEMO_GEMINI_MODEL` default, `DEMO_GEMINI_MODELS`, default `GEMINI_MODELS`); no Groq and no automatic fallback. At most `DEMO_MAX_RUNS_PER_HOUR` (default 20) runs per visitor. A rate limit is shown as a calm notice ("the AI model has reached its rate limit — please try again after some time").
 - `runs.source_json` (nullable) records the email an invoice came from. The vendor email for such a run is a **reply in that thread** (to the sender, `Re: <their subject>`); `email_log.thread_message_id` / `body` keep it, and the Inbox shows it under the original email.
+- **Real mode (Phase 11):** "Sign in with Google" (scopes openid, email, gmail.readonly) connects the owner's Gmail and opens real mode. Once `OWNER_EMAIL` is set, real-mode data (the main database, via `engine_of`) needs that account's signed-in session (cookie `ia_owner`, hashed in `owner_sessions`); any other account is turned away and its access revoked. The refresh token is stored encrypted (`gmail_accounts`). The Inbox reads Gmail (bills only by default, Gmail search, paging); chosen attachments run like uploads, with the email as `source_json`. Vendor replies stay in the app (shown in the thread); nothing is ever sent from the owner's Gmail. Sign out / Disconnect (revokes at Google).
 - **Running processes** screen: runs and batches still processing (they continue on the server when the user leaves their screen) and those finished in the last 30 minutes.
 

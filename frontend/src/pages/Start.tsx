@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { ArrowRight, CheckCircle2, Inbox, Loader2, Mail, ShieldCheck } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { modeApi } from '@/lib/mode'
+import { ApiError, modeApi, useMode } from '@/lib/mode'
 import { navigate } from '@/lib/router'
 
 const DEMO_POINTS = [
@@ -17,9 +17,21 @@ const REAL_POINTS = [
   'Your own data and AI keys',
 ]
 
-/** The first screen: try the demo without signing in, or use the real product. */
+const AUTH_ERRORS: Record<string, string> = {
+  not_owner: "Real mode is only for the owner's Google account. You are welcome to try the demo instead.",
+  no_gmail: 'Real mode needs permission to read your Gmail. Sign in again and allow it.',
+  cancelled: 'Sign-in was cancelled.',
+  invalid_state: 'The sign-in link expired. Please try again.',
+  google: 'Google sign-in did not complete. Please try again.',
+}
+
+/** The first screen: try the demo without signing in, or use the real product (the owner, signed in with Google). */
 export default function Start() {
   const queryClient = useQueryClient()
+  const auth = useMode().data?.auth
+  const authError = AUTH_ERRORS[new URLSearchParams(window.location.search).get('auth_error') ?? '']
+  const needsGoogle = !!auth && (auth.locked || auth.google_configured) && !auth.signed_in_as
+  const openReal = () => (needsGoogle ? window.location.assign(auth!.sign_in_url) : choose.mutate('real'))
   const choose = useMutation({
     mutationFn: modeApi.choose,
     onSuccess: (data) => {
@@ -27,6 +39,10 @@ export default function Start() {
       queryClient.removeQueries({ predicate: (q) => q.queryKey[0] !== 'mode' })
       queryClient.setQueryData(['mode'], data)
       navigate(data.mode === 'demo' ? '/inbox' : '/')
+    },
+    // real mode is locked to the owner and this browser is not signed in: go to Google's sign-in instead
+    onError: (error) => {
+      if (error instanceof ApiError && error.kind === 'sign_in_required') window.location.assign('/api/auth/google/start')
     },
   })
   const busy = (mode: 'demo' | 'real') => choose.isPending && choose.variables === mode
@@ -88,12 +104,15 @@ export default function Start() {
                 </li>
               ))}
             </ul>
-            <Button className="mt-6 w-full" size="lg" variant="outline" disabled={choose.isPending} onClick={() => choose.mutate('real')}>
-              {busy('real') ? <Loader2 className="animate-spin" /> : <ArrowRight />}Use real mode
+            <Button className="mt-6 w-full" size="lg" variant="outline" disabled={choose.isPending} onClick={openReal}>
+              {busy('real') ? <Loader2 className="animate-spin" /> : needsGoogle ? <Mail /> : <ArrowRight />}
+              {needsGoogle ? 'Sign in with Google' : auth?.signed_in_as ? `Continue as ${auth.signed_in_as}` : 'Use real mode'}
             </Button>
+            {needsGoogle && <p className="mt-2 text-center text-[11px] text-zinc-500">Owner only · Gmail is read-only</p>}
           </section>
         </div>
-        {choose.isError && <p className="mt-3 text-sm text-red-700">{choose.error.message}</p>}
+        {choose.isError && !(choose.error instanceof ApiError && choose.error.kind === 'sign_in_required') && <p className="mt-3 text-sm text-red-700">{choose.error.message}</p>}
+        {authError && <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 ring-1 ring-amber-200">{authError}</p>}
 
         <p className="mt-8 flex items-center gap-1.5 text-xs text-zinc-500">
           <ShieldCheck className="size-3.5" />
