@@ -31,6 +31,15 @@ class Settings(BaseSettings):
     # minimum seconds between two AI requests (free-tier rate limits); editable in Settings
     ai_request_gap_s: float = 6.0
 
+    # Demo mode (CLAUDE.md §12): a separate Gemini key (its own Google Cloud project = its own free-tier quota),
+    # Gemini only; empty values fall back to GEMINI_API_KEY / GEMINI_MODEL
+    demo_gemini_api_key: str = ""
+    demo_gemini_model: str = ""
+    demo_gemini_models: str = ""  # the models a demo visitor may pick; empty = GEMINI_MODELS
+    demo_max_runs_per_hour: int = 20
+    demo_sandbox_ttl_hours: float = 24.0
+    demo_sandbox_dir: str = "demo_sandboxes"  # relative paths are under backend/
+
     # Business rules
     tolerance_pct: float = 1.0
     tolerance_abs_inr: float = 500.0
@@ -60,6 +69,15 @@ class Settings(BaseSettings):
 
     def model_choices(self, provider: str) -> list[str]:
         return self.gemini_choices if provider == "gemini" else [self.groq_model] if self.groq_model else []
+
+    def for_demo(self) -> "Settings":
+        """The settings a demo visitor runs with: Gemini only, on the demo key (no Groq, no fallback). The visitor
+        may pick any of the Gemini models (free-tier limits are per model, so another model can still answer)."""
+        return self.model_copy(update={
+            "gemini_api_key": self.demo_gemini_api_key or self.gemini_api_key,
+            "gemini_model": self.demo_gemini_model or self.gemini_model,
+            "gemini_models": self.demo_gemini_models or self.gemini_models, "groq_api_key": "", "groq_model": "", "default_model": "gemini",
+        })
 
     @property
     def groq_configured(self) -> bool:

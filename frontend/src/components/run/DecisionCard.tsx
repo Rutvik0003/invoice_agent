@@ -1,10 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
-import { ArrowRight, Loader2, RotateCcw } from 'lucide-react'
+import { ArrowRight, Clock, Loader2, RotateCcw } from 'lucide-react'
 
 import { CheckIcon, OUTCOME_STYLE } from '@/components/status'
 import { Button } from '@/components/ui/button'
 import { api, type AppConfig, type Decision, type LedgerChange, type RunDetail, type RunError } from '@/lib/api'
 import { inr, num } from '@/lib/format'
+import { useMode } from '@/lib/mode'
 import { navigate } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
@@ -103,6 +104,35 @@ function LedgerTable({ ledger }: { ledger: LedgerChange }) {
   )
 }
 
+/** Demo: the free-tier AI key is busy. Not an error of the invoice or the app: try again later. */
+function RateLimitNotice({ onRetry, others, retry }: {
+  onRetry: (choice: string) => void; others: string[]; retry: { isPending: boolean; isError: boolean; error: Error | null }
+}) {
+  return (
+    <section className="rounded-xl bg-sky-50 px-5 py-4 ring-1 ring-sky-200">
+      <div className="flex items-center gap-2 text-sky-900">
+        <Clock className="size-5" />
+        <h2 className="text-base font-semibold">The AI model has reached its rate limit</h2>
+      </div>
+      <p className="mt-1.5 text-sm leading-relaxed text-sky-900/80">
+        The demo uses a free-tier AI key, which allows only a few requests per minute and per day. Please try again after
+        some time, or with another Gemini model (each model has its own free-tier limit).
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Button size="sm" variant="outline" disabled={retry.isPending} onClick={() => onRetry('gemini')}>
+          {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Try again
+        </Button>
+        {others.map((m) => (
+          <Button key={m} size="sm" variant="outline" disabled={retry.isPending} onClick={() => onRetry(m)}>
+            Try with <span className="font-mono text-xs">{m}</span>
+          </Button>
+        ))}
+      </div>
+      {retry.isError && <p className="mt-2 text-sm text-sky-900">{retry.error?.message}</p>}
+    </section>
+  )
+}
+
 const ERROR_TITLE: Record<string, string> = {
   rate_limited: 'The model is rate-limited',
   timeout: 'The model took too long to answer',
@@ -119,7 +149,16 @@ export function FailureCard({ run, error, config, heading = 'Could not read the 
   { run: RunDetail; error: RunError; config: AppConfig | undefined; heading?: string }) {
   const other = run.model === 'gemini' ? 'groq' : 'gemini'
   const otherInfo = config?.models.find((m) => m.id === other)
-  const retry = useMutation({ mutationFn: (model: string) => api.retry(run.id, model), onSuccess: ({ run_id }) => navigate(`/runs/${run_id}`) })
+  // a model name ('gemini-…') retries with that Gemini model; 'gemini' / 'groq' retries with the provider's model
+  const retry = useMutation({
+    mutationFn: (choice: string) => (choice.startsWith('gemini-') ? api.retry(run.id, 'gemini', choice) : api.retry(run.id, choice)),
+    onSuccess: ({ run_id }) => navigate(`/runs/${run_id}`),
+  })
+  const { isDemo } = useMode()
+  const otherGemini = (config?.models.find((m) => m.id === 'gemini')?.choices ?? []).filter((c) => c !== run.model_name)
+  if (isDemo && error.type === 'rate_limited') {
+    return <RateLimitNotice onRetry={(choice) => retry.mutate(choice)} others={otherGemini} retry={retry} />
+  }
   return (
     <section className="overflow-hidden rounded-xl bg-white ring-1 ring-zinc-300">
       <div className="bg-zinc-700 px-5 py-4 text-white">
@@ -130,7 +169,7 @@ export function FailureCard({ run, error, config, heading = 'Could not read the 
         <p className="text-sm leading-relaxed text-zinc-700">{error.message}</p>
         <p className="text-xs text-zinc-500">No decision was made: the rules only run on an invoice that was read and checked completely.</p>
         <div className="flex flex-wrap gap-2">
-          {otherInfo && (
+          {otherInfo && !isDemo && (
             <Button disabled={!otherInfo.configured || retry.isPending} onClick={() => retry.mutate(other)}>
               {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Retry with {otherInfo.label}
             </Button>

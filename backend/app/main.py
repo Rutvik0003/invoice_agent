@@ -12,9 +12,10 @@ from sqlalchemy import Engine, func, select
 from sqlalchemy.orm import Session
 
 from app import __version__
-from app.api import admin, batches, data, email, eval as eval_api, holds, runs
+from app.api import admin, batches, data, email, eval as eval_api, holds, inbox, mode, running, runs
 from app.config import REPO_ROOT, get_settings
 from app.db import get_engine, init_db
+from app.demo.sandbox import SandboxPool
 from app.extraction import extract_document
 from app.logging_setup import configure_logging
 from app.models import Vendor
@@ -47,8 +48,9 @@ def prepare_database(engine: Engine) -> None:
         seed_master(engine)
 
 
-def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None, extract_fn=None) -> FastAPI:
-    """Build the app. Tests pass their own database engine and a fake extractor (no network)."""
+def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None, extract_fn=None,
+               sandbox_root: Path | None = None) -> FastAPI:
+    """Build the app. Tests pass their own database engine, a fake extractor (no network) and a sandbox folder."""
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -62,8 +64,9 @@ def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None
     app = FastAPI(title="Invoice Agent", version=__version__, lifespan=lifespan)
     app.state.engine = engine or get_engine()
     app.state.extract_fn = extract_fn or extract_document
-    app.state.batch_worker = BatchWorker(app.state.engine, app.state.extract_fn)
-    for module in (runs, batches, email, holds, data, admin, eval_api):
+    app.state.sandboxes = SandboxPool(prepare_database, mark_interrupted_runs, directory=sandbox_root)
+    app.state.batch_worker = BatchWorker(app.state.engine, app.state.extract_fn, app.state.sandboxes.engines)
+    for module in (mode, inbox, running, runs, batches, email, holds, data, admin, eval_api):
         app.include_router(module.router)
 
     @app.get("/api/health", response_model=HealthResponse)

@@ -129,6 +129,7 @@ class Run(Base):
     decision_json: Mapped[dict | None] = mapped_column(JSON)  # full Decision + per-stage checks
     batch_id: Mapped[str | None] = mapped_column(String(36), index=True)  # set when uploaded as part of a batch
     use_cache: Mapped[bool | None] = mapped_column(Boolean)  # remembered for queued batch runs
+    source_json: Mapped[dict | None] = mapped_column(JSON)  # the email the invoice came from (inbox runs)
 
 
 class RunEvent(Base):
@@ -179,6 +180,8 @@ class EmailLog(Base):
     subject: Mapped[str] = mapped_column(String(300))
     sent: Mapped[bool] = mapped_column(Boolean)
     error: Mapped[str | None] = mapped_column(Text)
+    body: Mapped[str | None] = mapped_column(Text)
+    thread_message_id: Mapped[str | None] = mapped_column(String(200), index=True)  # the inbox email it replies to
 
 
 class AppSetting(Base):

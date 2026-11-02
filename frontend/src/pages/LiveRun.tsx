@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Loader2, Plus, Scale, Wifi, WifiOff, X } from 'lucide-react'
+import { Loader2, Mail, Plus, Scale, Wifi, WifiOff, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { AuditTrail, RawData } from '@/components/run/AuditTrail'
@@ -12,6 +12,7 @@ import { ChecksList, StageStepper } from '@/components/run/StageStepper'
 import { Button } from '@/components/ui/button'
 import { api, type ExtractedInvoice, type RunDetail } from '@/lib/api'
 import { duration, humanize, inr } from '@/lib/format'
+import { useMode } from '@/lib/mode'
 import { Link, navigate } from '@/lib/router'
 import { useRunEvents, type LiveState, type StageKey } from '@/lib/useRunEvents'
 import { cn } from '@/lib/utils'
@@ -20,6 +21,7 @@ const FINAL = ['completed', 'extraction_failed', 'failed', 'interrupted', 'resol
 
 export default function LiveRun({ runId }: { runId: string }) {
   const queryClient = useQueryClient()
+  const { isDemo } = useMode()
   const config = useQuery({ queryKey: ['config'], queryFn: api.config })
   const run = useQuery({ queryKey: ['run', runId], queryFn: () => api.run(runId) })
   const [finishedAtOpen, setFinishedAtOpen] = useState<boolean | null>(null)
@@ -74,13 +76,19 @@ export default function LiveRun({ runId }: { runId: string }) {
             {(detail.used_cache || live.stages.extraction.payload.cached) && (
               <span className="rounded bg-sky-100 px-1.5 py-0.5 font-medium text-sky-800">cached extraction</span>
             )}
+            {detail.source && (
+              <span className="flex min-w-0 items-center gap-1" title={`${detail.source.from_email} · ${detail.source.subject}`}>
+                <Mail className="size-3 shrink-0" />
+                <span className="truncate">from {detail.source.from_name}: “{detail.source.subject}”</span>
+              </span>
+            )}
             {detail.retry_of && <Link to={`/runs/${detail.retry_of}`} className="underline underline-offset-2">retry of an earlier run</Link>}
             <span className="font-mono text-[11px] text-zinc-400">{runId.slice(0, 8)}</span>
             {detail.duration_ms && live.finished && <span>· {duration(detail.duration_ms)} total</span>}
           </div>
         </div>
         <ConnectionBadge live={live} />
-        <Button variant="outline" size="sm" onClick={() => navigate('/')}><Plus />New run</Button>
+        <Button variant="outline" size="sm" onClick={() => navigate('/')}><Plus />{isDemo ? 'Inbox' : 'New run'}</Button>
       </header>
 
       <div className="grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_minmax(400px,500px)]">

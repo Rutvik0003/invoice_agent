@@ -19,6 +19,7 @@ import { Input } from '@/components/ui/input'
 import { api } from '@/lib/api'
 import { api2, type EditableSettings } from '@/lib/api2'
 import { inr } from '@/lib/format'
+import { useMode } from '@/lib/mode'
 
 /** The settings an admin may change here (saved in the database; a demo reset keeps them). */
 function AdminSettings() {
@@ -89,6 +90,7 @@ export default function Settings() {
   const queryClient = useQueryClient()
   const config = useQuery({ queryKey: ['config'], queryFn: api.config })
   const reset = useMutation({ mutationFn: api2.resetDemo, onSuccess: () => queryClient.invalidateQueries() })
+  const { isDemo } = useMode()
   const c = config.data
 
   return (
@@ -150,6 +152,9 @@ export default function Settings() {
 
         <section className="rounded-xl border border-red-200 bg-white p-5">
           <h2 className="text-sm font-semibold">Reset demo data</h2>
+          {isDemo && (
+            <p className="mt-1 text-sm font-medium text-sky-900">In the demo this resets only your own sandbox; nobody else is affected.</p>
+          )}
           <p className="mt-1 text-sm text-zinc-600">
             Starts over as if the app were opened for the first time: vendors, purchase orders and invoice history go back to the
             seeded state, and every run, batch, hold action and email is deleted. Admin settings return to their defaults.

@@ -10,7 +10,7 @@ from __future__ import annotations
 import string
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 
 from app.pipeline.reason_codes import ReasonCode, inr
 
@@ -175,12 +175,15 @@ class VendorEmail:
     body: str
     attachment_name: str
     attachment_mime: str
+    thread: dict | None = None  # the vendor's email this replies to (the invoice came in it), else a new email
 
 
 def compose(*, vendor_name: str, invoice_number: str | None, invoice_date: date | None, total: float | None,
             outcome: str, reasons: list[dict], buyer_name: str, recipient: str | None, file_name: str,
-            mime: str) -> VendorEmail:
-    """Subject: '<vendor> - <problem> - Invoice <number>'; body: each problem and the change needed."""
+            mime: str, reply_to: dict | None = None) -> VendorEmail:
+    """Subject: '<vendor> - <problem> - Invoice <number>'; body: each problem and the change needed.
+    When the invoice came by email (reply_to = that email), the message is a reply in the same thread: it goes to
+    the address the invoice came from, with 'Re: <their subject>', and the problem line opens the body."""
     problems = vendor_problems(reasons, outcome)
     number = invoice_number or "(no number)"
     headline = problems[0].title if problems else ("Invoice rejected" if outcome == "REJECT" else "Invoice on hold")
@@ -196,5 +199,12 @@ def compose(*, vendor_name: str, invoice_number: str | None, invoice_date: date 
     body = (f"Dear {vendor_name},\n\nThank you for your {about}. After review, {status}.\n\n{items}\n\n"
             f"The invoice we received is attached for reference. Please reply to this email with the corrected invoice "
             f"or the confirmation requested above.\n\nRegards,\nAccounts Payable\n{buyer_name}\n")
+    if reply_to:
+        received = datetime.fromisoformat(reply_to["received_at"])
+        body = (f"{subject}\n\n{body}\n"
+                f"On {received:%d %b %Y, %H:%M}, {reply_to['from_name']} <{reply_to['from_email']}> wrote:\n"
+                f"> {reply_to['subject']}\n> (invoice {file_name} attached)\n")
+        subject = f"Re: {reply_to['subject']}"
+        recipient = reply_to["from_email"]
     return VendorEmail(f"Accounts Payable, {buyer_name}", recipient or "(no email on file)", subject, body,
-                       file_name, mime)
+                       file_name, mime, reply_to)

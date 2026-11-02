@@ -11,13 +11,15 @@ from sqlalchemy import Engine
 from sqlalchemy.orm import Session
 
 from app.config import REPO_ROOT
+from app.demo.mode import demo_engine
 from app.models import Run
 
 INVOICE_DIR = REPO_ROOT / "data" / "invoices"
 
 
 def engine_of(request: Request) -> Engine:
-    return request.app.state.engine
+    """The database this request works on: the visitor's sandbox in demo mode, else the main database."""
+    return demo_engine(request) or request.app.state.engine
 
 
 def get_run_or_404(session: Session, run_id: str) -> Run:
@@ -78,6 +80,7 @@ def run_summary(run: Run) -> dict:
         "po_number": run.po_number,
         "duration_ms": run.duration_ms,
         "used_cache": run.used_cache,
+        "source": run.source_json,
         "is_test_run": run.is_test_run,
         "retry_of": run.retry_of,
         "sample_id": run.sample_id,

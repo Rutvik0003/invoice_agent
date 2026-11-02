@@ -21,7 +21,9 @@
 | 6 | Frontend: New Run + Live Run View (with highlight boxes) | 5 |
 | 7 | Frontend: Dashboard, Run Detail, Hold Queue, Test Suite, Data, Settings | 5 |
 | 8 | Hardening + real-world robustness | 6 |
-| 9 | Production DB, smoke test, README, demo script | 6–7 |
+| 10 | Demo mode vs real mode: start screen, demo inbox, per-visitor sandbox, demo Gemini key | 7 |
+| 11 | Real mode: Gmail sign-in (read-only), inbox, owner-only access | 7–8 |
+| 9 | Production DB, smoke test, README, demo script (done last, after 10 and 11) | 8 |
 
 ---
 
@@ -388,3 +390,52 @@ Phase Report with live URL and smoke-test output, commit "Phase 9: production".
 - [ ] README reads well to someone who has never seen the project.
 - [ ] Rehearse the demo script twice with a timer. Record the 5-minute video.
 - [ ] 10 minutes before the interview: open the live URL (wake the instance), Reset demo data, check models + OCR ✓.
+
+---
+
+## PHASE 10 — Demo mode vs real mode
+
+```
+Read CLAUDE.md (§12). We are doing PHASE 10 only. Nothing that exists may change behaviour or accuracy in real
+mode: the full test suite, eval_rules (golden + stress 283/283), the unseen set (42/42) and the verification evals
+must give the same results before and after.
+
+1. Start screen (no mode chosen yet): "Try demo (no sign-in)" and "Use real mode" (Gmail sign-in arrives in
+   Phase 11). A banner shows the current mode on every screen, with a way back to the start screen.
+2. Mode is a cookie. Every API request resolves its database through api/common.engine_of: real mode -> the main
+   DATABASE_URL; demo mode -> the visitor's own sandbox (a SQLite copy of the freshly seeded database, keyed by a
+   random visitor id cookie, deleted after DEMO_SANDBOX_TTL_HOURS of inactivity). No check, stage or rule changes.
+3. Demo inbox: data/demo_inbox/inbox.json - fixed emails from the fictional vendors (sender = vendor email in the
+   master) with the 12 golden invoices attached, plus emails without bills. Inbox screen: list, read, preview
+   attachments, tick and run (one -> a run, several -> a batch). Runs remember the email they came from.
+4. Demo restrictions: invoices only from the demo inbox (no uploads, no samples, no Test Suite runs - the files
+   must exist in the PO data); Gemini only, with DEMO_GEMINI_API_KEY / DEMO_GEMINI_MODEL (no Groq, no fallback);
+   at most DEMO_MAX_RUNS_PER_HOUR runs per visitor. Reset demo data resets only that visitor's sandbox.
+5. Rate limit in demo: shown as a calm notice, "The AI model has reached its rate limit - please try again after
+   some time", not as an error with a model switch.
+6. Tests: sandbox isolation (two visitors never see each other's runs; real mode never sees demo runs), demo
+   restrictions, demo settings (key/model, no Groq), inbox run -> run/batch with source email, reset per visitor.
+Phase Report, commit "Phase 10: demo mode + demo inbox".
+```
+
+**You test**
+- [ ] Incognito window: start screen -> Try demo -> inbox shows the sample emails -> run 01 -> APPROVE.
+- [ ] A second incognito/browser: Try demo -> fresh data (01 is not "already paid").
+- [ ] Real mode: dashboard still shows only your own runs; upload works as before.
+
+---
+
+## PHASE 11 — Real mode: Gmail inbox
+
+```
+Read CLAUDE.md. We are doing PHASE 11 only.
+
+1. Google sign-in (OAuth 2.0, scope gmail.readonly + openid email). Client id/secret from env only. The refresh
+   token is stored encrypted (Fernet key from env). Real mode is allowed only for OWNER_EMAIL.
+2. The Inbox screen (same as demo) lists Gmail messages with PDF/PNG/JPG attachments (query + paging); chosen
+   attachments are downloaded and queued exactly like demo inbox files; runs store the Gmail message id.
+3. Disconnect button; token expiry handled with a clear "reconnect Gmail" message.
+4. Tests with a fake Gmail client (tests/ only). No change to demo mode or decisions.
+Phase Report, commit "Phase 11: gmail inbox".
+```
+

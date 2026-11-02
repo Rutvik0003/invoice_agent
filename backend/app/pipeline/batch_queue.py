@@ -42,11 +42,14 @@ def process_next(engine: Engine, extract_fn: ExtractFn) -> str | None:
 
 
 class BatchWorker:
-    """The single thread that works through queued batch runs."""
+    """The single thread that works through queued batch runs (of the main database and of every open demo
+    sandbox, taking one run from each in turn)."""
 
-    def __init__(self, engine: Engine, extract_fn: Callable[..., object]) -> None:
+    def __init__(self, engine: Engine, extract_fn: Callable[..., object],
+                 more_engines: Callable[[], list[Engine]] | None = None) -> None:
         self.engine = engine
         self.extract_fn = extract_fn
+        self.more_engines = more_engines or list
         self._wake = threading.Event()
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
@@ -67,11 +70,12 @@ class BatchWorker:
 
     def _loop(self) -> None:
         while not self._stop.is_set():
-            try:
-                done = process_next(self.engine, self.extract_fn)
-            except Exception:  # noqa: BLE001 - the worker must survive anything (process_run already never raises)
-                logger.exception("batch worker error")
-                done = None
+            done = None
+            for engine in (self.engine, *self.more_engines()):
+                try:
+                    done = process_next(engine, self.extract_fn) or done
+                except Exception:  # noqa: BLE001 - the worker must survive anything (process_run never raises)
+                    logger.exception("batch worker error")
             if done is None:
                 self._wake.wait(IDLE_POLL_S)
                 self._wake.clear()

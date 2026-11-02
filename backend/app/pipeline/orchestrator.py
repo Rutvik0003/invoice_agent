@@ -16,7 +16,7 @@ from typing import Callable
 from sqlalchemy import Engine, select
 from sqlalchemy.orm import Session
 
-from app.config import REPO_ROOT, Settings, get_settings
+from app.config import REPO_ROOT, Settings
 from app.extraction import extract_document
 from app.logging_setup import get_logger
 from app.models import Run, RunEvent
@@ -24,6 +24,7 @@ from app.pipeline.engine import TITLES, RulesResult, StageResult, run_rules
 from app.pipeline.intake import intake
 from app.pipeline.ledger import apply_ledger_update
 from app.pipeline.repository import BuyerRecord, DbRepository, InMemoryRepository, MasterRepository
+from app.runtime_settings import effective_settings
 from app.schemas import ExtractionResult
 from app.verification.cross_check import cross_check
 from app.verification.verify import collect_page_words, unavailable_result, verify
@@ -242,12 +243,12 @@ def mark_interrupted_runs(engine: Engine) -> list[str]:
 
 def create_run_record(engine: Engine, file_name: str, data: bytes, model: str, retry_of: str | None = None,
                       sample_id: str | None = None, is_test_run: bool = False, model_name: str | None = None,
-                      batch_id: str | None = None, use_cache: bool | None = None) -> str:
+                      batch_id: str | None = None, use_cache: bool | None = None, source: dict | None = None) -> str:
     """Stage 1 checks up front (raises IntakeError with a user-facing reason), then store a queued run.
     model is the provider ('gemini' | 'groq'); model_name optionally picks one of its configured models."""
     if model not in ("gemini", "groq"):
         raise ValueError("model must be 'gemini' or 'groq'")
-    if model_name and model_name not in get_settings().model_choices(model):
+    if model_name and model_name not in effective_settings(engine).model_choices(model):
         raise ValueError(f"{model_name} is not one of the configured {model} models")
     info = intake(file_name, data)
     run_id = str(uuid.uuid4())
@@ -255,7 +256,7 @@ def create_run_record(engine: Engine, file_name: str, data: bytes, model: str, r
         session.add(Run(id=run_id, file_name=file_name, file_hash=info.file_hash, file_bytes=data, model=model,
                         status="queued", mime_type=info.mime, page_count=info.page_count, retry_of=retry_of,
                         sample_id=sample_id, is_test_run=is_test_run, model_name=model_name or None,
-                        batch_id=batch_id, use_cache=use_cache))
+                        batch_id=batch_id, use_cache=use_cache, source_json=source))
         session.commit()
     return run_id
 

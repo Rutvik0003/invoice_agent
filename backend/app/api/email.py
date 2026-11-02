@@ -37,14 +37,14 @@ def _compose(session: Session, run: Run, engine) -> VendorEmail:
         invoice_number=invoice.invoice_number.value, invoice_date=invoice_date(invoice),
         total=float(total) if total is not None else None, outcome=outcome, reasons=run.reasons_json or [],
         buyer_name=load_buyer().legal_name, recipient=vendor.email if vendor else None, file_name=run.file_name,
-        mime=run.mime_type,
+        mime=run.mime_type, reply_to=run.source_json,
     )
 
 
 def _log_rows(session: Session, run_id: str) -> list[dict]:
     rows = session.scalars(select(EmailLog).where(EmailLog.run_id == run_id).order_by(EmailLog.id)).all()
     return [{"created_at": iso_utc(r.created_at), "recipient": r.recipient, "subject": r.subject, "sent": r.sent,
-             "error": r.error} for r in rows]
+             "error": r.error, "in_thread": r.thread_message_id is not None} for r in rows]
 
 
 @router.get("/runs/{run_id}/email")
@@ -59,13 +59,16 @@ def preview_email(run_id: str, request: Request) -> dict:
 
 @router.post("/runs/{run_id}/email")
 def send_email(run_id: str, request: Request) -> dict:
-    """Demo send: the email is logged against the run (nothing leaves the app) and the UI shows "Mail sent"."""
+    """Demo send: the email is logged against the run (nothing leaves the app) and the UI shows "Mail sent".
+    An invoice that came by email is answered in that email's thread (the inbox shows the reply under it)."""
     engine = engine_of(request)
     with Session(engine) as session:
         run = get_run_or_404(session, run_id)
         mail = _compose(session, run, engine)
+        thread = (mail.thread or {}).get("message_id")
         session.add(EmailLog(run_id=run_id, sender=mail.sender, recipient=mail.recipient, subject=mail.subject,
-                             sent=True, error=None))
+                             sent=True, error=None, body=mail.body, thread_message_id=thread))
         session.commit()
         logger.info("vendor email logged (demo, not delivered)", extra={"run_id": run_id})
-        return {"sent": True, "recipient": mail.recipient, "subject": mail.subject, "history": _log_rows(session, run_id)}
+        return {"sent": True, "recipient": mail.recipient, "subject": mail.subject, "in_thread": thread is not None,
+                "history": _log_rows(session, run_id)}

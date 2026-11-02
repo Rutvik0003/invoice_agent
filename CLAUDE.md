@@ -200,3 +200,14 @@ PHASE N REPORT
 - Known limitations / decisions I made that you should confirm: …
 - Ready for Phase N+1? (yes / blocked because …)
 ```
+
+## 12. Demo mode and real mode (Phase 10–11)
+
+- **Start screen:** "Try demo (no sign-in)" for reviewers, "Real mode" for Rutvik (Gmail sign-in in Phase 11; real mode is then allowed only for `OWNER_EMAIL`).
+- **Same app, same rules.** Mode only decides *which database* a request uses (`api/common.engine_of`) and *which AI key*; no check, threshold or decision differs between modes.
+- **Demo sandbox:** every demo visitor gets their own SQLite copy of the freshly seeded database (random visitor-id cookie), so reviewers never see each other's runs and "already paid" never leaks between them. Deleted after `DEMO_SANDBOX_TTL_HOURS` (default 24) of inactivity. Reset demo data resets only that visitor's sandbox.
+- **Demo inbox:** `data/demo_inbox/inbox.json`, fixed emails from the fictional vendors with the golden invoices attached (plus emails without bills). In demo, invoices come only from these emails: no uploads, no samples, no Test Suite runs.
+- **Demo AI:** Gemini only, `DEMO_GEMINI_API_KEY` (a separate Google Cloud project, so its free-tier quota is separate); the visitor picks one of the Gemini models (`DEMO_GEMINI_MODEL` default, `DEMO_GEMINI_MODELS`, default `GEMINI_MODELS`); no Groq and no automatic fallback. At most `DEMO_MAX_RUNS_PER_HOUR` (default 20) runs per visitor. A rate limit is shown as a calm notice ("the AI model has reached its rate limit — please try again after some time").
+- `runs.source_json` (nullable) records the email an invoice came from. The vendor email for such a run is a **reply in that thread** (to the sender, `Re: <their subject>`); `email_log.thread_message_id` / `body` keep it, and the Inbox shows it under the original email.
+- **Running processes** screen: runs and batches still processing (they continue on the server when the user leaves their screen) and those finished in the last 30 minutes.
+

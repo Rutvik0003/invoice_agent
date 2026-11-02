@@ -63,6 +63,32 @@ Georgia, Ink Free ...) for the ₹ glyph; the generated files are committed, so 
 
 The SQLite file lives at `backend/local.db` whichever folder you run from.
 
+### Demo mode and real mode
+
+The first screen offers two ways in:
+
+- **Try demo (no sign-in)**: for reviewers. A sample AP inbox (`data/demo_inbox/inbox.json`) of 15 emails from
+  the fictional vendors: the 12 golden invoices (clean approvals and the edge cases) plus emails without bills.
+  Tick bills and check them (one = a live run, several = a batch). Each visitor gets a **private sandbox**, a
+  copy of the freshly seeded database (cookie `ia_visitor`, files in `backend/demo_sandboxes/`, deleted after
+  24 h unused), so approvals and resets never reach anyone else or the real data. The demo uses Gemini only
+  with `DEMO_GEMINI_API_KEY` and a choice of Gemini models (no Groq, no automatic fallback), at most 20 runs
+  per visitor per hour; when the free tier is exhausted it says so calmly ("the AI model has reached its rate
+  limit, please try again after some time") and offers the other Gemini models, which have their own limits.
+  "Reply to vendor" on a held/rejected invoice answers in the email thread the invoice came in (shown under that
+  email in the Inbox; logged, not delivered).
+  Uploads, samples and Test Suite runs are off in the demo, because only the inbox invoices have their vendors
+  and POs in the demo data.
+- **Real mode**: the full app on the main database, as before (uploads, samples, batches, Test Suite, both
+  models). Gmail sign-in and an owner-only lock come next (Phase 11); until then real mode is open to anyone
+  who reaches the app, so don't deploy publicly before Phase 11.
+
+**Running** (sidebar, with a live count) lists every invoice and batch still processing; they keep going on the
+server when you leave their screen.
+
+Both modes run exactly the same pipeline and rules; the mode only decides which database and which AI key a
+request uses (`app/api/common.engine_of`).
+
 ### Reading and verifying one invoice
 
 ```bash

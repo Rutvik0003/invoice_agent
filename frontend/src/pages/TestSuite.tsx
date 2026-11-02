@@ -11,6 +11,7 @@ import { Switch } from '@/components/ui/switch'
 import { api } from '@/lib/api'
 import { api2, type ReportKind } from '@/lib/api2'
 import { humanize } from '@/lib/format'
+import { useMode } from '@/lib/mode'
 import { Link } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
@@ -23,6 +24,7 @@ const REPORT_TABS: [ReportKind, string][] = [
 
 export default function TestSuite() {
   const queryClient = useQueryClient()
+  const { isDemo } = useMode()
   const config = useQuery({ queryKey: ['config'], queryFn: api.config })
   const suite = useQuery({
     queryKey: ['suite'],
@@ -66,11 +68,18 @@ export default function TestSuite() {
                 <span className="text-sm text-zinc-500">s</span>
               </div>
             </div>
-            <Button className="ml-auto" disabled={running || start.isPending} onClick={() => start.mutate()}>
+            <Button className="ml-auto" disabled={isDemo || running || start.isPending} onClick={() => start.mutate()}
+                    title={isDemo ? 'Not available in the demo: the saved evaluation reports below show the results' : undefined}>
               {running || start.isPending ? <Loader2 className="animate-spin" /> : <Play />}Run golden test suite
             </Button>
           </div>
           {start.isError && <p className="px-5 pt-3 text-sm text-red-700">{start.error.message}</p>}
+          {isDemo && (
+            <p className="px-5 pt-3 text-sm text-zinc-600">
+              Running the suite is turned off in the demo (12 AI calls would use up the demo's free-tier quota). The saved
+              evaluation reports below show the measured results; to see the golden invoices processed, check them from the Inbox.
+            </p>
+          )}
 
           {s && s.status !== 'never_run' ? (
             <div className="p-5">

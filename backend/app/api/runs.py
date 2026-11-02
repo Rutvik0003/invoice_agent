@@ -18,6 +18,7 @@ from sse_starlette.sse import EventSourceResponse
 
 from app.api.common import engine_of, get_run_or_404, iso_utc, run_summary, sample_file, sample_labels
 from app.config import get_settings
+from app.demo.mode import check_demo_quota, require_real_mode
 from app.extraction.pdf_utils import PDF
 from app.models import HoldAction, Run, RunEvent
 from app.pipeline.intake import IntakeError
@@ -31,12 +32,13 @@ _page_cache: OrderedDict[tuple[str, int], bytes] = OrderedDict()
 
 def create_run(request: Request, background: BackgroundTasks, file_name: str, data: bytes, model: str,
                use_cache: bool, retry_of: str | None = None, sample_id: str | None = None,
-               model_name: str | None = None) -> str:
+               model_name: str | None = None, source: dict | None = None) -> str:
     """Validate the file (Stage 1 checks happen up front so bad files get an immediate, clear error),
     store the run, and process it in the background."""
     engine = engine_of(request)
     try:
-        run_id = create_run_record(engine, file_name, data, model, retry_of, sample_id, model_name=model_name)
+        run_id = create_run_record(engine, file_name, data, model, retry_of, sample_id, model_name=model_name,
+                                   source=source)
     except (IntakeError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     background.add_task(process_run, run_id, engine, effective_settings(engine), use_cache, request.app.state.extract_fn)
@@ -48,6 +50,7 @@ async def post_run(request: Request, background: BackgroundTasks, file: UploadFi
                    sample_id: str | None = Form(None), model: str | None = Form(None),
                    model_name: str | None = Form(None), use_cache: bool = Form(False)) -> dict:
     """Start a run from an uploaded file OR a sample id. Returns the run id immediately."""
+    require_real_mode(request, "Uploading files or running samples")
     model = model or get_settings().default_model
     if file is not None and file.filename:
         data = await file.read()
@@ -66,13 +69,16 @@ def retry_run(run_id: str, request: Request, background: BackgroundTasks, model:
               model_name: str | None = Query(None), use_cache: bool = Query(False)) -> dict:
     """A new run with the same file and another (or the same) model, linked to the original.
     Retrying with the same provider keeps the model picked for the original run unless another is given."""
-    with Session(engine_of(request)) as session:
+    engine = engine_of(request)
+    settings = effective_settings(engine)
+    check_demo_quota(request, engine, 1, settings.demo_max_runs_per_hour)
+    with Session(engine) as session:
         run = get_run_or_404(session, run_id)
-        name, data, sample_id = run.file_name, run.file_bytes, run.sample_id
-        if model_name is None and model == run.model and run.model_name in get_settings().model_choices(model):
+        name, data, sample_id, source = run.file_name, run.file_bytes, run.sample_id, run.source_json
+        if model_name is None and model == run.model and run.model_name in settings.model_choices(model):
             model_name = run.model_name
     return {"run_id": create_run(request, background, name, data, model, use_cache, retry_of=run_id,
-                                 sample_id=sample_id, model_name=model_name)}
+                                 sample_id=sample_id, model_name=model_name, source=source)}
 
 
 @router.get("/runs")

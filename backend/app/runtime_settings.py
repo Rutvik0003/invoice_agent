@@ -11,6 +11,7 @@ from sqlalchemy import Engine, select
 from sqlalchemy.orm import Session
 
 from app.config import Settings, get_settings
+from app.demo.sandbox import is_demo_engine
 from app.models import AppSetting
 
 
@@ -29,8 +30,11 @@ def overrides(engine: Engine) -> dict[str, object]:
 
 
 def effective_settings(engine: Engine, base: Settings | None = None) -> Settings:
-    """Environment settings with the values saved in the Settings screen on top."""
+    """Environment settings with the values saved in the Settings screen on top. A demo sandbox runs with the
+    demo AI settings (Gemini only, demo key)."""
     base = base or get_settings()
+    if is_demo_engine(engine):
+        base = base.for_demo()
     return base.model_copy(update=overrides(engine))
 
 

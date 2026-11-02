@@ -240,3 +240,11 @@ def test_groq_request_too_large_says_switch_to_gemini_not_wait():
     assert mapped.error_type == "rate_limited" and "Retry with Gemini" in mapped.message
     result = ScriptedExtractor([mapped]).extract(PDF, "application/pdf")
     assert "too large for Groq" in result.error.message
+
+
+def test_a_model_the_key_may_not_use_says_so():
+    """Google answers 404 for a model retired for new accounts: say "pick another model", not "their problem"."""
+    error = map_gemini_error(_gemini_error(404, "This model models/gemini-2.5-flash is no longer available to new users."))
+    assert error.error_type == "provider_error"
+    assert "Pick another Gemini model" in error.message
+    assert "gemini-2.5-flash" in error.detail

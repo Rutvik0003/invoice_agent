@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { api, type Outcome } from '@/lib/api'
 import { api2, type Batch, type BatchItem } from '@/lib/api2'
 import { duration, humanize, inr, timeAgo } from '@/lib/format'
+import { useMode } from '@/lib/mode'
 import { Link, navigate } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
@@ -51,6 +52,7 @@ export default function BatchView({ batchId }: { batchId: string }) {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['batch', batchId] }),
   })
   const usable = (model: string) => !!config.data?.models.find((m) => m.id === model)?.configured
+  const { isDemo } = useMode()
   const batch = useQuery({
     queryKey: ['batch', batchId],
     queryFn: () => api2.batch(batchId),
@@ -78,7 +80,7 @@ export default function BatchView({ batchId }: { batchId: string }) {
         subtitle={`Uploaded ${timeAgo(b.created_at)} · ${b.model === 'gemini' ? 'Gemini' : 'Groq'}${b.model_name ? ` · ${b.model_name}` : ''} · processed one by one, in upload order`}
         actions={<div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={download} disabled={!items.length}><Download />CSV</Button>
-          <Button variant="outline" size="sm" onClick={() => navigate('/')}><Plus />New run</Button>
+          <Button variant="outline" size="sm" onClick={() => navigate('/')}><Plus />{isDemo ? 'Inbox' : 'New run'}</Button>
         </div>}
       />
       <div className="space-y-5 px-8 py-6">
@@ -114,12 +116,18 @@ export default function BatchView({ batchId }: { batchId: string }) {
           {failed > 0 && (
             <div className="mt-4 flex flex-wrap items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2.5 text-sm">
               <AlertTriangle className="size-4 text-zinc-600" />
-              <span className="min-w-0 flex-1">{failed} invoice{failed > 1 ? 's' : ''} could not be read by the AI (for example a rate limit). They can be queued again here.</span>
-              <Button size="sm" disabled={retry.isPending || !usable(retryModel)} onClick={() => retry.mutate({ model: retryModel })}>
-                {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Retry all with {MODEL_LABEL[retryModel]}
-              </Button>
+              <span className="min-w-0 flex-1">
+                {isDemo
+                  ? `${failed} invoice${failed > 1 ? 's were' : ' was'} not read: the AI model has reached its rate limit (free tier). Please try again after some time.`
+                  : `${failed} invoice${failed > 1 ? 's' : ''} could not be read by the AI (for example a rate limit). They can be queued again here.`}
+              </span>
+              {!isDemo && (
+                <Button size="sm" disabled={retry.isPending || !usable(retryModel)} onClick={() => retry.mutate({ model: retryModel })}>
+                  {retry.isPending ? <Loader2 className="animate-spin" /> : <RotateCcw />}Retry all with {MODEL_LABEL[retryModel]}
+                </Button>
+              )}
               <Button size="sm" variant="outline" disabled={retry.isPending || !usable(b.model)} onClick={() => retry.mutate({ model: b.model })}>
-                Retry with {MODEL_LABEL[b.model]}
+                {isDemo ? 'Try again' : `Retry with ${MODEL_LABEL[b.model]}`}
               </Button>
               {retry.isError && <span className="w-full text-xs text-red-700">{retry.error.message}</span>}
             </div>
@@ -164,11 +172,11 @@ export default function BatchView({ batchId }: { batchId: string }) {
                       </div>
                       {FAILED.includes(item.status) && (
                         <div className="mt-1 flex gap-1.5" onClick={(e) => e.stopPropagation()}>
-                          {[otherModel(item.model), item.model].map((m) => (
+                          {(isDemo ? [item.model] : [otherModel(item.model), item.model]).map((m) => (
                             <button key={m} type="button" disabled={retry.isPending || !usable(m)}
                                     onClick={() => retry.mutate({ model: m, run_ids: [item.id] })}
                                     className="flex items-center gap-1 whitespace-nowrap rounded-md px-1.5 py-0.5 text-[11px] font-medium text-zinc-700 ring-1 ring-zinc-300 hover:bg-zinc-100 disabled:opacity-40">
-                              <RotateCcw className="size-3" />Retry with {MODEL_LABEL[m]}
+                              <RotateCcw className="size-3" />{isDemo ? 'Try again' : `Retry with ${MODEL_LABEL[m]}`}
                             </button>
                           ))}
                         </div>

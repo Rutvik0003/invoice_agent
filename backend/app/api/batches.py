@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import uuid
+from dataclasses import dataclass
 from collections import Counter
 from typing import Literal
 
@@ -13,6 +14,8 @@ from sqlalchemy.orm import Session
 
 from app.api.common import engine_of, iso_utc, run_summary
 from app.config import get_settings
+from app.demo.mode import check_demo_quota, require_real_mode
+from app.runtime_settings import effective_settings
 from app.logging_setup import get_logger
 from app.models import Batch, Run
 from app.pipeline.intake import IntakeError
@@ -28,22 +31,37 @@ FINISHED = ("completed", "extraction_failed", "failed", "interrupted", "resolved
 async def create_batch(request: Request, files: list[UploadFile] = File(...), model: str | None = Form(None),
                        model_name: str | None = Form(None), use_cache: bool = Form(False)) -> dict:
     """Queue every valid file as a run of one batch. Files that fail the intake checks are listed, not queued."""
+    require_real_mode(request, "Uploading files")
     if len(files) > MAX_FILES:
         raise HTTPException(status_code=400, detail=f"At most {MAX_FILES} files per batch ({len(files)} sent).")
-    model = model or get_settings().default_model
+    items = [BatchFile(upload.filename or "invoice", await upload.read()) for upload in files]
+    return queue_batch(request, items, model or get_settings().default_model, model_name, use_cache)
+
+
+@dataclass
+class BatchFile:
+    file_name: str
+    data: bytes
+    sample_id: str | None = None
+    source: dict | None = None  # the email it came from (inbox)
+
+
+def queue_batch(request: Request, items: list[BatchFile], model: str, model_name: str | None,
+                use_cache: bool) -> dict:
+    """Store a batch and queue its files as runs (in this order); the batch worker processes them one by one."""
     engine = engine_of(request)
     batch_id = str(uuid.uuid4())
     with Session(engine) as session:
         session.add(Batch(id=batch_id, model=model, model_name=model_name or None, file_errors=[]))
         session.commit()
     run_ids, errors = [], []
-    for upload in files:
-        data = await upload.read()
+    for item in items:
         try:
-            run_ids.append(create_run_record(engine, upload.filename or "invoice", data, model, model_name=model_name,
-                                             batch_id=batch_id, use_cache=use_cache))
+            run_ids.append(create_run_record(engine, item.file_name, item.data, model, model_name=model_name,
+                                             batch_id=batch_id, use_cache=use_cache, sample_id=item.sample_id,
+                                             source=item.source))
         except IntakeError as exc:
-            errors.append({"file_name": upload.filename, "error": str(exc)})
+            errors.append({"file_name": item.file_name, "error": str(exc)})
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
     with Session(engine) as session:
@@ -152,11 +170,12 @@ def retry_batch(batch_id: str, body: BatchRetry, request: Request) -> dict:
         wanted = [r for r in latest if r.status in FAILED and (body.run_ids is None or r.id in body.run_ids)]
         if not wanted:
             raise HTTPException(status_code=409, detail="Nothing to retry: no failed invoice in this batch matches.")
-        originals = [(r.id, r.file_name, r.file_bytes, bool(r.use_cache)) for r in wanted]
+        originals = [(r.id, r.file_name, r.file_bytes, bool(r.use_cache), r.sample_id, r.source_json) for r in wanted]
+    check_demo_quota(request, engine, len(originals), effective_settings(engine).demo_max_runs_per_hour)
     try:
         new_ids = [create_run_record(engine, name, data, body.model, retry_of=run_id, model_name=body.model_name,
-                                     batch_id=batch_id, use_cache=use_cache)
-                   for run_id, name, data, use_cache in originals]
+                                     batch_id=batch_id, use_cache=use_cache, sample_id=sample_id, source=source)
+                   for run_id, name, data, use_cache, sample_id, source in originals]
     except (IntakeError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     request.app.state.batch_worker.notify()

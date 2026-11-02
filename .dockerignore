@@ -13,3 +13,6 @@ data/eval_reports/verify
 backend/tests
 Dockerfile
 .dockerignore
+
+# Demo sandboxes (one SQLite file per demo visitor)
+backend/demo_sandboxes/

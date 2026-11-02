@@ -142,6 +142,7 @@ export type RunDetail = {
   events: RunEvent[]
   retries: string[]
   sample: { id: string; scenario: string; expected_decision: Outcome; expected_reason_codes: string[] } | null
+  source?: { kind: string; from_name: string; from_email: string; subject: string; received_at: string } | null
 }
 
 async function json<T>(res: Response): Promise<T> {
@@ -150,6 +151,7 @@ async function json<T>(res: Response): Promise<T> {
     try {
       const body = await res.json()
       if (typeof body.detail === 'string') detail = body.detail
+      else if (body.detail?.message) detail = body.detail.message  // e.g. the demo's run limit
     } catch {
       /* keep the status text */
     }
@@ -181,8 +183,9 @@ export const api = {
     return fetch('/api/batches', { method: 'POST', body: form })
       .then(json<{ batch_id: string; run_ids: string[]; file_errors: { file_name: string; error: string }[] }>)
   },
-  retry: (id: string, model: string) =>
-    fetch(`/api/runs/${id}/retry?model=${model}`, { method: 'POST' }).then(json<{ run_id: string }>),
+  retry: (id: string, model: string, modelName?: string) =>
+    fetch(`/api/runs/${id}/retry?model=${model}${modelName ? `&model_name=${encodeURIComponent(modelName)}` : ''}`, { method: 'POST' })
+      .then(json<{ run_id: string }>),
 }
 
 export const pageUrl = (runId: string, page: number) => `/api/runs/${runId}/pages/${page}.png`

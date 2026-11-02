@@ -18,6 +18,7 @@ from sqlalchemy.orm import Session
 from app.api.common import engine_of, sample_file, sample_labels
 from app.config import REPO_ROOT
 from app.config import get_settings
+from app.demo.mode import is_demo, require_real_mode
 from app.models import Run
 from app.pipeline.evaluation import judge
 from app.pipeline.orchestrator import create_run_record, process_run, seeded_repository
@@ -75,6 +76,7 @@ def clear_suite() -> None:
 def start_suite(body: SuiteRequest, request: Request, background: BackgroundTasks) -> dict:
     """Start the golden Test Suite in the background (one at a time)."""
     global _latest
+    require_real_mode(request, "Running the Test Suite")
     with _lock:
         if _latest.get("status") == "running":
             raise HTTPException(status_code=409, detail="The test suite is already running.")
@@ -115,9 +117,10 @@ def latest_reports() -> dict:
 
 
 @router.get("/eval/latest")
-def latest_suite() -> dict:
-    """The latest Test Suite: progress, and expected vs actual per golden invoice."""
-    if not _latest:
+def latest_suite(request: Request) -> dict:
+    """The latest Test Suite: progress, and expected vs actual per golden invoice (real mode only: the suite
+    belongs to the owner's app, a demo visitor sees the saved evaluation reports)."""
+    if not _latest or is_demo(request):
         return {"status": "never_run", "items": []}
     data = {**_latest, "items": [dict(i) for i in _latest["items"]]}
     if data.get("next_call_at"):

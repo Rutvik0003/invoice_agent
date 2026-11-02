@@ -81,11 +81,25 @@ export type Batch = {
 
 export type EditableSettings = { ai_request_gap_s: number }
 
-export type EmailHistory = { created_at: string; recipient: string; subject: string; sent: boolean; error: string | null }
+export type EmailHistory = {
+  created_at: string; recipient: string; subject: string; sent: boolean; error: string | null; in_thread: boolean
+}
 
 export type EmailPreview = {
   sender: string; recipient: string; subject: string; body: string
   attachment_name: string; attachment_mime: string; history: EmailHistory[]
+  thread: { message_id: string; subject: string; from_name: string; from_email: string } | null
+}
+
+/** How often the running list refreshes: quickly while something runs, slowly when idle. */
+export const runningInterval = (data: Running | undefined) => (data?.active ? 2_000 : 15_000)
+
+export type Running = {
+  active: number
+  runs: (RunSummary & { stage: { key: string; title: string; number: number; of: number } | null })[]
+  batches: Batch[]
+  recent_runs: RunSummary[]
+  recent_batches: Batch[]
 }
 
 export type PoLineInfo = {
@@ -121,6 +135,7 @@ async function json<T>(res: Response): Promise<T> {
     try {
       const body = await res.json()
       if (typeof body.detail === 'string') detail = body.detail
+      else if (body.detail?.message) detail = body.detail.message  // e.g. the demo's run limit
       else if (Array.isArray(body.detail)) detail = body.detail.map((d: { msg: string }) => d.msg).join('; ')
     } catch {
       /* keep the status text */
@@ -167,6 +182,8 @@ export const api2 = {
     fetch('/api/admin/settings', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
       .then(json<EditableSettings>),
   emailPreview: (runId: string) => fetch(`/api/runs/${runId}/email`).then(json<EmailPreview>),
-  sendEmail: (runId: string) => post(`/api/runs/${runId}/email`).then(json<{ sent: boolean; recipient: string; subject: string; history: EmailHistory[] }>),
+  sendEmail: (runId: string) => post(`/api/runs/${runId}/email`)
+    .then(json<{ sent: boolean; recipient: string; subject: string; in_thread: boolean; history: EmailHistory[] }>),
+  running: () => fetch('/api/running').then(json<Running>),
   poCompare: (runId: string, po?: string) => fetch(`/api/runs/${runId}/po-compare?${qs({ po })}`).then(json<PoComparison>),
 }
