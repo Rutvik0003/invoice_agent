@@ -19,7 +19,7 @@ import httpx
 RESULTS: list[tuple[str, bool, str]] = []
 SKIPPED: list[str] = []
 WAKE_TIMEOUT_S = 120  # a free Render instance sleeps when idle and takes up to a minute to wake
-RUN_TIMEOUT_S = 180
+RUN_TIMEOUT_S = 420  # OCR of a scan on Render free (0.1 CPU) takes minutes
 
 
 def check(name: str, ok: bool, detail: str = "") -> bool:
@@ -69,7 +69,10 @@ def run_inbox_attachment(client: httpx.Client, file_name: str, model_name: str |
     run_id = started.json()["run_id"]
     deadline = time.monotonic() + RUN_TIMEOUT_S
     while time.monotonic() < deadline:
-        run = client.get(f"/api/runs/{run_id}").json()
+        try:
+            run = client.get(f"/api/runs/{run_id}").json()
+        except httpx.TimeoutException:  # a small instance busy with OCR answers slowly: keep waiting
+            continue
         if run["status"] not in ("queued", "running"):
             return run
         time.sleep(3)
