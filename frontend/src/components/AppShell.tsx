@@ -46,9 +46,9 @@ export function AppShell({ path, children }: { path: string; children: ReactNode
     <div className="flex min-h-screen bg-zinc-50 text-zinc-900">
       <aside className="sticky top-0 flex h-screen w-56 shrink-0 flex-col border-r border-zinc-200 bg-white">
         <div className="flex items-center gap-2.5 px-5 pt-5 pb-4">
-          <div className="grid size-8 place-items-center rounded-lg bg-zinc-900 text-[13px] font-bold tracking-tight text-white">IA</div>
+          <div className="grid size-8 place-items-center rounded-lg bg-zinc-900 text-[13px] font-bold tracking-tight text-white">P</div>
           <div className="leading-tight">
-            <div className="text-[15px] font-semibold">Invoice Agent</div>
+            <div className="text-[15px] font-semibold">Payable</div>
             <div className="text-[11px] text-zinc-500">AP decisions you can audit</div>
           </div>
         </div>

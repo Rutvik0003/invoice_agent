@@ -61,7 +61,7 @@ def create_app(frontend_dist: Path = FRONTEND_DIST, engine: Engine | None = None
         yield
         app.state.batch_worker.stop()
 
-    app = FastAPI(title="Invoice Agent", version=__version__, lifespan=lifespan)
+    app = FastAPI(title="Payable", version=__version__, lifespan=lifespan)
     app.state.engine = engine or get_engine()
     app.state.extract_fn = extract_fn or extract_document
     app.state.sandboxes = SandboxPool(prepare_database, mark_interrupted_runs, directory=sandbox_root)

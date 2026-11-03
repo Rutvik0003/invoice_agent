@@ -1,6 +1,6 @@
-# Invoice Agent
+# Payable — an AP agent for GST invoices
 
-An accounts-payable agent for Indian GST invoices. It reads a vendor bill from an email (or an upload) and
+**Payable** is an accounts-payable agent for Indian GST invoices. It reads a vendor bill from an email (or an upload) and
 answers **Paid / Needs human verification / Rejected**, with every reason in plain English and every number
 traced back to the page or the purchase order. (Zamp ASA case study, PS-1.)
 

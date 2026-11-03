@@ -51,14 +51,14 @@ export default function Start() {
     <div className="min-h-screen bg-zinc-50 px-4 py-12 text-zinc-900">
       <div className="mx-auto max-w-4xl">
         <div className="flex items-center gap-2.5">
-          <div className="grid size-9 place-items-center rounded-lg bg-zinc-900 text-sm font-bold tracking-tight text-white">IA</div>
+          <div className="grid size-9 place-items-center rounded-lg bg-zinc-900 text-sm font-bold tracking-tight text-white">P</div>
           <div className="leading-tight">
-            <div className="text-base font-semibold">Invoice Agent</div>
+            <div className="text-base font-semibold">Payable</div>
             <div className="text-xs text-zinc-500">AP decisions you can audit</div>
           </div>
         </div>
 
-        <h1 className="mt-10 text-3xl font-semibold tracking-tight">Every vendor bill: approve, hold or reject, with the reasons.</h1>
+        <h1 className="mt-10 text-3xl font-semibold tracking-tight">Every vendor bill: paid, sent for verification or rejected, with the reasons.</h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-zinc-600">
           An AI model reads the invoice, an independent OCR / text-layer check confirms what it read on the page,
           and plain rules decide against the vendor master, purchase orders and payment history.
