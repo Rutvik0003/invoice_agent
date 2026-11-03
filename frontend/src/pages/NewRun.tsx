@@ -112,7 +112,8 @@ export default function NewRun() {
             <h2 className="text-sm font-semibold">Model</h2>
             <p className="mt-0.5 text-xs text-zinc-500">The AI only reads the invoice. Rules make every decision.</p>
             <div className="mt-3 space-y-2">
-              {(config.data?.models ?? []).map((m) => (
+              {/* the demo reads with Gemini only (its own free-tier key), so Groq is not offered there */}
+              {(config.data?.models ?? []).filter((m) => !(isDemo && m.id === 'groq')).map((m) => (
                 <button
                   key={m.id}
                   type="button"
