@@ -21,6 +21,28 @@ services:
         sync: false
       - key: GROQ_MODEL
         sync: false
+      - key: GEMINI_MODELS
+        sync: false
+      # Real mode (Gmail): Google OAuth client, the only account allowed in, the token encryption key
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        sync: false
+      - key: OWNER_EMAIL
+        sync: false
+      - key: TOKEN_ENCRYPTION_KEY
+        sync: false
+      # Demo mode: optional separate key/models; empty = the main Gemini key and models
+      - key: DEMO_GEMINI_API_KEY
+        sync: false
+      - key: DEMO_GEMINI_MODEL
+        sync: false
+      - key: DEMO_GEMINI_MODELS
+        sync: false
+      - key: DEMO_MAX_RUNS_PER_HOUR
+        sync: false
       # Business-rule settings: defaults live in backend/app/config.py; override here if needed
       - key: DEFAULT_MODEL
         sync: false

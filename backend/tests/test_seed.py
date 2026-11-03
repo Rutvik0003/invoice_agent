@@ -65,4 +65,7 @@ def test_seeded_values_round_trip(engine, master_dir):
 def test_relative_sqlite_paths_are_anchored_to_backend():
     assert resolve_database_url("sqlite:///./local.db") == f"sqlite:///{(BACKEND_DIR / 'local.db').as_posix()}"
     assert resolve_database_url("sqlite:///:memory:") == "sqlite:///:memory:"
-    assert resolve_database_url("postgresql://u:p@h/db") == "postgresql://u:p@h/db"
+    # Supabase / Render print postgres:// or postgresql://; the app uses the psycopg 3 driver (Phase 9)
+    assert resolve_database_url("postgresql://u:p@h/db") == "postgresql+psycopg://u:p@h/db"
+    assert resolve_database_url("postgres://u:p@h:6543/db") == "postgresql+psycopg://u:p@h:6543/db"
+    assert resolve_database_url("postgresql+psycopg://u:p@h/db") == "postgresql+psycopg://u:p@h/db"

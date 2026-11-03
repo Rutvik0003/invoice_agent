@@ -16,19 +16,28 @@ class Base(DeclarativeBase):
 
 
 def resolve_database_url(url: str) -> str:
-    """Anchor relative SQLite paths to backend/, so scripts and the server share one file whatever the cwd."""
+    """Anchor relative SQLite paths to backend/, so scripts and the server share one file whatever the cwd.
+    A Postgres URL as Supabase/Render print it (postgres:// or postgresql://) gets the psycopg 3 driver."""
+    url = url.strip()
     prefix = "sqlite:///"
     if url.startswith(prefix) and url != "sqlite:///:memory:":
         path = Path(url.removeprefix(prefix))
         if not path.is_absolute():
             return prefix + (BACKEND_DIR / path).resolve().as_posix()
+    for scheme in ("postgres://", "postgresql://"):
+        if url.startswith(scheme):
+            return "postgresql+psycopg://" + url.removeprefix(scheme)
     return url
 
 
 def make_engine(url: str) -> Engine:
+    """SQLite locally; Postgres (Supabase) in production, with a small pool that survives dropped connections.
+    prepare_threshold=None: Supabase's pooler (PgBouncer, transaction mode) cannot keep prepared statements."""
     url = resolve_database_url(url)
-    connect_args = {"check_same_thread": False} if url.startswith("sqlite") else {}
-    return create_engine(url, connect_args=connect_args)
+    if url.startswith("sqlite"):
+        return create_engine(url, connect_args={"check_same_thread": False})
+    return create_engine(url, pool_pre_ping=True, pool_size=5, max_overflow=5, pool_recycle=300,
+                         connect_args={"prepare_threshold": None})
 
 
 @lru_cache

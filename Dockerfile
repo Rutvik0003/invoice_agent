@@ -34,4 +34,5 @@ RUN chown app:app /app/backend
 USER app
 WORKDIR /app/backend
 EXPOSE 8000
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# --proxy-headers: behind Render's HTTPS proxy the app sees https:// (sign-in redirect, Secure cookies)
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --proxy-headers --forwarded-allow-ips='*'"]

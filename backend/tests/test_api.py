@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import os
 import sys
 
 import pytest
@@ -47,7 +48,13 @@ def failing_extract(data, mime, provider, settings, engine=None, use_cache=False
 
 @pytest.fixture
 def client(tmp_path):
-    engine = make_engine(f"sqlite:///{(tmp_path / 'api.db').as_posix()}")
+    # TEST_DATABASE_URL (e.g. a local Postgres) runs these tests against that database instead of SQLite
+    url = os.environ.get("TEST_DATABASE_URL")
+    engine = make_engine(url or f"sqlite:///{(tmp_path / 'api.db').as_posix()}")
+    if url:
+        from app.db import Base
+
+        Base.metadata.drop_all(engine)  # every test starts from an empty database, as with a fresh SQLite file
     app = create_app(frontend_dist=tmp_path, engine=engine, extract_fn=fake_extract)
     with TestClient(app) as test_client:  # runs startup: create tables + seed master data
         test_client.engine = engine

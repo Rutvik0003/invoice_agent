@@ -1,10 +1,97 @@
 # Invoice Agent
 
-Takes a vendor invoice (PDF or image) and produces a reasoned **Approve / Hold / Reject** decision, with every step visible.
-**AI reads, OCR verifies, code decides:** an AI model reads the invoice, an independent PDF-text-layer / Tesseract OCR
-check confirms what it read, and plain Python rules make every decision. (Zamp ASA case study, PS-1.)
+An accounts-payable agent for Indian GST invoices. It reads a vendor bill from an email (or an upload) and
+answers **Paid / Needs human verification / Rejected**, with every reason in plain English and every number
+traced back to the page or the purchase order. (Zamp ASA case study, PS-1.)
 
-> Status: Phase 0.5 — skeleton with Docker + Tesseract. Business logic arrives in later phases (see `PHASE_PROMPTS.md`).
+**Live:** <https://invoice-agent-9ukc.onrender.com> → **Try demo** (no sign-in). The free server sleeps when idle:
+the first visit can take about a minute.
+
+## How it works: AI reads, OCR verifies, code decides
+
+```mermaid
+flowchart LR
+    A[Email inbox<br/>demo or Gmail] --> B[1 Intake<br/>type, hash, pages]
+    U[Upload] --> B
+    B --> C[2 Read & extract<br/>Gemini / Groq<br/>one AI call]
+    C --> D[3 Verify on page<br/>PDF text layer / Tesseract OCR<br/>+ cross-check with master data]
+    D --> E[4 Clean up & self-check<br/>dates, amounts, GST maths]
+    E --> F[5 Vendor & duplicates]
+    F --> G[6 Find the PO]
+    G --> H[7 Match amounts<br/>qty, price, PO balance]
+    H --> I{8 Decision<br/>rules}
+    I -->|all clear| P[Paid<br/>PO ledger updated]
+    I -->|unsure| V[Needs human verification<br/>Verification queue]
+    I -->|wrong| R[Rejected<br/>reply to vendor in the thread]
+    M[(Vendor master<br/>POs, payment history)] --- F & G & H
+```
+
+- **The AI is used once per invoice, only to read it** (stage 2). It never decides anything.
+- **Stage 3 checks the AI's reading independently**: every key value must be found on the page (exact PDF text
+  or OCR words, with boxes shown on the invoice). What the page cannot confirm is cross-checked against our own
+  records or the invoice's own arithmetic; anything still unconfirmed goes to a person.
+- **Stages 4–8 are plain Python rules** with fixed reason codes: duplicates (same file, same number, disguised
+  number), unknown/blocked vendors, changed bank details (fraud flag), wrong GST type or rate, maths that does not
+  add up, missing/inferred/closed POs, quantity and price beyond tolerance, PO overruns.
+- **When unsure, a person decides**: the Verification queue asks one thing per invoice (the PO if needed, the
+  doubtful values pre-filled), then *Verify & pay* or *Reject*; every action is logged.
+
+## Two ways in
+
+| | **Try demo** (reviewers) | **Real mode** (owner) |
+|---|---|---|
+| Sign-in | none | Google, owner's account only |
+| Inbox | 15 sample emails: the 12 test cases + emails without bills | the owner's Gmail (read-only) |
+| Data | a private sandbox per visitor (cleared after 24 h unused) | the real database (Supabase Postgres) |
+| Also | Running, Dashboard, Verification queue, Data, Settings, reset | uploads, batches, Test Suite, Groq |
+
+## The 12 test cases in the demo inbox
+
+| Email | Case | Expected |
+|---|---|---|
+| Vertex Enterprises, VE0393 | clean invoice matching its PO | Paid |
+| Kapadia Woodcraft, INV-01316 | price ₹40 above PO, within tolerance | Paid (with note) |
+| Kosmic Cartons, final lot | bills more than the PO has left | Needs verification: PO overrun |
+| Kapadia Woodcraft, "payment reminder" | already paid, number written differently | Rejected: duplicate |
+| Shubham Advertising | no PO printed; the agent finds the matching PO | Needs verification: confirm the PO |
+| Ramesh Packaging, "new bank account" | bank details differ from the vendor master | Needs verification: fraud check |
+| Borah Polymers | CGST+SGST charged by an out-of-state vendor | Rejected: wrong GST type |
+| Ramesh Packaging, scanned copy | blurry scan, invoice number unreadable | Needs verification |
+| Varghese Property Services | price 3% above PO | Needs verification: price variance |
+| Prism Digital Systems | a line amount that does not add up | Rejected: arithmetic |
+| Rao Traders, "bill" | actually a quotation | Rejected: not a tax invoice |
+| Grover Advertising | vendor not yet approved | Needs verification: procurement |
+
+## Evaluation (all reports in `data/eval_reports/`, Test Suite screen)
+
+| What | Result |
+|---|---|
+| Decision rules, 283 generated invoices (12 golden + 271 stress) | **283/283** correct |
+| Decision rules, 42 unseen invoices (other layouts, scans, phone photos) | **42/42** correct |
+| AI extraction, golden set, field accuracy | Gemini **96.8%**, Groq 85.4% |
+| Page verification: values found on PDF text layer | **100%** (1930/1930) |
+| Page verification: values found by OCR on mild scans | **91.6%** (721/787; the rest go to a person) |
+| Wrong AI values caught by verification (fault injection) | **100%** (1371/1371) |
+| Smudged values reported "not found" (never guessed) | **100%** (23/23) |
+
+Expected outcomes come from each scenario's definition, never from running the engine.
+
+## Assumptions
+
+INR only, one invoice per file, 2-way match (invoice ↔ PO; no goods receipt), tolerance = min(1% of the value,
+₹500), GST 2.0 rates (0/5/18/40%, with 12/28% before 22 Sep 2025), one buyer (Zenith Retail Pvt Ltd, Maharashtra).
+All companies, people and invoices are fictional. Free-tier AI: the models' rate limits apply (the app says so and
+offers another model).
+
+## Next steps
+
+3-way match with goods receipts · ERP connectors (Tally, Zoho, SAP) for POs and payments · watching the inbox
+automatically · learning from people's corrections in the Verification queue · multi-currency · a layout-aware
+model for very poor scans.
+
+---
+
+*Developer documentation follows.*
 
 ## Local setup
 
@@ -207,18 +294,45 @@ docker run --rm -p 8000:8000 --env-file .env -e TESSERACT_CMD= invoice-agent
 Then open http://localhost:8000 (FastAPI serves both the API and the built frontend). `TESSERACT_CMD=` clears any
 Windows path from your `.env`; inside the image Tesseract is on PATH.
 
-## Deploy to Render (Docker runtime)
+## Deploy to Render (Docker runtime) with Supabase Postgres
 
-`render.yaml` defines one Docker web service with health check `/api/health`.
+`render.yaml` defines one Docker web service with health check `/api/health`. The free instance's disk is wiped
+on every restart or wake-up, so production data (runs, ledger, the Gmail connection) lives in **Supabase
+Postgres**; only the throwaway demo sandboxes stay as files.
 
-1. Push the repo to GitHub.
-2. In Render: **New → Blueprint**, pick the repo (it reads `render.yaml`). An existing native-Python service can't
-   switch runtime in place — create the new service from the Blueprint and delete the old one.
-3. Set the env vars marked `sync: false` in the dashboard: at least `GEMINI_API_KEY`, `GROQ_API_KEY`,
-   `GEMINI_MODEL`, `GROQ_MODEL` (and `DATABASE_URL` from Phase 9). Leave the business-rule ones empty to use defaults.
-4. Deploy, then open the service URL: the status page should show OCR available.
+**1. Supabase (free, about 5 minutes)**
 
-The free instance sleeps when idle; the first request after a while takes ~1 minute.
+1. <https://supabase.com> → sign in → **New project** → name `invoice-agent`, a strong database password (save it),
+   region **Mumbai (ap-south-1)** or the one closest to your Render region → Create.
+2. When it is ready: **Connect** (top bar) → **Connection string** → **Session pooler** (works from Render, which
+   has no IPv6) → copy the URI. It looks like
+   `postgresql://postgres.<ref>:[YOUR-PASSWORD]@aws-0-ap-south-1.pooler.supabase.com:5432/postgres` →
+   replace `[YOUR-PASSWORD]` with the password from step 1.
+3. Nothing else to create: the app makes its tables and loads the seeded master data on first start.
+
+**2. Render**
+
+1. **New → Blueprint** → pick this repo (it reads `render.yaml`).
+2. **Environment** → set the values (secrets live only here, never in git):
+   - `DATABASE_URL` = the Supabase URI from above
+   - `GEMINI_API_KEY`, `GEMINI_MODEL`, `GEMINI_MODELS`, `GROQ_API_KEY`, `GROQ_MODEL`
+   - `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `OWNER_EMAIL`,
+     `GOOGLE_REDIRECT_URI=https://<your-app>.onrender.com/api/auth/google/callback`
+   - `TOKEN_ENCRYPTION_KEY` (generate: `python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"`)
+   - leave the business-rule ones empty to use the defaults
+3. Google Cloud Console → your OAuth client → add the same callback URL to **Authorized redirect URIs**.
+4. Deploy, then check it like a reviewer would:
+
+   ```bash
+   python backend/scripts/smoke_test.py https://<your-app>.onrender.com
+   ```
+
+   Health (models + OCR), real mode locked to the owner, the demo inbox, golden 01 Paid with its total verified,
+   the blurry scan checked by OCR, sandbox reset. Two AI calls; `--no-ai` skips them, `--model` picks another
+   Gemini model when one is rate-limited.
+
+**Before a demo:** open the URL a few minutes early (the free instance sleeps), sign in once in real mode, and press
+*Reset demo data* in Settings if you want a clean ledger. A demo visitor's *Reset* only resets their own sandbox.
 
 ## Known limitations
 
