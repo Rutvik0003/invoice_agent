@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Check, ChevronDown, ExternalLink, Loader2, Scale, UserCheck, X } from 'lucide-react'
+import { Check, ChevronDown, CornerUpLeft, ExternalLink, Loader2, Scale, UserCheck } from 'lucide-react'
 import { useState } from 'react'
 
 import { PageHeader } from '@/components/AppShell'
@@ -18,6 +18,7 @@ import { cn } from '@/lib/utils'
 const ROLE_ORDER = ['Finance controller', 'Procurement', 'Tax team', 'Buyer', 'AP clerk']
 const PO_CODES = new Set(['PO_INFERRED', 'PO_AMBIGUOUS', 'PO_NOT_FOUND', 'PO_VENDOR_MISMATCH'])
 const FIELD_CODES = new Set(['LOW_CONFIDENCE_FIELD', 'FIELD_NOT_VERIFIED', 'MISSING_REQUIRED_FIELD'])
+const DUPLICATE_CODES = new Set(['DUPLICATE_FILE', 'DUPLICATE_INVOICE_NUMBER', 'POSSIBLE_DUPLICATE'])
 
 /** The fields a person can confirm or fill in: doubtful values, and required values missing from the invoice. */
 function confirmableFields(item: HoldItem): string[] {
@@ -41,7 +42,7 @@ export default function HoldQueue() {
     <div>
       <PageHeader
         title="Verification queue"
-        subtitle="Invoices the rules could not decide alone. Check the points listed on each one, then pay or reject it."
+        subtitle="Every invoice the rules would not pay on their own. Check the points listed, then approve and pay it, or send the vendor a mail asking for a corrected bill."
         actions={
           <div className="flex rounded-lg bg-zinc-100 p-1 text-sm">
             {(['open', 'resolved'] as const).map((s) => (
@@ -57,7 +58,7 @@ export default function HoldQueue() {
         {holds.isPending && <div className="h-40 animate-pulse rounded-xl bg-zinc-100" />}
         {!holds.isPending && !items.length && (
           <div className="rounded-xl border border-dashed border-zinc-300 p-12 text-center text-sm text-zinc-500">
-            {state === 'open' ? 'Nothing needs human verification right now.' : 'No invoices verified by a person yet.'}
+            {state === 'open' ? 'Nothing needs human verification right now.' : 'No invoices checked by a person yet.'}
           </div>
         )}
         {items.map((item) => <HoldCard key={item.id} item={item} />)}
@@ -74,6 +75,8 @@ function HoldCard({ item }: { item: HoldItem }) {
   const needsPo = [...codes].some((c) => c && PO_CODES.has(c))
   const [comparing, setComparing] = useState(false)
   const [comment, setComment] = useState('')
+  const [message, setMessage] = useState('')
+  const [payAgain, setPayAgain] = useState(false)
   const [po, setPo] = useState(item.po_candidates[0]?.po_number ?? item.po_number ?? '')
   const [values, setValues] = useState<Record<string, string>>(() => Object.fromEntries(fields.map((f) => {
     const v = item.extracted?.[f]?.value
@@ -81,11 +84,13 @@ function HoldCard({ item }: { item: HoldItem }) {
   })))
 
   const act = useMutation({
-    mutationFn: (action: 'approve' | 'reject') => {
+    mutationFn: (action: 'approve' | 'request_changes') => {
       // what the person checked travels with the approval: the PO, and every value they confirmed or corrected
       const checked = Object.fromEntries(Object.entries(values).filter(([, v]) => v.trim())
         .map(([f, v]) => [f, MONEY_FIELDS.has(f) ? Number(v.replace(/[₹,\s]|rs\.?/gi, '')) : v.trim()]))
-      const payload = action === 'approve' ? { ...(needsPo && po.trim() ? { po_number: po.trim() } : {}), fields: checked } : {}
+      const payload = action === 'approve'
+        ? { ...(needsPo && po.trim() ? { po_number: po.trim() } : {}), fields: checked, ...(payAgain ? { pay_again: true } : {}) }
+        : { message: message.trim() }
       return api2.holdAction(item.id, { action, role, comment: comment.trim(), payload })
     },
     onSuccess: () => {
@@ -95,6 +100,8 @@ function HoldCard({ item }: { item: HoldItem }) {
     },
   })
   const needComment = !comment.trim()
+  // paying twice needs a tick: shown for a duplicate, or once the server says it was already paid
+  const askPayAgain = [...codes].some((c) => c && DUPLICATE_CODES.has(c)) || (act.isError && act.error.message.includes('Pay it again'))
 
   // evidence with a crop of the page where the AI's value was found
   const evidence = item.reasons.filter((r) => r.code).map((r) => {
@@ -110,6 +117,7 @@ function HoldCard({ item }: { item: HoldItem }) {
           <div className="truncate font-medium">{item.vendor_name ?? 'Unknown vendor'} · {item.invoice_number ?? 'no invoice number'}</div>
           <div className="text-xs text-zinc-500">{inr(item.total_amount)} · {item.po_number ?? 'no PO'} · {item.file_name} · {timeAgo(item.created_at)}</div>
         </div>
+        {item.vendor_must_fix && <span className="rounded-full bg-red-50 px-2 py-0.5 text-[11px] font-medium text-red-700 ring-1 ring-red-200">Vendor must fix the bill</span>}
         <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-900">Usually checked by: {role}</span>
         <Button size="sm" variant={comparing ? 'secondary' : 'outline'} onClick={() => setComparing(!comparing)} disabled={!item.vendor_id}
                 title={item.vendor_id ? undefined : 'The vendor is not in the vendor master, so there is no PO to compare with'}>
@@ -136,10 +144,9 @@ function HoldCard({ item }: { item: HoldItem }) {
         </div>
 
         {item.resolved ? (
-          <div className="space-y-3"><ResolvedPanel item={item} /><VendorEmail runId={item.id} compact /></div>
+          <div className="space-y-3"><ResolvedPanel item={item} /><VendorEmail runId={item.id} compact previewOnly /></div>
         ) : (
           <div className="space-y-3">
-          <VendorEmail runId={item.id} compact />
           <div className="space-y-4 rounded-lg border border-zinc-200 p-4">
             <h3 className="text-sm font-semibold">Your check</h3>
             {needsPo && (
@@ -173,16 +180,27 @@ function HoldCard({ item }: { item: HoldItem }) {
             {!needsPo && !fields.length && (
               <p className="text-xs text-zinc-600">Read the points on the left (open “Compare with PO” if it helps), then decide.</p>
             )}
+            {askPayAgain && (
+              <label className="flex items-start gap-2 rounded-md bg-red-50 px-2.5 py-2 text-xs text-red-800 ring-1 ring-red-200">
+                <input type="checkbox" className="mt-0.5" checked={payAgain} onChange={(e) => setPayAgain(e.target.checked)} />
+                <span><b>Pay it again.</b> This invoice looks already paid; tick only if paying it a second time is really right.</span>
+              </label>
+            )}
             <Textarea value={comment} onChange={(e) => setComment(e.target.value)}
                       placeholder="Note for the audit trail (required), e.g. “Price agreed by phone with the vendor”" className="min-h-14 text-sm" />
             <div className="flex flex-wrap items-center gap-2">
               <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" disabled={needComment || act.isPending || (needsPo && !po.trim())}
-                      onClick={() => act.mutate('approve')}><Check />Verify &amp; pay</Button>
-              <Button size="sm" variant="outline" className="border-red-300 text-red-700 hover:bg-red-50" disabled={needComment || act.isPending}
-                      onClick={() => act.mutate('reject')}><X />Reject</Button>
+                      onClick={() => act.mutate('approve')}><Check />Approve &amp; pay</Button>
+              <Button size="sm" variant={item.vendor_must_fix ? 'default' : 'outline'} disabled={needComment || act.isPending}
+                      onClick={() => act.mutate('request_changes')}><CornerUpLeft />Send mail for changes</Button>
               {act.isPending && <Loader2 className="size-4 animate-spin text-zinc-400" />}
               <span className="ml-auto text-[11px] text-zinc-400">logged as {role}</span>
             </div>
+            <details className="text-xs text-zinc-600">
+              <summary className="cursor-pointer">Add a line for the vendor (optional)</summary>
+              <Textarea value={message} onChange={(e) => setMessage(e.target.value)} className="mt-1.5 min-h-12 text-sm"
+                        placeholder="Added to the mail, e.g. “Please also quote our PO number.”" />
+            </details>
             {act.isError && <p className="text-xs text-red-700">{act.error.message}</p>}
             {item.hold_actions.length > 0 && (
               <div className="border-t border-zinc-100 pt-2 text-[11px] text-zinc-500">
@@ -190,6 +208,7 @@ function HoldCard({ item }: { item: HoldItem }) {
               </div>
             )}
           </div>
+          <VendorEmail runId={item.id} compact previewOnly />
           </div>
         )}
       </div>
@@ -200,8 +219,8 @@ function HoldCard({ item }: { item: HoldItem }) {
 function ResolvedPanel({ item }: { item: HoldItem }) {
   return (
     <div className="space-y-2 rounded-lg bg-zinc-50 p-4">
-      <div className={cn('text-sm font-semibold', item.decision === 'APPROVE' ? 'text-emerald-700' : 'text-red-700')}>
-        {item.decision === 'APPROVE' ? 'Verified and paid' : 'Rejected'} by a person
+      <div className={cn('text-sm font-semibold', item.decision === 'APPROVE' ? 'text-emerald-700' : 'text-slate-700')}>
+        {item.decision === 'APPROVE' ? 'Approved and paid by a person' : 'A person asked the vendor for changes'}
       </div>
       <ol className="space-y-2">
         {item.hold_actions.map((a, i) => (

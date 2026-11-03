@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.api.common import engine_of, iso_utc, run_summary
+from app.api.common import engine_of, iso_utc, run_summary, shown_outcome
 from app.config import get_settings
 from app.demo.mode import check_demo_quota, require_real_mode
 from app.runtime_settings import effective_settings
@@ -104,11 +104,12 @@ def _batch_dict(batch: Batch, all_runs: list[Run], queue: list[str] | None = Non
     attempts = {r.id: 1 + len(list(_chain(r, by_id))) for r in runs}
     statuses = Counter(r.status for r in runs)
     decisions = Counter(r.decision for r in runs if r.decision)
+    outcomes = Counter(shown_outcome(r) for r in runs if r.decision)
     done = sum(statuses[s] for s in FINISHED)
     out = {
         "id": batch.id, "created_at": iso_utc(batch.created_at), "model": batch.model, "model_name": batch.model_name,
         "total": len(runs), "done": done, "finished": done == len(runs), "by_status": dict(statuses),
-        "by_decision": dict(decisions), "file_errors": batch.file_errors or [],
+        "by_decision": dict(decisions), "by_outcome": dict(outcomes), "file_errors": batch.file_errors or [],
         "total_amount": sum(float(r.total_amount) for r in runs if r.total_amount is not None),
         "failed": sum(statuses[s] for s in FAILED),
     }

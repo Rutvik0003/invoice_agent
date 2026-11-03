@@ -58,7 +58,7 @@ export default function Start() {
           </div>
         </div>
 
-        <h1 className="mt-10 text-3xl font-semibold tracking-tight">Every vendor bill: paid, sent for verification or rejected, with the reasons.</h1>
+        <h1 className="mt-10 text-3xl font-semibold tracking-tight">Every vendor bill: paid, or sent to a person to verify, with the reasons.</h1>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-zinc-600">
           An AI model reads the invoice, an independent OCR / text-layer check confirms what it read on the page,
           and plain rules decide against the vendor master, purchase orders and payment history.

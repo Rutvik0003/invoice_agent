@@ -62,6 +62,19 @@ def iso_utc(moment: datetime | None) -> str | None:
     return moment.isoformat()
 
 
+PAID, NEEDS_VERIFICATION, CHANGES_REQUESTED = "PAID", "NEEDS_VERIFICATION", "CHANGES_REQUESTED"
+
+
+def shown_outcome(run: Run) -> str | None:
+    """What people see: Paid, Needs human verification (the engine's Hold and Reject both wait for a person), or
+    Changes requested (a person asked the vendor to fix the bill). The engine's APPROVE/HOLD/REJECT stays in `decision`."""
+    if run.decision is None:
+        return None
+    if run.decision == "APPROVE":
+        return PAID
+    return CHANGES_REQUESTED if run.status == "resolved_by_human" else NEEDS_VERIFICATION
+
+
 def _extracted_value(run: Run, field: str) -> object:
     data = run.extracted_json or {}
     return (data.get(field) or {}).get("value")
@@ -77,6 +90,7 @@ def run_summary(run: Run) -> dict:
         "model_name": run.model_name,
         "status": run.status,
         "decision": run.decision,
+        "outcome": shown_outcome(run),
         "total_amount": float(run.total_amount) if run.total_amount is not None else _extracted_value(run, "total_amount"),
         "vendor_id": run.vendor_id,
         "vendor_name": _extracted_value(run, "vendor_name"),

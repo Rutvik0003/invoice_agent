@@ -1,4 +1,5 @@
-"""Hold queue: held invoices grouped by who must act, and the human actions that resolve them."""
+"""Verification queue: every invoice that needs a person (the engine's Hold and Reject), and the two ways a person
+resolves it: approve (pay it) or request changes (reply to the vendor asking for a corrected bill)."""
 
 from __future__ import annotations
 
@@ -10,6 +11,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.common import engine_of, get_run_or_404, iso_utc, run_summary
+from app.api.email import _compose, log_email
 from app.logging_setup import get_logger
 from app.models import HoldAction, Run
 from app.pipeline.amount_match import map_lines
@@ -29,16 +31,26 @@ CONFIRMABLE = set(ExtractedInvoice.model_fields) - {"line_items"}
 
 
 class HoldActionIn(BaseModel):
-    action: Literal["approve", "reject", "assign_po", "confirm_field"]
+    action: Literal["approve", "request_changes", "assign_po", "confirm_field"]
     role: str = Field(min_length=1)
     comment: str = Field(min_length=1, description="Required: why the person decided this")
     payload: dict = {}
+
+
+def engine_outcome(run: Run) -> str | None:
+    return (run.decision_json or {}).get("decision", {}).get("outcome")
+
+
+def needs_person(run: Run) -> bool:
+    """Hold (the rules are unsure) and Reject (the rules found something the vendor must fix) both wait for a person."""
+    return engine_outcome(run) in ("HOLD", "REJECT")
 
 
 def _hold_item(run: Run, actions: list[HoldAction]) -> dict:
     decision = (run.decision_json or {}).get("decision", {})
     return {
         **run_summary(run),
+        "vendor_must_fix": engine_outcome(run) == "REJECT",
         "routed_questions": decision.get("routed_questions", []),
         "reasons": run.reasons_json or [],
         "po_candidates": (run.decision_json or {}).get("po_candidates", []),
@@ -52,15 +64,14 @@ def _hold_item(run: Run, actions: list[HoldAction]) -> dict:
 
 @router.get("/holds")
 def list_holds(request: Request, state: Literal["open", "resolved", "all"] = "open", include_test: bool = False) -> dict:
-    """Held invoices, newest first, grouped by the role each routed question goes to."""
+    """Invoices that need a person, newest first, grouped by the role each routed question goes to."""
     with Session(engine_of(request)) as session:
         query = select(Run).where(Run.decision_json.is_not(None)).order_by(Run.created_at.desc())
         if not include_test:
             query = query.where(Run.is_test_run.is_(False))
         items = []
         for run in session.scalars(query):
-            was_held = (run.decision_json or {}).get("decision", {}).get("outcome") == "HOLD"
-            if not was_held:
+            if not needs_person(run):
                 continue
             resolved = run.status == "resolved_by_human"
             if (state == "open" and resolved) or (state == "resolved" and not resolved):
@@ -111,16 +122,16 @@ def po_compare(run_id: str, request: Request, po: str | None = None) -> dict:
 
 @router.post("/holds/{run_id}/action")
 def hold_action(run_id: str, body: HoldActionIn, request: Request) -> dict:
-    """Record a person's action on a held invoice. Approve/Reject resolve it ('resolved_by_human');
-    assign_po and confirm_field correct the inputs and keep it open. Every action is logged with its comment."""
+    """Record a person's action on an invoice in the queue. Approve (pay) and request_changes (reply to the vendor;
+    payload 'message' = an extra line for them) resolve it ('resolved_by_human'); assign_po and confirm_field correct
+    the inputs and keep it open. Every action is logged with its comment."""
     engine = engine_of(request)
     with Session(engine) as session:
         run = get_run_or_404(session, run_id)
-        held = (run.decision_json or {}).get("decision", {}).get("outcome") == "HOLD"
-        if not held:
-            raise HTTPException(status_code=409, detail="This run is not on hold.")
+        if not needs_person(run):
+            raise HTTPException(status_code=409, detail="This invoice does not need human verification.")
         if run.status == "resolved_by_human":
-            raise HTTPException(status_code=409, detail="This hold was already resolved.")
+            raise HTTPException(status_code=409, detail="A person already resolved this invoice.")
         result: dict = {}
         if body.action == "assign_po":
             result = _assign_po(session, run, body.payload)
@@ -128,16 +139,26 @@ def hold_action(run_id: str, body: HoldActionIn, request: Request) -> dict:
             result = _confirm_field(run, body.payload)
         elif body.action == "approve":
             result = _corrections(session, run, body.payload)
-            result.update(_approve(session, run))
+            result.update(_approve(session, run, pay_again=bool(body.payload.get("pay_again"))))
         else:
-            run.decision, run.status = "REJECT", "resolved_by_human"
-            result = {"decision": "REJECT"}
+            result = _request_changes(session, run, body.payload)
         session.add(HoldAction(run_id=run_id, actor_role=body.role, action=body.action, comment=body.comment,
                                payload={**body.payload, **result}))
         session.commit()
         logger.info("hold action", extra={"run_id": run_id, "action": body.action, "role": body.role,
                                           "status": run.status})
         return {"run": run_summary(run), "result": result}
+
+
+def _request_changes(session: Session, run: Run, payload: dict) -> dict:
+    """Send the bill back: reply to the vendor (in the email thread it came in) with what is wrong and what to change.
+    It is not paid; the corrected bill the vendor sends runs as a new invoice."""
+    message = str(payload.get("message") or "").strip() or None
+    mail = _compose(session, run, None, note=message)
+    log_email(session, run.id, mail)
+    run.status = "resolved_by_human"  # decision stays the engine's (HOLD/REJECT): shown as "Changes requested"
+    return {"changes_requested": True, "recipient": mail.recipient, "subject": mail.subject,
+            "in_thread": mail.thread is not None}
 
 
 def _assign_po(session: Session, run: Run, payload: dict) -> dict:
@@ -180,23 +201,26 @@ def _confirm_field(run: Run, payload: dict) -> dict:
     return {"field": field, "old_value": old, "new_value": entry["value"]}
 
 
+PAY_AGAIN_HINT = "To pay it anyway, tick 'Pay it again' and approve; otherwise send it back to the vendor."
+
+
 def already_paid(repo: DbRepository, run: Run, invoice: ExtractedInvoice) -> None:
-    """A person must not pay an invoice twice: refuse if this file was approved in another run since, or the
-    vendor's history already has this invoice number (for example a re-run of the same invoice was approved)."""
+    """Paying an invoice twice needs a deliberate choice: refuse if this file was approved in another run, or the
+    vendor's history already has this invoice number, unless the person ticked 'Pay it again'."""
     earlier = repo.processed_file(run.file_hash)
     if earlier is not None and earlier.decision == "APPROVE":
         raise HTTPException(status_code=409, detail=f"This file was already approved and paid in run {earlier.run_id[:8]}. "
-                                                    "Reject this hold instead.")
+                                                    + PAY_AGAIN_HINT)
     number = normalise_invoice_number(str(invoice.invoice_number.value))
     paid = next((h for h in repo.history_for_vendor(run.vendor_id)
                  if normalise_invoice_number(h.invoice_number) == number), None)
     if paid is not None:
         raise HTTPException(status_code=409, detail=f"Invoice {paid.invoice_number} from this vendor is already in the "
                                                     f"invoice history ({paid.status}, {paid.invoice_date:%d %b %Y}). "
-                                                    "Reject this hold instead.")
+                                                    + PAY_AGAIN_HINT)
 
 
-def _approve(session: Session, run: Run) -> dict:
+def _approve(session: Session, run: Run, pay_again: bool = False) -> dict:
     """Human approval: bill the PO (inferred, or assigned by a person) and record the invoice in history."""
     if not run.po_number:
         raise HTTPException(status_code=400, detail="Assign a PO before approving.")
@@ -212,7 +236,8 @@ def _approve(session: Session, run: Run) -> dict:
         raise HTTPException(status_code=400, detail=f"The {' and '.join(missing)} {'is' if len(missing) == 1 else 'are'} "
                                                     "missing. Enter it with 'Confirm value' first, then approve.")
     repo = DbRepository(session, load_buyer(), exclude_run_id=run.id)
-    already_paid(repo, run, invoice)
+    if not pay_again:
+        already_paid(repo, run, invoice)
     po = repo.po(run.po_number)
     vendor = next((v for v in repo.vendors() if v.vendor_id == run.vendor_id), None)
     update = ledger_update(invoice, vendor, po, map_lines(invoice, po))

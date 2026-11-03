@@ -11,6 +11,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { api, type Sample } from '@/lib/api'
 import { api2 } from '@/lib/api2'
 import { humanize, timeAgo } from '@/lib/format'
+import { useMode } from '@/lib/mode'
 import { Link, navigate } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
@@ -37,6 +38,7 @@ export default function NewRun() {
   const [modelNames, setModelNames] = useState<Record<string, string>>({})
   const [useCache, setUseCache] = useState(false)
   const [fileError, setFileError] = useState<string | null>(null)
+  const { isDemo } = useMode()
 
   const selectedModel = model ?? config.data?.default_model ?? 'gemini'
   const modelInfo = config.data?.models.find((m) => m.id === selectedModel)
@@ -74,10 +76,18 @@ export default function NewRun() {
 
   return (
     <div>
-      <PageHeader title="New Run" subtitle="Upload a vendor invoice or pick a sample. Every step of the decision is shown live." />
+      <PageHeader title="New Run" subtitle={isDemo
+        ? 'Pick a sample invoice (generated, with a known answer). Every step of the decision is shown live.'
+        : 'Upload a vendor invoice or pick a sample. Every step of the decision is shown live.'} />
       <div className="grid gap-6 px-8 py-6 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="space-y-6">
-          <UploadCard
+          {isDemo ? (
+            <p className="flex items-start gap-2 rounded-xl bg-sky-50 px-4 py-3 text-sm text-sky-900 ring-1 ring-sky-200">
+              <Info className="mt-0.5 size-4 shrink-0" />
+              The demo runs these sample invoices only: their vendors, purchase orders and payment history are in the demo
+              data, so every rule can be checked. Uploads are available in real mode.
+            </p>
+          ) : <UploadCard
             files={files}
             error={fileError}
             onFiles={addFiles}
@@ -85,7 +95,7 @@ export default function NewRun() {
               const rest = files.filter((_, i) => i !== index)
               setChoice(rest.length ? { kind: 'files', files: rest } : null)
             }}
-          />
+          />}
           <SamplePicker
             samples={samples.data ?? []}
             loading={samples.isPending}

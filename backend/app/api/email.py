@@ -23,12 +23,13 @@ def original_outcome(run: Run) -> str | None:
     return (run.decision_json or {}).get("decision", {}).get("outcome")
 
 
-def _compose(session: Session, run: Run, engine) -> VendorEmail:
+def _compose(session: Session, run: Run, engine, note: str | None = None) -> VendorEmail:
     outcome = original_outcome(run)
     if outcome not in ("HOLD", "REJECT") or run.extracted_json is None:
         raise HTTPException(status_code=409, detail="Only held or rejected invoices can be emailed to the vendor.")
-    if not vendor_problems(run.reasons_json or [], outcome):
-        raise HTTPException(status_code=409, detail="There is nothing the vendor needs to change on this invoice.")
+    if not vendor_problems(run.reasons_json or [], outcome) and not note:
+        raise HTTPException(status_code=409, detail="There is nothing the vendor needs to change on this invoice. "
+                                                    "Write what you want changed in the message to the vendor.")
     invoice = ExtractedInvoice.model_validate(run.extracted_json)
     vendor = session.get(Vendor, run.vendor_id) if run.vendor_id else None
     total = run.total_amount if run.total_amount is not None else invoice.total_amount.value
@@ -37,8 +38,14 @@ def _compose(session: Session, run: Run, engine) -> VendorEmail:
         invoice_number=invoice.invoice_number.value, invoice_date=invoice_date(invoice),
         total=float(total) if total is not None else None, outcome=outcome, reasons=run.reasons_json or [],
         buyer_name=load_buyer().legal_name, recipient=vendor.email if vendor else None, file_name=run.file_name,
-        mime=run.mime_type, reply_to=run.source_json,
+        mime=run.mime_type, reply_to=run.source_json, note=note,
     )
+
+
+def log_email(session: Session, run_id: str, mail: VendorEmail) -> None:
+    """Demo send: the email is kept against the run (and in its email thread); nothing leaves the app."""
+    session.add(EmailLog(run_id=run_id, sender=mail.sender, recipient=mail.recipient, subject=mail.subject,
+                         sent=True, error=None, body=mail.body, thread_message_id=(mail.thread or {}).get("message_id")))
 
 
 def _log_rows(session: Session, run_id: str) -> list[dict]:
@@ -49,12 +56,16 @@ def _log_rows(session: Session, run_id: str) -> list[dict]:
 
 @router.get("/runs/{run_id}/email")
 def preview_email(run_id: str, request: Request) -> dict:
-    """The email one tap would send, and every earlier send."""
+    """The email one tap would send (once sent: the last mail as it was sent, with the person's note), and every
+    earlier send."""
     engine = engine_of(request)
     with Session(engine) as session:
         run = get_run_or_404(session, run_id)
         mail = _compose(session, run, engine)
-        return {**mail.__dict__, "history": _log_rows(session, run_id)}
+        last = session.scalars(select(EmailLog).where(EmailLog.run_id == run_id, EmailLog.sent.is_(True))
+                               .order_by(EmailLog.id.desc())).first()
+        sent = {"subject": last.subject, "body": last.body} if last is not None and last.body else {}
+        return {**mail.__dict__, **sent, "history": _log_rows(session, run_id)}
 
 
 @router.post("/runs/{run_id}/email")
@@ -66,8 +77,7 @@ def send_email(run_id: str, request: Request) -> dict:
         run = get_run_or_404(session, run_id)
         mail = _compose(session, run, engine)
         thread = (mail.thread or {}).get("message_id")
-        session.add(EmailLog(run_id=run_id, sender=mail.sender, recipient=mail.recipient, subject=mail.subject,
-                             sent=True, error=None, body=mail.body, thread_message_id=thread))
+        log_email(session, run_id, mail)
         session.commit()
         logger.info("vendor email logged (demo, not delivered)", extra={"run_id": run_id})
         return {"sent": True, "recipient": mail.recipient, "subject": mail.subject, "in_thread": thread is not None,

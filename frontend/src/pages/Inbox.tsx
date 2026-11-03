@@ -22,7 +22,7 @@ function LastRun({ attachment }: { attachment: InboxAttachment }) {
   if (!run) return <span className="text-[11px] text-zinc-400">not checked yet</span>
   return (
     <Link to={`/runs/${run.id}`} className="inline-flex items-center gap-1.5 text-[11px] text-zinc-500 hover:text-zinc-900">
-      {run.decision ? <DecisionPill outcome={run.decision} className="px-1.5 py-0 text-[10px]" />
+      {run.decision ? <DecisionPill outcome={run.decision} status={run.status} className="px-1.5 py-0 text-[10px]" />
         : <span className="rounded bg-zinc-100 px-1.5 py-0.5 font-medium text-zinc-600">{run.status.replace('_', ' ')}</span>}
       last run
     </Link>

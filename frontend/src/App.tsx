@@ -17,6 +17,7 @@ import TestSuite from '@/pages/TestSuite'
 
 const PAGES: Record<string, () => React.JSX.Element> = {
   '/inbox': Inbox,
+  '/new': NewRun,
   '/running': RunningPage,
   '/dashboard': Dashboard,
   '/holds': HoldQueue,

@@ -106,7 +106,8 @@ def main() -> int:
     bills = sum(len(m["attachments"]) for m in inbox["messages"])
     check("demo inbox has the sample emails", inbox["source"] == "demo" and bills == 12,
           f"{len(inbox['messages'])} emails, {bills} bills")
-    check("uploads are off in the demo", client.post("/api/runs", data={"sample_id": "01_happy_clean"}).status_code == 403)
+    upload = {"file": ("x.pdf", b"%PDF-1.4", "application/pdf")}
+    check("uploads are off in the demo", client.post("/api/runs", files=upload).status_code == 403)
 
     if not args.no_ai:
         happy = run_inbox_attachment(client, "01_happy_clean.pdf", args.model) or {}

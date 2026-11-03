@@ -9,7 +9,7 @@ import { Link, navigate } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
 const NAV: { to: string; label: string; icon: LucideIcon; realOnly?: boolean }[] = [
-  { to: '/', label: 'New Run', icon: PlusCircle, realOnly: true },
+  { to: '/', label: 'New Run', icon: PlusCircle },
   { to: '/inbox', label: 'Inbox', icon: Inbox },
   { to: '/running', label: 'Running', icon: Activity },
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -53,7 +53,7 @@ export function AppShell({ path, children }: { path: string; children: ReactNode
           </div>
         </div>
         <nav className="flex flex-col gap-0.5 px-3">
-          {NAV.filter((n) => !(isDemo && n.realOnly)).map(({ to, label, icon: Icon }) => (
+          {NAV.filter((n) => !(isDemo && n.realOnly)).map((n) => ({ ...n, to: isDemo && n.to === '/' ? '/new' : n.to })).map(({ to, label, icon: Icon }) => (
             <Link
               key={to}
               to={to}

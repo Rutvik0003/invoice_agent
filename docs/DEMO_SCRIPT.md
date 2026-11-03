@@ -20,13 +20,13 @@ the demo so the interviewers can follow along on their own laptops. One or two s
 
 | Time | Click | Say |
 |---|---|---|
-| 0:00 | Start screen | "An AP agent for GST invoices: it reads a bill from email and says Paid, Needs human verification or Rejected, with the reasons. AI reads, OCR verifies, code decides." |
+| 0:00 | Start screen | "An AP agent for GST invoices: it reads a bill from email and says Paid or Needs human verification, with the reasons. AI reads, OCR verifies, code decides." |
 | 0:20 | **Real mode → Sign in with Google** → account → allow read-only Gmail | "Read-only Gmail. Only my account gets into real mode; anyone else is offered the demo." |
 | 0:45 | **Inbox** (bills filter on) → open the Vertex email → **Check this bill** | "It lists only emails with invoice attachments. I pick which bills to check." |
 | 1:00 | Live run: stages light up; point at the **green boxes** on the invoice | "One AI call reads the fields. Then, without AI, every key value is found on the page: these boxes are where the total, GSTIN and invoice number really are." |
 | 1:40 | Decision card **Paid** → ledger summary | "All 8 stages passed, so it's paid and the PO ledger moved. Any number links back to the page or the PO line." |
 | 2:00 | Back to Inbox → tick **overrun + no-PO + wrong GST** → **Check 3 bills (batch)** → **Running** | "Several bills run as a batch, one after the other within the free-tier limits. I can leave; Running shows what is still going." |
-| 2:40 | Batch result: Rejected (wrong GST) → **Reply to vendor** → Inbox thread | "A reject drafts the vendor reply, in the same email thread, saying what is wrong and what to change." |
+| 2:40 | Wrong GST: Needs verification, *vendor must fix* → Verification queue → **Send mail for changes** → Inbox thread | "When the vendor must fix the bill, the reply is drafted: one click sends it in the same email thread, saying what is wrong and what to change." |
 | 3:20 | **Verification queue** → overrun: read the reason → **Compare with PO** | "When the rules are not sure, a person decides. One check per invoice; here the bill exceeds what is left on the PO." |
 | 3:50 | No-PO invoice: the suggested PO is pre-selected → note → **Verify & pay** | "No PO was printed; the agent found the matching PO. The person confirms it and pays in one step, logged with a note." |
 | 4:20 | **Dashboard** | "Every run, its decision and why; the most common reasons; time saved." |
@@ -38,11 +38,11 @@ the demo so the interviewers can follow along on their own laptops. One or two s
 1. **Start → Try demo.** "Each of you gets a private sandbox; nothing you do reaches anyone else."
 2. **Inbox → Vertex (01) → Check this bill.** Paid. Point at the green boxes and the "Expected: Paid ✓" badge.
 3. **Kosmic Cartons (03).** Needs verification: PO overrun. "Earlier bills took 88% of the PO; this one would exceed it."
-4. **Kapadia "payment reminder" (04).** Rejected: duplicate. "Already paid in August; the number is written INV/1304 instead of INV-01304, and the normalised number still matches."
+4. **Kapadia "payment reminder" (04).** Needs verification, vendor must fix: duplicate. "Already paid in August; the number is written INV/1304 instead of INV-01304, and the normalised number still matches."
 5. **Shubham Advertising (05).** No PO → the agent infers PO-2026-1201 → **Verification queue** → *Verify & pay*.
 6. **Ramesh Packaging "new bank account" (06).** Fraud flag: "bank details changed; verify through a known contact, never the contact on the invoice."
 7. **Ramesh scanned copy (08).** The blurry scan: OCR boxes; the invoice number could not be confirmed → a person checks it. "It never guesses."
-8. **Run 01 again.** Rejected: "already approved and paid". "Duplicates are caught by file and by number."
+8. **Run 01 again.** Needs verification: "already approved and paid" (paying it again needs a deliberate tick). "Duplicates are caught by file and by number."
 9. **Model switch:** on any failed or new run, pick another Gemini model (each has its own free-tier limit).
 10. **Test Suite & Evaluation** page: the reports and the confusion matrix.
 11. Questions. If they ask "what would you do next": goods-receipt 3-way match, ERP connectors, learning from the

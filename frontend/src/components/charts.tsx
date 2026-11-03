@@ -1,15 +1,15 @@
-/** Small dashboard charts. Decision colours are status colours (green/amber/red) and always carry a label. */
+/** Small dashboard charts. Outcome colours are status colours (green/amber/gray) and always carry a label. */
 
 import { useState } from 'react'
 
-import type { Outcome } from '@/lib/api'
+import { SHOWN_ORDER as OUTCOMES, SHOWN_STYLE } from '@/components/status'
+import type { Shown } from '@/lib/api'
 import { humanize } from '@/lib/format'
 
-const OUTCOMES: Outcome[] = ['APPROVE', 'HOLD', 'REJECT']
-const FILL: Record<Outcome, string> = { APPROVE: '#059669', HOLD: '#f59e0b', REJECT: '#dc2626' }
-const LABEL: Record<Outcome, string> = { APPROVE: 'Paid', HOLD: 'Needs human verification', REJECT: 'Rejected' }
+const FILL = (o: Shown) => SHOWN_STYLE[o].fill
+const LABEL = (o: Shown) => SHOWN_STYLE[o].label
 
-type DayRow = { date: string; decision: Outcome; count: number }
+type DayRow = { date: string; outcome: Shown; count: number }
 
 function lastDays(rows: DayRow[], days: number): string[] {
   const end = rows.length ? new Date(rows.at(-1)!.date) : new Date()
@@ -22,12 +22,12 @@ function lastDays(rows: DayRow[], days: number): string[] {
   })
 }
 
-/** Stacked bars: decisions per day (last 14 days). */
+/** Stacked bars: outcomes per day (last 14 days). */
 export function DecisionsByDay({ rows }: { rows: DayRow[] }) {
-  const [hover, setHover] = useState<{ date: string; decision: Outcome; count: number; x: number; y: number } | null>(null)
+  const [hover, setHover] = useState<{ date: string; outcome: Shown; count: number; x: number; y: number } | null>(null)
   const dates = lastDays(rows, 14)
-  const byDate = Object.fromEntries(dates.map((d) => [d, { APPROVE: 0, HOLD: 0, REJECT: 0 } as Record<Outcome, number>]))
-  for (const r of rows) if (byDate[r.date]) byDate[r.date][r.decision] += r.count
+  const byDate = Object.fromEntries(dates.map((d) => [d, { PAID: 0, NEEDS_VERIFICATION: 0, CHANGES_REQUESTED: 0 } as Record<Shown, number>]))
+  for (const r of rows) if (byDate[r.date]) byDate[r.date][r.outcome] += r.count
   const max = Math.max(1, ...dates.map((d) => OUTCOMES.reduce((s, o) => s + byDate[d][o], 0)))
   const W = 560, H = 150, padL = 26, padB = 20, gap = 2
   const band = (W - padL) / dates.length
@@ -39,10 +39,10 @@ export function DecisionsByDay({ rows }: { rows: DayRow[] }) {
     <div className="relative">
       <div className="mb-2 flex gap-4 text-xs text-zinc-600">
         {OUTCOMES.map((o) => (
-          <span key={o} className="flex items-center gap-1.5"><span className="size-2.5 rounded-sm" style={{ background: FILL[o] }} />{LABEL[o]}</span>
+          <span key={o} className="flex items-center gap-1.5"><span className="size-2.5 rounded-sm" style={{ background: FILL(o) }} />{LABEL(o)}</span>
         ))}
       </div>
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Decisions per day, last 14 days">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Outcomes per day, last 14 days">
         {ticks.map((t) => (
           <g key={t}>
             <line x1={padL} x2={W} y1={y(t)} y2={y(t)} stroke="#e4e4e7" strokeWidth={1} />
@@ -63,8 +63,8 @@ export function DecisionsByDay({ rows }: { rows: DayRow[] }) {
                 acc += v
                 const isTop = acc === total
                 return (
-                  <rect key={o} x={cx - barW / 2} y={top} width={barW} height={height} rx={isTop ? 3 : 0} fill={FILL[o]}
-                        onMouseEnter={() => setHover({ date: d, decision: o, count: v, x: cx, y: top })}
+                  <rect key={o} x={cx - barW / 2} y={top} width={barW} height={height} rx={isTop ? 3 : 0} fill={FILL(o)}
+                        onMouseEnter={() => setHover({ date: d, outcome: o, count: v, x: cx, y: top })}
                         onMouseLeave={() => setHover(null)} />
                 )
               })}
@@ -80,7 +80,7 @@ export function DecisionsByDay({ rows }: { rows: DayRow[] }) {
       {hover && (
         <div className="pointer-events-none absolute rounded-md bg-zinc-900 px-2 py-1 text-[11px] whitespace-nowrap text-white shadow"
              style={{ left: `${(hover.x / W) * 100}%`, top: `${(hover.y / H) * 100}%`, transform: 'translate(-50%, -110%)' }}>
-          {new Date(hover.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })} · {LABEL[hover.decision]}: {hover.count}
+          {new Date(hover.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })} · {LABEL(hover.outcome)}: {hover.count}
         </div>
       )}
       {!rows.length && <p className="absolute inset-0 grid place-items-center text-sm text-zinc-400">No runs yet</p>}

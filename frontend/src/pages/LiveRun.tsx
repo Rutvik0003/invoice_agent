@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Loader2, Mail, Plus, Scale, Wifi, WifiOff, X } from 'lucide-react'
+import { Loader2, Mail, Plus, Scale, UserCheck, Wifi, WifiOff, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { AuditTrail, RawData } from '@/components/run/AuditTrail'
@@ -138,7 +138,12 @@ export default function LiveRun({ runId }: { runId: string }) {
                   <Scale />{comparing ? 'Show the invoice again' : 'Compare with the purchase order'}
                 </Button>
               )}
-              <VendorEmail runId={runId} />
+              {detail.status !== 'resolved_by_human' && (
+                <Link to="/holds" className="flex items-center justify-center gap-1.5 rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-600">
+                  <UserCheck className="size-4" />Check it in the Verification queue: approve or send mail for changes
+                </Link>
+              )}
+              <VendorEmail runId={runId} previewOnly />
             </div>
           )}
           {live.finished?.decision && !detail.rules && (
@@ -162,19 +167,28 @@ export default function LiveRun({ runId }: { runId: string }) {
   )
 }
 
-/** A person resolved this hold: show the final decision, who, when and why, above the engine's decision. */
+/** The engine's one-line summary in the words people see ("Reject:" / "Hold:" are both a person's check). */
+function shownSummary(summary: string | undefined): string | undefined {
+  return summary
+    ?.replace(/^Reject: /, 'Needs human verification (vendor must fix): ')
+    .replace(/^Hold: /, 'Needs human verification: ')
+    .replace(/^Approve: /, 'Paid: ')
+}
+
+/** A person checked this invoice: show what they did (paid it, or asked the vendor for changes), who, when and why. */
 function HumanResolution({ run }: { run: RunDetail }) {
-  const final = [...(run.hold_actions ?? [])].reverse().find((a) => a.action === 'approve' || a.action === 'reject')
+  const final = [...(run.hold_actions ?? [])].reverse().find((a) => a.action === 'approve' || a.action === 'request_changes')
+  const paid = run.decision === 'APPROVE'
   return (
-    <div className={cn('rounded-xl p-4 ring-1', run.decision === 'APPROVE' ? 'bg-emerald-50 ring-emerald-200' : 'bg-red-50 ring-red-200')}>
-      <div className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">Resolved by a person</div>
-      <div className="mt-0.5 text-lg font-semibold">{run.decision === 'APPROVE' ? 'Paid' : 'Rejected'}
+    <div className={cn('rounded-xl p-4 ring-1', paid ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-50 ring-slate-200')}>
+      <div className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">Checked by a person</div>
+      <div className="mt-0.5 text-lg font-semibold">{paid ? 'Paid' : 'Changes requested from the vendor'}
         {final && <span className="text-sm font-normal text-zinc-600"> by {final.actor_role} · {new Date(final.created_at).toLocaleString('en-IN')}</span>}</div>
       {final && <p className="mt-1 text-sm text-zinc-700">“{final.comment}”</p>}
       {run.rules?.ledger_applied && run.decision === 'APPROVE' && run.rules.ledger_change && (
         <p className="mt-1 text-xs text-zinc-600">PO ledger updated: {run.rules.ledger_change.po_number} billed {inr(run.rules.ledger_change.billed_before)} → {inr(run.rules.ledger_change.billed_after)}</p>
       )}
-      <p className="mt-2 text-xs text-zinc-500">The engine's original decision (Hold) and its reasons are below. Full history in the Audit trail tab.</p>
+      <p className="mt-2 text-xs text-zinc-500">The engine's decision (Needs human verification) and its reasons are below. Full history in the Audit trail tab.</p>
     </div>
   )
 }
@@ -238,7 +252,7 @@ function StageDetail({ stageKey, live, detail, threshold, selected, onSelect }: 
         </div>
       )
     case 'decision':
-      return <p className="text-sm text-zinc-600">{live.finished?.summary ?? detail.rules?.decision.summary ?? 'Deciding…'}</p>
+      return <p className="text-sm text-zinc-600">{shownSummary(live.finished?.summary ?? detail.rules?.decision.summary) ?? 'Deciding…'}</p>
     default:
       return <ChecksList checks={st.checks} />
   }

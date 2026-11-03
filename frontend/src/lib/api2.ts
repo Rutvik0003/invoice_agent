@@ -1,6 +1,6 @@
 /** API client for the Phase 7 screens: dashboard, hold queue, test suite, data, settings. */
 
-import type { CheckResult, ExtractedInvoice, FieldVerification, Outcome, RoutedQuestion, RunDetail } from './api'
+import type { CheckResult, ExtractedInvoice, FieldVerification, Outcome, RoutedQuestion, RunDetail, Shown } from './api'
 
 export type RunSummary = Omit<RunDetail, 'extracted' | 'verification' | 'rules' | 'events' | 'retries' | 'sample'>
 
@@ -9,6 +9,7 @@ export type RunsPage = { total: number; page: number; page_size: number; items: 
 export type Stats = {
   total_runs: number
   by_decision: Partial<Record<Outcome, number>>
+  by_outcome: Partial<Record<Shown, number>>
   by_status: Record<string, number>
   avg_duration_ms: number | null
   runs_by_model: Record<string, number>
@@ -18,7 +19,7 @@ export type Stats = {
   decided_automatically: number
   ap_minutes_saved: number
   ap_minutes_assumption: string
-  decisions_by_day: { date: string; decision: Outcome; count: number }[]
+  outcomes_by_day: { date: string; outcome: Shown; count: number }[]
 }
 
 export type HoldActionRecord = {
@@ -32,6 +33,7 @@ export type HoldItem = RunSummary & {
   verification_fields: Record<string, FieldVerification>
   extracted: ExtractedInvoice | null
   resolved: boolean
+  vendor_must_fix: boolean
   hold_actions: HoldActionRecord[]
 }
 
@@ -75,7 +77,7 @@ export type BatchItem = RunSummary & {
 
 export type Batch = {
   id: string; created_at: string; model: string; model_name: string | null; total: number; done: number
-  finished: boolean; by_status: Record<string, number>; by_decision: Partial<Record<Outcome, number>>
+  finished: boolean; by_status: Record<string, number>; by_decision: Partial<Record<Outcome, number>>; by_outcome: Partial<Record<Shown, number>>
   file_errors: { file_name: string; error: string }[]; total_amount: number; failed: number; items?: BatchItem[]
 }
 

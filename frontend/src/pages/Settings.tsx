@@ -219,7 +219,7 @@ export default function Settings() {
           <p className="mt-1 text-sm text-zinc-600">
             Starts over as if the app were opened for the first time: vendors, purchase orders and invoice history go back to the
             seeded state, and every run, batch, hold action and email is deleted. Admin settings return to their defaults.
-            Use it before a demo: an approved invoice is paid, so running it again is (correctly) rejected as already paid.
+            Use it before a demo: an approved invoice is paid, so running it again is (correctly) flagged as already paid.
           </p>
           <AlertDialog>
             <AlertDialogTrigger asChild>

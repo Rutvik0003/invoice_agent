@@ -1,7 +1,7 @@
 # Payable — an AP agent for GST invoices
 
 **Payable** is an accounts-payable agent for Indian GST invoices. It reads a vendor bill from an email (or an upload) and
-answers **Paid / Needs human verification / Rejected**, with every reason in plain English and every number
+answers **Paid** or **Needs human verification**, with every reason in plain English and every number
 traced back to the page or the purchase order. (Zamp ASA case study, PS-1.)
 
 **Live:** <https://invoice-agent-9ukc.onrender.com> → **Try demo** (no sign-in). The free server sleeps when idle:
@@ -21,8 +21,9 @@ flowchart LR
     G --> H[7 Match amounts<br/>qty, price, PO balance]
     H --> I{8 Decision<br/>rules}
     I -->|all clear| P[Paid<br/>PO ledger updated]
-    I -->|unsure| V[Needs human verification<br/>Verification queue]
-    I -->|wrong| R[Rejected<br/>reply to vendor in the thread]
+    I -->|unsure, or the vendor must fix it| V[Needs human verification<br/>Verification queue]
+    V -->|Approve & pay| P
+    V -->|Send mail for changes| R[Changes requested<br/>reply to vendor in the thread]
     M[(Vendor master<br/>POs, payment history)] --- F & G & H
 ```
 
@@ -34,7 +35,9 @@ flowchart LR
   number), unknown/blocked vendors, changed bank details (fraud flag), wrong GST type or rate, maths that does not
   add up, missing/inferred/closed POs, quantity and price beyond tolerance, PO overruns.
 - **When unsure, a person decides**: the Verification queue asks one thing per invoice (the PO if needed, the
-  doubtful values pre-filled), then *Verify & pay* or *Reject*; every action is logged.
+  doubtful values pre-filled), then *Approve & pay* or *Send mail for changes* (a reply to the vendor saying what
+  to fix); every action is logged. Nothing is ever rejected without a person: what the rules find wrong (wrong GST,
+  bad maths, duplicates, a quotation) is tagged "vendor must fix the bill" and the mail is drafted for them.
 
 ## Two ways in
 
@@ -52,14 +55,14 @@ flowchart LR
 | Vertex Enterprises, VE0393 | clean invoice matching its PO | Paid |
 | Kapadia Woodcraft, INV-01316 | price ₹40 above PO, within tolerance | Paid (with note) |
 | Kosmic Cartons, final lot | bills more than the PO has left | Needs verification: PO overrun |
-| Kapadia Woodcraft, "payment reminder" | already paid, number written differently | Rejected: duplicate |
+| Kapadia Woodcraft, "payment reminder" | already paid, number written differently | Needs verification, vendor must fix: duplicate |
 | Shubham Advertising | no PO printed; the agent finds the matching PO | Needs verification: confirm the PO |
 | Ramesh Packaging, "new bank account" | bank details differ from the vendor master | Needs verification: fraud check |
-| Borah Polymers | CGST+SGST charged by an out-of-state vendor | Rejected: wrong GST type |
+| Borah Polymers | CGST+SGST charged by an out-of-state vendor | Needs verification, vendor must fix: wrong GST type |
 | Ramesh Packaging, scanned copy | blurry scan, invoice number unreadable | Needs verification |
 | Varghese Property Services | price 3% above PO | Needs verification: price variance |
-| Prism Digital Systems | a line amount that does not add up | Rejected: arithmetic |
-| Rao Traders, "bill" | actually a quotation | Rejected: not a tax invoice |
+| Prism Digital Systems | a line amount that does not add up | Needs verification, vendor must fix: arithmetic |
+| Rao Traders, "bill" | actually a quotation | Needs verification, vendor must fix: not a tax invoice |
 | Grover Advertising | vendor not yet approved | Needs verification: procurement |
 
 ## Evaluation (all reports in `data/eval_reports/`, Test Suite screen)
@@ -174,8 +177,9 @@ The first screen offers two ways in:
 server when you leave their screen.
 
 Decisions are shown as **Paid** (approved; approving pays the invoice in this demo), **Needs human
-verification** (held) and **Rejected**. The **Verification queue** asks one thing per invoice: choose the PO if
-one is needed, confirm or correct the values the AI was unsure of, add a note, then **Verify & pay** or **Reject**.
+verification** (the engine's Hold and Reject). The **Verification queue** asks one thing per invoice: choose the PO if
+one is needed, confirm or correct the values the AI was unsure of, add a note, then **Approve & pay** or **Send mail
+for changes**.
 
 Both modes run exactly the same pipeline and rules; the mode only decides which database and which AI key a
 request uses (`app/api/common.engine_of`).

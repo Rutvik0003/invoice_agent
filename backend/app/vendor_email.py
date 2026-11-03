@@ -180,13 +180,15 @@ class VendorEmail:
 
 def compose(*, vendor_name: str, invoice_number: str | None, invoice_date: date | None, total: float | None,
             outcome: str, reasons: list[dict], buyer_name: str, recipient: str | None, file_name: str,
-            mime: str, reply_to: dict | None = None) -> VendorEmail:
+            mime: str, reply_to: dict | None = None, note: str | None = None) -> VendorEmail:
     """Subject: '<vendor> - <problem> - Invoice <number>'; body: each problem and the change needed.
     When the invoice came by email (reply_to = that email), the message is a reply in the same thread: it goes to
-    the address the invoice came from, with 'Re: <their subject>', and the problem line opens the body."""
+    the address the invoice came from, with 'Re: <their subject>', and the problem line opens the body.
+    `note` is what the person who checked the bill adds for the vendor (it can be the only point)."""
     problems = vendor_problems(reasons, outcome)
     number = invoice_number or "(no number)"
-    headline = problems[0].title if problems else ("Invoice rejected" if outcome == "REJECT" else "Invoice on hold")
+    headline = problems[0].title if problems else ("Changes needed" if note else
+                                                   "Invoice rejected" if outcome == "REJECT" else "Invoice on hold")
     if len(problems) > 1:
         headline += f" (+{len(problems) - 1} more)"
     subject = f"{vendor_name} - {headline} - Invoice {number}"
@@ -196,6 +198,8 @@ def compose(*, vendor_name: str, invoice_number: str | None, invoice_date: date 
               else "it is on hold and cannot be paid until the points below are resolved")
     items = "\n\n".join(f"{i}. {p.title}\n   Problem: {p.problem}\n   Change needed: {p.change}"
                         for i, p in enumerate(problems, 1))
+    if note:
+        items = (items + "\n\n" if items else "") + f"Note from our team: {note}"
     body = (f"Dear {vendor_name},\n\nThank you for your {about}. After review, {status}.\n\n{items}\n\n"
             f"The invoice we received is attached for reference. Please reply to this email with the corrected invoice "
             f"or the confirmation requested above.\n\nRegards,\nAccounts Payable\n{buyer_name}\n")

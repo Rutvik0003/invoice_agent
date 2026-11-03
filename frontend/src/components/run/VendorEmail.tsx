@@ -8,9 +8,10 @@ import { timeAgo } from '@/lib/format'
 import { Link } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
-/** One tap "emails" the vendor what is wrong and what to change, with the invoice attached (demo: logged, not delivered).
- *  An invoice that arrived by email is answered in that email's thread. */
-export function VendorEmail({ runId, compact = false }: { runId: string; compact?: boolean }) {
+/** The email to the vendor: what is wrong and what to change, with the invoice attached (demo: logged, not delivered).
+ *  An invoice that arrived by email is answered in that email's thread. `previewOnly`: the mail is sent from the
+ *  Verification queue ("Send mail for changes"), so here it is only shown, with when it was sent. */
+export function VendorEmail({ runId, compact = false, previewOnly = false }: { runId: string; compact?: boolean; previewOnly?: boolean }) {
   const queryClient = useQueryClient()
   const [open, setOpen] = useState(false)
   const preview = useQuery({ queryKey: ['email', runId], queryFn: () => api2.emailPreview(runId), retry: false })
@@ -25,10 +26,17 @@ export function VendorEmail({ runId, compact = false }: { runId: string; compact
   return (
     <section className={cn('rounded-xl bg-white ring-1 ring-zinc-200', compact ? 'p-3' : 'p-4')}>
       <div className="flex flex-wrap items-center gap-2">
-        <Button size="sm" onClick={() => send.mutate()} disabled={send.isPending}>
-          {send.isPending ? <Loader2 className="animate-spin" /> : mail.thread ? <CornerUpLeft /> : <Mail />}
-          {mail.thread ? (lastSent ? 'Reply to vendor again' : 'Reply to vendor') : lastSent ? 'Email vendor again' : 'Email vendor'}
-        </Button>
+        {previewOnly ? (
+          <span className="flex items-center gap-1.5 text-sm font-medium text-zinc-800">
+            {mail.thread ? <CornerUpLeft className="size-4 text-zinc-500" /> : <Mail className="size-4 text-zinc-500" />}
+            {lastSent ? 'Mail to the vendor' : 'Mail the vendor would get'}
+          </span>
+        ) : (
+          <Button size="sm" onClick={() => send.mutate()} disabled={send.isPending}>
+            {send.isPending ? <Loader2 className="animate-spin" /> : mail.thread ? <CornerUpLeft /> : <Mail />}
+            {mail.thread ? (lastSent ? 'Reply to vendor again' : 'Reply to vendor') : lastSent ? 'Email vendor again' : 'Email vendor'}
+          </Button>
+        )}
         <button type="button" onClick={() => setOpen(!open)} className="flex items-center gap-1 text-xs text-zinc-600 hover:text-zinc-900">
           Preview <ChevronDown className={cn('size-3.5 transition-transform', open && 'rotate-180')} />
         </button>

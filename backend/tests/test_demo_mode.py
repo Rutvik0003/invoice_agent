@@ -190,17 +190,25 @@ def test_without_a_demo_key_the_demo_falls_back_to_the_main_gemini_key(tmp_path,
 # ---------------------------------------------------------------- demo restrictions
 
 
-def test_demo_only_processes_its_inbox(app_and_engine):
+def test_demo_takes_no_uploads(app_and_engine):
     app, _ = app_and_engine
     client = visitor(app)
     upload = ("x.pdf", (INVOICES / "golden" / "01_happy_clean.pdf").read_bytes(), "application/pdf")
     for response in (client.post("/api/runs", files={"file": upload}),
-                     client.post("/api/runs", data={"sample_id": "01_happy_clean"}),
                      client.post("/api/batches", files=[("files", upload)]),
                      client.post("/api/eval/golden", json={})):
         assert response.status_code == 403
         assert response.json()["detail"]["type"] == "demo_restricted"
     assert client.get("/api/eval/latest").json()["status"] == "never_run"
+
+
+def test_demo_runs_samples_in_the_visitors_sandbox(app_and_engine):
+    app, engine = app_and_engine
+    client = visitor(app)
+    response = client.post("/api/runs", data={"sample_id": "01_happy_clean"})
+    assert response.status_code == 200
+    assert client.get("/api/runs").json()["total"] == 1
+    assert run_count(engine) == 0  # never in the main database
 
 
 def test_demo_run_limit_per_hour(app_and_engine, monkeypatch):

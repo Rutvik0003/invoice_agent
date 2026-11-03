@@ -2,16 +2,15 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { AlertTriangle, Clock, Download, Loader2, Plus, RotateCcw } from 'lucide-react'
 
 import { PageHeader } from '@/components/AppShell'
-import { CheckIcon, DecisionPill, OUTCOME_STYLE } from '@/components/status'
+import { CheckIcon, DecisionPill, SHOWN_ORDER, SHOWN_STYLE } from '@/components/status'
 import { Button } from '@/components/ui/button'
-import { api, type Outcome } from '@/lib/api'
+import { api } from '@/lib/api'
 import { api2, type Batch, type BatchItem } from '@/lib/api2'
 import { duration, humanize, inr, timeAgo } from '@/lib/format'
 import { useMode } from '@/lib/mode'
 import { Link, navigate } from '@/lib/router'
 import { cn } from '@/lib/utils'
 
-const OUTCOMES: Outcome[] = ['APPROVE', 'HOLD', 'REJECT']
 const FAILED = ['extraction_failed', 'failed', 'interrupted']
 const MODEL_LABEL: Record<string, string> = { gemini: 'Gemini', groq: 'Groq' }
 type ModelChoice = { provider: string; name: string }
@@ -28,16 +27,16 @@ function itemState(item: BatchItem): { label: string; cls: string; icon?: 'spin'
     case 'interrupted':
       return { label: humanize(item.status), cls: 'text-zinc-600' }
     case 'resolved_by_human':
-      return { label: 'Resolved by a person', cls: 'text-zinc-600' }
+      return { label: 'Checked by a person', cls: 'text-zinc-600' }
     default:
       return { label: 'Done', cls: 'text-zinc-600' }
   }
 }
 
 function csv(batch: Batch): string {
-  const rows = [['file', 'status', 'decision', 'vendor', 'invoice_number', 'total', 'po', 'reasons', 'run_id']]
+  const rows = [['file', 'status', 'outcome', 'vendor', 'invoice_number', 'total', 'po', 'reasons', 'run_id']]
   for (const i of batch.items ?? []) {
-    rows.push([i.file_name, i.status, i.decision ?? '', i.vendor_name ?? '', i.invoice_number ?? '', i.total_amount?.toString() ?? '',
+    rows.push([i.file_name, i.status, i.outcome ? SHOWN_STYLE[i.outcome].label : '', i.vendor_name ?? '', i.invoice_number ?? '', i.total_amount?.toString() ?? '',
       i.po_number ?? '', i.reasons.map((r) => r.code).join(' '), i.id])
   }
   return rows.map((r) => r.map((v) => `"${String(v).replaceAll('"', '""')}"`).join(',')).join('\n')
@@ -100,10 +99,10 @@ export default function BatchView({ batchId }: { batchId: string }) {
               {b.finished && <div className="mt-0.5 text-sm text-zinc-600">Total invoiced {inr(b.total_amount)}</div>}
             </div>
             <div className="flex flex-wrap gap-2">
-              {OUTCOMES.map((o) => (
-                <div key={o} className={cn('min-w-24 rounded-lg px-3 py-2 ring-1', OUTCOME_STYLE[o].soft, OUTCOME_STYLE[o].ring)}>
-                  <div className={cn('text-xs font-medium', OUTCOME_STYLE[o].text)}>{OUTCOME_STYLE[o].label}</div>
-                  <div className="text-xl font-semibold tabular-nums">{b.by_decision[o] ?? 0}</div>
+              {SHOWN_ORDER.filter((o) => o !== 'CHANGES_REQUESTED' || b.by_outcome[o]).map((o) => (
+                <div key={o} className={cn('min-w-24 rounded-lg px-3 py-2 ring-1', SHOWN_STYLE[o].soft, SHOWN_STYLE[o].ring)}>
+                  <div className={cn('text-xs font-medium', SHOWN_STYLE[o].text)}>{SHOWN_STYLE[o].label}</div>
+                  <div className="text-xl font-semibold tabular-nums">{b.by_outcome[o] ?? 0}</div>
                 </div>
               ))}
               {failed > 0 && (
@@ -116,7 +115,7 @@ export default function BatchView({ batchId }: { batchId: string }) {
           </div>
           <div className="mt-4 h-2 overflow-hidden rounded-full bg-zinc-100" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
             <div className="flex h-full">
-              {OUTCOMES.map((o) => <div key={o} className={cn('h-full transition-all', OUTCOME_STYLE[o].bg)} style={{ width: `${((b.by_decision[o] ?? 0) / b.total) * 100}%` }} />)}
+              {SHOWN_ORDER.map((o) => <div key={o} className={cn('h-full transition-all', SHOWN_STYLE[o].bg)} style={{ width: `${((b.by_outcome[o] ?? 0) / b.total) * 100}%` }} />)}
               <div className="h-full bg-zinc-400 transition-all" style={{ width: `${(failed / b.total) * 100}%` }} />
             </div>
           </div>
@@ -189,7 +188,7 @@ export default function BatchView({ batchId }: { batchId: string }) {
                         </div>
                       )}
                     </td>
-                    <td className="px-4 py-2.5">{item.decision ? <DecisionPill outcome={item.decision} /> : <span className="text-xs text-zinc-400">—</span>}</td>
+                    <td className="px-4 py-2.5">{item.decision ? <DecisionPill outcome={item.decision} status={item.status} /> : <span className="text-xs text-zinc-400">—</span>}</td>
                     <td className="max-w-64 px-4 py-2.5">
                       <div className="truncate">{item.vendor_name ?? <span className="text-zinc-400">—</span>}</div>
                       <div className="truncate text-xs text-zinc-500">{item.invoice_number ?? ''}{item.po_number ? ` · ${item.po_number}` : ''}</div>

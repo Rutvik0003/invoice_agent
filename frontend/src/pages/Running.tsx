@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Activity, CheckCircle2, Clock, Layers, Loader2 } from 'lucide-react'
 
 import { PageHeader } from '@/components/AppShell'
-import { DecisionPill } from '@/components/status'
+import { DecisionPill, SHOWN_ORDER } from '@/components/status'
 import { api2, runningInterval, type Batch, type RunSummary } from '@/lib/api2'
 import { duration, inr, timeAgo } from '@/lib/format'
 import { Link } from '@/lib/router'
@@ -25,8 +25,8 @@ function BatchRow({ batch }: { batch: Batch }) {
       </div>
       <div className="shrink-0 text-right text-xs text-zinc-600">
         {batch.finished
-          ? <span className="flex gap-1.5">{(['APPROVE', 'HOLD', 'REJECT'] as const).filter((o) => batch.by_decision[o])
-              .map((o) => <DecisionPill key={o} outcome={o} className="px-1.5 py-0 text-[10px]" />)}{batch.failed > 0 && `${batch.failed} not read`}</span>
+          ? <span className="flex gap-1.5">{SHOWN_ORDER.filter((o) => batch.by_outcome[o])
+              .map((o) => <DecisionPill key={o} shown={o} className="px-1.5 py-0 text-[10px]" />)}{batch.failed > 0 && `${batch.failed} not read`}</span>
           : <span className="tabular-nums"><b className="text-zinc-900">{batch.done}</b> / {batch.total} done</span>}
       </div>
     </Link>
@@ -48,7 +48,7 @@ function RunRow({ run }: { run: RunSummary & { stage?: { title: string; number: 
       </div>
       <div className="shrink-0 text-right text-xs text-zinc-500">
         {active ? <>started {timeAgo(run.created_at)}</>
-          : run.decision ? <DecisionPill outcome={run.decision} />
+          : run.decision ? <DecisionPill outcome={run.decision} status={run.status} />
           : <span className="rounded bg-zinc-100 px-1.5 py-0.5 font-medium text-zinc-600">{run.status.replaceAll('_', ' ')}</span>}
         {!active && run.duration_ms && <div className="mt-0.5">{duration(run.duration_ms)}</div>}
       </div>

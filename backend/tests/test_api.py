@@ -175,9 +175,52 @@ def test_hold_queue_actions(client):
     detail = client.get(f"/api/runs/{held['id']}").json()
     assert detail["status"] == "resolved_by_human" and detail["decision"] == "APPROVE"
     assert [a["action"] for a in detail["hold_actions"]] == ["confirm_field", "approve"]
-    assert client.post(url, json={"action": "reject", "role": "Buyer", "comment": "again"}).status_code == 409
+    assert client.post(url, json={"action": "request_changes", "role": "Buyer", "comment": "again"}).status_code == 409
     assert client.get("/api/holds").json()["items"] == []
     assert len(client.get("/api/holds", params={"state": "resolved"}).json()["items"]) == 1
+    assert client.get("/api/runs").json()["items"][0]["outcome"] == "PAID"
+
+
+def test_rejected_invoice_waits_for_a_person_who_requests_changes(client):
+    wrong = start(client, "07_E_wrong_gst")  # the engine's Reject: shown as Needs human verification
+    assert wrong["decision"] == "REJECT" and wrong["outcome"] == "NEEDS_VERIFICATION"
+    item = client.get("/api/holds").json()["items"][0]
+    assert item["id"] == wrong["id"] and item["vendor_must_fix"] is True
+    url = f"/api/holds/{wrong['id']}/action"
+    assert client.post(url, json={"action": "reject", "role": "AP clerk", "comment": "x"}).status_code == 422
+    sent = client.post(url, json={"action": "request_changes", "role": "AP clerk", "comment": "GST type is wrong",
+                                  "payload": {"message": "Please also quote our PO number."}})
+    assert sent.status_code == 200 and sent.json()["result"]["changes_requested"]
+    detail = client.get(f"/api/runs/{wrong['id']}").json()
+    assert detail["status"] == "resolved_by_human" and detail["decision"] == "REJECT"
+    assert detail["outcome"] == "CHANGES_REQUESTED"
+    mail = client.get(f"/api/runs/{wrong['id']}/email").json()
+    assert len(mail["history"]) == 1 and "Wrong GST type" in mail["subject"]
+    assert client.get("/api/runs", params={"outcome": "changes_requested"}).json()["total"] == 1
+    assert client.get("/api/stats").json()["by_outcome"] == {"CHANGES_REQUESTED": 1}
+
+
+def test_request_changes_adds_the_persons_message(client):
+    held = start(client, "05_C_no_po")
+    url = f"/api/holds/{held['id']}/action"
+    sent = client.post(url, json={"action": "request_changes", "role": "Buyer", "comment": "Ask for the PO",
+                                  "payload": {"message": "Please quote PO-2026-1201 on the invoice."}})
+    assert sent.status_code == 200
+    mail = client.get(f"/api/runs/{held['id']}/email").json()
+    assert len(mail["history"]) == 1
+    assert "Note from our team: Please quote PO-2026-1201 on the invoice." in mail["body"]  # the mail as sent
+
+
+def test_paying_a_duplicate_needs_pay_again(client):
+    first = start(client, "01_happy_clean")
+    again = start(client, "01_happy_clean")  # same file: the engine says duplicate (shown as Needs verification)
+    assert first["outcome"] == "PAID" and again["outcome"] == "NEEDS_VERIFICATION"
+    url = f"/api/holds/{again['id']}/action"
+    refused = client.post(url, json={"action": "approve", "role": "AP clerk", "comment": "pay"})
+    assert refused.status_code == 409 and "Pay it again" in refused.json()["detail"]
+    paid = client.post(url, json={"action": "approve", "role": "AP clerk", "comment": "second delivery, agreed by phone",
+                                  "payload": {"pay_again": True}})
+    assert paid.status_code == 200 and client.get(f"/api/runs/{again['id']}").json()["outcome"] == "PAID"
 
 
 def test_test_suite_is_sandboxed(client):
@@ -207,7 +250,9 @@ def test_lists_filters_stats_and_data(client):
     assert client.get("/api/runs", params={"page_size": 2, "page": 2}).json()["items"].__len__() == 1
     stats = client.get("/api/stats").json()
     assert stats["by_decision"] == {"APPROVE": 1, "REJECT": 1, "HOLD": 1}
-    assert stats["decided_automatically"] == 2 and stats["ap_minutes_saved"] == 16 and "8 minutes" in stats["ap_minutes_assumption"]
+    assert stats["by_outcome"] == {"PAID": 1, "NEEDS_VERIFICATION": 2}
+    assert stats["decided_automatically"] == 1 and stats["ap_minutes_saved"] == 8 and "8 minutes" in stats["ap_minutes_assumption"]
+    assert client.get("/api/runs", params={"outcome": "needs_verification"}).json()["total"] == 2
     assert stats["fields_verified_pct"] > 90
     assert len(client.get("/api/data/vendors").json()) == 40
     pos = client.get("/api/data/pos").json()

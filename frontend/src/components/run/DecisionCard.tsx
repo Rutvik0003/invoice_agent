@@ -11,7 +11,8 @@ import { cn } from '@/lib/utils'
 
 const ROLE_ORDER = ['Finance controller', 'Procurement', 'Tax team', 'Buyer', 'AP clerk']
 
-/** The final answer, kept short: Paid / Needs human verification / Rejected, who checks it, and every reason in one line. */
+/** The final answer, kept short: Paid or Needs human verification (tagged "vendor must fix" when the rules found
+ *  something only the vendor can correct), who checks it, and every reason in one line. */
 export function DecisionCard({ decision, ledger, sample }: {
   decision: Decision; ledger: LedgerChange | null; sample: RunDetail['sample']
 }) {
@@ -25,6 +26,9 @@ export function DecisionCard({ decision, ledger, sample }: {
           {style.label}
           {decision.approve_with_note && <span className="ml-1.5 align-middle text-xs font-medium opacity-90">with note</span>}
         </div>
+        {decision.outcome === 'REJECT' && (
+          <span className="rounded-full bg-white/25 px-2 py-0.5 text-[11px] font-semibold text-white">vendor must fix the bill</span>
+        )}
         {roles.length > 0 && <span className="text-xs text-white/90">for {roles.join(', ')}</span>}
         {sample && (
           <span className="ml-auto rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-medium text-white">

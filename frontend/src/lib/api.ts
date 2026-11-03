@@ -43,6 +43,8 @@ export type Sample = {
 }
 
 export type Outcome = 'APPROVE' | 'HOLD' | 'REJECT'
+/** What people see: the engine's Hold and Reject both mean a person must check it; a person may then ask the vendor for changes. */
+export type Shown = 'PAID' | 'NEEDS_VERIFICATION' | 'CHANGES_REQUESTED'
 export type Severity = 'REJECT' | 'HOLD' | 'INFO'
 
 export type ScalarField = { value: unknown; printed: string | null; confidence: number; evidence: string | null }
@@ -118,6 +120,7 @@ export type RunDetail = {
   model_name: string | null
   status: string
   decision: Outcome | null
+  outcome: Shown | null
   total_amount: number | null
   vendor_id: string | null
   vendor_name: string | null

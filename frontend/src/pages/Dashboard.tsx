@@ -4,12 +4,11 @@ import { useState, type ReactNode } from 'react'
 
 import { PageHeader } from '@/components/AppShell'
 import { DecisionsByDay, ReasonBars } from '@/components/charts'
-import { DecisionPill, OUTCOME_STYLE } from '@/components/status'
+import { DecisionPill, SHOWN_ORDER, SHOWN_STYLE } from '@/components/status'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
-import type { Outcome } from '@/lib/api'
 import { api2 } from '@/lib/api2'
 import { duration, inr, timeAgo } from '@/lib/format'
 import { navigate } from '@/lib/router'
@@ -17,7 +16,7 @@ import { cn } from '@/lib/utils'
 
 const PAGE_SIZE = 12
 const STATUS_TEXT: Record<string, string> = {
-  completed: 'Completed', resolved_by_human: 'Resolved by person', extraction_failed: 'Extraction failed',
+  completed: 'Completed', resolved_by_human: 'Checked by a person', extraction_failed: 'Extraction failed',
   failed: 'Failed', interrupted: 'Interrupted', running: 'Running', queued: 'Queued',
 }
 
@@ -43,14 +42,14 @@ function Tile({ label, value, hint, accent, children }: { label: string; value: 
 export default function Dashboard() {
   const [includeTest, setIncludeTest] = useState(false)
   const [search, setSearch] = useState('')
-  const [decision, setDecision] = useState('')
+  const [outcome, setOutcome] = useState('')
   const [model, setModel] = useState('')
   const [status, setStatus] = useState('')
   const [page, setPage] = useState(1)
   const stats = useQuery({ queryKey: ['stats', includeTest], queryFn: () => api2.stats(includeTest), refetchInterval: 10_000 })
   const runs = useQuery({
-    queryKey: ['runs', { includeTest, search, decision, model, status, page }],
-    queryFn: () => api2.runs({ include_test: includeTest, search, decision, model, status, page, page_size: PAGE_SIZE }),
+    queryKey: ['runs', { includeTest, search, outcome, model, status, page }],
+    queryFn: () => api2.runs({ include_test: includeTest, search, outcome, model, status, page, page_size: PAGE_SIZE }),
     placeholderData: keepPreviousData,
     refetchInterval: 10_000,
   })
@@ -72,10 +71,11 @@ export default function Dashboard() {
           <Tile label="Total runs" value={total}>
             <div className="mt-1 text-xs text-zinc-500">{s?.by_status.extraction_failed ?? 0} could not be read</div>
           </Tile>
-          {(['APPROVE', 'HOLD', 'REJECT'] as Outcome[]).map((o) => (
-            <Tile key={o} label={OUTCOME_STYLE[o].label}
-                  accent={{ APPROVE: '#059669', HOLD: '#f59e0b', REJECT: '#dc2626' }[o]} value={s?.by_decision[o] ?? 0}>
-              <div className="mt-1 text-xs text-zinc-500">{pct(s?.by_decision[o])} of runs</div>
+          {SHOWN_ORDER.map((o) => (
+            <Tile key={o} label={SHOWN_STYLE[o].label} accent={SHOWN_STYLE[o].fill} value={s?.by_outcome[o] ?? 0}>
+              <div className="mt-1 text-xs text-zinc-500">
+                {o === 'CHANGES_REQUESTED' ? 'sent back to the vendor by a person' : `${pct(s?.by_outcome[o])} of runs`}
+              </div>
             </Tile>
           ))}
           <Tile label="Avg processing time" value={s?.avg_duration_ms ? duration(s.avg_duration_ms) : '–'}>
@@ -94,8 +94,8 @@ export default function Dashboard() {
 
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
           <section className="rounded-xl border border-zinc-200 bg-white p-4">
-            <h2 className="mb-2 text-sm font-semibold">Decisions per day</h2>
-            <DecisionsByDay rows={s?.decisions_by_day ?? []} />
+            <h2 className="mb-2 text-sm font-semibold">Outcomes per day</h2>
+            <DecisionsByDay rows={s?.outcomes_by_day ?? []} />
           </section>
           <section className="rounded-xl border border-zinc-200 bg-white p-4">
             <h2 className="mb-3 text-sm font-semibold">Top reasons</h2>
@@ -109,14 +109,14 @@ export default function Dashboard() {
               <Search className="absolute top-2.5 left-2.5 size-4 text-zinc-400" />
               <Input value={search} onChange={(e) => resetPage(setSearch)(e.target.value)} placeholder="Search file, vendor, invoice no., PO…" className="pl-8" />
             </div>
-            <Filter value={decision} onChange={resetPage(setDecision)} label="Decision" options={[['APPROVE', 'Paid'], ['HOLD', 'Needs human verification'], ['REJECT', 'Rejected']]} />
+            <Filter value={outcome} onChange={resetPage(setOutcome)} label="Outcome" options={SHOWN_ORDER.map((o) => [o, SHOWN_STYLE[o].label])} />
             <Filter value={status} onChange={resetPage(setStatus)} label="Status" options={Object.entries(STATUS_TEXT)} />
             <Filter value={model} onChange={resetPage(setModel)} label="Model" options={[['gemini', 'Gemini'], ['groq', 'Groq']]} />
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-zinc-50 text-left text-[11px] tracking-wide text-zinc-500 uppercase">
-                <tr>{['Time', 'File', 'Vendor', 'Amount', 'PO', 'Model', 'Decision', 'Status', 'Duration'].map((h) => (
+                <tr>{['Time', 'File', 'Vendor', 'Amount', 'PO', 'Model', 'Outcome', 'Status', 'Duration'].map((h) => (
                   <th key={h} className={cn('px-3 py-2 font-medium', h === 'Amount' || h === 'Duration' ? 'text-right' : '')}>{h}</th>))}</tr>
               </thead>
               <tbody>
@@ -130,7 +130,7 @@ export default function Dashboard() {
                     <td className="px-3 py-2 text-right tabular-nums whitespace-nowrap">{inr(r.total_amount)}</td>
                     <td className="px-3 py-2 font-mono text-xs whitespace-nowrap">{r.po_number ?? '—'}</td>
                     <td className="px-3 py-2">{r.model === 'gemini' ? 'Gemini' : 'Groq'}{r.used_cache && <span className="ml-1 text-[10px] text-sky-700">cached</span>}</td>
-                    <td className="px-3 py-2"><DecisionPill outcome={r.decision} /></td>
+                    <td className="px-3 py-2"><DecisionPill shown={r.outcome} /></td>
                     <td className="px-3 py-2 text-xs whitespace-nowrap text-zinc-600">{STATUS_TEXT[r.status] ?? r.status}</td>
                     <td className="px-3 py-2 text-right text-xs tabular-nums text-zinc-500">{duration(r.duration_ms)}</td>
                   </tr>

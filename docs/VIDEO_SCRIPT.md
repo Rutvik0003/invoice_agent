@@ -38,7 +38,7 @@ The **Say** column is a guide, not a script to read. Say it in your own words.
 > email, finds the PO in a spreadsheet, checks the numbers and decides — slow, and the kind of work where a tired
 > person makes expensive mistakes.
 > The agent does that job end to end and answers one of three things: **Paid**, **Needs human verification**, or
-> **Rejected** — always with the reasons.
+> it goes to a person — always with the reasons. Nothing is rejected without a person looking at it.
 > The design principle is: **AI reads, OCR verifies, code decides.**"
 
 ### 0:30 – 0:50 · Real input: the inbox
@@ -79,7 +79,8 @@ The **Say** column is a guide, not a script to read. Say it in your own words.
 
 > "Vendors often split one PO across several invoices. Each invoice on its own looks fine — but the agent tracks
 > what's already been billed against the PO. Earlier bills took most of it, and this one would take the PO **over its
-> value**. So it doesn't pay and it doesn't reject — it asks the buyer to decide, and shows exactly how much is left."
+> value**. So it doesn't pay — it asks the buyer to decide, and shows exactly how much is left: approve and pay,
+> or **send mail for changes**, which replies to the vendor in the same email thread."
 
 ### 3:05 – 3:50 · Edge case 2: no PO number on the invoice (05)
 **Click:** open the Shubham Advertising result → then **Verification queue** → that invoice.

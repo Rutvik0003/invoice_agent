@@ -9,7 +9,7 @@ from fastapi import APIRouter, Request
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.api.common import engine_of
+from app.api.common import engine_of, shown_outcome
 from app.runtime_settings import effective_settings
 from app.models import InvoiceHistory, POHeader, Run, Vendor
 from app.verification.ocr import tesseract_status
@@ -109,6 +109,7 @@ def stats(request: Request, include_test: bool = False, tz_offset_minutes: int =
             query = query.where(Run.is_test_run.is_(False))
         runs = session.scalars(query).all()
     decisions = Counter(r.decision for r in runs if r.decision)
+    outcomes = Counter(shown_outcome(r) for r in runs if r.decision)
     statuses = Counter(r.status for r in runs)
     durations = [r.duration_ms for r in runs if r.duration_ms and r.status in ("completed", "resolved_by_human")]
     reasons = Counter(reason["code"] for r in runs for reason in (r.reasons_json or []) if reason.get("code"))
@@ -121,15 +122,16 @@ def stats(request: Request, include_test: bool = False, tz_offset_minutes: int =
             printed, verified = printed + 1, verified + ok
             if name in CRITICAL_FIELDS:
                 critical_printed, critical_verified = critical_printed + 1, critical_verified + ok
-    auto = sum(1 for r in runs if r.status == "completed" and r.decision in ("APPROVE", "REJECT"))
+    auto = sum(1 for r in runs if r.status == "completed" and r.decision == "APPROVE")
     by_day = Counter()
     shift = timedelta(minutes=-tz_offset_minutes)  # the browser's offset (JS getTimezoneOffset), so days match the viewer
     for r in runs:
         if r.decision and r.created_at:
-            by_day[((r.created_at + shift).date().isoformat(), r.decision)] += 1
+            by_day[((r.created_at + shift).date().isoformat(), shown_outcome(r))] += 1
     return {
         "total_runs": len(runs),
         "by_decision": dict(decisions),
+        "by_outcome": dict(outcomes),
         "by_status": dict(statuses),
         "avg_duration_ms": int(sum(durations) / len(durations)) if durations else None,
         "runs_by_model": dict(Counter(r.model for r in runs)),
@@ -138,7 +140,7 @@ def stats(request: Request, include_test: bool = False, tz_offset_minutes: int =
         "critical_fields_verified_pct": round(100 * critical_verified / critical_printed, 1) if critical_printed else None,
         "decided_automatically": auto,
         "ap_minutes_saved": auto * MANUAL_MINUTES_PER_INVOICE,
-        "ap_minutes_assumption": f"{MANUAL_MINUTES_PER_INVOICE} minutes of manual AP work per invoice that was approved "
-                                 "or rejected without a person (holds still need a person, so they count as 0).",
-        "decisions_by_day": [{"date": d, "decision": k, "count": n} for (d, k), n in sorted(by_day.items())],
+        "ap_minutes_assumption": f"{MANUAL_MINUTES_PER_INVOICE} minutes of manual AP work per invoice that was paid "
+                                 "without a person (invoices that need human verification count as 0).",
+        "outcomes_by_day": [{"date": d, "outcome": k, "count": n} for (d, k), n in sorted(by_day.items())],
     }

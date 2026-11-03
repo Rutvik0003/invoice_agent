@@ -1,21 +1,42 @@
-/** Shared status visuals: decision colours (green Paid, amber Needs human verification, red Rejected, gray running/failed).
- *  The engine's codes stay APPROVE / HOLD / REJECT; these are the words people see (approving pays the invoice). */
+/** Shared status visuals. People see two outcomes: green Paid and amber Needs human verification (the engine's Hold
+ *  and Reject both wait for a person; a Reject is tagged "vendor must fix"). Once a person sends a bill back it shows
+ *  gray "Changes requested". The engine's codes stay APPROVE / HOLD / REJECT. */
 
 import { AlertTriangle, Check, Circle, Info, Loader2, X } from 'lucide-react'
 
-import type { Outcome, Severity } from '@/lib/api'
+import type { Outcome, Severity, Shown } from '@/lib/api'
 import type { StageStatus } from '@/lib/useRunEvents'
 import { cn } from '@/lib/utils'
 
-export const OUTCOME_STYLE: Record<Outcome, { bg: string; text: string; ring: string; soft: string; label: string }> = {
-  APPROVE: { bg: 'bg-emerald-600', text: 'text-emerald-700', ring: 'ring-emerald-200', soft: 'bg-emerald-50', label: 'Paid' },
-  HOLD: { bg: 'bg-amber-500', text: 'text-amber-700', ring: 'ring-amber-200', soft: 'bg-amber-50', label: 'Needs human verification' },
-  REJECT: { bg: 'bg-red-600', text: 'text-red-700', ring: 'ring-red-200', soft: 'bg-red-50', label: 'Rejected' },
+type Style = { bg: string; text: string; ring: string; soft: string; label: string; fill: string }
+
+export const SHOWN_STYLE: Record<Shown, Style> = {
+  PAID: { bg: 'bg-emerald-600', text: 'text-emerald-700', ring: 'ring-emerald-200', soft: 'bg-emerald-50', label: 'Paid', fill: '#059669' },
+  NEEDS_VERIFICATION: { bg: 'bg-amber-500', text: 'text-amber-700', ring: 'ring-amber-200', soft: 'bg-amber-50', label: 'Needs human verification', fill: '#f59e0b' },
+  CHANGES_REQUESTED: { bg: 'bg-slate-500', text: 'text-slate-700', ring: 'ring-slate-200', soft: 'bg-slate-50', label: 'Changes requested', fill: '#64748b' },
+}
+export const SHOWN_ORDER: Shown[] = ['PAID', 'NEEDS_VERIFICATION', 'CHANGES_REQUESTED']
+
+/** The engine's decision as people see it (before a person acts on it). */
+export const OUTCOME_STYLE: Record<Outcome, Style> = {
+  APPROVE: SHOWN_STYLE.PAID,
+  HOLD: SHOWN_STYLE.NEEDS_VERIFICATION,
+  REJECT: SHOWN_STYLE.NEEDS_VERIFICATION,
 }
 
-export function DecisionPill({ outcome, className }: { outcome: Outcome | null; className?: string }) {
-  if (!outcome) return <span className={cn('rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600', className)}>—</span>
-  const s = OUTCOME_STYLE[outcome]
+/** Paid / Needs human verification / Changes requested, from the engine's decision and the run status. */
+export function shownOf(decision: Outcome | null, status?: string): Shown | null {
+  if (!decision) return null
+  if (decision === 'APPROVE') return 'PAID'
+  return status === 'resolved_by_human' ? 'CHANGES_REQUESTED' : 'NEEDS_VERIFICATION'
+}
+
+export function DecisionPill({ outcome, status, shown, className }: {
+  outcome?: Outcome | null; status?: string; shown?: Shown | null; className?: string
+}) {
+  const value = shown ?? shownOf(outcome ?? null, status)
+  if (!value) return <span className={cn('rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-600', className)}>—</span>
+  const s = SHOWN_STYLE[value]
   return (
     <span className={cn('rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap text-white', s.bg, className)}>{s.label}</span>
   )
@@ -37,7 +58,7 @@ export function StageIcon({ status }: { status: StageStatus }) {
   }
 }
 
-/** ✓ for a clean check, ! for Hold/Info, ✗ for Reject. */
+/** ✓ for a clean check, ! for Hold/Info, ✗ for something the vendor must fix. */
 export function CheckIcon({ severity }: { severity: Severity | null }) {
   if (severity === 'REJECT') return <X className="mt-0.5 size-4 shrink-0 text-red-600" strokeWidth={2.5} />
   if (severity === 'HOLD') return <AlertTriangle className="mt-0.5 size-4 shrink-0 text-amber-600" />

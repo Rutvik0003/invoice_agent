@@ -49,8 +49,12 @@ def create_run(request: Request, background: BackgroundTasks, file_name: str, da
 async def post_run(request: Request, background: BackgroundTasks, file: UploadFile | None = File(None),
                    sample_id: str | None = Form(None), model: str | None = Form(None),
                    model_name: str | None = Form(None), use_cache: bool = Form(False)) -> dict:
-    """Start a run from an uploaded file OR a sample id. Returns the run id immediately."""
-    require_real_mode(request, "Uploading files or running samples")
+    """Start a run from an uploaded file OR a sample id. Returns the run id immediately.
+    Demo: samples only (their vendors and POs are in the demo data), within the visitor's hourly run limit."""
+    if file is not None and file.filename:
+        require_real_mode(request, "Uploading files")
+    engine = engine_of(request)
+    check_demo_quota(request, engine, 1, effective_settings(engine).demo_max_runs_per_hour)
     model = model or get_settings().default_model
     if file is not None and file.filename:
         data = await file.read()
@@ -82,7 +86,7 @@ def retry_run(run_id: str, request: Request, background: BackgroundTasks, model:
 
 
 @router.get("/runs")
-def list_runs(request: Request, decision: str | None = None, status: str | None = None, vendor: str | None = None,
+def list_runs(request: Request, decision: str | None = None, outcome: str | None = None, status: str | None = None, vendor: str | None = None,
               model: str | None = None, date_from: str | None = None, date_to: str | None = None,
               search: str | None = None, include_test: bool = False, page: int = Query(1, ge=1),
               page_size: int = Query(20, ge=1, le=200)) -> dict:
@@ -104,6 +108,8 @@ def list_runs(request: Request, decision: str | None = None, status: str | None 
         query = query.where(Run.created_at < datetime.fromisoformat(date_to))
     with Session(engine_of(request)) as session:
         rows = [run_summary(r) for r in session.scalars(query)]
+    if outcome:
+        rows = [r for r in rows if r["outcome"] == outcome.upper()]
     if search:
         needle = search.lower()
         rows = [r for r in rows if any(needle in str(r.get(k) or "").lower()
